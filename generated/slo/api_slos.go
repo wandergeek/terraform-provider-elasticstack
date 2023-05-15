@@ -184,9 +184,10 @@ CreateSlo Creates an SLO.
 
 You must have `all` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-	@return ApiCreateSloRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
+ @return ApiCreateSloRequest
 */
 func (a *SlosApiService) CreateSlo(ctx context.Context, spaceId string) ApiCreateSloRequest {
 	return ApiCreateSloRequest{
@@ -197,8 +198,7 @@ func (a *SlosApiService) CreateSlo(ctx context.Context, spaceId string) ApiCreat
 }
 
 // Execute executes the request
-//
-//	@return CreateSloResponse
+//  @return CreateSloResponse
 func (a *SlosApiService) CreateSloExecute(r ApiCreateSloRequest) (*CreateSloResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -340,10 +340,11 @@ DeleteSlo Deletes an SLO
 
 You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-	@param sloId An identifier for the slo.
-	@return ApiDeleteSloRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
+ @param sloId An identifier for the slo.
+ @return ApiDeleteSloRequest
 */
 func (a *SlosApiService) DeleteSlo(ctx context.Context, spaceId string, sloId string) ApiDeleteSloRequest {
 	return ApiDeleteSloRequest{
@@ -482,10 +483,11 @@ DisableSlo Disables an SLO
 
 You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-	@param sloId An identifier for the slo.
-	@return ApiDisableSloRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
+ @param sloId An identifier for the slo.
+ @return ApiDisableSloRequest
 */
 func (a *SlosApiService) DisableSlo(ctx context.Context, spaceId string, sloId string) ApiDisableSloRequest {
 	return ApiDisableSloRequest{
@@ -624,10 +626,11 @@ EnableSlo Enables an SLO
 
 You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-	@param sloId An identifier for the slo.
-	@return ApiEnableSloRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
+ @param sloId An identifier for the slo.
+ @return ApiEnableSloRequest
 */
 func (a *SlosApiService) EnableSlo(ctx context.Context, spaceId string, sloId string) ApiEnableSloRequest {
 	return ApiEnableSloRequest{
@@ -807,9 +810,10 @@ FindSlos Retrieves a paginated list of SLOs
 
 You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-	@return ApiFindSlosRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
+ @return ApiFindSlosRequest
 */
 func (a *SlosApiService) FindSlos(ctx context.Context, spaceId string) ApiFindSlosRequest {
 	return ApiFindSlosRequest{
@@ -820,8 +824,7 @@ func (a *SlosApiService) FindSlos(ctx context.Context, spaceId string) ApiFindSl
 }
 
 // Execute executes the request
-//
-//	@return FindSloResponse
+//  @return FindSloResponse
 func (a *SlosApiService) FindSlosExecute(r ApiFindSlosRequest) (*FindSloResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -984,10 +987,11 @@ GetSlo Retrieves a SLO
 
 You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-	@param sloId An identifier for the slo.
-	@return ApiGetSloRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
+ @param sloId An identifier for the slo.
+ @return ApiGetSloRequest
 */
 func (a *SlosApiService) GetSlo(ctx context.Context, spaceId string, sloId string) ApiGetSloRequest {
 	return ApiGetSloRequest{
@@ -999,8 +1003,7 @@ func (a *SlosApiService) GetSlo(ctx context.Context, spaceId string, sloId strin
 }
 
 // Execute executes the request
-//
-//	@return SloResponse
+//  @return SloResponse
 func (a *SlosApiService) GetSloExecute(r ApiGetSloRequest) (*SloResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1143,9 +1146,10 @@ HistoricalSummary Retrieves the historical summary for a list of SLOs
 
 You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-	@return ApiHistoricalSummaryRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
+ @return ApiHistoricalSummaryRequest
 */
 func (a *SlosApiService) HistoricalSummary(ctx context.Context, spaceId string) ApiHistoricalSummaryRequest {
 	return ApiHistoricalSummaryRequest{
@@ -1156,8 +1160,7 @@ func (a *SlosApiService) HistoricalSummary(ctx context.Context, spaceId string) 
 }
 
 // Execute executes the request
-//
-//	@return map[string][]HistoricalSummaryResponseInner
+//  @return map[string][]HistoricalSummaryResponseInner
 func (a *SlosApiService) HistoricalSummaryExecute(r ApiHistoricalSummaryRequest) (*map[string][]HistoricalSummaryResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1305,10 +1308,11 @@ UpdateSlo Updates an SLO
 
 You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-	@param sloId An identifier for the slo.
-	@return ApiUpdateSloRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
+ @param sloId An identifier for the slo.
+ @return ApiUpdateSloRequest
 */
 func (a *SlosApiService) UpdateSlo(ctx context.Context, spaceId string, sloId string) ApiUpdateSloRequest {
 	return ApiUpdateSloRequest{
@@ -1320,8 +1324,7 @@ func (a *SlosApiService) UpdateSlo(ctx context.Context, spaceId string, sloId st
 }
 
 // Execute executes the request
-//
-//	@return SloResponse
+//  @return SloResponse
 func (a *SlosApiService) UpdateSloExecute(r ApiUpdateSloRequest) (*SloResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut

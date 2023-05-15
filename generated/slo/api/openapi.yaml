@@ -568,7 +568,7 @@ components:
       description: Defines properties for the APM latency indicator type
       properties:
         params:
-          $ref: '#/components/schemas/indicator_properties_apm_latency_params'
+          $ref: '#/components/schemas/indicator_properties_apm_availability_params'
         type:
           description: The type of indicator.
           example: sli.apm.transactionDuration
@@ -984,51 +984,6 @@ components:
       - timestampField
       type: object
     indicator_properties_apm_availability_params:
-      description: An object containing the indicator parameters.
-      nullable: false
-      properties:
-        service:
-          description: The APM service name
-          example: o11y-app
-          type: string
-        environment:
-          description: The APM service environment or "*"
-          example: production
-          type: string
-        transactionType:
-          description: The APM transaction type or "*"
-          example: request
-          type: string
-        transactionName:
-          description: The APM transaction name or "*"
-          example: GET /my/api
-          type: string
-        goodStatusCodes:
-          description: "The status codes considered as good events. Default to 2xx,\
-            \ 3xx and 4xx"
-          example:
-          - 2xx
-          - 3xx
-          - 4xx
-          items:
-            type: string
-          type: array
-        filter:
-          description: KQL query used for filtering the data
-          example: "service.foo : \"bar\""
-          type: string
-        index:
-          description: The index used by APM metrics
-          example: "metrics-apm*,apm*"
-          type: string
-      required:
-      - environment
-      - index
-      - service
-      - transactionName
-      - transactionType
-      type: object
-    indicator_properties_apm_latency_params:
       description: An object containing the indicator parameters.
       nullable: false
       properties:

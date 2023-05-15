@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Params** | [**IndicatorPropertiesApmLatencyParams**](IndicatorPropertiesApmLatencyParams.md) |  | 
+**Params** | [**IndicatorPropertiesApmAvailabilityParams**](IndicatorPropertiesApmAvailabilityParams.md) |  | 
 **Type** | **string** | The type of indicator. | 
 
 ## Methods
 
 ### NewSloResponseIndicator
 
-`func NewSloResponseIndicator(params IndicatorPropertiesApmLatencyParams, type_ string, ) *SloResponseIndicator`
+`func NewSloResponseIndicator(params IndicatorPropertiesApmAvailabilityParams, type_ string, ) *SloResponseIndicator`
 
 NewSloResponseIndicator instantiates a new SloResponseIndicator object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetParams
 
-`func (o *SloResponseIndicator) GetParams() IndicatorPropertiesApmLatencyParams`
+`func (o *SloResponseIndicator) GetParams() IndicatorPropertiesApmAvailabilityParams`
 
 GetParams returns the Params field if non-nil, zero value otherwise.
 
 ### GetParamsOk
 
-`func (o *SloResponseIndicator) GetParamsOk() (*IndicatorPropertiesApmLatencyParams, bool)`
+`func (o *SloResponseIndicator) GetParamsOk() (*IndicatorPropertiesApmAvailabilityParams, bool)`
 
 GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParams
 
-`func (o *SloResponseIndicator) SetParams(v IndicatorPropertiesApmLatencyParams)`
+`func (o *SloResponseIndicator) SetParams(v IndicatorPropertiesApmAvailabilityParams)`
 
 SetParams sets Params field to given value.
 

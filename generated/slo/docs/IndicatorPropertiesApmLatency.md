@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Params** | [**IndicatorPropertiesApmLatencyParams**](IndicatorPropertiesApmLatencyParams.md) |  | 
+**Params** | [**IndicatorPropertiesApmAvailabilityParams**](IndicatorPropertiesApmAvailabilityParams.md) |  | 
 **Type** | **string** | The type of indicator. | 
 
 ## Methods
 
 ### NewIndicatorPropertiesApmLatency
 
-`func NewIndicatorPropertiesApmLatency(params IndicatorPropertiesApmLatencyParams, type_ string, ) *IndicatorPropertiesApmLatency`
+`func NewIndicatorPropertiesApmLatency(params IndicatorPropertiesApmAvailabilityParams, type_ string, ) *IndicatorPropertiesApmLatency`
 
 NewIndicatorPropertiesApmLatency instantiates a new IndicatorPropertiesApmLatency object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetParams
 
-`func (o *IndicatorPropertiesApmLatency) GetParams() IndicatorPropertiesApmLatencyParams`
+`func (o *IndicatorPropertiesApmLatency) GetParams() IndicatorPropertiesApmAvailabilityParams`
 
 GetParams returns the Params field if non-nil, zero value otherwise.
 
 ### GetParamsOk
 
-`func (o *IndicatorPropertiesApmLatency) GetParamsOk() (*IndicatorPropertiesApmLatencyParams, bool)`
+`func (o *IndicatorPropertiesApmLatency) GetParamsOk() (*IndicatorPropertiesApmAvailabilityParams, bool)`
 
 GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParams
 
-`func (o *IndicatorPropertiesApmLatency) SetParams(v IndicatorPropertiesApmLatencyParams)`
+`func (o *IndicatorPropertiesApmLatency) SetParams(v IndicatorPropertiesApmAvailabilityParams)`
 
 SetParams sets Params field to given value.
 

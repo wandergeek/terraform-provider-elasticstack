@@ -99,7 +99,6 @@ Class | Method | HTTP request | Description
  - [IndicatorPropertiesApmAvailability](docs/IndicatorPropertiesApmAvailability.md)
  - [IndicatorPropertiesApmAvailabilityParams](docs/IndicatorPropertiesApmAvailabilityParams.md)
  - [IndicatorPropertiesApmLatency](docs/IndicatorPropertiesApmLatency.md)
- - [IndicatorPropertiesApmLatencyParams](docs/IndicatorPropertiesApmLatencyParams.md)
  - [IndicatorPropertiesCustomKql](docs/IndicatorPropertiesCustomKql.md)
  - [IndicatorPropertiesCustomKqlParams](docs/IndicatorPropertiesCustomKqlParams.md)
  - [Model4xxResponse](docs/Model4xxResponse.md)

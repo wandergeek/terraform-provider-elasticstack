@@ -15,7 +15,6 @@ docs/HistoricalSummaryResponseInner.md
 docs/IndicatorPropertiesApmAvailability.md
 docs/IndicatorPropertiesApmAvailabilityParams.md
 docs/IndicatorPropertiesApmLatency.md
-docs/IndicatorPropertiesApmLatencyParams.md
 docs/IndicatorPropertiesCustomKql.md
 docs/IndicatorPropertiesCustomKqlParams.md
 docs/Model4xxResponse.md
@@ -44,7 +43,6 @@ model_historical_summary_response_inner.go
 model_indicator_properties_apm_availability.go
 model_indicator_properties_apm_availability_params.go
 model_indicator_properties_apm_latency.go
-model_indicator_properties_apm_latency_params.go
 model_indicator_properties_custom_kql.go
 model_indicator_properties_custom_kql_params.go
 model_objective.go

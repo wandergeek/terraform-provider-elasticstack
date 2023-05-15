@@ -19,7 +19,7 @@ var _ MappedNullable = &IndicatorPropertiesApmLatency{}
 
 // IndicatorPropertiesApmLatency Defines properties for the APM latency indicator type
 type IndicatorPropertiesApmLatency struct {
-	Params IndicatorPropertiesApmLatencyParams `json:"params"`
+	Params IndicatorPropertiesApmAvailabilityParams `json:"params"`
 	// The type of indicator.
 	Type string `json:"type"`
 }
@@ -28,7 +28,7 @@ type IndicatorPropertiesApmLatency struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIndicatorPropertiesApmLatency(params IndicatorPropertiesApmLatencyParams, type_ string) *IndicatorPropertiesApmLatency {
+func NewIndicatorPropertiesApmLatency(params IndicatorPropertiesApmAvailabilityParams, type_ string) *IndicatorPropertiesApmLatency {
 	this := IndicatorPropertiesApmLatency{}
 	this.Params = params
 	this.Type = type_
@@ -44,9 +44,9 @@ func NewIndicatorPropertiesApmLatencyWithDefaults() *IndicatorPropertiesApmLaten
 }
 
 // GetParams returns the Params field value
-func (o *IndicatorPropertiesApmLatency) GetParams() IndicatorPropertiesApmLatencyParams {
+func (o *IndicatorPropertiesApmLatency) GetParams() IndicatorPropertiesApmAvailabilityParams {
 	if o == nil {
-		var ret IndicatorPropertiesApmLatencyParams
+		var ret IndicatorPropertiesApmAvailabilityParams
 		return ret
 	}
 
@@ -55,7 +55,7 @@ func (o *IndicatorPropertiesApmLatency) GetParams() IndicatorPropertiesApmLatenc
 
 // GetParamsOk returns a tuple with the Params field value
 // and a boolean to check if the value has been set.
-func (o *IndicatorPropertiesApmLatency) GetParamsOk() (*IndicatorPropertiesApmLatencyParams, bool) {
+func (o *IndicatorPropertiesApmLatency) GetParamsOk() (*IndicatorPropertiesApmAvailabilityParams, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *IndicatorPropertiesApmLatency) GetParamsOk() (*IndicatorPropertiesApmLa
 }
 
 // SetParams sets field value
-func (o *IndicatorPropertiesApmLatency) SetParams(v IndicatorPropertiesApmLatencyParams) {
+func (o *IndicatorPropertiesApmLatency) SetParams(v IndicatorPropertiesApmAvailabilityParams) {
 	o.Params = v
 }
 
