@@ -8,6 +8,7 @@ import (
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients"
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients/kibana"
 	"github.com/elastic/terraform-provider-elasticstack/internal/models"
+	"github.com/hashicorp/go-cty/cty"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
@@ -58,6 +59,22 @@ func ResourceSlo() *schema.Resource {
 									Type:     schema.TypeString,
 									Required: false,
 								},
+								"service": {
+									Type:     schema.TypeString,
+									Required: false,
+								},
+								"environment": {
+									Type:     schema.TypeString,
+									Required: false,
+								},
+								"transactionType": {
+									Type:     schema.TypeString,
+									Required: false,
+								},
+								"transactionName": {
+									Type:     schema.TypeString,
+									Required: false,
+								},
 								"total": {
 									Type:     schema.TypeString,
 									Required: false,
@@ -66,7 +83,66 @@ func ResourceSlo() *schema.Resource {
 									Type:     schema.TypeString,
 									Required: false,
 								},
+								"threshold": {
+									Type:     schema.TypeInt,
+									Required: false,
+								},
 							},
+						},
+						ValidateDiagFunc: func(val any, key cty.Path) diag.Diagnostics {
+							// Custom validation logic based on indicator type
+							indicatorType := val.(map[string]interface{})["type"].(string)
+							params := val.(map[string]interface{})["params"].(map[string]interface{})
+
+							switch indicatorType {
+							case "sli.kql.custom":
+								// Validate the required fields for sli.kql.custom
+								if _, ok := params["index"]; !ok {
+									return diag.Errorf("params.index is required for indicator type sli.kql.custom")
+								}
+							case "sli.apm.transactionDuration":
+								// Validate the required fields for sli.apm.transactionDuration
+								if _, ok := params["environment"]; !ok {
+									return diag.Errorf("params.environment is required for indicator type sli.apm.transactionDuration")
+								}
+								if _, ok := params["service"]; !ok {
+									return diag.Errorf("params.service is required for indicator type sli.apm.transactionDuration")
+								}
+								if _, ok := params["transactionType"]; !ok {
+									return diag.Errorf("params.transactionType is required for indicator type sli.apm.transactionDuration")
+								}
+								if _, ok := params["transactionName"]; !ok {
+									return diag.Errorf("params.transactionName is required for indicator type sli.apm.transactionDuration")
+								}
+								if _, ok := params["index"]; !ok {
+									return diag.Errorf("params.index is required for indicator type sli.apm.transactionDuration")
+								}
+								if _, ok := params["threshold"]; !ok {
+									return diag.Errorf("params.index is required for indicator type sli.apm.transactionDuration")
+								}
+
+							case "sli.apm.transactionErrorRate":
+								// Validate the required fields for sli.apm.transactionDuration
+								if _, ok := params["environment"]; !ok {
+									return diag.Errorf("params.environment is required for indicator type sli.apm.transactionErrorRate")
+								}
+								if _, ok := params["service"]; !ok {
+									return diag.Errorf("params.service is required for indicator type sli.apm.transactionErrorRate")
+								}
+								if _, ok := params["transactionType"]; !ok {
+									return diag.Errorf("params.transactionType is required for indicator type sli.apm.transactionErrorRate")
+								}
+								if _, ok := params["transactionName"]; !ok {
+									return diag.Errorf("params.transactionName is required for indicator type sli.apm.transactionErrorRate")
+								}
+								if _, ok := params["index"]; !ok {
+									return diag.Errorf("params.index is required for indicator type sli.apm.transactionErrorRate")
+								}
+							default:
+								return diag.Errorf("unknown indicator type: %s", indicatorType)
+							}
+
+							return nil
 						},
 					},
 				},
@@ -74,6 +150,80 @@ func ResourceSlo() *schema.Resource {
 		},
 		"time_window": {
 			Description: "Currently support calendar aligned and rolling time windows. Any duration greater than 1 day can be used: days, weeks, months, quarters, years. Rolling time window requires a duration, e.g. 1w for one week, and isRolling: true. SLOs defined with such time window, will only consider the SLI data from the last duration period as a moving window. Calendar aligned time window requires a duration, limited to 1M for monthly or 1w for weekly, and isCalendar: true.",
+			Elem: &schema.Resource{
+				Schema: map[string]*schema.Schema{
+					"duration": {
+						Type:     schema.TypeString,
+						Required: true,
+					},
+					"isRolling": {
+						Type:     schema.TypeBool,
+						Required: false,
+					},
+					"isCalendar": {
+						Type:     schema.TypeBool,
+						Required: false,
+					},
+				},
+			},
+			ValidateDiagFunc: func(val any, key cty.Path) diag.Diagnostics {
+				isRolling := val.(map[string]interface{})["isRolling"].(bool)
+				isCalendar := val.(map[string]interface{})["isCalendar"].(bool)
+
+				if isRolling && isCalendar {
+					return diag.Errorf("time_window cannot be both rolling and calendar")
+				}
+
+				if !isRolling && !isCalendar {
+					return diag.Errorf("time_window isRolling or isCalendar must be set to true")
+				}
+
+				return nil
+			},
+		},
+		"budgetingMethod": {
+			Description:  "An occurrences budgeting method uses the number of good and total events during the time window. A timeslices budgeting method uses the number of good slices and total slices during the time window. A slice is an arbitrary time window (smaller than the overall SLO time window) that is either considered good or bad, calculated from the timeslice threshold and the ratio of good over total events that happened during the slice window. A budgeting method is required and must be either occurrences or timeslices.",
+			Type:         schema.TypeString,
+			Optional:     false,
+			ValidateFunc: validation.StringInSlice([]string{"occurrences", "timeslices"}, false),
+		},
+		"objective": {
+			Description: "The target objective is the value the SLO needs to meet during the time window. If a timeslices budgeting method is used, we also need to define the timesliceTarget which can be different than the overall SLO target.",
+			Type:        schema.TypeString,
+			Optional:    false,
+			Elem: &schema.Resource{
+				Schema: map[string]*schema.Schema{
+					"target": {
+						Type:     schema.TypeFloat,
+						Required: true,
+					},
+					"timeslicestarget": {
+						Type:     schema.TypeFloat,
+						Required: false,
+					},
+					"timeslicesWindow": {
+						Type:     schema.TypeString,
+						Required: false,
+					},
+				},
+			},
+		},
+		"settings": {
+			Description: "The default settings should be sufficient for most users, but if needed, these properties can be overwritten.",
+			Type:        schema.TypeString,
+			Optional:    true,
+			Elem: &schema.Resource{
+				Schema: map[string]*schema.Schema{
+					"syncDelay": {
+						Type:     schema.TypeString,
+						Required: false,
+					},
+					"frequency": {
+						Type:     schema.TypeString,
+						Required: false,
+					},
+				},
+			},
 		},
 		"space_id": {
 			Description: "An identifier for the space. If space_id is not provided, the default space is used.",
@@ -85,7 +235,7 @@ func ResourceSlo() *schema.Resource {
 	}
 
 	return &schema.Resource{
-		Description: "Creates a Kibana rule. See https://www.elastic.co/guide/en/kibana/master/create-rule-api.html",
+		Description: "Creates an SLO.",
 
 		CreateContext: resourceSloCreate,
 		UpdateContext: resourceSloUpdate,
