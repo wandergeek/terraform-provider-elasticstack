@@ -32,17 +32,17 @@ func ResourceSlo() *schema.Resource {
 			Type:        schema.TypeString,
 			Required:    true,
 		},
-		"indicator": &schema.Schema{
+		"indicator": {
 			Type:     schema.TypeMap,
 			Required: true,
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
-					"type": &schema.Schema{
+					"type": {
 						Type:         schema.TypeString,
 						Required:     true,
 						ValidateFunc: validation.StringInSlice([]string{"sli.kql.custom", "sli.apm.transactionErrorRate", "sli.apm.transactionDuration"}, false),
 					},
-					"params": &schema.Schema{
+					"params": {
 						Type:     schema.TypeMap,
 						Required: true,
 						Elem: &schema.Resource{
@@ -150,6 +150,7 @@ func ResourceSlo() *schema.Resource {
 		},
 		"time_window": {
 			Description: "Currently support calendar aligned and rolling time windows. Any duration greater than 1 day can be used: days, weeks, months, quarters, years. Rolling time window requires a duration, e.g. 1w for one week, and isRolling: true. SLOs defined with such time window, will only consider the SLI data from the last duration period as a moving window. Calendar aligned time window requires a duration, limited to 1M for monthly or 1w for weekly, and isCalendar: true.",
+			Type:        schema.TypeMap,
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"duration": {
@@ -189,7 +190,7 @@ func ResourceSlo() *schema.Resource {
 		},
 		"objective": {
 			Description: "The target objective is the value the SLO needs to meet during the time window. If a timeslices budgeting method is used, we also need to define the timesliceTarget which can be different than the overall SLO target.",
-			Type:        schema.TypeString,
+			Type:        schema.TypeMap,
 			Optional:    false,
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
@@ -210,7 +211,7 @@ func ResourceSlo() *schema.Resource {
 		},
 		"settings": {
 			Description: "The default settings should be sufficient for most users, but if needed, these properties can be overwritten.",
-			Type:        schema.TypeString,
+			Type:        schema.TypeMap,
 			Optional:    true,
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
