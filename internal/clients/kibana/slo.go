@@ -238,6 +238,8 @@ func indicatorFromSloResponse(res *slo.SloResponse) models.Indicator {
 		}
 	}
 
+	//handle no match?
+
 	return indicator
 
 }
@@ -259,5 +261,7 @@ func windowFromSloResponse(res *slo.SloResponse) models.TimeWindow {
 			IsCalendar: false,
 		}
 	}
+
+	//handle no match?
 	return window
 }
