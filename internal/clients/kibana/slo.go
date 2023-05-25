@@ -17,8 +17,15 @@ func sloResponseToModel(spaceID string, res *slo.SloResponse) *models.Slo {
 		return nil
 	}
 
-	indicator := res.Indicator.GetActualInstance()
-	window := res.TimeWindow.GetActualInstance()
+	indicator, ok := res.Indicator.GetActualInstance().(slo.SloResponseIndicator)
+	if !ok {
+		return nil
+	}
+
+	window, ok := res.TimeWindow.GetActualInstance().(slo.SloResponseTimeWindow)
+	if !ok {
+		return nil
+	}
 
 	return &models.Slo{
 		ID:              *res.Id,
@@ -28,17 +35,17 @@ func sloResponseToModel(spaceID string, res *slo.SloResponse) *models.Slo {
 		BudgetingMethod: string(*res.BudgetingMethod),
 		Indicator: models.Indicator{
 			Params: models.Params{
-				Index:          string(unwrapOptionalField(indicator.Params.Index)),
-				Service: string(unwrapOptionalField(indicator.Params.Service)),
-				Environment: string(unwrapOptionalField(indicator.Params.Environment)),
+				Index:           string(unwrapOptionalField(indicator.Params.Index)),
+				Service:         string(unwrapOptionalField(indicator.Params.Service)),
+				Environment:     string(unwrapOptionalField(indicator.Params.Environment)),
 				TransactionType: string(unwrapOptionalField(indicator.Params.TransactionType)),
 				TransactionName: string(unwrapOptionalField(indicator.Params.TransactionName)),
 				//does GoodStatusCodes need to be casted?
-				GoodStatusCodes: unwrapOptionalField(indicator.Params.GoodStatusCodes), 
-				Filter: string(unwrapOptionalField(indicator.Params.Filter)),
-				Good: string(unwrapOptionalField(indicator.Params.Good)),
-				Total: string(unwrapOptionalField(indicator.Params.Total)),
-				TimestampField: string(unwrapOptionalField(indicator.Params.TimestampField)),
+				GoodStatusCodes: unwrapOptionalField(indicator.Params.GoodStatusCodes),
+				Filter:          string(unwrapOptionalField(indicator.Params.Filter)),
+				Good:            string(unwrapOptionalField(indicator.Params.Good)),
+				Total:           string(unwrapOptionalField(indicator.Params.Total)),
+				TimestampField:  string(unwrapOptionalField(indicator.Params.TimestampField)),
 			},
 			Type: string(indicator.Type),
 		},
@@ -47,11 +54,15 @@ func sloResponseToModel(spaceID string, res *slo.SloResponse) *models.Slo {
 			IsRolling: bool(window.IsRolling),
 		},
 		Objective: models.Objective{
-			Target:           float64(*res.Objective.Target),
-			TimeslicesTarget: float64(unwrapOptionalField(*res.Objective.TimeslicesTarget)),
-			TimeslicesWindow: string(unwrapOptionalField(*res.Objective.TimeslicesWindow)),
+			Target:           float64(res.Objective.Target),
+			TimeslicesTarget: float64(unwrapOptionalField(res.Objective.TimeslicesTarget)),
+			TimeslicesWindow: string(unwrapOptionalField(res.Objective.TimeslicesWindow)),
 		},
-	},
+		Settings: models.Settings{
+			SyncDelay: string(unwrapOptionalField(res.Settings.SyncDelay)),
+			Frequency: string(unwrapOptionalField(res.Settings.Frequency)),
+		},
+	}
 }
 
 // Maps the rule actions to the struct required by the request model (ActionsInner)
