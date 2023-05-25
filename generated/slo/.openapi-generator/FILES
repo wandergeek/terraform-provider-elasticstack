@@ -27,7 +27,6 @@ docs/SloResponseTimeWindow.md
 docs/SlosApi.md
 docs/Summary.md
 docs/TimeWindowCalendarAligned.md
-docs/TimeWindowCalendarAlignedCalendar.md
 docs/TimeWindowRolling.md
 docs/UpdateSloRequest.md
 git_push.sh
@@ -54,7 +53,6 @@ model_slo_response_indicator.go
 model_slo_response_time_window.go
 model_summary.go
 model_time_window_calendar_aligned.go
-model_time_window_calendar_aligned_calendar.go
 model_time_window_rolling.go
 model_update_slo_request.go
 response.go

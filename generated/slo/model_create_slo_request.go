@@ -19,6 +19,8 @@ var _ MappedNullable = &CreateSloRequest{}
 
 // CreateSloRequest The create SLO API request body varies depending on the type of indicator, time window and budgeting method.
 type CreateSloRequest struct {
+	// A unique identifier for the SLO. Must be between 8 and 36 chars
+	Id *string `json:"id,omitempty"`
 	// A name for the SLO.
 	Name string `json:"name"`
 	// A description for the SLO.
@@ -51,6 +53,38 @@ func NewCreateSloRequest(name string, description string, indicator SloResponseI
 func NewCreateSloRequestWithDefaults() *CreateSloRequest {
 	this := CreateSloRequest{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *CreateSloRequest) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSloRequest) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *CreateSloRequest) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *CreateSloRequest) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value
@@ -239,6 +273,9 @@ func (o CreateSloRequest) MarshalJSON() ([]byte, error) {
 
 func (o CreateSloRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
 	toSerialize["indicator"] = o.Indicator

@@ -1,15 +1,8 @@
 package kibana
 
 import (
-	"context"
-	"net/http"
-
-	"github.com/elastic/terraform-provider-elasticstack/generated/alerting"
 	"github.com/elastic/terraform-provider-elasticstack/generated/slo"
-	"github.com/elastic/terraform-provider-elasticstack/internal/clients"
 	"github.com/elastic/terraform-provider-elasticstack/internal/models"
-	"github.com/elastic/terraform-provider-elasticstack/internal/utils"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 )
 
 func sloResponseToModel(spaceID string, res *slo.SloResponse) *models.Slo {
@@ -17,14 +10,14 @@ func sloResponseToModel(spaceID string, res *slo.SloResponse) *models.Slo {
 		return nil
 	}
 
-	indicator, ok := res.Indicator.GetActualInstance().(slo.SloResponseIndicator)
-	if !ok {
-		return nil
-	}
+	if res.TimeWindow.TimeWindowCalendarAligned != nil {
+		w := res.TimeWindow.TimeWindowCalendarAligned
+		window := models.TimeWindow{}
+		window.Duration = unwrapOptionalField(*w.Duration).(string)
+		window.IsRolling = bool(unwrapOptionalField(w.IsRolling))
 
-	window, ok := res.TimeWindow.GetActualInstance().(slo.SloResponseTimeWindow)
-	if !ok {
-		return nil
+	} else if res.TimeWindow.TimeWindowRolling != nil {
+		window := res.TimeWindow.TimeWindowRolling
 	}
 
 	return &models.Slo{
@@ -50,8 +43,9 @@ func sloResponseToModel(spaceID string, res *slo.SloResponse) *models.Slo {
 			Type: string(indicator.Type),
 		},
 		TimeWindow: models.TimeWindow{
-			Duration:  string(window.Duration),
-			IsRolling: bool(window.IsRolling),
+			Duration:   string(unwrapOptionalField(window.Duration)),
+			IsRolling:  bool(unwrapOptionalField(window.IsRolling)),
+			IsCalendar: bool(unwrapOptionalField(window.IsCalendar)),
 		},
 		Objective: models.Objective{
 			Target:           float64(res.Objective.Target),
@@ -63,143 +57,4 @@ func sloResponseToModel(spaceID string, res *slo.SloResponse) *models.Slo {
 			Frequency: string(unwrapOptionalField(res.Settings.Frequency)),
 		},
 	}
-}
-
-// Maps the rule actions to the struct required by the request model (ActionsInner)
-func ruleActionsToActionsInner(ruleActions []models.AlertingRuleAction) []alerting.ActionsInner {
-	actions := []alerting.ActionsInner{}
-	for index := range ruleActions {
-		action := ruleActions[index]
-		actions = append(actions, alerting.ActionsInner{
-			Group:  &action.Group,
-			Id:     &action.ID,
-			Params: action.Params,
-		})
-	}
-	return actions
-}
-
-func CreateAlertingRule(ctx context.Context, apiClient *clients.ApiClient, rule models.AlertingRule) (*models.AlertingRule, diag.Diagnostics) {
-	client, err := apiClient.GetAlertingClient()
-	if err != nil {
-		return nil, diag.FromErr(err)
-	}
-
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
-
-	reqModel := alerting.CreateRuleRequest{
-		Consumer:   rule.Consumer,
-		Actions:    ruleActionsToActionsInner(rule.Actions),
-		Enabled:    rule.Enabled,
-		Name:       rule.Name,
-		NotifyWhen: (*alerting.NotifyWhen)(&rule.NotifyWhen),
-		Params:     rule.Params,
-		RuleTypeId: rule.RuleTypeID,
-		Schedule: alerting.Schedule{
-			Interval: &rule.Schedule.Interval,
-		},
-		Tags:     rule.Tags,
-		Throttle: *alerting.NewNullableString(rule.Throttle),
-	}
-	req := client.CreateRule(ctxWithAuth, rule.SpaceID, "").KbnXsrf("true").CreateRuleRequest(reqModel)
-	ruleRes, res, err := req.Execute()
-	if err != nil && res == nil {
-		return nil, diag.FromErr(err)
-	}
-
-	defer res.Body.Close()
-	return ruleResponseToModel(rule.SpaceID, ruleRes), utils.CheckHttpError(res, "Unabled to create alerting rule")
-}
-
-func UpdateAlertingRule(ctx context.Context, apiClient *clients.ApiClient, rule models.AlertingRule) (*models.AlertingRule, diag.Diagnostics) {
-	client, err := apiClient.GetAlertingClient()
-	if err != nil {
-		return nil, diag.FromErr(err)
-	}
-
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
-
-	reqModel := alerting.UpdateRuleRequest{
-		Actions:    ruleActionsToActionsInner((rule.Actions)),
-		Name:       rule.Name,
-		NotifyWhen: (*alerting.NotifyWhen)(&rule.NotifyWhen),
-		Params:     rule.Params,
-		Schedule: alerting.Schedule{
-			Interval: &rule.Schedule.Interval,
-		},
-		Tags:     rule.Tags,
-		Throttle: *alerting.NewNullableString(rule.Throttle),
-	}
-	req := client.UpdateRule(ctxWithAuth, rule.ID, rule.SpaceID).KbnXsrf("true").UpdateRuleRequest(reqModel)
-	ruleRes, res, err := req.Execute()
-	if err != nil && res == nil {
-		return nil, diag.FromErr(err)
-	}
-
-	defer res.Body.Close()
-	if diags := utils.CheckHttpError(res, "Unable to update alerting rule"); diags.HasError() {
-		return nil, diag.FromErr(err)
-	}
-
-	shouldBeEnabled := rule.Enabled != nil && *rule.Enabled
-	if shouldBeEnabled && !ruleRes.Enabled {
-		res, err := client.EnableRule(ctxWithAuth, rule.ID, rule.SpaceID).KbnXsrf("true").Execute()
-		if err != nil && res == nil {
-			return nil, diag.FromErr(err)
-		}
-
-		if diags := utils.CheckHttpError(res, "Unable to enable alerting rule"); diags.HasError() {
-			return nil, diag.FromErr(err)
-		}
-	}
-
-	if !shouldBeEnabled && ruleRes.Enabled {
-		res, err := client.DisableRule(ctxWithAuth, rule.ID, rule.SpaceID).KbnXsrf("true").Execute()
-		if err != nil && res == nil {
-			return nil, diag.FromErr(err)
-		}
-
-		if diags := utils.CheckHttpError(res, "Unable to disable alerting rule"); diags.HasError() {
-			return nil, diag.FromErr(err)
-		}
-	}
-
-	return ruleResponseToModel(rule.SpaceID, ruleRes), diag.Diagnostics{}
-}
-
-func GetAlertingRule(ctx context.Context, apiClient *clients.ApiClient, id, spaceID string) (*models.AlertingRule, diag.Diagnostics) {
-	client, err := apiClient.GetAlertingClient()
-	if err != nil {
-		return nil, diag.FromErr(err)
-	}
-
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
-	req := client.GetRule(ctxWithAuth, id, spaceID)
-	ruleRes, res, err := req.Execute()
-	if err != nil && res == nil {
-		return nil, diag.FromErr(err)
-	}
-
-	defer res.Body.Close()
-	if res.StatusCode == http.StatusNotFound {
-		return nil, nil
-	}
-	return ruleResponseToModel(spaceID, ruleRes), utils.CheckHttpError(res, "Unabled to get alerting rule")
-}
-
-func DeleteAlertingRule(ctx context.Context, apiClient *clients.ApiClient, ruleId string, spaceId string) diag.Diagnostics {
-	client, err := apiClient.GetAlertingClient()
-	if err != nil {
-		return diag.FromErr(err)
-	}
-
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
-	req := client.DeleteRule(ctxWithAuth, ruleId, spaceId).KbnXsrf("true")
-	res, err := req.Execute()
-	if err != nil && res == nil {
-		return diag.FromErr(err)
-	}
-
-	defer res.Body.Close()
-	return utils.CheckHttpError(res, "Unabled to delete alerting rule")
 }
