@@ -125,6 +125,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/find_slo_response'
+                discriminator:
+                  propertyName: type
         '400':
           description: Bad request
           content:

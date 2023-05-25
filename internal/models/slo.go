@@ -22,6 +22,7 @@ type Params struct {
 	TransactionType string
 	TransactionName string
 	GoodStatusCodes []string
+	Threshold       float32
 }
 type Indicator struct {
 	Params Params

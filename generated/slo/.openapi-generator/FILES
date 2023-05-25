@@ -7,6 +7,7 @@ client.go
 configuration.go
 docs/BudgetingMethod.md
 docs/CreateSloRequest.md
+docs/CreateSloRequestIndicator.md
 docs/CreateSloResponse.md
 docs/ErrorBudget.md
 docs/FindSloResponse.md
@@ -35,6 +36,7 @@ go.sum
 model_4xx_response.go
 model_budgeting_method.go
 model_create_slo_request.go
+model_create_slo_request_indicator.go
 model_create_slo_response.go
 model_error_budget.go
 model_find_slo_response.go

@@ -8,3 +8,7 @@ func unwrapOptionalField[T any](field *T) T {
 
 	return value
 }
+
+func makePtr[T any](v T) *T {
+	return &v
+}

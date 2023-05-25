@@ -897,7 +897,7 @@ components:
           description: A description for the SLO.
           type: string
         indicator:
-          $ref: '#/components/schemas/slo_response_indicator'
+          $ref: '#/components/schemas/create_slo_request_indicator'
         timeWindow:
           $ref: '#/components/schemas/slo_response_timeWindow'
         budgetingMethod:
@@ -937,7 +937,7 @@ components:
           description: A description for the SLO.
           type: string
         indicator:
-          $ref: '#/components/schemas/slo_response_indicator'
+          $ref: '#/components/schemas/create_slo_request_indicator'
         timeWindow:
           $ref: '#/components/schemas/slo_response_timeWindow'
         budgetingMethod:
@@ -1072,6 +1072,8 @@ components:
       - transactionType
       type: object
     slo_response_indicator:
+      discriminator:
+        propertyName: type
       oneOf:
       - $ref: '#/components/schemas/indicator_properties_custom_kql'
       - $ref: '#/components/schemas/indicator_properties_apm_availability'
@@ -1080,6 +1082,11 @@ components:
       oneOf:
       - $ref: '#/components/schemas/time_window_rolling'
       - $ref: '#/components/schemas/time_window_calendar_aligned'
+    create_slo_request_indicator:
+      oneOf:
+      - $ref: '#/components/schemas/indicator_properties_custom_kql'
+      - $ref: '#/components/schemas/indicator_properties_apm_availability'
+      - $ref: '#/components/schemas/indicator_properties_apm_latency'
     Historical_summary_response_inner:
       properties:
         date:

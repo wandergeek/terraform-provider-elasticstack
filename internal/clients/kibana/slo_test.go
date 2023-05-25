@@ -9,28 +9,24 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func makePtr[T any](v T) *T {
-	return &v
-}
-
-func Test_ruleResponseToModel(t *testing.T) {
+func Test_sloResponseToModel(t *testing.T) {
 	now := time.Now()
 	tests := []struct {
 		name          string
 		spaceId       string
-		ruleResponse  *alerting.RuleResponseProperties
+		sloResponse   *alerting.RuleResponseProperties
 		expectedModel *models.AlertingRule
 	}{
 		{
 			name:          "nil response should return a nil model",
 			spaceId:       "space-id",
-			ruleResponse:  nil,
+			sloResponse:   nil,
 			expectedModel: nil,
 		},
 		{
 			name:    "nil optional fields should not blow up the transform",
 			spaceId: "space-id",
-			ruleResponse: &alerting.RuleResponseProperties{
+			sloResponse: &alerting.RuleResponseProperties{
 				Id:         "id",
 				Name:       "name",
 				Consumer:   "consumer",
@@ -54,7 +50,7 @@ func Test_ruleResponseToModel(t *testing.T) {
 		{
 			name:    "a full response should be successfully transformed",
 			spaceId: "space-id",
-			ruleResponse: &alerting.RuleResponseProperties{
+			sloResponse: &alerting.RuleResponseProperties{
 				Id:         "id",
 				Name:       "name",
 				Consumer:   "consumer",
@@ -120,7 +116,7 @@ func Test_ruleResponseToModel(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			model := ruleResponseToModel(tt.spaceId, tt.ruleResponse)
+			model := ruleResponseToModel(tt.spaceId, tt.sloResponse)
 
 			require.Equal(t, tt.expectedModel, model)
 		})
