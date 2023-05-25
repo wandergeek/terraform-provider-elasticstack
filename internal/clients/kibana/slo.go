@@ -17,6 +17,9 @@ func sloResponseToModel(spaceID string, res *slo.SloResponse) *models.Slo {
 		return nil
 	}
 
+	indicator := res.Indicator.GetActualInstance()
+	window := res.TimeWindow.GetActualInstance()
+
 	return &models.Slo{
 		ID:              *res.Id,
 		SpaceID:         spaceID,
@@ -25,24 +28,30 @@ func sloResponseToModel(spaceID string, res *slo.SloResponse) *models.Slo {
 		BudgetingMethod: string(*res.BudgetingMethod),
 		Indicator: models.Indicator{
 			Params: models.Params{
-				Index:          string(unwrapOptionalField(*res.Indicator.Params.Index)),
-
-		NotifyWhen: string(unwrapOptionalField(res.NotifyWhen)),
-		Params:     res.Params,
-		RuleTypeID: res.RuleTypeId,
-		Schedule: models.AlertingRuleSchedule{
-			Interval: unwrapOptionalField(res.Schedule.Interval),
+				Index:          string(unwrapOptionalField(indicator.Params.Index)),
+				Service: string(unwrapOptionalField(indicator.Params.Service)),
+				Environment: string(unwrapOptionalField(indicator.Params.Environment)),
+				TransactionType: string(unwrapOptionalField(indicator.Params.TransactionType)),
+				TransactionName: string(unwrapOptionalField(indicator.Params.TransactionName)),
+				//does GoodStatusCodes need to be casted?
+				GoodStatusCodes: unwrapOptionalField(indicator.Params.GoodStatusCodes), 
+				Filter: string(unwrapOptionalField(indicator.Params.Filter)),
+				Good: string(unwrapOptionalField(indicator.Params.Good)),
+				Total: string(unwrapOptionalField(indicator.Params.Total)),
+				TimestampField: string(unwrapOptionalField(indicator.Params.TimestampField)),
+			},
+			Type: string(indicator.Type),
 		},
-		Enabled:         &res.Enabled,
-		Tags:            res.Tags,
-		Throttle:        res.Throttle.Get(),
-		ScheduledTaskID: res.ScheduledTaskId,
-		ExecutionStatus: models.AlertingRuleExecutionStatus{
-			LastExecutionDate: res.ExecutionStatus.LastExecutionDate,
-			Status:            res.ExecutionStatus.Status,
+		TimeWindow: models.TimeWindow{
+			Duration:  string(window.Duration),
+			IsRolling: bool(window.IsRolling),
 		},
-		Actions: actions,
-	}
+		Objective: models.Objective{
+			Target:           float64(*res.Objective.Target),
+			TimeslicesTarget: float64(unwrapOptionalField(*res.Objective.TimeslicesTarget)),
+			TimeslicesWindow: string(unwrapOptionalField(*res.Objective.TimeslicesWindow)),
+		},
+	},
 }
 
 // Maps the rule actions to the struct required by the request model (ActionsInner)
