@@ -20,6 +20,7 @@ func ResourceSlo() *schema.Resource {
 			Type:        schema.TypeString,
 			Optional:    true,
 			ForceNew:    true,
+			Computed:    true,
 		},
 		"name": {
 			Description: "The name of the SLO.",
@@ -32,7 +33,7 @@ func ResourceSlo() *schema.Resource {
 			Required:    true,
 		},
 		"indicator": {
-			Type:     schema.TypeMap,
+			Type:     schema.TypeList,
 			Required: true,
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
@@ -42,7 +43,7 @@ func ResourceSlo() *schema.Resource {
 						ValidateFunc: validation.StringInSlice([]string{"sli.kql.custom", "sli.apm.transactionErrorRate", "sli.apm.transactionDuration"}, false),
 					},
 					"params": {
-						Type:     schema.TypeMap,
+						Type:     schema.TypeList,
 						Required: true,
 						Elem: &schema.Resource{
 							Schema: map[string]*schema.Schema{
@@ -52,39 +53,39 @@ func ResourceSlo() *schema.Resource {
 								},
 								"filter": {
 									Type:     schema.TypeString,
-									Required: false,
+									Optional: true,
 								},
 								"good": {
 									Type:     schema.TypeString,
-									Required: false,
+									Optional: true,
 								},
 								"service": {
 									Type:     schema.TypeString,
-									Required: false,
+									Optional: true,
 								},
 								"environment": {
 									Type:     schema.TypeString,
-									Required: false,
+									Optional: true,
 								},
 								"transaction_type": {
 									Type:     schema.TypeString,
-									Required: false,
+									Optional: true,
 								},
 								"transaction_name": {
 									Type:     schema.TypeString,
-									Required: false,
+									Optional: true,
 								},
 								"total": {
 									Type:     schema.TypeString,
-									Required: false,
+									Optional: true,
 								},
 								"timestamp_field": {
 									Type:     schema.TypeString,
-									Required: false,
+									Optional: true,
 								},
 								"threshold": {
 									Type:     schema.TypeInt,
-									Required: false,
+									Optional: true,
 								},
 							},
 						},
@@ -95,7 +96,6 @@ func ResourceSlo() *schema.Resource {
 
 							switch indicatorType {
 							case "sli.kql.custom":
-								// Validate the required fields for sli.kql.custom
 								if _, ok := params["index"]; !ok {
 									return diag.Errorf("params.index is required for indicator type sli.kql.custom")
 								}
@@ -121,7 +121,6 @@ func ResourceSlo() *schema.Resource {
 								}
 
 							case "sli.apm.transactionErrorRate":
-								// Validate the required fields for sli.apm.transactionDuration
 								if _, ok := params["environment"]; !ok {
 									return diag.Errorf("params.environment is required for indicator type sli.apm.transactionErrorRate")
 								}
@@ -151,22 +150,20 @@ func ResourceSlo() *schema.Resource {
 			Description: "Currently support calendar aligned and rolling time windows. Any duration greater than 1 day can be used: days, weeks, months, quarters, years. Rolling time window requires a duration, e.g. 1w for one week, and isRolling: true. SLOs defined with such time window, will only consider the SLI data from the last duration period as a moving window. Calendar aligned time window requires a duration, limited to 1M for monthly or 1w for weekly, and isCalendar: true.",
 			Type:        schema.TypeMap,
 			Required:    true,
-			Elem: &schema.Resource{
-				Schema: map[string]*schema.Schema{
-					"duration": {
-						Type:     schema.TypeString,
-						Required: true,
-					},
-					"is_rolling": {
-						Type:     schema.TypeBool,
-						Required: false,
-						Default:  false,
-					},
-					"is_calendar": {
-						Type:     schema.TypeBool,
-						Required: false,
-						Default:  false,
-					},
+			Elem: map[string]*schema.Schema{
+				"duration": {
+					Type:     schema.TypeString,
+					Required: true,
+				},
+				"is_rolling": {
+					Type:     schema.TypeBool,
+					Optional: true,
+					Default:  false,
+				},
+				"is_calendar": {
+					Type:     schema.TypeBool,
+					Optional: true,
+					Default:  false,
 				},
 			},
 			ValidateDiagFunc: func(val any, key cty.Path) diag.Diagnostics {
@@ -192,7 +189,7 @@ func ResourceSlo() *schema.Resource {
 		},
 		"objective": {
 			Description: "The target objective is the value the SLO needs to meet during the time window. If a timeslices budgeting method is used, we also need to define the timesliceTarget which can be different than the overall SLO target.",
-			Type:        schema.TypeMap,
+			Type:        schema.TypeList,
 			Required:    true,
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
@@ -202,28 +199,28 @@ func ResourceSlo() *schema.Resource {
 					},
 					"timeslices_target": {
 						Type:     schema.TypeFloat,
-						Required: false,
+						Optional: true,
 					},
 					"timeslices_window": {
 						Type:     schema.TypeString,
-						Required: false,
+						Optional: true,
 					},
 				},
 			},
 		},
 		"settings": {
 			Description: "The default settings should be sufficient for most users, but if needed, these properties can be overwritten.",
-			Type:        schema.TypeMap,
+			Type:        schema.TypeList,
 			Optional:    true,
 			Elem: &schema.Resource{
 				Schema: map[string]*schema.Schema{
 					"sync_delay": {
 						Type:     schema.TypeString,
-						Required: false,
+						Optional: true,
 					},
 					"frequency": {
 						Type:     schema.TypeString,
-						Required: false,
+						Optional: true,
 					},
 				},
 			},
