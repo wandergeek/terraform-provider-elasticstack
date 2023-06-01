@@ -59,11 +59,11 @@ resource "elasticstack_kibana_slo" "test_slo" {
 	description = "fully sick SLO"
 	indicator {
 	  type = "sli.apm.transactionDuration"
-	  params = {
+	  params {
 		environment     = "production"
 		service         = "my-service"
-		transactionType = "request"
-		transactionName = "GET /sup/dawg"
+		transaction_type = "request"
+		transaction_name = "GET /sup/dawg"
 		index           = "my-index"
 		threshold       = 500
 	  }
@@ -71,19 +71,19 @@ resource "elasticstack_kibana_slo" "test_slo" {
   
 	time_window {
 	  duration   = "1w"
-	  isCalendar = true
+	  is_calendar = true
 	}
   
-	budgetingMethod = "timeslices"
+	budgeting_method = "timeslices"
   
 	objective {
 	  target          = 0.999
-	  timesliceTarget = 0.95
-	  timesliceWindow = "5m"
+	  timeslices_target = 0.95
+	  timeslices_window = "5m"
 	}
   
 	settings {
-	  syncDelay = "5m"
+	  sync_delay = "5m"
 	  frequency = "1m"
 	}
   
@@ -104,7 +104,7 @@ resource "elasticstack_kibana_slo" "test_slo" {
 	description = "fully sick SLO"
 	indicator {
 	  type = "sli.apm.transactionDuration"
-	  params = {
+	  params {
 		environment     = "production"
 		service         = "my-service"
 		transactionType = "request"
@@ -116,19 +116,19 @@ resource "elasticstack_kibana_slo" "test_slo" {
   
 	time_window {
 	  duration   = "1w"
-	  isCalendar = true
+	  is_calendar = true
 	}
   
-	budgetingMethod = "timeslices"
+	budgeting_method = "timeslices"
   
 	objective {
 	  target          = 0.999
-	  timesliceTarget = 0.95
-	  timesliceWindow = "5m"
+	  timeslices_target = 0.95
+	  timeslices_window = "5m"
 	}
   
 	settings {
-	  syncDelay = "5m"
+	  sync_delay = "5m"
 	  frequency = "1m"
 	}
   

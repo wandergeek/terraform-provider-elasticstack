@@ -1,5 +1,9 @@
 provider "elasticstack" {
-  elasticsearch {}
+  elasticsearch {
+    username  = "elastic"
+    password  = "password"
+    endpoints = ["http://localhost:9200"]
+  }
 }
 
 resource "elasticstack_kibana_slo" "test_slo" {

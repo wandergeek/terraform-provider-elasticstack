@@ -7,7 +7,6 @@ import (
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients"
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients/kibana"
 	"github.com/elastic/terraform-provider-elasticstack/internal/models"
-	"github.com/hashicorp/go-cty/cty"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
@@ -89,96 +88,31 @@ func ResourceSlo() *schema.Resource {
 								},
 							},
 						},
-						ValidateDiagFunc: func(val any, key cty.Path) diag.Diagnostics {
-							// Custom validation logic based on indicator type
-							indicatorType := val.(map[string]interface{})["type"].(string)
-							params := val.(map[string]interface{})["params"].(map[string]interface{})
-
-							switch indicatorType {
-							case "sli.kql.custom":
-								if _, ok := params["index"]; !ok {
-									return diag.Errorf("params.index is required for indicator type sli.kql.custom")
-								}
-							case "sli.apm.transactionDuration":
-								// Validate the required fields for sli.apm.transactionDuration
-								if _, ok := params["environment"]; !ok {
-									return diag.Errorf("params.environment is required for indicator type sli.apm.transactionDuration")
-								}
-								if _, ok := params["service"]; !ok {
-									return diag.Errorf("params.service is required for indicator type sli.apm.transactionDuration")
-								}
-								if _, ok := params["transaction_type"]; !ok {
-									return diag.Errorf("params.transactionType is required for indicator type sli.apm.transactionDuration")
-								}
-								if _, ok := params["transaction_name"]; !ok {
-									return diag.Errorf("params.transactionName is required for indicator type sli.apm.transactionDuration")
-								}
-								if _, ok := params["index"]; !ok {
-									return diag.Errorf("params.index is required for indicator type sli.apm.transactionDuration")
-								}
-								if _, ok := params["threshold"]; !ok {
-									return diag.Errorf("params.index is required for indicator type sli.apm.transactionDuration")
-								}
-
-							case "sli.apm.transactionErrorRate":
-								if _, ok := params["environment"]; !ok {
-									return diag.Errorf("params.environment is required for indicator type sli.apm.transactionErrorRate")
-								}
-								if _, ok := params["service"]; !ok {
-									return diag.Errorf("params.service is required for indicator type sli.apm.transactionErrorRate")
-								}
-								if _, ok := params["transaction_type"]; !ok {
-									return diag.Errorf("params.transactionType is required for indicator type sli.apm.transactionErrorRate")
-								}
-								if _, ok := params["transaction_name"]; !ok {
-									return diag.Errorf("params.transactionName is required for indicator type sli.apm.transactionErrorRate")
-								}
-								if _, ok := params["index"]; !ok {
-									return diag.Errorf("params.index is required for indicator type sli.apm.transactionErrorRate")
-								}
-							default:
-								return diag.Errorf("unknown indicator type: %s", indicatorType)
-							}
-
-							return nil
-						},
 					},
 				},
 			},
 		},
 		"time_window": {
 			Description: "Currently support calendar aligned and rolling time windows. Any duration greater than 1 day can be used: days, weeks, months, quarters, years. Rolling time window requires a duration, e.g. 1w for one week, and isRolling: true. SLOs defined with such time window, will only consider the SLI data from the last duration period as a moving window. Calendar aligned time window requires a duration, limited to 1M for monthly or 1w for weekly, and isCalendar: true.",
-			Type:        schema.TypeMap,
+			Type:        schema.TypeList,
 			Required:    true,
-			Elem: map[string]*schema.Schema{
-				"duration": {
-					Type:     schema.TypeString,
-					Required: true,
+			Elem: &schema.Resource{
+				Schema: map[string]*schema.Schema{
+					"duration": {
+						Type:     schema.TypeString,
+						Required: true,
+					},
+					"is_rolling": {
+						Type:     schema.TypeBool,
+						Optional: true,
+						Default:  false,
+					},
+					"is_calendar": {
+						Type:     schema.TypeBool,
+						Optional: true,
+						Default:  false,
+					},
 				},
-				"is_rolling": {
-					Type:     schema.TypeBool,
-					Optional: true,
-					Default:  false,
-				},
-				"is_calendar": {
-					Type:     schema.TypeBool,
-					Optional: true,
-					Default:  false,
-				},
-			},
-			ValidateDiagFunc: func(val any, key cty.Path) diag.Diagnostics {
-				isRolling := val.(map[string]interface{})["is_rolling"].(bool)
-				isCalendar := val.(map[string]interface{})["is_calendar"].(bool)
-
-				if isRolling && isCalendar {
-					return diag.Errorf("time_window cannot be both rolling and calendar")
-				}
-
-				if !isRolling && !isCalendar {
-					return diag.Errorf("time_window is_rolling or is_calendar must be set to true")
-				}
-
-				return nil
 			},
 		},
 		"budgeting_method": {
@@ -271,7 +205,10 @@ func getSloFromResourceData(d *schema.ResourceData) (models.Slo, diag.Diagnostic
 	var diags diag.Diagnostics
 
 	var indicator slo.SloResponseIndicator
-	indicatorType := d.Get("indicator.type").(string)
+	indicatorType, ok := d.Get("indicator.type").(string)
+	if !ok {
+		return models.Slo{}, diag.Errorf("expected indicator.type to be a string, but got %T", d.Get("indicator.type"))
+	}
 	switch d.Get("indicator.type") {
 	case "sli.kql.custom":
 		indicator = slo.SloResponseIndicator{
