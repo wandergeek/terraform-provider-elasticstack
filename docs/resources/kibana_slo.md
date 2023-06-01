@@ -14,7 +14,11 @@ Creates or updates a Kibana SLO. UPDATE WITH LINK HERE
 
 ```terraform
 provider "elasticstack" {
-  elasticsearch {}
+  elasticsearch {
+    username  = "elastic"
+    password  = "password"
+    endpoints = ["http://localhost:9200"]
+  }
 }
 
 resource "elasticstack_kibana_slo" "test_slo" {
@@ -59,16 +63,79 @@ resource "elasticstack_kibana_slo" "test_slo" {
 
 - `budgeting_method` (String) An occurrences budgeting method uses the number of good and total events during the time window. A timeslices budgeting method uses the number of good slices and total slices during the time window. A slice is an arbitrary time window (smaller than the overall SLO time window) that is either considered good or bad, calculated from the timeslice threshold and the ratio of good over total events that happened during the slice window. A budgeting method is required and must be either occurrences or timeslices.
 - `description` (String) A description for the SLO.
-- `indicator` (Map of String)
+- `indicator` (Block List, Min: 1) (see [below for nested schema](#nestedblock--indicator))
 - `name` (String) The name of the SLO.
-- `objective` (Map of String) The target objective is the value the SLO needs to meet during the time window. If a timeslices budgeting method is used, we also need to define the timesliceTarget which can be different than the overall SLO target.
-- `time_window` (Map of String) Currently support calendar aligned and rolling time windows. Any duration greater than 1 day can be used: days, weeks, months, quarters, years. Rolling time window requires a duration, e.g. 1w for one week, and isRolling: true. SLOs defined with such time window, will only consider the SLI data from the last duration period as a moving window. Calendar aligned time window requires a duration, limited to 1M for monthly or 1w for weekly, and isCalendar: true.
+- `objective` (Block List, Min: 1) The target objective is the value the SLO needs to meet during the time window. If a timeslices budgeting method is used, we also need to define the timesliceTarget which can be different than the overall SLO target. (see [below for nested schema](#nestedblock--objective))
+- `time_window` (Block List, Min: 1) Currently support calendar aligned and rolling time windows. Any duration greater than 1 day can be used: days, weeks, months, quarters, years. Rolling time window requires a duration, e.g. 1w for one week, and isRolling: true. SLOs defined with such time window, will only consider the SLI data from the last duration period as a moving window. Calendar aligned time window requires a duration, limited to 1M for monthly or 1w for weekly, and isCalendar: true. (see [below for nested schema](#nestedblock--time_window))
 
 ### Optional
 
 - `id` (String) An ID (8 and 36 characters). If omitted, a UUIDv1 will be generated server-side.
-- `settings` (Map of String) The default settings should be sufficient for most users, but if needed, these properties can be overwritten.
+- `settings` (Block List) The default settings should be sufficient for most users, but if needed, these properties can be overwritten. (see [below for nested schema](#nestedblock--settings))
 - `space_id` (String) An identifier for the space. If space_id is not provided, the default space is used.
+
+<a id="nestedblock--indicator"></a>
+### Nested Schema for `indicator`
+
+Required:
+
+- `params` (Block List, Min: 1) (see [below for nested schema](#nestedblock--indicator--params))
+- `type` (String)
+
+<a id="nestedblock--indicator--params"></a>
+### Nested Schema for `indicator.params`
+
+Required:
+
+- `index` (String)
+
+Optional:
+
+- `environment` (String)
+- `filter` (String)
+- `good` (String)
+- `service` (String)
+- `threshold` (Number)
+- `timestamp_field` (String)
+- `total` (String)
+- `transaction_name` (String)
+- `transaction_type` (String)
+
+
+
+<a id="nestedblock--objective"></a>
+### Nested Schema for `objective`
+
+Required:
+
+- `target` (Number)
+
+Optional:
+
+- `timeslices_target` (Number)
+- `timeslices_window` (String)
+
+
+<a id="nestedblock--time_window"></a>
+### Nested Schema for `time_window`
+
+Required:
+
+- `duration` (String)
+
+Optional:
+
+- `is_calendar` (Boolean)
+- `is_rolling` (Boolean)
+
+
+<a id="nestedblock--settings"></a>
+### Nested Schema for `settings`
+
+Optional:
+
+- `frequency` (String)
+- `sync_delay` (String)
 
 ## Import
 
