@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Target** | **float32** | the target objective between 0 and 1 excluded | 
-**TimeslicesTarget** | Pointer to **float32** | the target objective for each slice when using a timeslices budgeting method | [optional] 
-**TimeslicesWindow** | Pointer to **string** | the duration of each slice when using a timeslices budgeting method, as {duraton}{unit} | [optional] 
+**TimesliceTarget** | Pointer to **float32** | the target objective for each slice when using a timeslices budgeting method | [optional] 
+**TimesliceWindow** | Pointer to **string** | the duration of each slice when using a timeslices budgeting method, as {duraton}{unit} | [optional] 
 
 ## Methods
 
@@ -47,55 +47,55 @@ and a boolean to check if the value has been set.
 SetTarget sets Target field to given value.
 
 
-### GetTimeslicesTarget
+### GetTimesliceTarget
 
-`func (o *Objective) GetTimeslicesTarget() float32`
+`func (o *Objective) GetTimesliceTarget() float32`
 
-GetTimeslicesTarget returns the TimeslicesTarget field if non-nil, zero value otherwise.
+GetTimesliceTarget returns the TimesliceTarget field if non-nil, zero value otherwise.
 
-### GetTimeslicesTargetOk
+### GetTimesliceTargetOk
 
-`func (o *Objective) GetTimeslicesTargetOk() (*float32, bool)`
+`func (o *Objective) GetTimesliceTargetOk() (*float32, bool)`
 
-GetTimeslicesTargetOk returns a tuple with the TimeslicesTarget field if it's non-nil, zero value otherwise
+GetTimesliceTargetOk returns a tuple with the TimesliceTarget field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTimeslicesTarget
+### SetTimesliceTarget
 
-`func (o *Objective) SetTimeslicesTarget(v float32)`
+`func (o *Objective) SetTimesliceTarget(v float32)`
 
-SetTimeslicesTarget sets TimeslicesTarget field to given value.
+SetTimesliceTarget sets TimesliceTarget field to given value.
 
-### HasTimeslicesTarget
+### HasTimesliceTarget
 
-`func (o *Objective) HasTimeslicesTarget() bool`
+`func (o *Objective) HasTimesliceTarget() bool`
 
-HasTimeslicesTarget returns a boolean if a field has been set.
+HasTimesliceTarget returns a boolean if a field has been set.
 
-### GetTimeslicesWindow
+### GetTimesliceWindow
 
-`func (o *Objective) GetTimeslicesWindow() string`
+`func (o *Objective) GetTimesliceWindow() string`
 
-GetTimeslicesWindow returns the TimeslicesWindow field if non-nil, zero value otherwise.
+GetTimesliceWindow returns the TimesliceWindow field if non-nil, zero value otherwise.
 
-### GetTimeslicesWindowOk
+### GetTimesliceWindowOk
 
-`func (o *Objective) GetTimeslicesWindowOk() (*string, bool)`
+`func (o *Objective) GetTimesliceWindowOk() (*string, bool)`
 
-GetTimeslicesWindowOk returns a tuple with the TimeslicesWindow field if it's non-nil, zero value otherwise
+GetTimesliceWindowOk returns a tuple with the TimesliceWindow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTimeslicesWindow
+### SetTimesliceWindow
 
-`func (o *Objective) SetTimeslicesWindow(v string)`
+`func (o *Objective) SetTimesliceWindow(v string)`
 
-SetTimeslicesWindow sets TimeslicesWindow field to given value.
+SetTimesliceWindow sets TimesliceWindow field to given value.
 
-### HasTimeslicesWindow
+### HasTimesliceWindow
 
-`func (o *Objective) HasTimeslicesWindow() bool`
+`func (o *Objective) HasTimesliceWindow() bool`
 
-HasTimeslicesWindow returns a boolean if a field has been set.
+HasTimesliceWindow returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

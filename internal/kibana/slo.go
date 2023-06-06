@@ -131,11 +131,11 @@ func ResourceSlo() *schema.Resource {
 						Type:     schema.TypeFloat,
 						Required: true,
 					},
-					"timeslices_target": {
+					"timeslice_target": {
 						Type:     schema.TypeFloat,
 						Optional: true,
 					},
-					"timeslices_window": {
+					"timeslice_window": {
 						Type:     schema.TypeString,
 						Optional: true,
 					},
@@ -205,21 +205,19 @@ func getSloFromResourceData(d *schema.ResourceData) (models.Slo, diag.Diagnostic
 	var diags diag.Diagnostics
 
 	var indicator slo.SloResponseIndicator
-	indicatorType, ok := d.Get("indicator.type").(string)
-	if !ok {
-		return models.Slo{}, diag.Errorf("expected indicator.type to be a string, but got %T", d.Get("indicator.type"))
-	}
-	switch d.Get("indicator.type") {
+	indicatorType := d.Get("indicator.0.type").(string)
+
+	switch indicatorType {
 	case "sli.kql.custom":
 		indicator = slo.SloResponseIndicator{
 			IndicatorPropertiesCustomKql: &slo.IndicatorPropertiesCustomKql{
 				Type: indicatorType,
 				Params: slo.IndicatorPropertiesCustomKqlParams{
-					Index:          d.Get("indicator.params.index").(string),
-					Filter:         getOrNilString("indicator.params.filter", d),
-					Good:           getOrNilString("indicator.params.good", d),
-					Total:          getOrNilString("indicator.params.total", d),
-					TimestampField: d.Get("indicator.params.timestamp_field").(string),
+					Index:          d.Get("indicator.0.params.0.index").(string),
+					Filter:         getOrNilString("indicator.0.params.0.filter", d),
+					Good:           getOrNilString("indicator.0.params.0.good", d),
+					Total:          getOrNilString("indicator.0.params.0.total", d),
+					TimestampField: d.Get("indicator.0.params.0.timestamp_field").(string),
 				},
 			},
 		}
@@ -229,12 +227,12 @@ func getSloFromResourceData(d *schema.ResourceData) (models.Slo, diag.Diagnostic
 			IndicatorPropertiesApmAvailability: &slo.IndicatorPropertiesApmAvailability{
 				Type: indicatorType,
 				Params: slo.IndicatorPropertiesApmAvailabilityParams{
-					Service:         d.Get("indicator.params.service").(string),
-					Environment:     d.Get("indicator.params.environment").(string),
-					TransactionType: d.Get("indicator.params.transaction_type").(string),
-					TransactionName: d.Get("indicator.params.transaction_name").(string),
-					Filter:          getOrNilString("indicator.params.filter", d),
-					Index:           d.Get("indicator.params.index").(string),
+					Service:         d.Get("indicator.0.params.0.service").(string),
+					Environment:     d.Get("indicator.0.params.0.environment").(string),
+					TransactionType: d.Get("indicator.0.params.0.transaction_type").(string),
+					TransactionName: d.Get("indicator.0.params.0.transaction_name").(string),
+					Filter:          getOrNilString("indicator.0.params.0.filter", d),
+					Index:           d.Get("indicator.0.params.0.index").(string),
 				},
 			},
 		}
@@ -244,46 +242,56 @@ func getSloFromResourceData(d *schema.ResourceData) (models.Slo, diag.Diagnostic
 			IndicatorPropertiesApmLatency: &slo.IndicatorPropertiesApmLatency{
 				Type: indicatorType,
 				Params: slo.IndicatorPropertiesApmLatencyParams{
-					Service:         d.Get("indicator.params.service").(string),
-					Environment:     d.Get("indicator.params.environment").(string),
-					TransactionType: d.Get("indicator.params.transaction_type").(string),
-					TransactionName: d.Get("indicator.params.transaction_name").(string),
-					Filter:          getOrNilString("indicator.params.filter", d),
-					Index:           d.Get("indicator.params.index").(string),
-					Threshold:       d.Get("indicator.params.threshold").(float32),
+					Service:         d.Get("indicator.0.params.0.service").(string),
+					Environment:     d.Get("indicator.0.params.0.environment").(string),
+					TransactionType: d.Get("indicator.0.params.0.transaction_type").(string),
+					TransactionName: d.Get("indicator.0.params.0.transaction_name").(string),
+					Filter:          getOrNilString("indicator.0.params.0.filter", d),
+					Index:           d.Get("indicator.0.params.0.index").(string),
+					Threshold:       float32(d.Get("indicator.0.params.0.threshold").(int)),
 				},
 			},
 		}
+
+	default:
+		return models.Slo{}, diag.Errorf("unknown indicator type %s", indicatorType)
 	}
 
 	var timeWindow slo.SloResponseTimeWindow
-	if d.Get("time_window.is_rolling").(bool) {
+	if d.Get("time_window.0.is_rolling").(bool) {
 		timeWindow = slo.SloResponseTimeWindow{
 			TimeWindowRolling: &slo.TimeWindowRolling{
 				IsRolling: true,
-				Duration:  d.Get("time_window.duration").(string),
+				Duration:  d.Get("time_window.0.duration").(string),
 			},
 		}
 	} else {
 		timeWindow = slo.SloResponseTimeWindow{
 			TimeWindowCalendarAligned: &slo.TimeWindowCalendarAligned{
 				IsCalendar: true,
-				Duration:   d.Get("time_window.duration").(string),
+				Duration:   d.Get("time_window.0.duration").(string),
 			},
 		}
 	}
 
+	//this is weird because I receive a float64 back and need to convert it to a float32
+	var timeSliceTarget *float32
+	if v, ok := d.GetOk("objective.0.timeslice_target"); ok {
+		fuck := float32(v.(float64))
+		timeSliceTarget = &fuck
+	}
+
 	objective := slo.Objective{
-		Target:           d.Get("objective.target").(float32),
-		TimeslicesTarget: getOrNilFloat32("objective.timeslices_target", d),
-		TimeslicesWindow: getOrNilString("objective.timeslices_window", d),
+		Target:          float32(d.Get("objective.0.target").(float64)),
+		TimesliceTarget: timeSliceTarget,
+		TimesliceWindow: getOrNilString("objective.0.timeslice_window", d),
 	}
 
 	var settings slo.Settings
 	if _, ok := d.GetOk("settings"); ok {
 		settings = slo.Settings{
-			SyncDelay: getOrNilString("settings.sync_delay", d),
-			Frequency: getOrNilString("settings.frequency", d),
+			SyncDelay: getOrNilString("settings.0.sync_delay", d),
+			Frequency: getOrNilString("settings.0.frequency", d),
 		}
 	}
 
@@ -323,6 +331,7 @@ func resourceSloCreate(ctx context.Context, d *schema.ResourceData, meta interfa
 		return diags
 	}
 
+	id.ResourceId = res.ID
 	d.SetId(id.String())
 
 	return resourceSloRead(ctx, d, meta)
@@ -378,6 +387,10 @@ func resourceSloRead(ctx context.Context, d *schema.ResourceData, meta interface
 		return diags
 	}
 
+	if err := d.Set("indicator_type", "sli.apm.transactionDuration"); err != nil {
+		return diag.FromErr(err)
+	}
+
 	//I hate this so much
 	if s.Indicator.IndicatorPropertiesApmAvailability != nil {
 		if err := d.Set("indicator.type", "sli.apm.transactionErrorRate"); err != nil {
@@ -405,7 +418,7 @@ func resourceSloRead(ctx context.Context, d *schema.ResourceData, meta interface
 		if err := d.Set("indicator.type", "sli.apm.transactionDuration"); err != nil {
 			return diag.FromErr(err)
 		}
-		if err := d.Set("indicator.params.service", s.Indicator.IndicatorPropertiesApmLatency.Params.Service); err != nil {
+		if err := d.Set("indicator.0.params.0.service", s.Indicator.IndicatorPropertiesApmLatency.Params.Service); err != nil {
 			return diag.FromErr(err)
 		}
 		if err := d.Set("indicator.params.environment", s.Indicator.IndicatorPropertiesApmLatency.Params.Environment); err != nil {
@@ -426,7 +439,6 @@ func resourceSloRead(ctx context.Context, d *schema.ResourceData, meta interface
 		if err := d.Set("indicator.params.threshold", s.Indicator.IndicatorPropertiesApmLatency.Params.Threshold); err != nil {
 			return diag.FromErr(err)
 		}
-
 	} else if s.Indicator.IndicatorPropertiesCustomKql != nil {
 		if err := d.Set("indicator.type", "sli.kql.custom"); err != nil {
 			return diag.FromErr(err)
@@ -446,6 +458,8 @@ func resourceSloRead(ctx context.Context, d *schema.ResourceData, meta interface
 		if err := d.Set("indicator.params.timestamp_field", s.Indicator.IndicatorPropertiesCustomKql.Params.TimestampField); err != nil {
 			return diag.FromErr(err)
 		}
+	} else {
+		return diag.Errorf("unknown indicator type")
 	}
 
 	if s.TimeWindow.TimeWindowCalendarAligned != nil {
@@ -467,10 +481,10 @@ func resourceSloRead(ctx context.Context, d *schema.ResourceData, meta interface
 	if err := d.Set("objective.target", s.Objective.Target); err != nil {
 		return diag.FromErr(err)
 	}
-	if err := d.Set("objective.timeslices_target", s.Objective.TimeslicesTarget); err != nil {
+	if err := d.Set("objective.timeslice_target", s.Objective.TimesliceTarget); err != nil {
 		return diag.FromErr(err)
 	}
-	if err := d.Set("objective.timeslices_window", s.Objective.TimeslicesWindow); err != nil {
+	if err := d.Set("objective.timeslice_window", s.Objective.TimesliceWindow); err != nil {
 		return diag.FromErr(err)
 	}
 

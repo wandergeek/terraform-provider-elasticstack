@@ -7,7 +7,7 @@ info:
     name: Elastic License 2.0
     url: https://www.elastic.co/licensing/elastic-license
   title: SLOs
-  version: "0.1"
+  version: "1.0"
 servers:
 - description: local
   url: http://localhost:5601
@@ -16,8 +16,324 @@ security:
 - apiKeyAuth: []
 tags:
 - description: "SLO APIs enable you to define, manage and track service-level objectives"
-  name: slos
+  name: slo
+- description: "Composite SLO APIs enable you to define, manage and track a group\
+    \ of SLOs."
+  name: composite slo
 paths:
+  /s/{spaceId}/api/observability/composite_slos:
+    get:
+      description: |
+        You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
+      operationId: findCompositeSlo
+      parameters:
+      - description: Cross-site request forgery protection
+        explode: false
+        in: header
+        name: kbn-xsrf
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "An identifier for the space. If `/s/` and the identifier are\
+          \ omitted from the path, the default space is used."
+        explode: false
+        in: path
+        name: spaceId
+        required: true
+        schema:
+          example: default
+          type: string
+        style: simple
+      - description: The page number to return
+        example: 1
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          type: integer
+        style: form
+      - description: The number of SLOs to return per page
+        example: 20
+        explode: true
+        in: query
+        name: perPage
+        required: false
+        schema:
+          default: 25
+          type: integer
+        style: form
+      - description: Sort by field
+        example: creationTime
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          default: creationTime
+          enum:
+          - creationTime
+          type: string
+        style: form
+      - description: Sort order
+        example: asc
+        explode: true
+        in: query
+        name: sortDirection
+        required: false
+        schema:
+          default: asc
+          enum:
+          - asc
+          - desc
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/find_composite_slo_response'
+          description: Successful request
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Unauthorized response
+      summary: Retrieves a paginated list of composite SLOs with summary
+      tags:
+      - composite slo
+    post:
+      description: |
+        You must have `all` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
+      operationId: createCompositeSlo
+      parameters:
+      - description: Cross-site request forgery protection
+        explode: false
+        in: header
+        name: kbn-xsrf
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "An identifier for the space. If `/s/` and the identifier are\
+          \ omitted from the path, the default space is used."
+        explode: false
+        in: path
+        name: spaceId
+        required: true
+        schema:
+          example: default
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create_composite_slo_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/create_composite_slo_response'
+          description: Successful request
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Unauthorized response
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Conflict - The Composite SLO id already exists
+      summary: Creates a Composite SLO
+      tags:
+      - composite slo
+  /s/{spaceId}/api/observability/composite_slos/{compositeSloId}:
+    delete:
+      description: |
+        You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
+      operationId: deleteCompositeSlo
+      parameters:
+      - description: Cross-site request forgery protection
+        explode: false
+        in: header
+        name: kbn-xsrf
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "An identifier for the space. If `/s/` and the identifier are\
+          \ omitted from the path, the default space is used."
+        explode: false
+        in: path
+        name: spaceId
+        required: true
+        schema:
+          example: default
+          type: string
+        style: simple
+      - description: An identifier for the composite slo.
+        explode: false
+        in: path
+        name: compositeSloId
+        required: true
+        schema:
+          example: 9c235211-6834-11ea-a78c-6feb38a34414
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Successful request
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Unauthorized response
+      summary: Deletes a composite SLO
+      tags:
+      - composite slo
+    get:
+      description: |
+        You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
+      operationId: getCompositeSlo
+      parameters:
+      - description: Cross-site request forgery protection
+        explode: false
+        in: header
+        name: kbn-xsrf
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "An identifier for the space. If `/s/` and the identifier are\
+          \ omitted from the path, the default space is used."
+        explode: false
+        in: path
+        name: spaceId
+        required: true
+        schema:
+          example: default
+          type: string
+        style: simple
+      - description: An identifier for the composite slo.
+        explode: false
+        in: path
+        name: compositeSloId
+        required: true
+        schema:
+          example: 9c235211-6834-11ea-a78c-6feb38a34414
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/composite_slo_response'
+          description: Successful request
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Unauthorized response
+      summary: Retrieves a composite SLO
+      tags:
+      - composite slo
+    put:
+      description: |
+        You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
+      operationId: updateCompositeSlo
+      parameters:
+      - description: Cross-site request forgery protection
+        explode: false
+        in: header
+        name: kbn-xsrf
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "An identifier for the space. If `/s/` and the identifier are\
+          \ omitted from the path, the default space is used."
+        explode: false
+        in: path
+        name: spaceId
+        required: true
+        schema:
+          example: default
+          type: string
+        style: simple
+      - description: An identifier for the composite slo.
+        explode: false
+        in: path
+        name: compositeSloId
+        required: true
+        schema:
+          example: 9c235211-6834-11ea-a78c-6feb38a34414
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_composite_slo_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/base_composite_slo_response'
+          description: Successful request
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/4xx_response'
+          description: Unauthorized response
+      summary: Updates a composite SLO
+      tags:
+      - composite slo
   /s/{spaceId}/api/observability/slos:
     get:
       description: |
@@ -84,13 +400,13 @@ paths:
           type: integer
         style: form
       - description: Sort by field
-        example: name
+        example: creationTime
         explode: true
         in: query
         name: sortBy
         required: false
         schema:
-          default: name
+          default: creationTime
           enum:
           - creationTime
           - indicatorType
@@ -130,7 +446,7 @@ paths:
           description: Unauthorized response
       summary: Retrieves a paginated list of SLOs
       tags:
-      - slos
+      - slo
     post:
       description: |
         You must have `all` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
@@ -189,7 +505,7 @@ paths:
       - url: https://localhost:5601
       summary: Creates an SLO.
       tags:
-      - slos
+      - slo
   /s/{spaceId}/api/observability/slos/{sloId}:
     delete:
       description: |
@@ -240,7 +556,7 @@ paths:
           description: Unauthorized response
       summary: Deletes an SLO
       tags:
-      - slos
+      - slo
     get:
       description: |
         You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
@@ -294,7 +610,7 @@ paths:
           description: Unauthorized response
       summary: Retrieves a SLO
       tags:
-      - slos
+      - slo
     put:
       description: |
         You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
@@ -354,7 +670,7 @@ paths:
           description: Unauthorized response
       summary: Updates an SLO
       tags:
-      - slos
+      - slo
   /s/{spaceId}/api/observability/slos/{sloId}/enable:
     post:
       description: |
@@ -405,7 +721,7 @@ paths:
           description: Unauthorized response
       summary: Enables an SLO
       tags:
-      - slos
+      - slo
   /s/{spaceId}/api/observability/slos/{sloId}/disable:
     post:
       description: |
@@ -456,7 +772,7 @@ paths:
           description: Unauthorized response
       summary: Disables an SLO
       tags:
-      - slos
+      - slo
   /s/{spaceId}/internal/observability/slos/_historical_summary:
     post:
       description: |
@@ -508,7 +824,7 @@ paths:
           description: Unauthorized response
       summary: Retrieves the historical summary for a list of SLOs
       tags:
-      - slos
+      - slo
 components:
   parameters:
     kbn_xsrf:
@@ -531,6 +847,16 @@ components:
         example: default
         type: string
       style: simple
+    composite_slo_id:
+      description: An identifier for the composite slo.
+      explode: false
+      in: path
+      name: compositeSloId
+      required: true
+      schema:
+        example: 9c235211-6834-11ea-a78c-6feb38a34414
+        type: string
+      style: simple
     slo_id:
       description: An identifier for the slo.
       explode: false
@@ -542,50 +868,11 @@ components:
         type: string
       style: simple
   schemas:
-    indicator_properties_custom_kql:
-      description: Defines properties for a custom KQL indicator type
-      properties:
-        params:
-          $ref: '#/components/schemas/indicator_properties_custom_kql_params'
-        type:
-          description: The type of indicator.
-          example: sli.kql.custom
-          type: string
-      required:
-      - params
-      - type
-      title: Custom KQL indicator type definition
-      type: object
-    indicator_properties_apm_availability:
-      description: Defines properties for the APM availability indicator type
-      properties:
-        params:
-          $ref: '#/components/schemas/indicator_properties_apm_availability_params'
-        type:
-          description: The type of indicator.
-          example: sli.apm.transactionDuration
-          type: string
-      required:
-      - params
-      - type
-      title: APM availability indicator type definition
-      type: object
-    indicator_properties_apm_latency:
-      description: Defines properties for the APM latency indicator type
-      properties:
-        params:
-          $ref: '#/components/schemas/indicator_properties_apm_latency_params'
-        type:
-          description: The type of indicator.
-          example: sli.apm.transactionDuration
-          type: string
-      required:
-      - params
-      - type
-      title: APM latency indicator type definition
-      type: object
     time_window_rolling:
       description: Defines properties for rolling time window
+      example:
+        duration: 28d
+        isRolling: true
       properties:
         duration:
           description: "the duration formatted as {duration}{unit}"
@@ -598,74 +885,54 @@ components:
       required:
       - duration
       - isRolling
-      title: Rolling time window definition
-      type: object
-    time_window_calendar_aligned:
-      description: Defines properties for calendar aligned time window
-      properties:
-        duration:
-          description: "the duration formatted as {duration}{unit}, accept '1w' (weekly\
-            \ calendar) or '1M' (monthly calendar) only"
-          example: 1M
-          type: string
-        isCalendar:
-          description: Indicates a calendar aligned time window
-          example: true
-          type: boolean
-      required:
-      - duration
-      - isCalendar
-      title: Calendar aligned time window definition
+      title: Rolling
       type: object
     budgeting_method:
-      description: The budgeting method to use
+      description: The budgeting method to use when computing the rollup data.
       enum:
       - occurrences
       - timeslices
       example: occurrences
       title: Budgeting method
       type: string
+    composite_method:
+      description: The composite method to use for the composite SLO.
+      enum:
+      - weightedAverage
+      example: weightedAverage
+      title: Composite method
+      type: string
     objective:
-      description: Defines properties for objective
+      description: Defines properties for the SLO objective
       example:
-        timeslicesTarget: 0.995
-        timeslicesWindow: 5m
+        timesliceWindow: 5m
+        timesliceTarget: 0.995
         target: 0.99
       properties:
         target:
           description: the target objective between 0 and 1 excluded
           example: 0.99
           type: number
-        timeslicesTarget:
+        timesliceTarget:
           description: the target objective for each slice when using a timeslices
             budgeting method
           example: 0.995
           type: number
-        timeslicesWindow:
+        timesliceWindow:
           description: "the duration of each slice when using a timeslices budgeting\
             \ method, as {duraton}{unit}"
           example: 5m
           type: string
       required:
       - target
-      title: Objective definition
+      title: Objective
       type: object
-    settings:
-      description: Defines properties for settings.
-      example:
-        syncDelay: 5m
-        frequency: 5m
-      properties:
-        syncDelay:
-          description: The synch delay to apply to the transform. Default 1m
-          example: 5m
-          type: string
-        frequency:
-          description: "Configure how often the transform runs, default 1m"
-          example: 5m
-          type: string
-      title: Settings definition
-      type: object
+    weighted_composite_sources:
+      description: An array of source SLO to use for the weighted average composite.
+      items:
+        $ref: '#/components/schemas/weighted_composite_sources_inner'
+      title: Weighted sources
+      type: array
     error_budget:
       example:
         consumed: 0.8
@@ -692,9 +959,10 @@ components:
             calendar aligned time window.
           example: true
           type: boolean
-      title: Error budget definition
+      title: Error budget
       type: object
     summary:
+      description: The SLO computed data
       example:
         errorBudget:
           consumed: 0.8
@@ -717,7 +985,348 @@ components:
           type: number
         errorBudget:
           $ref: '#/components/schemas/error_budget'
-      title: Summary definition
+      title: Summary
+      type: object
+    composite_slo_response:
+      example:
+        summary:
+          errorBudget:
+            consumed: 0.8
+            isEstimated: true
+            initial: 0.02
+            remaining: 0.2
+          status: HEALTHY
+          sliValue: 0.9836
+        createdAt: 2023-01-12T10:03:19.000Z
+        timeWindow:
+          duration: 28d
+          isRolling: true
+        sources: null
+        name: My Service SLO
+        id: 8853df00-ae2e-11ed-90af-09bb6422b258
+        budgetingMethod: occurrences
+        compositeMethod: weightedAverage
+        objective:
+          timesliceWindow: 5m
+          timesliceTarget: 0.995
+          target: 0.99
+        updatedAt: 2023-01-12T10:03:19.000Z
+      properties:
+        id:
+          description: The identifier of the composite SLO.
+          example: 8853df00-ae2e-11ed-90af-09bb6422b258
+          type: string
+        name:
+          description: The name of the composite SLO.
+          example: My Service SLO
+          type: string
+        timeWindow:
+          $ref: '#/components/schemas/time_window_rolling'
+        budgetingMethod:
+          $ref: '#/components/schemas/budgeting_method'
+        compositeMethod:
+          $ref: '#/components/schemas/composite_method'
+        objective:
+          $ref: '#/components/schemas/objective'
+        sources:
+          $ref: '#/components/schemas/composite_slo_response_sources'
+        summary:
+          $ref: '#/components/schemas/summary'
+        createdAt:
+          description: The creation date
+          example: 2023-01-12T10:03:19.000Z
+          type: string
+        updatedAt:
+          description: The last update date
+          example: 2023-01-12T10:03:19.000Z
+          type: string
+      title: Composite SLO with summary response
+      type: object
+    find_composite_slo_response:
+      description: A paginated response of composite SLOs matching the query.
+      example:
+        total: 34
+        perPage: 25
+        page: 1
+        results:
+        - summary:
+            errorBudget:
+              consumed: 0.8
+              isEstimated: true
+              initial: 0.02
+              remaining: 0.2
+            status: HEALTHY
+            sliValue: 0.9836
+          createdAt: 2023-01-12T10:03:19.000Z
+          timeWindow:
+            duration: 28d
+            isRolling: true
+          sources: null
+          name: My Service SLO
+          id: 8853df00-ae2e-11ed-90af-09bb6422b258
+          budgetingMethod: occurrences
+          compositeMethod: weightedAverage
+          objective:
+            timesliceWindow: 5m
+            timesliceTarget: 0.995
+            target: 0.99
+          updatedAt: 2023-01-12T10:03:19.000Z
+        - summary:
+            errorBudget:
+              consumed: 0.8
+              isEstimated: true
+              initial: 0.02
+              remaining: 0.2
+            status: HEALTHY
+            sliValue: 0.9836
+          createdAt: 2023-01-12T10:03:19.000Z
+          timeWindow:
+            duration: 28d
+            isRolling: true
+          sources: null
+          name: My Service SLO
+          id: 8853df00-ae2e-11ed-90af-09bb6422b258
+          budgetingMethod: occurrences
+          compositeMethod: weightedAverage
+          objective:
+            timesliceWindow: 5m
+            timesliceTarget: 0.995
+            target: 0.99
+          updatedAt: 2023-01-12T10:03:19.000Z
+      properties:
+        page:
+          example: 1
+          type: number
+        perPage:
+          example: 25
+          type: number
+        total:
+          example: 34
+          type: number
+        results:
+          items:
+            $ref: '#/components/schemas/composite_slo_response'
+          type: array
+      title: Find composite SLO response
+      type: object
+    "4xx_response":
+      properties:
+        statusCode:
+          example: 401
+          type: number
+        error:
+          example: Unauthorized
+          type: string
+        message:
+          example: "[security_exception\n\tRoot causes:\n\t\tsecurity_exception: unable\
+            \ to authenticate user [elastics] for REST request [/_security/_authenticate]]:\
+            \ unable to authenticate user [elastics] for REST request [/_security/_authenticate]"
+          type: string
+      required:
+      - error
+      - message
+      - statusCode
+      title: Bad response
+      type: object
+    create_composite_slo_request:
+      description: |
+        The create Composite SLO API request body. The provided source SLOs must exists and their budgeting method and time window must match the one from the composite SLO.
+      properties:
+        id:
+          description: A unique identifier for the composite SLO. Must be between
+            8 and 36 chars
+          example: my-super-composite-slo-id
+          type: string
+        name:
+          description: A name for the composite SLO.
+          type: string
+        timeWindow:
+          $ref: '#/components/schemas/time_window_rolling'
+        budgetingMethod:
+          $ref: '#/components/schemas/budgeting_method'
+        compositeMethod:
+          $ref: '#/components/schemas/composite_method'
+        objective:
+          $ref: '#/components/schemas/objective'
+        sources:
+          $ref: '#/components/schemas/composite_slo_response_sources'
+      required:
+      - budgetingMethod
+      - compositeMethod
+      - name
+      - objective
+      - sources
+      - timeWindow
+      title: Create composite SLO request
+      type: object
+    create_composite_slo_response:
+      example:
+        id: 8853df00-ae2e-11ed-90af-09bb6422b258
+      properties:
+        id:
+          example: 8853df00-ae2e-11ed-90af-09bb6422b258
+          type: string
+      required:
+      - id
+      title: Create composite SLO response
+      type: object
+    update_composite_slo_request:
+      description: |
+        The update composite SLO API request body. The provided source SLOs must exists and their budgeting method and time window must match the one from the composite SLO.
+      properties:
+        id:
+          description: A unique identifier for the composite SLO. Must be between
+            8 and 36 chars
+          example: my-super-composite-slo-id
+          type: string
+        name:
+          description: A name for the composite SLO.
+          type: string
+        timeWindow:
+          $ref: '#/components/schemas/time_window_rolling'
+        budgetingMethod:
+          $ref: '#/components/schemas/budgeting_method'
+        compositeMethod:
+          $ref: '#/components/schemas/composite_method'
+        objective:
+          $ref: '#/components/schemas/objective'
+        sources:
+          $ref: '#/components/schemas/composite_slo_response_sources'
+      title: Update composite SLO request
+      type: object
+    base_composite_slo_response:
+      example:
+        createdAt: 2023-01-12T10:03:19.000Z
+        timeWindow:
+          duration: 28d
+          isRolling: true
+        sources: null
+        name: My Service SLO
+        id: 8853df00-ae2e-11ed-90af-09bb6422b258
+        budgetingMethod: occurrences
+        compositeMethod: weightedAverage
+        objective:
+          timesliceWindow: 5m
+          timesliceTarget: 0.995
+          target: 0.99
+        updatedAt: 2023-01-12T10:03:19.000Z
+      properties:
+        id:
+          description: The identifier of the composite SLO.
+          example: 8853df00-ae2e-11ed-90af-09bb6422b258
+          type: string
+        name:
+          description: The name of the composite SLO.
+          example: My Service SLO
+          type: string
+        timeWindow:
+          $ref: '#/components/schemas/time_window_rolling'
+        budgetingMethod:
+          $ref: '#/components/schemas/budgeting_method'
+        compositeMethod:
+          $ref: '#/components/schemas/composite_method'
+        objective:
+          $ref: '#/components/schemas/objective'
+        sources:
+          $ref: '#/components/schemas/composite_slo_response_sources'
+        createdAt:
+          description: The creation date
+          example: 2023-01-12T10:03:19.000Z
+          type: string
+        updatedAt:
+          description: The last update date
+          example: 2023-01-12T10:03:19.000Z
+          type: string
+      title: Composite SLO response
+      type: object
+    indicator_properties_custom_kql:
+      description: Defines properties for a custom KQL indicator type
+      properties:
+        params:
+          $ref: '#/components/schemas/indicator_properties_custom_kql_params'
+        type:
+          description: The type of indicator.
+          example: sli.kql.custom
+          type: string
+      required:
+      - params
+      - type
+      title: Custom KQL
+      type: object
+    indicator_properties_apm_availability:
+      description: Defines properties for the APM availability indicator type
+      properties:
+        params:
+          $ref: '#/components/schemas/indicator_properties_apm_availability_params'
+        type:
+          description: The type of indicator.
+          example: sli.apm.transactionDuration
+          type: string
+      required:
+      - params
+      - type
+      title: APM availability
+      type: object
+    indicator_properties_apm_latency:
+      description: Defines properties for the APM latency indicator type
+      properties:
+        params:
+          $ref: '#/components/schemas/indicator_properties_apm_latency_params'
+        type:
+          description: The type of indicator.
+          example: sli.apm.transactionDuration
+          type: string
+      required:
+      - params
+      - type
+      title: APM latency
+      type: object
+    indicator_properties_custom_metric:
+      description: Defines properties for a custom metric indicator type
+      properties:
+        params:
+          $ref: '#/components/schemas/indicator_properties_custom_metric_params'
+        type:
+          description: The type of indicator.
+          example: sli.metric.custom
+          type: string
+      required:
+      - params
+      - type
+      title: Custom metric
+      type: object
+    time_window_calendar_aligned:
+      description: Defines properties for calendar aligned time window
+      properties:
+        duration:
+          description: "the duration formatted as {duration}{unit}, accept '1w' (weekly\
+            \ calendar) or '1M' (monthly calendar) only"
+          example: 1M
+          type: string
+        isCalendar:
+          description: Indicates a calendar aligned time window
+          example: true
+          type: boolean
+      required:
+      - duration
+      - isCalendar
+      title: Calendar aligned
+      type: object
+    settings:
+      description: Defines properties for SLO settings.
+      example:
+        syncDelay: 5m
+        frequency: 5m
+      properties:
+        syncDelay:
+          description: The synch delay to apply to the transform. Default 1m
+          example: 5m
+          type: string
+        frequency:
+          description: "Configure how often the transform runs, default 1m"
+          example: 5m
+          type: string
+      title: Settings
       type: object
     slo_response:
       example:
@@ -737,8 +1346,8 @@ components:
         description: My SLO description
         enabled: true
         objective:
-          timeslicesTarget: 0.995
-          timeslicesWindow: 5m
+          timesliceWindow: 5m
+          timesliceTarget: 0.995
           target: 0.99
         revision: 2
         createdAt: 2023-01-12T10:03:19.000Z
@@ -787,7 +1396,7 @@ components:
           description: The last update date
           example: 2023-01-12T10:03:19.000Z
           type: string
-      title: SLO Response
+      title: SLO response
       type: object
     find_slo_response:
       description: |
@@ -813,8 +1422,8 @@ components:
           description: My SLO description
           enabled: true
           objective:
-            timeslicesTarget: 0.995
-            timeslicesWindow: 5m
+            timesliceWindow: 5m
+            timesliceTarget: 0.995
             target: 0.99
           revision: 2
           createdAt: 2023-01-12T10:03:19.000Z
@@ -838,8 +1447,8 @@ components:
           description: My SLO description
           enabled: true
           objective:
-            timeslicesTarget: 0.995
-            timeslicesWindow: 5m
+            timesliceWindow: 5m
+            timesliceTarget: 0.995
             target: 0.99
           revision: 2
           createdAt: 2023-01-12T10:03:19.000Z
@@ -863,25 +1472,6 @@ components:
           type: array
       title: Find SLO response
       type: object
-    "4xx_response":
-      properties:
-        statusCode:
-          example: 401
-          type: number
-        error:
-          example: Unauthorized
-          type: string
-        message:
-          example: "[security_exception\n\tRoot causes:\n\t\tsecurity_exception: unable\
-            \ to authenticate user [elastics] for REST request [/_security/_authenticate]]:\
-            \ unable to authenticate user [elastics] for REST request [/_security/_authenticate]"
-          type: string
-      required:
-      - error
-      - message
-      - statusCode
-      title: Bad response
-      type: object
     create_slo_request:
       description: |
         The create SLO API request body varies depending on the type of indicator, time window and budgeting method.
@@ -897,7 +1487,7 @@ components:
           description: A description for the SLO.
           type: string
         indicator:
-          $ref: '#/components/schemas/create_slo_request_indicator'
+          $ref: '#/components/schemas/slo_response_indicator'
         timeWindow:
           $ref: '#/components/schemas/slo_response_timeWindow'
         budgetingMethod:
@@ -928,7 +1518,7 @@ components:
       type: object
     update_slo_request:
       description: |
-        The update SLO API request body varies depending on the type of indicator, time window and budgeting method.  Partial update is handled.
+        The update SLO API request body varies depending on the type of indicator, time window and budgeting method. Partial update is handled.
       properties:
         name:
           description: A name for the SLO.
@@ -937,7 +1527,7 @@ components:
           description: A description for the SLO.
           type: string
         indicator:
-          $ref: '#/components/schemas/create_slo_request_indicator'
+          $ref: '#/components/schemas/slo_response_indicator'
         timeWindow:
           $ref: '#/components/schemas/slo_response_timeWindow'
         budgetingMethod:
@@ -967,6 +1557,28 @@ components:
         type: array
       title: Historical summary response
       type: object
+    weighted_composite_sources_inner:
+      properties:
+        id:
+          description: The id of the SLO.
+          example: 8853df00-ae2e-11ed-90af-09bb6422b258
+          type: string
+        revision:
+          description: The revision number of the SLO.
+          example: 2
+          type: number
+        weight:
+          description: The weight to apply to this SLO.
+          example: 3
+          type: number
+      required:
+      - id
+      - revision
+      - weight
+      type: object
+    composite_slo_response_sources:
+      oneOf:
+      - $ref: '#/components/schemas/weighted_composite_sources'
     indicator_properties_custom_kql_params:
       description: An object containing the indicator parameters.
       nullable: false
@@ -989,7 +1601,7 @@ components:
           type: string
         timestampField:
           description: |
-            The timestamp field used in the source indice. If not specified, @timestamp will be used.
+            The timestamp field used in the source indice.
           example: timestamp
           type: string
       required:
@@ -1071,22 +1683,99 @@ components:
       - transactionName
       - transactionType
       type: object
+    indicator_properties_custom_metric_params_good_metrics_inner:
+      properties:
+        name:
+          description: The name of the metric. Only valid options are A-Z
+          example: A
+          pattern: "^[A-Z]$"
+          type: string
+        aggregation:
+          description: The aggregation type of the metric. Only valid option is "sum"
+          enum:
+          - sum
+          example: sum
+          type: string
+        field:
+          description: The field of the metric.
+          example: processor.processed
+          type: string
+      required:
+      - aggregation
+      - field
+      - name
+      type: object
+    indicator_properties_custom_metric_params_good:
+      description: |
+        An object defining the "good" metrics and equation
+      properties:
+        metrics:
+          description: "List of metrics with their name, aggregation type, and field."
+          items:
+            $ref: '#/components/schemas/indicator_properties_custom_metric_params_good_metrics_inner'
+          type: array
+        equation:
+          description: The equation to calculate the "good" metric.
+          example: A
+          type: string
+      required:
+      - equation
+      - metrics
+      type: object
+    indicator_properties_custom_metric_params_total:
+      description: |
+        An object defining the "total" metrics and equation
+      properties:
+        metrics:
+          description: "List of metrics with their name, aggregation type, and field."
+          items:
+            $ref: '#/components/schemas/indicator_properties_custom_metric_params_good_metrics_inner'
+          type: array
+        equation:
+          description: The equation to calculate the "total" metric.
+          example: A
+          type: string
+      required:
+      - equation
+      - metrics
+      type: object
+    indicator_properties_custom_metric_params:
+      description: An object containing the indicator parameters.
+      nullable: false
+      properties:
+        index:
+          description: The index or index pattern to use
+          example: my-service-*
+          type: string
+        filter:
+          description: the KQL query to filter the documents with.
+          example: "field.environment : \"production\" and service.name : \"my-service\""
+          type: string
+        timestampField:
+          description: |
+            The timestamp field used in the source indice.
+          example: timestamp
+          type: string
+        good:
+          $ref: '#/components/schemas/indicator_properties_custom_metric_params_good'
+        total:
+          $ref: '#/components/schemas/indicator_properties_custom_metric_params_total'
+      required:
+      - good
+      - index
+      - timestampField
+      - total
+      type: object
     slo_response_indicator:
-      discriminator:
-        propertyName: type
       oneOf:
       - $ref: '#/components/schemas/indicator_properties_custom_kql'
       - $ref: '#/components/schemas/indicator_properties_apm_availability'
       - $ref: '#/components/schemas/indicator_properties_apm_latency'
+      - $ref: '#/components/schemas/indicator_properties_custom_metric'
     slo_response_timeWindow:
       oneOf:
       - $ref: '#/components/schemas/time_window_rolling'
       - $ref: '#/components/schemas/time_window_calendar_aligned'
-    create_slo_request_indicator:
-      oneOf:
-      - $ref: '#/components/schemas/indicator_properties_custom_kql'
-      - $ref: '#/components/schemas/indicator_properties_apm_availability'
-      - $ref: '#/components/schemas/indicator_properties_apm_latency'
     Historical_summary_response_inner:
       properties:
         date:

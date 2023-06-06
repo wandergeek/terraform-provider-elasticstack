@@ -17,10 +17,10 @@ func GetSlo(ctx context.Context, apiClient *clients.ApiClient, id, spaceID strin
 		return nil, diag.FromErr(err)
 	}
 
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
-	req := client.GetSlo(ctxWithAuth, id, spaceID)
+	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
+	req := client.GetSlo(ctxWithAuth, "default", id).KbnXsrf("true") //fuck kibana spaces
 	sloRes, res, err := req.Execute()
-	if err != nil && res == nil {
+	if err != nil {
 		return nil, diag.FromErr(err)
 	}
 
@@ -28,7 +28,7 @@ func GetSlo(ctx context.Context, apiClient *clients.ApiClient, id, spaceID strin
 	if res.StatusCode == http.StatusNotFound {
 		return nil, nil
 	}
-	return sloResponseToModel(spaceID, sloRes), utils.CheckHttpError(res, "Unable to get slo with ID "+string(id))
+	return sloResponseToModel("default", sloRes), utils.CheckHttpError(res, "Unable to get slo with ID "+string(id)) //fuck kibana spaces
 }
 
 func DeleteSlo(ctx context.Context, apiClient *clients.ApiClient, sloId string, spaceId string) diag.Diagnostics {
@@ -37,7 +37,7 @@ func DeleteSlo(ctx context.Context, apiClient *clients.ApiClient, sloId string, 
 		return diag.FromErr(err)
 	}
 
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
+	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
 	req := client.DeleteSlo(ctxWithAuth, sloId, spaceId).KbnXsrf("true")
 	res, err := req.Execute()
 	if err != nil && res == nil {
@@ -54,11 +54,11 @@ func UpdateSlo(ctx context.Context, apiClient *clients.ApiClient, s models.Slo) 
 		return nil, diag.FromErr(err)
 	}
 
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
+	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
 	reqModel := slo.UpdateSloRequest{
 		Name:            &s.Name,
 		Description:     &s.Description,
-		Indicator:       (*slo.CreateSloRequestIndicator)(&s.Indicator),
+		Indicator:       (*slo.SloResponseIndicator)(&s.Indicator),
 		TimeWindow:      &s.TimeWindow,
 		BudgetingMethod: (*slo.BudgetingMethod)(&s.BudgetingMethod),
 		Objective:       &s.Objective,
@@ -85,12 +85,12 @@ func CreateSlo(ctx context.Context, apiClient *clients.ApiClient, s models.Slo) 
 		return nil, diag.FromErr(err)
 	}
 
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
+	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
 
 	reqModel := slo.CreateSloRequest{
 		Name:            s.Name,
 		Description:     s.Description,
-		Indicator:       slo.CreateSloRequestIndicator(s.Indicator),
+		Indicator:       slo.SloResponseIndicator(s.Indicator),
 		TimeWindow:      s.TimeWindow,
 		BudgetingMethod: slo.BudgetingMethod(s.BudgetingMethod),
 		Objective:       s.Objective,
@@ -100,9 +100,13 @@ func CreateSlo(ctx context.Context, apiClient *clients.ApiClient, s models.Slo) 
 	if err != nil && res == nil {
 		return nil, diag.FromErr(err)
 	}
+	defer res.Body.Close()
+
+	if diags := utils.CheckHttpError(res, "Unable to create slo"); diags.HasError() {
+		return nil, diags
+	}
 
 	s.ID = sloRes.Id
-	defer res.Body.Close()
 
 	return &s, diag.Diagnostics{}
 }

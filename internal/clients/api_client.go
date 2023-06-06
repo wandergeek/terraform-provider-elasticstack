@@ -68,7 +68,7 @@ type ApiClient struct {
 	kibana                   *kibana.Client
 	alerting                 alerting.AlertingApi
 	connectors               *connectors.Client
-	slo                      slo.SlosApi
+	slo                      slo.SloApi
 	kibanaConfig             kibana.Config
 	fleet                    *fleet.Client
 	version                  string
@@ -164,7 +164,7 @@ func NewAcceptanceTestingClient() (*ApiClient, error) {
 			elasticsearch: es,
 			kibana:        kib,
 			alerting:      buildAlertingClient(baseConfig, kibanaConfig).AlertingApi,
-			slo:           buildSloClient(baseConfig, kibanaConfig).SlosApi,
+			slo:           buildSloClient(baseConfig, kibanaConfig).SloApi,
 			connectors:    actionConnectors,
 			kibanaConfig:  kibanaConfig,
 			fleet:         fleetClient,
@@ -241,7 +241,7 @@ func (a *ApiClient) GetKibanaConnectorsClient(ctx context.Context) (*connectors.
 	return a.connectors, nil
 }
 
-func (a *ApiClient) GetSloClient() (slo.SlosApi, error) {
+func (a *ApiClient) GetSloClient() (slo.SloApi, error) {
 	if a.slo == nil {
 		return nil, errors.New("slo client not found")
 	}
@@ -260,6 +260,13 @@ func (a *ApiClient) GetFleetClient() (*fleet.Client, error) {
 func (a *ApiClient) SetGeneratedClientAuthContext(ctx context.Context) context.Context {
 	//I don't like that I'm using "alerting" here when the context is used for more than just alerting -- worth pulling these structs out somewhere else?
 	return context.WithValue(ctx, alerting.ContextBasicAuth, alerting.BasicAuth{
+		UserName: a.kibanaConfig.Username,
+		Password: a.kibanaConfig.Password,
+	})
+}
+
+func (a *ApiClient) SetGeneratedClientAuthContextFuck(ctx context.Context) context.Context {
+	return context.WithValue(ctx, slo.ContextBasicAuth, slo.BasicAuth{
 		UserName: a.kibanaConfig.Username,
 		Password: a.kibanaConfig.Password,
 	})
@@ -722,7 +729,7 @@ func newApiClient(d *schema.ResourceData, version string) (*ApiClient, diag.Diag
 		kibanaConfig:             kibanaConfig,
 		alerting:                 alertingClient.AlertingApi,
 		connectors:               connectorsClient,
-		slo:                      sloClient.SlosApi,
+		slo:                      sloClient.SloApi,
 		fleet:                    fleetClient,
 		version:                  version,
 	}, nil
