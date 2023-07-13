@@ -68,7 +68,7 @@ type ApiClient struct {
 	kibana                   *kibana.Client
 	alerting                 alerting.AlertingApi
 	connectors               *connectors.Client
-	slo                      slo.SloApi
+	slo                      slo.SloAPI
 	kibanaConfig             kibana.Config
 	fleet                    *fleet.Client
 	version                  string
@@ -164,7 +164,7 @@ func NewAcceptanceTestingClient() (*ApiClient, error) {
 			elasticsearch: es,
 			kibana:        kib,
 			alerting:      buildAlertingClient(baseConfig, kibanaConfig).AlertingApi,
-			slo:           buildSloClient(baseConfig, kibanaConfig).SloApi,
+			slo:           buildSloClient(baseConfig, kibanaConfig).SloAPI,
 			connectors:    actionConnectors,
 			kibanaConfig:  kibanaConfig,
 			fleet:         fleetClient,
@@ -241,7 +241,7 @@ func (a *ApiClient) GetKibanaConnectorsClient(ctx context.Context) (*connectors.
 	return a.connectors, nil
 }
 
-func (a *ApiClient) GetSloClient() (slo.SloApi, error) {
+func (a *ApiClient) GetSloClient() (slo.SloAPI, error) {
 	if a.slo == nil {
 		return nil, errors.New("slo client not found")
 	}
@@ -729,7 +729,7 @@ func newApiClient(d *schema.ResourceData, version string) (*ApiClient, diag.Diag
 		kibanaConfig:             kibanaConfig,
 		alerting:                 alertingClient.AlertingApi,
 		connectors:               connectorsClient,
-		slo:                      sloClient.SloApi,
+		slo:                      sloClient.SloAPI,
 		fleet:                    fleetClient,
 		version:                  version,
 	}, nil

@@ -258,14 +258,15 @@ generate-connectors-client: tools ## generate Kibana connectors client
 
 .PHONY: generate-slo-client
 generate-slo-client: tools ## generate Kibana slo client
-	@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
+	@ rm -rf generated/slo
+	@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:latest generate \
 		-i /local/generated/slo-spec-test.yml \
-		--skip-validate-spec \
 		--git-repo-id terraform-provider-elasticstack \
 		--git-user-id elastic \
 		-p isGoSubmodule=true \
 		-p packageName=slo \
 		-p generateInterfaces=true \
+		-p useOneOfDiscriminatorLookup=true \
 		-g go \
 		-o /local/generated/slo
 	@ rm -rf generated/slo/go.mod generated/slo/go.sum generated/slo/test

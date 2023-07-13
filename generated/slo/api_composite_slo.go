@@ -19,26 +19,26 @@ import (
 	"strings"
 )
 
-type CompositeSloApi interface {
+type CompositeSloAPI interface {
 
 	/*
-		CreateCompositeSlo Creates a Composite SLO
+		CreateCompositeSloOp Creates a Composite SLO
 
 		You must have `all` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-		@return ApiCreateCompositeSloRequest
+		@return ApiCreateCompositeSloOpRequest
 	*/
-	CreateCompositeSlo(ctx context.Context, spaceId string) ApiCreateCompositeSloRequest
+	CreateCompositeSloOp(ctx context.Context, spaceId string) ApiCreateCompositeSloOpRequest
 
-	// CreateCompositeSloExecute executes the request
+	// CreateCompositeSloOpExecute executes the request
 	//  @return CreateCompositeSloResponse
-	CreateCompositeSloExecute(r ApiCreateCompositeSloRequest) (*CreateCompositeSloResponse, *http.Response, error)
+	CreateCompositeSloOpExecute(r ApiCreateCompositeSloOpRequest) (*CreateCompositeSloResponse, *http.Response, error)
 
 	/*
-		DeleteCompositeSlo Deletes a composite SLO
+		DeleteCompositeSloOp Deletes a composite SLO
 
 		You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
@@ -46,31 +46,31 @@ type CompositeSloApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
 		@param compositeSloId An identifier for the composite slo.
-		@return ApiDeleteCompositeSloRequest
+		@return ApiDeleteCompositeSloOpRequest
 	*/
-	DeleteCompositeSlo(ctx context.Context, spaceId string, compositeSloId string) ApiDeleteCompositeSloRequest
+	DeleteCompositeSloOp(ctx context.Context, spaceId string, compositeSloId string) ApiDeleteCompositeSloOpRequest
 
-	// DeleteCompositeSloExecute executes the request
-	DeleteCompositeSloExecute(r ApiDeleteCompositeSloRequest) (*http.Response, error)
+	// DeleteCompositeSloOpExecute executes the request
+	DeleteCompositeSloOpExecute(r ApiDeleteCompositeSloOpRequest) (*http.Response, error)
 
 	/*
-		FindCompositeSlo Retrieves a paginated list of composite SLOs with summary
+		FindCompositeSloOp Retrieves a paginated list of composite SLOs with summary
 
 		You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-		@return ApiFindCompositeSloRequest
+		@return ApiFindCompositeSloOpRequest
 	*/
-	FindCompositeSlo(ctx context.Context, spaceId string) ApiFindCompositeSloRequest
+	FindCompositeSloOp(ctx context.Context, spaceId string) ApiFindCompositeSloOpRequest
 
-	// FindCompositeSloExecute executes the request
+	// FindCompositeSloOpExecute executes the request
 	//  @return FindCompositeSloResponse
-	FindCompositeSloExecute(r ApiFindCompositeSloRequest) (*FindCompositeSloResponse, *http.Response, error)
+	FindCompositeSloOpExecute(r ApiFindCompositeSloOpRequest) (*FindCompositeSloResponse, *http.Response, error)
 
 	/*
-		GetCompositeSlo Retrieves a composite SLO
+		GetCompositeSloOp Retrieves a composite SLO
 
 		You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
@@ -78,16 +78,16 @@ type CompositeSloApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
 		@param compositeSloId An identifier for the composite slo.
-		@return ApiGetCompositeSloRequest
+		@return ApiGetCompositeSloOpRequest
 	*/
-	GetCompositeSlo(ctx context.Context, spaceId string, compositeSloId string) ApiGetCompositeSloRequest
+	GetCompositeSloOp(ctx context.Context, spaceId string, compositeSloId string) ApiGetCompositeSloOpRequest
 
-	// GetCompositeSloExecute executes the request
+	// GetCompositeSloOpExecute executes the request
 	//  @return CompositeSloResponse
-	GetCompositeSloExecute(r ApiGetCompositeSloRequest) (*CompositeSloResponse, *http.Response, error)
+	GetCompositeSloOpExecute(r ApiGetCompositeSloOpRequest) (*CompositeSloResponse, *http.Response, error)
 
 	/*
-		UpdateCompositeSlo Updates a composite SLO
+		UpdateCompositeSloOp Updates a composite SLO
 
 		You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
@@ -95,52 +95,52 @@ type CompositeSloApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
 		@param compositeSloId An identifier for the composite slo.
-		@return ApiUpdateCompositeSloRequest
+		@return ApiUpdateCompositeSloOpRequest
 	*/
-	UpdateCompositeSlo(ctx context.Context, spaceId string, compositeSloId string) ApiUpdateCompositeSloRequest
+	UpdateCompositeSloOp(ctx context.Context, spaceId string, compositeSloId string) ApiUpdateCompositeSloOpRequest
 
-	// UpdateCompositeSloExecute executes the request
+	// UpdateCompositeSloOpExecute executes the request
 	//  @return BaseCompositeSloResponse
-	UpdateCompositeSloExecute(r ApiUpdateCompositeSloRequest) (*BaseCompositeSloResponse, *http.Response, error)
+	UpdateCompositeSloOpExecute(r ApiUpdateCompositeSloOpRequest) (*BaseCompositeSloResponse, *http.Response, error)
 }
 
-// CompositeSloApiService CompositeSloApi service
-type CompositeSloApiService service
+// CompositeSloAPIService CompositeSloAPI service
+type CompositeSloAPIService service
 
-type ApiCreateCompositeSloRequest struct {
+type ApiCreateCompositeSloOpRequest struct {
 	ctx                       context.Context
-	ApiService                CompositeSloApi
+	ApiService                CompositeSloAPI
 	kbnXsrf                   *string
 	spaceId                   string
 	createCompositeSloRequest *CreateCompositeSloRequest
 }
 
 // Cross-site request forgery protection
-func (r ApiCreateCompositeSloRequest) KbnXsrf(kbnXsrf string) ApiCreateCompositeSloRequest {
+func (r ApiCreateCompositeSloOpRequest) KbnXsrf(kbnXsrf string) ApiCreateCompositeSloOpRequest {
 	r.kbnXsrf = &kbnXsrf
 	return r
 }
 
-func (r ApiCreateCompositeSloRequest) CreateCompositeSloRequest(createCompositeSloRequest CreateCompositeSloRequest) ApiCreateCompositeSloRequest {
+func (r ApiCreateCompositeSloOpRequest) CreateCompositeSloRequest(createCompositeSloRequest CreateCompositeSloRequest) ApiCreateCompositeSloOpRequest {
 	r.createCompositeSloRequest = &createCompositeSloRequest
 	return r
 }
 
-func (r ApiCreateCompositeSloRequest) Execute() (*CreateCompositeSloResponse, *http.Response, error) {
-	return r.ApiService.CreateCompositeSloExecute(r)
+func (r ApiCreateCompositeSloOpRequest) Execute() (*CreateCompositeSloResponse, *http.Response, error) {
+	return r.ApiService.CreateCompositeSloOpExecute(r)
 }
 
 /*
-CreateCompositeSlo Creates a Composite SLO
+CreateCompositeSloOp Creates a Composite SLO
 
 You must have `all` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-	@return ApiCreateCompositeSloRequest
+	@return ApiCreateCompositeSloOpRequest
 */
-func (a *CompositeSloApiService) CreateCompositeSlo(ctx context.Context, spaceId string) ApiCreateCompositeSloRequest {
-	return ApiCreateCompositeSloRequest{
+func (a *CompositeSloAPIService) CreateCompositeSloOp(ctx context.Context, spaceId string) ApiCreateCompositeSloOpRequest {
+	return ApiCreateCompositeSloOpRequest{
 		ApiService: a,
 		ctx:        ctx,
 		spaceId:    spaceId,
@@ -150,7 +150,7 @@ func (a *CompositeSloApiService) CreateCompositeSlo(ctx context.Context, spaceId
 // Execute executes the request
 //
 //	@return CreateCompositeSloResponse
-func (a *CompositeSloApiService) CreateCompositeSloExecute(r ApiCreateCompositeSloRequest) (*CreateCompositeSloResponse, *http.Response, error) {
+func (a *CompositeSloAPIService) CreateCompositeSloOpExecute(r ApiCreateCompositeSloOpRequest) (*CreateCompositeSloResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -158,7 +158,7 @@ func (a *CompositeSloApiService) CreateCompositeSloExecute(r ApiCreateCompositeS
 		localVarReturnValue *CreateCompositeSloResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompositeSloApiService.CreateCompositeSlo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompositeSloAPIService.CreateCompositeSloOp")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -233,7 +233,7 @@ func (a *CompositeSloApiService) CreateCompositeSloExecute(r ApiCreateCompositeS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Model4xxResponse
+			var v Model400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -244,7 +244,18 @@ func (a *CompositeSloApiService) CreateCompositeSloExecute(r ApiCreateCompositeS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Model4xxResponse
+			var v Model401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Model403Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -255,7 +266,7 @@ func (a *CompositeSloApiService) CreateCompositeSloExecute(r ApiCreateCompositeS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Model4xxResponse
+			var v Model409Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -279,36 +290,36 @@ func (a *CompositeSloApiService) CreateCompositeSloExecute(r ApiCreateCompositeS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteCompositeSloRequest struct {
+type ApiDeleteCompositeSloOpRequest struct {
 	ctx            context.Context
-	ApiService     CompositeSloApi
+	ApiService     CompositeSloAPI
 	kbnXsrf        *string
 	spaceId        string
 	compositeSloId string
 }
 
 // Cross-site request forgery protection
-func (r ApiDeleteCompositeSloRequest) KbnXsrf(kbnXsrf string) ApiDeleteCompositeSloRequest {
+func (r ApiDeleteCompositeSloOpRequest) KbnXsrf(kbnXsrf string) ApiDeleteCompositeSloOpRequest {
 	r.kbnXsrf = &kbnXsrf
 	return r
 }
 
-func (r ApiDeleteCompositeSloRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteCompositeSloExecute(r)
+func (r ApiDeleteCompositeSloOpRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteCompositeSloOpExecute(r)
 }
 
 /*
-DeleteCompositeSlo Deletes a composite SLO
+DeleteCompositeSloOp Deletes a composite SLO
 
 You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
 	@param compositeSloId An identifier for the composite slo.
-	@return ApiDeleteCompositeSloRequest
+	@return ApiDeleteCompositeSloOpRequest
 */
-func (a *CompositeSloApiService) DeleteCompositeSlo(ctx context.Context, spaceId string, compositeSloId string) ApiDeleteCompositeSloRequest {
-	return ApiDeleteCompositeSloRequest{
+func (a *CompositeSloAPIService) DeleteCompositeSloOp(ctx context.Context, spaceId string, compositeSloId string) ApiDeleteCompositeSloOpRequest {
+	return ApiDeleteCompositeSloOpRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		spaceId:        spaceId,
@@ -317,14 +328,14 @@ func (a *CompositeSloApiService) DeleteCompositeSlo(ctx context.Context, spaceId
 }
 
 // Execute executes the request
-func (a *CompositeSloApiService) DeleteCompositeSloExecute(r ApiDeleteCompositeSloRequest) (*http.Response, error) {
+func (a *CompositeSloAPIService) DeleteCompositeSloOpExecute(r ApiDeleteCompositeSloOpRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompositeSloApiService.DeleteCompositeSlo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompositeSloAPIService.DeleteCompositeSloOp")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -395,7 +406,7 @@ func (a *CompositeSloApiService) DeleteCompositeSloExecute(r ApiDeleteCompositeS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Model4xxResponse
+			var v Model400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -406,7 +417,29 @@ func (a *CompositeSloApiService) DeleteCompositeSloExecute(r ApiDeleteCompositeS
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Model4xxResponse
+			var v Model401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Model403Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Model404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -421,9 +454,9 @@ func (a *CompositeSloApiService) DeleteCompositeSloExecute(r ApiDeleteCompositeS
 	return localVarHTTPResponse, nil
 }
 
-type ApiFindCompositeSloRequest struct {
+type ApiFindCompositeSloOpRequest struct {
 	ctx           context.Context
-	ApiService    CompositeSloApi
+	ApiService    CompositeSloAPI
 	kbnXsrf       *string
 	spaceId       string
 	page          *int32
@@ -433,50 +466,50 @@ type ApiFindCompositeSloRequest struct {
 }
 
 // Cross-site request forgery protection
-func (r ApiFindCompositeSloRequest) KbnXsrf(kbnXsrf string) ApiFindCompositeSloRequest {
+func (r ApiFindCompositeSloOpRequest) KbnXsrf(kbnXsrf string) ApiFindCompositeSloOpRequest {
 	r.kbnXsrf = &kbnXsrf
 	return r
 }
 
 // The page number to return
-func (r ApiFindCompositeSloRequest) Page(page int32) ApiFindCompositeSloRequest {
+func (r ApiFindCompositeSloOpRequest) Page(page int32) ApiFindCompositeSloOpRequest {
 	r.page = &page
 	return r
 }
 
 // The number of SLOs to return per page
-func (r ApiFindCompositeSloRequest) PerPage(perPage int32) ApiFindCompositeSloRequest {
+func (r ApiFindCompositeSloOpRequest) PerPage(perPage int32) ApiFindCompositeSloOpRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // Sort by field
-func (r ApiFindCompositeSloRequest) SortBy(sortBy string) ApiFindCompositeSloRequest {
+func (r ApiFindCompositeSloOpRequest) SortBy(sortBy string) ApiFindCompositeSloOpRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
 // Sort order
-func (r ApiFindCompositeSloRequest) SortDirection(sortDirection string) ApiFindCompositeSloRequest {
+func (r ApiFindCompositeSloOpRequest) SortDirection(sortDirection string) ApiFindCompositeSloOpRequest {
 	r.sortDirection = &sortDirection
 	return r
 }
 
-func (r ApiFindCompositeSloRequest) Execute() (*FindCompositeSloResponse, *http.Response, error) {
-	return r.ApiService.FindCompositeSloExecute(r)
+func (r ApiFindCompositeSloOpRequest) Execute() (*FindCompositeSloResponse, *http.Response, error) {
+	return r.ApiService.FindCompositeSloOpExecute(r)
 }
 
 /*
-FindCompositeSlo Retrieves a paginated list of composite SLOs with summary
+FindCompositeSloOp Retrieves a paginated list of composite SLOs with summary
 
 You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-	@return ApiFindCompositeSloRequest
+	@return ApiFindCompositeSloOpRequest
 */
-func (a *CompositeSloApiService) FindCompositeSlo(ctx context.Context, spaceId string) ApiFindCompositeSloRequest {
-	return ApiFindCompositeSloRequest{
+func (a *CompositeSloAPIService) FindCompositeSloOp(ctx context.Context, spaceId string) ApiFindCompositeSloOpRequest {
+	return ApiFindCompositeSloOpRequest{
 		ApiService: a,
 		ctx:        ctx,
 		spaceId:    spaceId,
@@ -486,7 +519,7 @@ func (a *CompositeSloApiService) FindCompositeSlo(ctx context.Context, spaceId s
 // Execute executes the request
 //
 //	@return FindCompositeSloResponse
-func (a *CompositeSloApiService) FindCompositeSloExecute(r ApiFindCompositeSloRequest) (*FindCompositeSloResponse, *http.Response, error) {
+func (a *CompositeSloAPIService) FindCompositeSloOpExecute(r ApiFindCompositeSloOpRequest) (*FindCompositeSloResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -494,7 +527,7 @@ func (a *CompositeSloApiService) FindCompositeSloExecute(r ApiFindCompositeSloRe
 		localVarReturnValue *FindCompositeSloResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompositeSloApiService.FindCompositeSlo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompositeSloAPIService.FindCompositeSloOp")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -576,7 +609,7 @@ func (a *CompositeSloApiService) FindCompositeSloExecute(r ApiFindCompositeSloRe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Model4xxResponse
+			var v Model400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -587,7 +620,29 @@ func (a *CompositeSloApiService) FindCompositeSloExecute(r ApiFindCompositeSloRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Model4xxResponse
+			var v Model401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Model403Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Model404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -611,36 +666,36 @@ func (a *CompositeSloApiService) FindCompositeSloExecute(r ApiFindCompositeSloRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetCompositeSloRequest struct {
+type ApiGetCompositeSloOpRequest struct {
 	ctx            context.Context
-	ApiService     CompositeSloApi
+	ApiService     CompositeSloAPI
 	kbnXsrf        *string
 	spaceId        string
 	compositeSloId string
 }
 
 // Cross-site request forgery protection
-func (r ApiGetCompositeSloRequest) KbnXsrf(kbnXsrf string) ApiGetCompositeSloRequest {
+func (r ApiGetCompositeSloOpRequest) KbnXsrf(kbnXsrf string) ApiGetCompositeSloOpRequest {
 	r.kbnXsrf = &kbnXsrf
 	return r
 }
 
-func (r ApiGetCompositeSloRequest) Execute() (*CompositeSloResponse, *http.Response, error) {
-	return r.ApiService.GetCompositeSloExecute(r)
+func (r ApiGetCompositeSloOpRequest) Execute() (*CompositeSloResponse, *http.Response, error) {
+	return r.ApiService.GetCompositeSloOpExecute(r)
 }
 
 /*
-GetCompositeSlo Retrieves a composite SLO
+GetCompositeSloOp Retrieves a composite SLO
 
 You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
 	@param compositeSloId An identifier for the composite slo.
-	@return ApiGetCompositeSloRequest
+	@return ApiGetCompositeSloOpRequest
 */
-func (a *CompositeSloApiService) GetCompositeSlo(ctx context.Context, spaceId string, compositeSloId string) ApiGetCompositeSloRequest {
-	return ApiGetCompositeSloRequest{
+func (a *CompositeSloAPIService) GetCompositeSloOp(ctx context.Context, spaceId string, compositeSloId string) ApiGetCompositeSloOpRequest {
+	return ApiGetCompositeSloOpRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		spaceId:        spaceId,
@@ -651,7 +706,7 @@ func (a *CompositeSloApiService) GetCompositeSlo(ctx context.Context, spaceId st
 // Execute executes the request
 //
 //	@return CompositeSloResponse
-func (a *CompositeSloApiService) GetCompositeSloExecute(r ApiGetCompositeSloRequest) (*CompositeSloResponse, *http.Response, error) {
+func (a *CompositeSloAPIService) GetCompositeSloOpExecute(r ApiGetCompositeSloOpRequest) (*CompositeSloResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -659,7 +714,7 @@ func (a *CompositeSloApiService) GetCompositeSloExecute(r ApiGetCompositeSloRequ
 		localVarReturnValue *CompositeSloResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompositeSloApiService.GetCompositeSlo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompositeSloAPIService.GetCompositeSloOp")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -730,7 +785,7 @@ func (a *CompositeSloApiService) GetCompositeSloExecute(r ApiGetCompositeSloRequ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Model4xxResponse
+			var v Model400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -741,7 +796,29 @@ func (a *CompositeSloApiService) GetCompositeSloExecute(r ApiGetCompositeSloRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Model4xxResponse
+			var v Model401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Model403Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Model404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -765,9 +842,9 @@ func (a *CompositeSloApiService) GetCompositeSloExecute(r ApiGetCompositeSloRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateCompositeSloRequest struct {
+type ApiUpdateCompositeSloOpRequest struct {
 	ctx                       context.Context
-	ApiService                CompositeSloApi
+	ApiService                CompositeSloAPI
 	kbnXsrf                   *string
 	spaceId                   string
 	compositeSloId            string
@@ -775,32 +852,32 @@ type ApiUpdateCompositeSloRequest struct {
 }
 
 // Cross-site request forgery protection
-func (r ApiUpdateCompositeSloRequest) KbnXsrf(kbnXsrf string) ApiUpdateCompositeSloRequest {
+func (r ApiUpdateCompositeSloOpRequest) KbnXsrf(kbnXsrf string) ApiUpdateCompositeSloOpRequest {
 	r.kbnXsrf = &kbnXsrf
 	return r
 }
 
-func (r ApiUpdateCompositeSloRequest) UpdateCompositeSloRequest(updateCompositeSloRequest UpdateCompositeSloRequest) ApiUpdateCompositeSloRequest {
+func (r ApiUpdateCompositeSloOpRequest) UpdateCompositeSloRequest(updateCompositeSloRequest UpdateCompositeSloRequest) ApiUpdateCompositeSloOpRequest {
 	r.updateCompositeSloRequest = &updateCompositeSloRequest
 	return r
 }
 
-func (r ApiUpdateCompositeSloRequest) Execute() (*BaseCompositeSloResponse, *http.Response, error) {
-	return r.ApiService.UpdateCompositeSloExecute(r)
+func (r ApiUpdateCompositeSloOpRequest) Execute() (*BaseCompositeSloResponse, *http.Response, error) {
+	return r.ApiService.UpdateCompositeSloOpExecute(r)
 }
 
 /*
-UpdateCompositeSlo Updates a composite SLO
+UpdateCompositeSloOp Updates a composite SLO
 
 You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param spaceId An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
 	@param compositeSloId An identifier for the composite slo.
-	@return ApiUpdateCompositeSloRequest
+	@return ApiUpdateCompositeSloOpRequest
 */
-func (a *CompositeSloApiService) UpdateCompositeSlo(ctx context.Context, spaceId string, compositeSloId string) ApiUpdateCompositeSloRequest {
-	return ApiUpdateCompositeSloRequest{
+func (a *CompositeSloAPIService) UpdateCompositeSloOp(ctx context.Context, spaceId string, compositeSloId string) ApiUpdateCompositeSloOpRequest {
+	return ApiUpdateCompositeSloOpRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		spaceId:        spaceId,
@@ -811,7 +888,7 @@ func (a *CompositeSloApiService) UpdateCompositeSlo(ctx context.Context, spaceId
 // Execute executes the request
 //
 //	@return BaseCompositeSloResponse
-func (a *CompositeSloApiService) UpdateCompositeSloExecute(r ApiUpdateCompositeSloRequest) (*BaseCompositeSloResponse, *http.Response, error) {
+func (a *CompositeSloAPIService) UpdateCompositeSloOpExecute(r ApiUpdateCompositeSloOpRequest) (*BaseCompositeSloResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -819,7 +896,7 @@ func (a *CompositeSloApiService) UpdateCompositeSloExecute(r ApiUpdateCompositeS
 		localVarReturnValue *BaseCompositeSloResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompositeSloApiService.UpdateCompositeSlo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompositeSloAPIService.UpdateCompositeSloOp")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -895,7 +972,7 @@ func (a *CompositeSloApiService) UpdateCompositeSloExecute(r ApiUpdateCompositeS
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Model4xxResponse
+			var v Model400Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -906,7 +983,29 @@ func (a *CompositeSloApiService) UpdateCompositeSloExecute(r ApiUpdateCompositeS
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Model4xxResponse
+			var v Model401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Model403Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Model404Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

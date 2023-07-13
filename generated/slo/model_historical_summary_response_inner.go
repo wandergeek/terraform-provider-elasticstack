@@ -19,10 +19,10 @@ var _ MappedNullable = &HistoricalSummaryResponseInner{}
 
 // HistoricalSummaryResponseInner struct for HistoricalSummaryResponseInner
 type HistoricalSummaryResponseInner struct {
-	Date        *string      `json:"date,omitempty"`
-	Status      *string      `json:"status,omitempty"`
-	SliValue    *float32     `json:"sliValue,omitempty"`
-	ErrorBudget *ErrorBudget `json:"errorBudget,omitempty"`
+	Date        *string        `json:"date,omitempty"`
+	Status      *SummaryStatus `json:"status,omitempty"`
+	SliValue    *float32       `json:"sliValue,omitempty"`
+	ErrorBudget *ErrorBudget   `json:"errorBudget,omitempty"`
 }
 
 // NewHistoricalSummaryResponseInner instantiates a new HistoricalSummaryResponseInner object
@@ -75,9 +75,9 @@ func (o *HistoricalSummaryResponseInner) SetDate(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *HistoricalSummaryResponseInner) GetStatus() string {
+func (o *HistoricalSummaryResponseInner) GetStatus() SummaryStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret string
+		var ret SummaryStatus
 		return ret
 	}
 	return *o.Status
@@ -85,7 +85,7 @@ func (o *HistoricalSummaryResponseInner) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HistoricalSummaryResponseInner) GetStatusOk() (*string, bool) {
+func (o *HistoricalSummaryResponseInner) GetStatusOk() (*SummaryStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *HistoricalSummaryResponseInner) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *HistoricalSummaryResponseInner) SetStatus(v string) {
+// SetStatus gets a reference to the given SummaryStatus and assigns it to the Status field.
+func (o *HistoricalSummaryResponseInner) SetStatus(v SummaryStatus) {
 	o.Status = &v
 }
 

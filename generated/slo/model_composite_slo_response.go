@@ -22,13 +22,14 @@ type CompositeSloResponse struct {
 	// The identifier of the composite SLO.
 	Id *string `json:"id,omitempty"`
 	// The name of the composite SLO.
-	Name            *string                      `json:"name,omitempty"`
-	TimeWindow      *TimeWindowRolling           `json:"timeWindow,omitempty"`
-	BudgetingMethod *BudgetingMethod             `json:"budgetingMethod,omitempty"`
-	CompositeMethod *CompositeMethod             `json:"compositeMethod,omitempty"`
-	Objective       *Objective                   `json:"objective,omitempty"`
-	Sources         *CompositeSloResponseSources `json:"sources,omitempty"`
-	Summary         *Summary                     `json:"summary,omitempty"`
+	Name            *string          `json:"name,omitempty"`
+	TimeWindow      *TimeWindow      `json:"timeWindow,omitempty"`
+	BudgetingMethod *BudgetingMethod `json:"budgetingMethod,omitempty"`
+	CompositeMethod *CompositeMethod `json:"compositeMethod,omitempty"`
+	Objective       *Objective       `json:"objective,omitempty"`
+	// An array of source SLO to use for the weighted average composite.
+	Sources []WeightedCompositeSourcesInner `json:"sources,omitempty"`
+	Summary *Summary                        `json:"summary,omitempty"`
 	// The creation date
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The last update date
@@ -117,9 +118,9 @@ func (o *CompositeSloResponse) SetName(v string) {
 }
 
 // GetTimeWindow returns the TimeWindow field value if set, zero value otherwise.
-func (o *CompositeSloResponse) GetTimeWindow() TimeWindowRolling {
+func (o *CompositeSloResponse) GetTimeWindow() TimeWindow {
 	if o == nil || IsNil(o.TimeWindow) {
-		var ret TimeWindowRolling
+		var ret TimeWindow
 		return ret
 	}
 	return *o.TimeWindow
@@ -127,7 +128,7 @@ func (o *CompositeSloResponse) GetTimeWindow() TimeWindowRolling {
 
 // GetTimeWindowOk returns a tuple with the TimeWindow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompositeSloResponse) GetTimeWindowOk() (*TimeWindowRolling, bool) {
+func (o *CompositeSloResponse) GetTimeWindowOk() (*TimeWindow, bool) {
 	if o == nil || IsNil(o.TimeWindow) {
 		return nil, false
 	}
@@ -143,8 +144,8 @@ func (o *CompositeSloResponse) HasTimeWindow() bool {
 	return false
 }
 
-// SetTimeWindow gets a reference to the given TimeWindowRolling and assigns it to the TimeWindow field.
-func (o *CompositeSloResponse) SetTimeWindow(v TimeWindowRolling) {
+// SetTimeWindow gets a reference to the given TimeWindow and assigns it to the TimeWindow field.
+func (o *CompositeSloResponse) SetTimeWindow(v TimeWindow) {
 	o.TimeWindow = &v
 }
 
@@ -245,17 +246,17 @@ func (o *CompositeSloResponse) SetObjective(v Objective) {
 }
 
 // GetSources returns the Sources field value if set, zero value otherwise.
-func (o *CompositeSloResponse) GetSources() CompositeSloResponseSources {
+func (o *CompositeSloResponse) GetSources() []WeightedCompositeSourcesInner {
 	if o == nil || IsNil(o.Sources) {
-		var ret CompositeSloResponseSources
+		var ret []WeightedCompositeSourcesInner
 		return ret
 	}
-	return *o.Sources
+	return o.Sources
 }
 
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompositeSloResponse) GetSourcesOk() (*CompositeSloResponseSources, bool) {
+func (o *CompositeSloResponse) GetSourcesOk() ([]WeightedCompositeSourcesInner, bool) {
 	if o == nil || IsNil(o.Sources) {
 		return nil, false
 	}
@@ -271,9 +272,9 @@ func (o *CompositeSloResponse) HasSources() bool {
 	return false
 }
 
-// SetSources gets a reference to the given CompositeSloResponseSources and assigns it to the Sources field.
-func (o *CompositeSloResponse) SetSources(v CompositeSloResponseSources) {
-	o.Sources = &v
+// SetSources gets a reference to the given []WeightedCompositeSourcesInner and assigns it to the Sources field.
+func (o *CompositeSloResponse) SetSources(v []WeightedCompositeSourcesInner) {
+	o.Sources = v
 }
 
 // GetSummary returns the Summary field value if set, zero value otherwise.

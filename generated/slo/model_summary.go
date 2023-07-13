@@ -19,9 +19,9 @@ var _ MappedNullable = &Summary{}
 
 // Summary The SLO computed data
 type Summary struct {
-	Status      *string      `json:"status,omitempty"`
-	SliValue    *float32     `json:"sliValue,omitempty"`
-	ErrorBudget *ErrorBudget `json:"errorBudget,omitempty"`
+	Status      *SummaryStatus `json:"status,omitempty"`
+	SliValue    *float32       `json:"sliValue,omitempty"`
+	ErrorBudget *ErrorBudget   `json:"errorBudget,omitempty"`
 }
 
 // NewSummary instantiates a new Summary object
@@ -42,9 +42,9 @@ func NewSummaryWithDefaults() *Summary {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *Summary) GetStatus() string {
+func (o *Summary) GetStatus() SummaryStatus {
 	if o == nil || IsNil(o.Status) {
-		var ret string
+		var ret SummaryStatus
 		return ret
 	}
 	return *o.Status
@@ -52,7 +52,7 @@ func (o *Summary) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Summary) GetStatusOk() (*string, bool) {
+func (o *Summary) GetStatusOk() (*SummaryStatus, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *Summary) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *Summary) SetStatus(v string) {
+// SetStatus gets a reference to the given SummaryStatus and assigns it to the Status field.
+func (o *Summary) SetStatus(v SummaryStatus) {
 	o.Status = &v
 }
 

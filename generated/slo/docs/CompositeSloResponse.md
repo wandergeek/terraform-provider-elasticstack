@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The identifier of the composite SLO. | [optional] 
 **Name** | Pointer to **string** | The name of the composite SLO. | [optional] 
-**TimeWindow** | Pointer to [**TimeWindowRolling**](TimeWindowRolling.md) |  | [optional] 
+**TimeWindow** | Pointer to [**TimeWindow**](TimeWindow.md) |  | [optional] 
 **BudgetingMethod** | Pointer to [**BudgetingMethod**](BudgetingMethod.md) |  | [optional] 
 **CompositeMethod** | Pointer to [**CompositeMethod**](CompositeMethod.md) |  | [optional] 
 **Objective** | Pointer to [**Objective**](Objective.md) |  | [optional] 
-**Sources** | Pointer to [**CompositeSloResponseSources**](CompositeSloResponseSources.md) |  | [optional] 
+**Sources** | Pointer to [**[]WeightedCompositeSourcesInner**](WeightedCompositeSourcesInner.md) | An array of source SLO to use for the weighted average composite. | [optional] 
 **Summary** | Pointer to [**Summary**](Summary.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | The creation date | [optional] 
 **UpdatedAt** | Pointer to **string** | The last update date | [optional] 
@@ -86,20 +86,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetTimeWindow
 
-`func (o *CompositeSloResponse) GetTimeWindow() TimeWindowRolling`
+`func (o *CompositeSloResponse) GetTimeWindow() TimeWindow`
 
 GetTimeWindow returns the TimeWindow field if non-nil, zero value otherwise.
 
 ### GetTimeWindowOk
 
-`func (o *CompositeSloResponse) GetTimeWindowOk() (*TimeWindowRolling, bool)`
+`func (o *CompositeSloResponse) GetTimeWindowOk() (*TimeWindow, bool)`
 
 GetTimeWindowOk returns a tuple with the TimeWindow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeWindow
 
-`func (o *CompositeSloResponse) SetTimeWindow(v TimeWindowRolling)`
+`func (o *CompositeSloResponse) SetTimeWindow(v TimeWindow)`
 
 SetTimeWindow sets TimeWindow field to given value.
 
@@ -186,20 +186,20 @@ HasObjective returns a boolean if a field has been set.
 
 ### GetSources
 
-`func (o *CompositeSloResponse) GetSources() CompositeSloResponseSources`
+`func (o *CompositeSloResponse) GetSources() []WeightedCompositeSourcesInner`
 
 GetSources returns the Sources field if non-nil, zero value otherwise.
 
 ### GetSourcesOk
 
-`func (o *CompositeSloResponse) GetSourcesOk() (*CompositeSloResponseSources, bool)`
+`func (o *CompositeSloResponse) GetSourcesOk() (*[]WeightedCompositeSourcesInner, bool)`
 
 GetSourcesOk returns a tuple with the Sources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSources
 
-`func (o *CompositeSloResponse) SetSources(v CompositeSloResponseSources)`
+`func (o *CompositeSloResponse) SetSources(v []WeightedCompositeSourcesInner)`
 
 SetSources sets Sources field to given value.
 

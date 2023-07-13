@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Date** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**SummaryStatus**](SummaryStatus.md) |  | [optional] 
 **SliValue** | Pointer to **float32** |  | [optional] 
 **ErrorBudget** | Pointer to [**ErrorBudget**](ErrorBudget.md) |  | [optional] 
 
@@ -55,20 +55,20 @@ HasDate returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *HistoricalSummaryResponseInner) GetStatus() string`
+`func (o *HistoricalSummaryResponseInner) GetStatus() SummaryStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *HistoricalSummaryResponseInner) GetStatusOk() (*string, bool)`
+`func (o *HistoricalSummaryResponseInner) GetStatusOk() (*SummaryStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *HistoricalSummaryResponseInner) SetStatus(v string)`
+`func (o *HistoricalSummaryResponseInner) SetStatus(v SummaryStatus)`
 
 SetStatus sets Status field to given value.
 

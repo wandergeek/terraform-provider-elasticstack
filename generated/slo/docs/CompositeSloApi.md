@@ -1,20 +1,20 @@
-# \CompositeSloApi
+# \CompositeSloAPI
 
 All URIs are relative to *http://localhost:5601*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCompositeSlo**](CompositeSloApi.md#CreateCompositeSlo) | **Post** /s/{spaceId}/api/observability/composite_slos | Creates a Composite SLO
-[**DeleteCompositeSlo**](CompositeSloApi.md#DeleteCompositeSlo) | **Delete** /s/{spaceId}/api/observability/composite_slos/{compositeSloId} | Deletes a composite SLO
-[**FindCompositeSlo**](CompositeSloApi.md#FindCompositeSlo) | **Get** /s/{spaceId}/api/observability/composite_slos | Retrieves a paginated list of composite SLOs with summary
-[**GetCompositeSlo**](CompositeSloApi.md#GetCompositeSlo) | **Get** /s/{spaceId}/api/observability/composite_slos/{compositeSloId} | Retrieves a composite SLO
-[**UpdateCompositeSlo**](CompositeSloApi.md#UpdateCompositeSlo) | **Put** /s/{spaceId}/api/observability/composite_slos/{compositeSloId} | Updates a composite SLO
+[**CreateCompositeSloOp**](CompositeSloAPI.md#CreateCompositeSloOp) | **Post** /s/{spaceId}/api/observability/composite_slos | Creates a Composite SLO
+[**DeleteCompositeSloOp**](CompositeSloAPI.md#DeleteCompositeSloOp) | **Delete** /s/{spaceId}/api/observability/composite_slos/{compositeSloId} | Deletes a composite SLO
+[**FindCompositeSloOp**](CompositeSloAPI.md#FindCompositeSloOp) | **Get** /s/{spaceId}/api/observability/composite_slos | Retrieves a paginated list of composite SLOs with summary
+[**GetCompositeSloOp**](CompositeSloAPI.md#GetCompositeSloOp) | **Get** /s/{spaceId}/api/observability/composite_slos/{compositeSloId} | Retrieves a composite SLO
+[**UpdateCompositeSloOp**](CompositeSloAPI.md#UpdateCompositeSloOp) | **Put** /s/{spaceId}/api/observability/composite_slos/{compositeSloId} | Updates a composite SLO
 
 
 
-## CreateCompositeSlo
+## CreateCompositeSloOp
 
-> CreateCompositeSloResponse CreateCompositeSlo(ctx, spaceId).KbnXsrf(kbnXsrf).CreateCompositeSloRequest(createCompositeSloRequest).Execute()
+> CreateCompositeSloResponse CreateCompositeSloOp(ctx, spaceId).KbnXsrf(kbnXsrf).CreateCompositeSloRequest(createCompositeSloRequest).Execute()
 
 Creates a Composite SLO
 
@@ -35,17 +35,17 @@ import (
 func main() {
     kbnXsrf := "kbnXsrf_example" // string | Cross-site request forgery protection
     spaceId := "default" // string | An identifier for the space. If `/s/` and the identifier are omitted from the path, the default space is used.
-    createCompositeSloRequest := *openapiclient.NewCreateCompositeSloRequest("Name_example", *openapiclient.NewTimeWindowRolling("28d", true), openapiclient.budgeting_method("occurrences"), openapiclient.composite_method("weightedAverage"), *openapiclient.NewObjective(float32(0.99)), openapiclient.composite_slo_response_sources{ArrayOfWeightedCompositeSourcesInner: new([]WeightedCompositeSourcesInner)}) // CreateCompositeSloRequest | 
+    createCompositeSloRequest := *openapiclient.NewCreateCompositeSloRequest("Name_example", *openapiclient.NewTimeWindow("28d", "rolling"), openapiclient.budgeting_method("occurrences"), openapiclient.composite_method("weightedAverage"), *openapiclient.NewObjective(float32(0.99)), []openapiclient.WeightedCompositeSourcesInner{*openapiclient.NewWeightedCompositeSourcesInner("8853df00-ae2e-11ed-90af-09bb6422b258", float32(2), float32(3))}) // CreateCompositeSloRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CompositeSloApi.CreateCompositeSlo(context.Background(), spaceId).KbnXsrf(kbnXsrf).CreateCompositeSloRequest(createCompositeSloRequest).Execute()
+    resp, r, err := apiClient.CompositeSloAPI.CreateCompositeSloOp(context.Background(), spaceId).KbnXsrf(kbnXsrf).CreateCompositeSloRequest(createCompositeSloRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CompositeSloApi.CreateCompositeSlo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CompositeSloAPI.CreateCompositeSloOp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCompositeSlo`: CreateCompositeSloResponse
-    fmt.Fprintf(os.Stdout, "Response from `CompositeSloApi.CreateCompositeSlo`: %v\n", resp)
+    // response from `CreateCompositeSloOp`: CreateCompositeSloResponse
+    fmt.Fprintf(os.Stdout, "Response from `CompositeSloAPI.CreateCompositeSloOp`: %v\n", resp)
 }
 ```
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateCompositeSloRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateCompositeSloOpRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteCompositeSlo
+## DeleteCompositeSloOp
 
-> DeleteCompositeSlo(ctx, spaceId, compositeSloId).KbnXsrf(kbnXsrf).Execute()
+> DeleteCompositeSloOp(ctx, spaceId, compositeSloId).KbnXsrf(kbnXsrf).Execute()
 
 Deletes a composite SLO
 
@@ -113,9 +113,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CompositeSloApi.DeleteCompositeSlo(context.Background(), spaceId, compositeSloId).KbnXsrf(kbnXsrf).Execute()
+    r, err := apiClient.CompositeSloAPI.DeleteCompositeSloOp(context.Background(), spaceId, compositeSloId).KbnXsrf(kbnXsrf).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CompositeSloApi.DeleteCompositeSlo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CompositeSloAPI.DeleteCompositeSloOp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteCompositeSloRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteCompositeSloOpRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -159,9 +159,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## FindCompositeSlo
+## FindCompositeSloOp
 
-> FindCompositeSloResponse FindCompositeSlo(ctx, spaceId).KbnXsrf(kbnXsrf).Page(page).PerPage(perPage).SortBy(sortBy).SortDirection(sortDirection).Execute()
+> FindCompositeSloResponse FindCompositeSloOp(ctx, spaceId).KbnXsrf(kbnXsrf).Page(page).PerPage(perPage).SortBy(sortBy).SortDirection(sortDirection).Execute()
 
 Retrieves a paginated list of composite SLOs with summary
 
@@ -189,13 +189,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CompositeSloApi.FindCompositeSlo(context.Background(), spaceId).KbnXsrf(kbnXsrf).Page(page).PerPage(perPage).SortBy(sortBy).SortDirection(sortDirection).Execute()
+    resp, r, err := apiClient.CompositeSloAPI.FindCompositeSloOp(context.Background(), spaceId).KbnXsrf(kbnXsrf).Page(page).PerPage(perPage).SortBy(sortBy).SortDirection(sortDirection).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CompositeSloApi.FindCompositeSlo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CompositeSloAPI.FindCompositeSloOp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `FindCompositeSlo`: FindCompositeSloResponse
-    fmt.Fprintf(os.Stdout, "Response from `CompositeSloApi.FindCompositeSlo`: %v\n", resp)
+    // response from `FindCompositeSloOp`: FindCompositeSloResponse
+    fmt.Fprintf(os.Stdout, "Response from `CompositeSloAPI.FindCompositeSloOp`: %v\n", resp)
 }
 ```
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiFindCompositeSloRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiFindCompositeSloOpRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -239,9 +239,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCompositeSlo
+## GetCompositeSloOp
 
-> CompositeSloResponse GetCompositeSlo(ctx, spaceId, compositeSloId).KbnXsrf(kbnXsrf).Execute()
+> CompositeSloResponse GetCompositeSloOp(ctx, spaceId, compositeSloId).KbnXsrf(kbnXsrf).Execute()
 
 Retrieves a composite SLO
 
@@ -266,13 +266,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CompositeSloApi.GetCompositeSlo(context.Background(), spaceId, compositeSloId).KbnXsrf(kbnXsrf).Execute()
+    resp, r, err := apiClient.CompositeSloAPI.GetCompositeSloOp(context.Background(), spaceId, compositeSloId).KbnXsrf(kbnXsrf).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CompositeSloApi.GetCompositeSlo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CompositeSloAPI.GetCompositeSloOp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCompositeSlo`: CompositeSloResponse
-    fmt.Fprintf(os.Stdout, "Response from `CompositeSloApi.GetCompositeSlo`: %v\n", resp)
+    // response from `GetCompositeSloOp`: CompositeSloResponse
+    fmt.Fprintf(os.Stdout, "Response from `CompositeSloAPI.GetCompositeSloOp`: %v\n", resp)
 }
 ```
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetCompositeSloRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCompositeSloOpRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -314,9 +314,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateCompositeSlo
+## UpdateCompositeSloOp
 
-> BaseCompositeSloResponse UpdateCompositeSlo(ctx, spaceId, compositeSloId).KbnXsrf(kbnXsrf).UpdateCompositeSloRequest(updateCompositeSloRequest).Execute()
+> BaseCompositeSloResponse UpdateCompositeSloOp(ctx, spaceId, compositeSloId).KbnXsrf(kbnXsrf).UpdateCompositeSloRequest(updateCompositeSloRequest).Execute()
 
 Updates a composite SLO
 
@@ -342,13 +342,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CompositeSloApi.UpdateCompositeSlo(context.Background(), spaceId, compositeSloId).KbnXsrf(kbnXsrf).UpdateCompositeSloRequest(updateCompositeSloRequest).Execute()
+    resp, r, err := apiClient.CompositeSloAPI.UpdateCompositeSloOp(context.Background(), spaceId, compositeSloId).KbnXsrf(kbnXsrf).UpdateCompositeSloRequest(updateCompositeSloRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CompositeSloApi.UpdateCompositeSlo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CompositeSloAPI.UpdateCompositeSloOp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateCompositeSlo`: BaseCompositeSloResponse
-    fmt.Fprintf(os.Stdout, "Response from `CompositeSloApi.UpdateCompositeSlo`: %v\n", resp)
+    // response from `UpdateCompositeSloOp`: BaseCompositeSloResponse
+    fmt.Fprintf(os.Stdout, "Response from `CompositeSloAPI.UpdateCompositeSloOp`: %v\n", resp)
 }
 ```
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateCompositeSloRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateCompositeSloOpRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

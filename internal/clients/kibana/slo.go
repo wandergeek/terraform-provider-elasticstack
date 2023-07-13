@@ -2,8 +2,10 @@ package kibana
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/elastic/terraform-provider-elasticstack/generated/slo"
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients"
 	"github.com/elastic/terraform-provider-elasticstack/internal/models"
@@ -18,7 +20,7 @@ func GetSlo(ctx context.Context, apiClient *clients.ApiClient, id, spaceID strin
 	}
 
 	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
-	req := client.GetSlo(ctxWithAuth, "default", id).KbnXsrf("true") //fuck kibana spaces
+	req := client.GetSloOp(ctxWithAuth, "default", id).KbnXsrf("true") //fuck kibana spaces
 	sloRes, res, err := req.Execute()
 	if err != nil {
 		return nil, diag.FromErr(err)
@@ -38,7 +40,7 @@ func DeleteSlo(ctx context.Context, apiClient *clients.ApiClient, sloId string, 
 	}
 
 	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
-	req := client.DeleteSlo(ctxWithAuth, sloId, spaceId).KbnXsrf("true")
+	req := client.DeleteSloOp(ctxWithAuth, sloId, spaceId).KbnXsrf("true")
 	res, err := req.Execute()
 	if err != nil && res == nil {
 		return diag.FromErr(err)
@@ -55,17 +57,21 @@ func UpdateSlo(ctx context.Context, apiClient *clients.ApiClient, s models.Slo) 
 	}
 
 	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
+	indicator, err := responseIndicatorToCreateSloRequestIndicator(s.Indicator)
+	if err != nil {
+		return nil, diag.FromErr(err)
+	}
 	reqModel := slo.UpdateSloRequest{
 		Name:            &s.Name,
 		Description:     &s.Description,
-		Indicator:       (*slo.SloResponseIndicator)(&s.Indicator),
+		Indicator:       &indicator,
 		TimeWindow:      &s.TimeWindow,
 		BudgetingMethod: (*slo.BudgetingMethod)(&s.BudgetingMethod),
 		Objective:       &s.Objective,
 		Settings:        s.Settings,
 	}
 
-	req := client.UpdateSlo(ctxWithAuth, s.ID, s.SpaceID).KbnXsrf("true").UpdateSloRequest(reqModel)
+	req := client.UpdateSloOp(ctxWithAuth, s.SpaceID, s.ID).KbnXsrf("true").UpdateSloRequest(reqModel)
 	slo, res, err := req.Execute()
 	if err != nil && res == nil {
 		return nil, diag.FromErr(err)
@@ -86,16 +92,20 @@ func CreateSlo(ctx context.Context, apiClient *clients.ApiClient, s models.Slo) 
 	}
 
 	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
-
+	indicator, err := responseIndicatorToCreateSloRequestIndicator(s.Indicator)
+	if err != nil {
+		return nil, diag.FromErr(err)
+	}
 	reqModel := slo.CreateSloRequest{
 		Name:            s.Name,
 		Description:     s.Description,
-		Indicator:       slo.SloResponseIndicator(s.Indicator),
+		Indicator:       indicator,
 		TimeWindow:      s.TimeWindow,
 		BudgetingMethod: slo.BudgetingMethod(s.BudgetingMethod),
 		Objective:       s.Objective,
+		Settings:        s.Settings,
 	}
-	req := client.CreateSlo(ctxWithAuth, s.SpaceID).KbnXsrf("true").CreateSloRequest(reqModel)
+	req := client.CreateSloOp(ctxWithAuth, s.SpaceID).KbnXsrf("true").CreateSloRequest(reqModel)
 	sloRes, res, err := req.Execute()
 	if err != nil && res == nil {
 		return nil, diag.FromErr(err)
@@ -109,6 +119,37 @@ func CreateSlo(ctx context.Context, apiClient *clients.ApiClient, s models.Slo) 
 	s.ID = sloRes.Id
 
 	return &s, diag.Diagnostics{}
+}
+
+func responseIndicatorToCreateSloRequestIndicator(s slo.SloResponseIndicator) (slo.CreateSloRequestIndicator, error) {
+	var ret slo.CreateSloRequestIndicator
+
+	ind := s.GetActualInstance()
+	switch ind.(type) {
+	case *slo.IndicatorPropertiesApmAvailability:
+		i, _ := ind.(*slo.IndicatorPropertiesApmAvailability)
+		ret.IndicatorPropertiesApmAvailability = i
+
+	case *slo.IndicatorPropertiesApmLatency:
+		i, _ := ind.(*slo.IndicatorPropertiesApmLatency)
+		ret.IndicatorPropertiesApmLatency = i
+
+	case *slo.IndicatorPropertiesCustomKql:
+		i, _ := ind.(*slo.IndicatorPropertiesCustomKql)
+		ret.IndicatorPropertiesCustomKql = i
+
+	case *slo.IndicatorPropertiesCustomMetric:
+		i, _ := ind.(*slo.IndicatorPropertiesCustomMetric)
+		ret.IndicatorPropertiesCustomMetric = i
+
+	default:
+		return ret, fmt.Errorf("unknown indicator type: %T", ind)
+	}
+
+	fmt.Println("returning indicator:")
+	spew.Dump(ret)
+
+	return ret, nil
 }
 
 func sloResponseToModel(spaceID string, res *slo.SloResponse) *models.Slo {

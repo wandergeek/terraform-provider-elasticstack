@@ -22,12 +22,13 @@ type BaseCompositeSloResponse struct {
 	// The identifier of the composite SLO.
 	Id *string `json:"id,omitempty"`
 	// The name of the composite SLO.
-	Name            *string                      `json:"name,omitempty"`
-	TimeWindow      *TimeWindowRolling           `json:"timeWindow,omitempty"`
-	BudgetingMethod *BudgetingMethod             `json:"budgetingMethod,omitempty"`
-	CompositeMethod *CompositeMethod             `json:"compositeMethod,omitempty"`
-	Objective       *Objective                   `json:"objective,omitempty"`
-	Sources         *CompositeSloResponseSources `json:"sources,omitempty"`
+	Name            *string          `json:"name,omitempty"`
+	TimeWindow      *TimeWindow      `json:"timeWindow,omitempty"`
+	BudgetingMethod *BudgetingMethod `json:"budgetingMethod,omitempty"`
+	CompositeMethod *CompositeMethod `json:"compositeMethod,omitempty"`
+	Objective       *Objective       `json:"objective,omitempty"`
+	// An array of source SLO to use for the weighted average composite.
+	Sources []WeightedCompositeSourcesInner `json:"sources,omitempty"`
 	// The creation date
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The last update date
@@ -116,9 +117,9 @@ func (o *BaseCompositeSloResponse) SetName(v string) {
 }
 
 // GetTimeWindow returns the TimeWindow field value if set, zero value otherwise.
-func (o *BaseCompositeSloResponse) GetTimeWindow() TimeWindowRolling {
+func (o *BaseCompositeSloResponse) GetTimeWindow() TimeWindow {
 	if o == nil || IsNil(o.TimeWindow) {
-		var ret TimeWindowRolling
+		var ret TimeWindow
 		return ret
 	}
 	return *o.TimeWindow
@@ -126,7 +127,7 @@ func (o *BaseCompositeSloResponse) GetTimeWindow() TimeWindowRolling {
 
 // GetTimeWindowOk returns a tuple with the TimeWindow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseCompositeSloResponse) GetTimeWindowOk() (*TimeWindowRolling, bool) {
+func (o *BaseCompositeSloResponse) GetTimeWindowOk() (*TimeWindow, bool) {
 	if o == nil || IsNil(o.TimeWindow) {
 		return nil, false
 	}
@@ -142,8 +143,8 @@ func (o *BaseCompositeSloResponse) HasTimeWindow() bool {
 	return false
 }
 
-// SetTimeWindow gets a reference to the given TimeWindowRolling and assigns it to the TimeWindow field.
-func (o *BaseCompositeSloResponse) SetTimeWindow(v TimeWindowRolling) {
+// SetTimeWindow gets a reference to the given TimeWindow and assigns it to the TimeWindow field.
+func (o *BaseCompositeSloResponse) SetTimeWindow(v TimeWindow) {
 	o.TimeWindow = &v
 }
 
@@ -244,17 +245,17 @@ func (o *BaseCompositeSloResponse) SetObjective(v Objective) {
 }
 
 // GetSources returns the Sources field value if set, zero value otherwise.
-func (o *BaseCompositeSloResponse) GetSources() CompositeSloResponseSources {
+func (o *BaseCompositeSloResponse) GetSources() []WeightedCompositeSourcesInner {
 	if o == nil || IsNil(o.Sources) {
-		var ret CompositeSloResponseSources
+		var ret []WeightedCompositeSourcesInner
 		return ret
 	}
-	return *o.Sources
+	return o.Sources
 }
 
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseCompositeSloResponse) GetSourcesOk() (*CompositeSloResponseSources, bool) {
+func (o *BaseCompositeSloResponse) GetSourcesOk() ([]WeightedCompositeSourcesInner, bool) {
 	if o == nil || IsNil(o.Sources) {
 		return nil, false
 	}
@@ -270,9 +271,9 @@ func (o *BaseCompositeSloResponse) HasSources() bool {
 	return false
 }
 
-// SetSources gets a reference to the given CompositeSloResponseSources and assigns it to the Sources field.
-func (o *BaseCompositeSloResponse) SetSources(v CompositeSloResponseSources) {
-	o.Sources = &v
+// SetSources gets a reference to the given []WeightedCompositeSourcesInner and assigns it to the Sources field.
+func (o *BaseCompositeSloResponse) SetSources(v []WeightedCompositeSourcesInner) {
+	o.Sources = v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.

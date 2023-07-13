@@ -24,12 +24,12 @@ type SloResponse struct {
 	// The name of the SLO.
 	Name *string `json:"name,omitempty"`
 	// The description of the SLO.
-	Description     *string                `json:"description,omitempty"`
-	Indicator       *SloResponseIndicator  `json:"indicator,omitempty"`
-	TimeWindow      *SloResponseTimeWindow `json:"timeWindow,omitempty"`
-	BudgetingMethod *BudgetingMethod       `json:"budgetingMethod,omitempty"`
-	Objective       *Objective             `json:"objective,omitempty"`
-	Settings        *Settings              `json:"settings,omitempty"`
+	Description     *string               `json:"description,omitempty"`
+	Indicator       *SloResponseIndicator `json:"indicator,omitempty"`
+	TimeWindow      *TimeWindow           `json:"timeWindow,omitempty"`
+	BudgetingMethod *BudgetingMethod      `json:"budgetingMethod,omitempty"`
+	Objective       *Objective            `json:"objective,omitempty"`
+	Settings        *Settings             `json:"settings,omitempty"`
 	// The SLO revision
 	Revision *float32 `json:"revision,omitempty"`
 	Summary  *Summary `json:"summary,omitempty"`
@@ -187,9 +187,9 @@ func (o *SloResponse) SetIndicator(v SloResponseIndicator) {
 }
 
 // GetTimeWindow returns the TimeWindow field value if set, zero value otherwise.
-func (o *SloResponse) GetTimeWindow() SloResponseTimeWindow {
+func (o *SloResponse) GetTimeWindow() TimeWindow {
 	if o == nil || IsNil(o.TimeWindow) {
-		var ret SloResponseTimeWindow
+		var ret TimeWindow
 		return ret
 	}
 	return *o.TimeWindow
@@ -197,7 +197,7 @@ func (o *SloResponse) GetTimeWindow() SloResponseTimeWindow {
 
 // GetTimeWindowOk returns a tuple with the TimeWindow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SloResponse) GetTimeWindowOk() (*SloResponseTimeWindow, bool) {
+func (o *SloResponse) GetTimeWindowOk() (*TimeWindow, bool) {
 	if o == nil || IsNil(o.TimeWindow) {
 		return nil, false
 	}
@@ -213,8 +213,8 @@ func (o *SloResponse) HasTimeWindow() bool {
 	return false
 }
 
-// SetTimeWindow gets a reference to the given SloResponseTimeWindow and assigns it to the TimeWindow field.
-func (o *SloResponse) SetTimeWindow(v SloResponseTimeWindow) {
+// SetTimeWindow gets a reference to the given TimeWindow and assigns it to the TimeWindow field.
+func (o *SloResponse) SetTimeWindow(v TimeWindow) {
 	o.TimeWindow = &v
 }
 

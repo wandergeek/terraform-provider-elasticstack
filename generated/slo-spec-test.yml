@@ -8,19 +8,22 @@ info:
   license:
     name: Elastic License 2.0
     url: https://www.elastic.co/licensing/elastic-license
+servers:
+  - url: http://localhost:5601
+    description: local
+security:
+  - basicAuth: []
+  - apiKeyAuth: []
 tags:
   - name: slo
     description: SLO APIs enable you to define, manage and track service-level objectives
   - name: composite slo
     description: Composite SLO APIs enable you to define, manage and track a group of SLOs.
-servers:
-  - url: http://localhost:5601
-    description: local
 paths:
   /s/{spaceId}/api/observability/composite_slos:
     post:
       summary: Creates a Composite SLO
-      operationId: createCompositeSlo
+      operationId: createCompositeSloOp
       description: |
         You must have `all` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -46,22 +49,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
         '409':
           description: Conflict - The Composite SLO id already exists
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/409_response'
     get:
       summary: Retrieves a paginated list of composite SLOs with summary
-      operationId: findCompositeSlo
+      operationId: findCompositeSloOp
       description: |
         You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -114,17 +123,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404_response'
   /s/{spaceId}/api/observability/composite_slos/{compositeSloId}:
     get:
       summary: Retrieves a composite SLO
-      operationId: getCompositeSlo
+      operationId: getCompositeSloOp
       description: |
         You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -145,16 +166,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404_response'
     put:
       summary: Updates a composite SLO
-      operationId: updateCompositeSlo
+      operationId: updateCompositeSloOp
       description: |
         You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -181,16 +214,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404_response'
     delete:
       summary: Deletes a composite SLO
-      operationId: deleteCompositeSlo
+      operationId: deleteCompositeSloOp
       description: |
         You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -207,17 +252,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404_response'
   /s/{spaceId}/api/observability/slos:
     post:
       summary: Creates an SLO.
-      operationId: createSlo
+      operationId: createSloOp
       description: |
         You must have `all` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -243,24 +300,30 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
         '409':
           description: Conflict - The SLO id already exists
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/409_response'
       servers:
         - url: https://localhost:5601
     get:
       summary: Retrieves a paginated list of SLOs
-      operationId: findSlos
+      operationId: findSlosOp
       description: |
         You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -329,17 +392,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404_response'
   /s/{spaceId}/api/observability/slos/{sloId}:
     get:
       summary: Retrieves a SLO
-      operationId: getSlo
+      operationId: getSloOp
       description: |
         You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -360,16 +435,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404_response'
     put:
       summary: Updates an SLO
-      operationId: updateSlo
+      operationId: updateSloOp
       description: |
         You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -396,16 +483,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404_response'
     delete:
       summary: Deletes an SLO
-      operationId: deleteSlo
+      operationId: deleteSloOp
       description: |
         You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -422,17 +521,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404_response'
   /s/{spaceId}/api/observability/slos/{sloId}/enable:
     post:
       summary: Enables an SLO
-      operationId: enableSlo
+      operationId: enableSloOp
       description: |
         You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -449,17 +560,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404_response'
   /s/{spaceId}/api/observability/slos/{sloId}/disable:
     post:
       summary: Disables an SLO
-      operationId: disableSlo
+      operationId: disableSloOp
       description: |
         You must have the `write` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -476,17 +599,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404_response'
   /s/{spaceId}/internal/observability/slos/_historical_summary:
     post:
       summary: Retrieves the historical summary for a list of SLOs
-      operationId: historicalSummary
+      operationId: historicalSummaryOp
       description: |
         You must have the `read` privileges for the **SLOs** feature in the **Observability** section of the Kibana feature privileges.
       tags:
@@ -512,13 +647,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/400_response'
         '401':
           description: Unauthorized response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/4xx_response'
+                $ref: '#/components/schemas/401_response'
+        '403':
+          description: Unauthorized response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403_response'
 components:
   securitySchemes:
     basicAuth:
@@ -561,22 +702,22 @@ components:
         type: string
         example: 9c235211-6834-11ea-a78c-6feb38a34414
   schemas:
-    time_window_rolling:
-      title: Rolling
+    time_window:
+      title: Time Window
       required:
         - duration
-        - isRolling
-      description: Defines properties for rolling time window
+        - type
+      description: Defines properties for time window
       type: object
       properties:
         duration:
           description: the duration formatted as {duration}{unit}
           type: string
           example: 28d
-        isRolling:
-          description: Indicates a rolling time window
-          type: boolean
-          example: true
+        type:
+          description: Type of time window
+          type: string
+          example: rolling
     budgeting_method:
       title: Budgeting method
       type: string
@@ -660,13 +801,7 @@ components:
       description: The SLO computed data
       properties:
         status:
-          type: string
-          enum:
-            - NO_DATA
-            - HEALTHY
-            - DEGRADING
-            - VIOLATED
-          example: HEALTHY
+          $ref: '#/components/schemas/summary_status'
         sliValue:
           type: number
           example: 0.9836
@@ -685,7 +820,7 @@ components:
           type: string
           example: My Service SLO
         timeWindow:
-          $ref: '#/components/schemas/time_window_rolling'
+          $ref: '#/components/schemas/time_window'
         budgetingMethod:
           $ref: '#/components/schemas/budgeting_method'
         compositeMethod:
@@ -693,8 +828,7 @@ components:
         objective:
           $ref: '#/components/schemas/objective'
         sources:
-          oneOf:
-            - $ref: '#/components/schemas/weighted_composite_sources'
+          $ref: '#/components/schemas/weighted_composite_sources'
         summary:
           $ref: '#/components/schemas/summary'
         createdAt:
@@ -723,8 +857,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/composite_slo_response'
-    4xx_response:
-      title: Bad response
+    400_response:
+      title: Bad request
+      type: object
+      required:
+        - statusCode
+        - error
+        - message
+      properties:
+        statusCode:
+          type: number
+          example: 400
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: string
+          example: 'Invalid value ''foo'' supplied to: [...]'
+    401_response:
+      title: Unauthorized
       type: object
       required:
         - statusCode
@@ -740,6 +891,40 @@ components:
         message:
           type: string
           example: "[security_exception\n\tRoot causes:\n\t\tsecurity_exception: unable to authenticate user [elastics] for REST request [/_security/_authenticate]]: unable to authenticate user [elastics] for REST request [/_security/_authenticate]"
+    403_response:
+      title: Unauthorized
+      type: object
+      required:
+        - statusCode
+        - error
+        - message
+      properties:
+        statusCode:
+          type: number
+          example: 403
+        error:
+          type: string
+          example: Unauthorized
+        message:
+          type: string
+          example: "[security_exception\n\tRoot causes:\n\t\tsecurity_exception: unable to authenticate user [elastics] for REST request [/_security/_authenticate]]: unable to authenticate user [elastics] for REST request [/_security/_authenticate]"
+    404_response:
+      title: Not found
+      type: object
+      required:
+        - statusCode
+        - error
+        - message
+      properties:
+        statusCode:
+          type: number
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        message:
+          type: string
+          example: SLO [3749f390-03a3-11ee-8139-c7ff60a1692d] not found
     create_composite_slo_request:
       title: Create composite SLO request
       description: |
@@ -761,7 +946,7 @@ components:
           description: A name for the composite SLO.
           type: string
         timeWindow:
-          $ref: '#/components/schemas/time_window_rolling'
+          $ref: '#/components/schemas/time_window'
         budgetingMethod:
           $ref: '#/components/schemas/budgeting_method'
         compositeMethod:
@@ -769,8 +954,7 @@ components:
         objective:
           $ref: '#/components/schemas/objective'
         sources:
-          oneOf:
-            - $ref: '#/components/schemas/weighted_composite_sources'
+          $ref: '#/components/schemas/weighted_composite_sources'
     create_composite_slo_response:
       title: Create composite SLO response
       type: object
@@ -780,6 +964,23 @@ components:
         id:
           type: string
           example: 8853df00-ae2e-11ed-90af-09bb6422b258
+    409_response:
+      title: Conflict
+      type: object
+      required:
+        - statusCode
+        - error
+        - message
+      properties:
+        statusCode:
+          type: number
+          example: 409
+        error:
+          type: string
+          example: Conflict
+        message:
+          type: string
+          example: SLO [d077e940-1515-11ee-9c50-9d096392f520] already exists
     update_composite_slo_request:
       title: Update composite SLO request
       description: |
@@ -794,7 +995,7 @@ components:
           description: A name for the composite SLO.
           type: string
         timeWindow:
-          $ref: '#/components/schemas/time_window_rolling'
+          $ref: '#/components/schemas/time_window'
         budgetingMethod:
           $ref: '#/components/schemas/budgeting_method'
         compositeMethod:
@@ -802,8 +1003,7 @@ components:
         objective:
           $ref: '#/components/schemas/objective'
         sources:
-          oneOf:
-            - $ref: '#/components/schemas/weighted_composite_sources'
+          $ref: '#/components/schemas/weighted_composite_sources'
     base_composite_slo_response:
       title: Composite SLO response
       type: object
@@ -817,7 +1017,7 @@ components:
           type: string
           example: My Service SLO
         timeWindow:
-          $ref: '#/components/schemas/time_window_rolling'
+          $ref: '#/components/schemas/time_window'
         budgetingMethod:
           $ref: '#/components/schemas/budgeting_method'
         compositeMethod:
@@ -825,8 +1025,7 @@ components:
         objective:
           $ref: '#/components/schemas/objective'
         sources:
-          oneOf:
-            - $ref: '#/components/schemas/weighted_composite_sources'
+          $ref: '#/components/schemas/weighted_composite_sources'
         createdAt:
           description: The creation date
           type: string
@@ -1084,22 +1283,6 @@ components:
           description: The type of indicator.
           type: string
           example: sli.metric.custom
-    time_window_calendar_aligned:
-      title: Calendar aligned
-      required:
-        - duration
-        - isCalendar
-      description: Defines properties for calendar aligned time window
-      type: object
-      properties:
-        duration:
-          description: the duration formatted as {duration}{unit}, accept '1w' (weekly calendar) or '1M' (monthly calendar) only
-          type: string
-          example: 1M
-        isCalendar:
-          description: Indicates a calendar aligned time window
-          type: boolean
-          example: true
     settings:
       title: Settings
       description: Defines properties for SLO settings.
@@ -1130,15 +1313,20 @@ components:
           type: string
           example: My SLO description
         indicator:
+          discriminator:
+            propertyName: type
+            mapping:
+              sli.apm.transactionErrorRate: '#/components/schemas/indicator_properties_apm_availability'
+              sli.kql.custom: '#/components/schemas/indicator_properties_custom_kql'
+              sli.apm.transactionDuration: '#/components/schemas/indicator_properties_apm_latency'
+              sli.apm.sli.metric.custom: '#/components/schemas/indicator_properties_custom_metric'
           oneOf:
             - $ref: '#/components/schemas/indicator_properties_custom_kql'
             - $ref: '#/components/schemas/indicator_properties_apm_availability'
             - $ref: '#/components/schemas/indicator_properties_apm_latency'
             - $ref: '#/components/schemas/indicator_properties_custom_metric'
         timeWindow:
-          oneOf:
-            - $ref: '#/components/schemas/time_window_rolling'
-            - $ref: '#/components/schemas/time_window_calendar_aligned'
+          $ref: '#/components/schemas/time_window'
         budgetingMethod:
           $ref: '#/components/schemas/budgeting_method'
         objective:
@@ -1196,7 +1384,7 @@ components:
         - objective
       properties:
         id:
-          description: A unique identifier for the SLO. Must be between 8 and 36 chars
+          description: A optional and unique identifier for the SLO. Must be between 8 and 36 chars
           type: string
           example: my-super-slo-id
         name:
@@ -1212,9 +1400,7 @@ components:
             - $ref: '#/components/schemas/indicator_properties_apm_latency'
             - $ref: '#/components/schemas/indicator_properties_custom_metric'
         timeWindow:
-          oneOf:
-            - $ref: '#/components/schemas/time_window_rolling'
-            - $ref: '#/components/schemas/time_window_calendar_aligned'
+          $ref: '#/components/schemas/time_window'
         budgetingMethod:
           $ref: '#/components/schemas/budgeting_method'
         objective:
@@ -1249,9 +1435,7 @@ components:
             - $ref: '#/components/schemas/indicator_properties_apm_latency'
             - $ref: '#/components/schemas/indicator_properties_custom_metric'
         timeWindow:
-          oneOf:
-            - $ref: '#/components/schemas/time_window_rolling'
-            - $ref: '#/components/schemas/time_window_calendar_aligned'
+          $ref: '#/components/schemas/time_window'
         budgetingMethod:
           $ref: '#/components/schemas/budgeting_method'
         objective:
@@ -1282,18 +1466,17 @@ components:
               type: string
               example: '2022-01-01T00:00:00.000Z'
             status:
-              type: string
-              enum:
-                - NO_DATA
-                - HEALTHY
-                - DEGRADING
-                - VIOLATED
-              example: HEALTHY
+              $ref: '#/components/schemas/summary_status'
             sliValue:
               type: number
               example: 0.9836
             errorBudget:
               $ref: '#/components/schemas/error_budget'
-security:
-  - basicAuth: []
-  - apiKeyAuth: []
+    summary_status:
+      type: string
+      enum:
+        - NO_DATA
+        - HEALTHY
+        - DEGRADING
+        - VIOLATED
+      example: HEALTHY

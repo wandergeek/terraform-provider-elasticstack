@@ -6,17 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A unique identifier for the composite SLO. Must be between 8 and 36 chars | [optional] 
 **Name** | **string** | A name for the composite SLO. | 
-**TimeWindow** | [**TimeWindowRolling**](TimeWindowRolling.md) |  | 
+**TimeWindow** | [**TimeWindow**](TimeWindow.md) |  | 
 **BudgetingMethod** | [**BudgetingMethod**](BudgetingMethod.md) |  | 
 **CompositeMethod** | [**CompositeMethod**](CompositeMethod.md) |  | 
 **Objective** | [**Objective**](Objective.md) |  | 
-**Sources** | [**CompositeSloResponseSources**](CompositeSloResponseSources.md) |  | 
+**Sources** | [**[]WeightedCompositeSourcesInner**](WeightedCompositeSourcesInner.md) | An array of source SLO to use for the weighted average composite. | 
 
 ## Methods
 
 ### NewCreateCompositeSloRequest
 
-`func NewCreateCompositeSloRequest(name string, timeWindow TimeWindowRolling, budgetingMethod BudgetingMethod, compositeMethod CompositeMethod, objective Objective, sources CompositeSloResponseSources, ) *CreateCompositeSloRequest`
+`func NewCreateCompositeSloRequest(name string, timeWindow TimeWindow, budgetingMethod BudgetingMethod, compositeMethod CompositeMethod, objective Objective, sources []WeightedCompositeSourcesInner, ) *CreateCompositeSloRequest`
 
 NewCreateCompositeSloRequest instantiates a new CreateCompositeSloRequest object
 This constructor will assign default values to properties that have it defined,
@@ -78,20 +78,20 @@ SetName sets Name field to given value.
 
 ### GetTimeWindow
 
-`func (o *CreateCompositeSloRequest) GetTimeWindow() TimeWindowRolling`
+`func (o *CreateCompositeSloRequest) GetTimeWindow() TimeWindow`
 
 GetTimeWindow returns the TimeWindow field if non-nil, zero value otherwise.
 
 ### GetTimeWindowOk
 
-`func (o *CreateCompositeSloRequest) GetTimeWindowOk() (*TimeWindowRolling, bool)`
+`func (o *CreateCompositeSloRequest) GetTimeWindowOk() (*TimeWindow, bool)`
 
 GetTimeWindowOk returns a tuple with the TimeWindow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeWindow
 
-`func (o *CreateCompositeSloRequest) SetTimeWindow(v TimeWindowRolling)`
+`func (o *CreateCompositeSloRequest) SetTimeWindow(v TimeWindow)`
 
 SetTimeWindow sets TimeWindow field to given value.
 
@@ -158,20 +158,20 @@ SetObjective sets Objective field to given value.
 
 ### GetSources
 
-`func (o *CreateCompositeSloRequest) GetSources() CompositeSloResponseSources`
+`func (o *CreateCompositeSloRequest) GetSources() []WeightedCompositeSourcesInner`
 
 GetSources returns the Sources field if non-nil, zero value otherwise.
 
 ### GetSourcesOk
 
-`func (o *CreateCompositeSloRequest) GetSourcesOk() (*CompositeSloResponseSources, bool)`
+`func (o *CreateCompositeSloRequest) GetSourcesOk() (*[]WeightedCompositeSourcesInner, bool)`
 
 GetSourcesOk returns a tuple with the Sources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSources
 
-`func (o *CreateCompositeSloRequest) SetSources(v CompositeSloResponseSources)`
+`func (o *CreateCompositeSloRequest) SetSources(v []WeightedCompositeSourcesInner)`
 
 SetSources sets Sources field to given value.
 

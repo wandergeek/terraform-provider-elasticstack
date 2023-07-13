@@ -48,9 +48,9 @@ type APIClient struct {
 
 	// API Services
 
-	CompositeSloApi CompositeSloApi
+	CompositeSloAPI CompositeSloAPI
 
-	SloApi SloApi
+	SloAPI SloAPI
 }
 
 type service struct {
@@ -69,8 +69,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.CompositeSloApi = (*CompositeSloApiService)(&c.common)
-	c.SloApi = (*SloApiService)(&c.common)
+	c.CompositeSloAPI = (*CompositeSloAPIService)(&c.common)
+	c.SloAPI = (*SloAPIService)(&c.common)
 
 	return c
 }
@@ -647,16 +647,17 @@ func formatErrorMessage(status string, v interface{}) string {
 	str := ""
 	metaValue := reflect.ValueOf(v).Elem()
 
-	field := metaValue.FieldByName("Title")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s", field.Interface())
+	if metaValue.Kind() == reflect.Struct {
+		field := metaValue.FieldByName("Title")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s", field.Interface())
+		}
+
+		field = metaValue.FieldByName("Detail")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s (%s)", str, field.Interface())
+		}
 	}
 
-	field = metaValue.FieldByName("Detail")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s (%s)", str, field.Interface())
-	}
-
-	// status title (detail)
 	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
 }

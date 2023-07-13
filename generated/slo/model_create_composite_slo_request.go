@@ -22,19 +22,20 @@ type CreateCompositeSloRequest struct {
 	// A unique identifier for the composite SLO. Must be between 8 and 36 chars
 	Id *string `json:"id,omitempty"`
 	// A name for the composite SLO.
-	Name            string                      `json:"name"`
-	TimeWindow      TimeWindowRolling           `json:"timeWindow"`
-	BudgetingMethod BudgetingMethod             `json:"budgetingMethod"`
-	CompositeMethod CompositeMethod             `json:"compositeMethod"`
-	Objective       Objective                   `json:"objective"`
-	Sources         CompositeSloResponseSources `json:"sources"`
+	Name            string          `json:"name"`
+	TimeWindow      TimeWindow      `json:"timeWindow"`
+	BudgetingMethod BudgetingMethod `json:"budgetingMethod"`
+	CompositeMethod CompositeMethod `json:"compositeMethod"`
+	Objective       Objective       `json:"objective"`
+	// An array of source SLO to use for the weighted average composite.
+	Sources []WeightedCompositeSourcesInner `json:"sources"`
 }
 
 // NewCreateCompositeSloRequest instantiates a new CreateCompositeSloRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateCompositeSloRequest(name string, timeWindow TimeWindowRolling, budgetingMethod BudgetingMethod, compositeMethod CompositeMethod, objective Objective, sources CompositeSloResponseSources) *CreateCompositeSloRequest {
+func NewCreateCompositeSloRequest(name string, timeWindow TimeWindow, budgetingMethod BudgetingMethod, compositeMethod CompositeMethod, objective Objective, sources []WeightedCompositeSourcesInner) *CreateCompositeSloRequest {
 	this := CreateCompositeSloRequest{}
 	this.Name = name
 	this.TimeWindow = timeWindow
@@ -110,9 +111,9 @@ func (o *CreateCompositeSloRequest) SetName(v string) {
 }
 
 // GetTimeWindow returns the TimeWindow field value
-func (o *CreateCompositeSloRequest) GetTimeWindow() TimeWindowRolling {
+func (o *CreateCompositeSloRequest) GetTimeWindow() TimeWindow {
 	if o == nil {
-		var ret TimeWindowRolling
+		var ret TimeWindow
 		return ret
 	}
 
@@ -121,7 +122,7 @@ func (o *CreateCompositeSloRequest) GetTimeWindow() TimeWindowRolling {
 
 // GetTimeWindowOk returns a tuple with the TimeWindow field value
 // and a boolean to check if the value has been set.
-func (o *CreateCompositeSloRequest) GetTimeWindowOk() (*TimeWindowRolling, bool) {
+func (o *CreateCompositeSloRequest) GetTimeWindowOk() (*TimeWindow, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -129,7 +130,7 @@ func (o *CreateCompositeSloRequest) GetTimeWindowOk() (*TimeWindowRolling, bool)
 }
 
 // SetTimeWindow sets field value
-func (o *CreateCompositeSloRequest) SetTimeWindow(v TimeWindowRolling) {
+func (o *CreateCompositeSloRequest) SetTimeWindow(v TimeWindow) {
 	o.TimeWindow = v
 }
 
@@ -206,9 +207,9 @@ func (o *CreateCompositeSloRequest) SetObjective(v Objective) {
 }
 
 // GetSources returns the Sources field value
-func (o *CreateCompositeSloRequest) GetSources() CompositeSloResponseSources {
+func (o *CreateCompositeSloRequest) GetSources() []WeightedCompositeSourcesInner {
 	if o == nil {
-		var ret CompositeSloResponseSources
+		var ret []WeightedCompositeSourcesInner
 		return ret
 	}
 
@@ -217,15 +218,15 @@ func (o *CreateCompositeSloRequest) GetSources() CompositeSloResponseSources {
 
 // GetSourcesOk returns a tuple with the Sources field value
 // and a boolean to check if the value has been set.
-func (o *CreateCompositeSloRequest) GetSourcesOk() (*CompositeSloResponseSources, bool) {
+func (o *CreateCompositeSloRequest) GetSourcesOk() ([]WeightedCompositeSourcesInner, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Sources, true
+	return o.Sources, true
 }
 
 // SetSources sets field value
-func (o *CreateCompositeSloRequest) SetSources(v CompositeSloResponseSources) {
+func (o *CreateCompositeSloRequest) SetSources(v []WeightedCompositeSourcesInner) {
 	o.Sources = v
 }
 

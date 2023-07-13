@@ -38,11 +38,9 @@ func Test_sloResponseToModel(t *testing.T) {
 						},
 					},
 				},
-				TimeWindow: &slo.SloResponseTimeWindow{
-					TimeWindowRolling: &slo.TimeWindowRolling{
-						Duration:  "1m",
-						IsRolling: true,
-					},
+				TimeWindow: &slo.TimeWindow{
+					Duration: "1m",
+					Type:     "rolling",
 				},
 				BudgetingMethod: (*slo.BudgetingMethod)(makePtr("budgeting-method")),
 				Objective: &slo.Objective{
@@ -63,11 +61,9 @@ func Test_sloResponseToModel(t *testing.T) {
 						},
 					},
 				},
-				TimeWindow: slo.SloResponseTimeWindow{
-					TimeWindowRolling: &slo.TimeWindowRolling{
-						Duration:  "1m",
-						IsRolling: true,
-					},
+				TimeWindow: slo.TimeWindow{
+					Duration: "1m",
+					Type:     "rolling",
 				},
 				BudgetingMethod: "budgeting-method",
 				Objective: slo.Objective{

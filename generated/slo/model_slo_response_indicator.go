@@ -54,72 +54,110 @@ func IndicatorPropertiesCustomMetricAsSloResponseIndicator(v *IndicatorPropertie
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *SloResponseIndicator) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into IndicatorPropertiesApmAvailability
-	err = newStrictDecoder(data).Decode(&dst.IndicatorPropertiesApmAvailability)
-	if err == nil {
-		jsonIndicatorPropertiesApmAvailability, _ := json.Marshal(dst.IndicatorPropertiesApmAvailability)
-		if string(jsonIndicatorPropertiesApmAvailability) == "{}" { // empty struct
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+	}
+
+	// check if the discriminator value is 'indicator_properties_apm_availability'
+	if jsonDict["type"] == "indicator_properties_apm_availability" {
+		// try to unmarshal JSON data into IndicatorPropertiesApmAvailability
+		err = json.Unmarshal(data, &dst.IndicatorPropertiesApmAvailability)
+		if err == nil {
+			return nil // data stored in dst.IndicatorPropertiesApmAvailability, return on the first match
+		} else {
 			dst.IndicatorPropertiesApmAvailability = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal SloResponseIndicator as IndicatorPropertiesApmAvailability: %s", err.Error())
 		}
-	} else {
-		dst.IndicatorPropertiesApmAvailability = nil
 	}
 
-	// try to unmarshal data into IndicatorPropertiesApmLatency
-	err = newStrictDecoder(data).Decode(&dst.IndicatorPropertiesApmLatency)
-	if err == nil {
-		jsonIndicatorPropertiesApmLatency, _ := json.Marshal(dst.IndicatorPropertiesApmLatency)
-		if string(jsonIndicatorPropertiesApmLatency) == "{}" { // empty struct
+	// check if the discriminator value is 'indicator_properties_apm_latency'
+	if jsonDict["type"] == "indicator_properties_apm_latency" {
+		// try to unmarshal JSON data into IndicatorPropertiesApmLatency
+		err = json.Unmarshal(data, &dst.IndicatorPropertiesApmLatency)
+		if err == nil {
+			return nil // data stored in dst.IndicatorPropertiesApmLatency, return on the first match
+		} else {
 			dst.IndicatorPropertiesApmLatency = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal SloResponseIndicator as IndicatorPropertiesApmLatency: %s", err.Error())
 		}
-	} else {
-		dst.IndicatorPropertiesApmLatency = nil
 	}
 
-	// try to unmarshal data into IndicatorPropertiesCustomKql
-	err = newStrictDecoder(data).Decode(&dst.IndicatorPropertiesCustomKql)
-	if err == nil {
-		jsonIndicatorPropertiesCustomKql, _ := json.Marshal(dst.IndicatorPropertiesCustomKql)
-		if string(jsonIndicatorPropertiesCustomKql) == "{}" { // empty struct
+	// check if the discriminator value is 'indicator_properties_custom_kql'
+	if jsonDict["type"] == "indicator_properties_custom_kql" {
+		// try to unmarshal JSON data into IndicatorPropertiesCustomKql
+		err = json.Unmarshal(data, &dst.IndicatorPropertiesCustomKql)
+		if err == nil {
+			return nil // data stored in dst.IndicatorPropertiesCustomKql, return on the first match
+		} else {
 			dst.IndicatorPropertiesCustomKql = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal SloResponseIndicator as IndicatorPropertiesCustomKql: %s", err.Error())
 		}
-	} else {
-		dst.IndicatorPropertiesCustomKql = nil
 	}
 
-	// try to unmarshal data into IndicatorPropertiesCustomMetric
-	err = newStrictDecoder(data).Decode(&dst.IndicatorPropertiesCustomMetric)
-	if err == nil {
-		jsonIndicatorPropertiesCustomMetric, _ := json.Marshal(dst.IndicatorPropertiesCustomMetric)
-		if string(jsonIndicatorPropertiesCustomMetric) == "{}" { // empty struct
+	// check if the discriminator value is 'indicator_properties_custom_metric'
+	if jsonDict["type"] == "indicator_properties_custom_metric" {
+		// try to unmarshal JSON data into IndicatorPropertiesCustomMetric
+		err = json.Unmarshal(data, &dst.IndicatorPropertiesCustomMetric)
+		if err == nil {
+			return nil // data stored in dst.IndicatorPropertiesCustomMetric, return on the first match
+		} else {
 			dst.IndicatorPropertiesCustomMetric = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal SloResponseIndicator as IndicatorPropertiesCustomMetric: %s", err.Error())
 		}
-	} else {
-		dst.IndicatorPropertiesCustomMetric = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.IndicatorPropertiesApmAvailability = nil
-		dst.IndicatorPropertiesApmLatency = nil
-		dst.IndicatorPropertiesCustomKql = nil
-		dst.IndicatorPropertiesCustomMetric = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(SloResponseIndicator)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(SloResponseIndicator)")
+	// check if the discriminator value is 'sli.apm.sli.metric.custom'
+	if jsonDict["type"] == "sli.apm.sli.metric.custom" {
+		// try to unmarshal JSON data into IndicatorPropertiesCustomMetric
+		err = json.Unmarshal(data, &dst.IndicatorPropertiesCustomMetric)
+		if err == nil {
+			return nil // data stored in dst.IndicatorPropertiesCustomMetric, return on the first match
+		} else {
+			dst.IndicatorPropertiesCustomMetric = nil
+			return fmt.Errorf("failed to unmarshal SloResponseIndicator as IndicatorPropertiesCustomMetric: %s", err.Error())
+		}
 	}
+
+	// check if the discriminator value is 'sli.apm.transactionDuration'
+	if jsonDict["type"] == "sli.apm.transactionDuration" {
+		// try to unmarshal JSON data into IndicatorPropertiesApmLatency
+		err = json.Unmarshal(data, &dst.IndicatorPropertiesApmLatency)
+		if err == nil {
+			return nil // data stored in dst.IndicatorPropertiesApmLatency, return on the first match
+		} else {
+			dst.IndicatorPropertiesApmLatency = nil
+			return fmt.Errorf("failed to unmarshal SloResponseIndicator as IndicatorPropertiesApmLatency: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'sli.apm.transactionErrorRate'
+	if jsonDict["type"] == "sli.apm.transactionErrorRate" {
+		// try to unmarshal JSON data into IndicatorPropertiesApmAvailability
+		err = json.Unmarshal(data, &dst.IndicatorPropertiesApmAvailability)
+		if err == nil {
+			return nil // data stored in dst.IndicatorPropertiesApmAvailability, return on the first match
+		} else {
+			dst.IndicatorPropertiesApmAvailability = nil
+			return fmt.Errorf("failed to unmarshal SloResponseIndicator as IndicatorPropertiesApmAvailability: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'sli.kql.custom'
+	if jsonDict["type"] == "sli.kql.custom" {
+		// try to unmarshal JSON data into IndicatorPropertiesCustomKql
+		err = json.Unmarshal(data, &dst.IndicatorPropertiesCustomKql)
+		if err == nil {
+			return nil // data stored in dst.IndicatorPropertiesCustomKql, return on the first match
+		} else {
+			dst.IndicatorPropertiesCustomKql = nil
+			return fmt.Errorf("failed to unmarshal SloResponseIndicator as IndicatorPropertiesCustomKql: %s", err.Error())
+		}
+	}
+
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

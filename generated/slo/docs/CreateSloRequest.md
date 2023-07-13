@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | A unique identifier for the SLO. Must be between 8 and 36 chars | [optional] 
+**Id** | Pointer to **string** | A optional and unique identifier for the SLO. Must be between 8 and 36 chars | [optional] 
 **Name** | **string** | A name for the SLO. | 
 **Description** | **string** | A description for the SLO. | 
-**Indicator** | [**SloResponseIndicator**](SloResponseIndicator.md) |  | 
-**TimeWindow** | [**SloResponseTimeWindow**](SloResponseTimeWindow.md) |  | 
+**Indicator** | [**CreateSloRequestIndicator**](CreateSloRequestIndicator.md) |  | 
+**TimeWindow** | [**TimeWindow**](TimeWindow.md) |  | 
 **BudgetingMethod** | [**BudgetingMethod**](BudgetingMethod.md) |  | 
 **Objective** | [**Objective**](Objective.md) |  | 
 **Settings** | Pointer to [**Settings**](Settings.md) |  | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewCreateSloRequest
 
-`func NewCreateSloRequest(name string, description string, indicator SloResponseIndicator, timeWindow SloResponseTimeWindow, budgetingMethod BudgetingMethod, objective Objective, ) *CreateSloRequest`
+`func NewCreateSloRequest(name string, description string, indicator CreateSloRequestIndicator, timeWindow TimeWindow, budgetingMethod BudgetingMethod, objective Objective, ) *CreateSloRequest`
 
 NewCreateSloRequest instantiates a new CreateSloRequest object
 This constructor will assign default values to properties that have it defined,
@@ -99,40 +99,40 @@ SetDescription sets Description field to given value.
 
 ### GetIndicator
 
-`func (o *CreateSloRequest) GetIndicator() SloResponseIndicator`
+`func (o *CreateSloRequest) GetIndicator() CreateSloRequestIndicator`
 
 GetIndicator returns the Indicator field if non-nil, zero value otherwise.
 
 ### GetIndicatorOk
 
-`func (o *CreateSloRequest) GetIndicatorOk() (*SloResponseIndicator, bool)`
+`func (o *CreateSloRequest) GetIndicatorOk() (*CreateSloRequestIndicator, bool)`
 
 GetIndicatorOk returns a tuple with the Indicator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIndicator
 
-`func (o *CreateSloRequest) SetIndicator(v SloResponseIndicator)`
+`func (o *CreateSloRequest) SetIndicator(v CreateSloRequestIndicator)`
 
 SetIndicator sets Indicator field to given value.
 
 
 ### GetTimeWindow
 
-`func (o *CreateSloRequest) GetTimeWindow() SloResponseTimeWindow`
+`func (o *CreateSloRequest) GetTimeWindow() TimeWindow`
 
 GetTimeWindow returns the TimeWindow field if non-nil, zero value otherwise.
 
 ### GetTimeWindowOk
 
-`func (o *CreateSloRequest) GetTimeWindowOk() (*SloResponseTimeWindow, bool)`
+`func (o *CreateSloRequest) GetTimeWindowOk() (*TimeWindow, bool)`
 
 GetTimeWindowOk returns a tuple with the TimeWindow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeWindow
 
-`func (o *CreateSloRequest) SetTimeWindow(v SloResponseTimeWindow)`
+`func (o *CreateSloRequest) SetTimeWindow(v TimeWindow)`
 
 SetTimeWindow sets TimeWindow field to given value.
 

@@ -101,7 +101,7 @@ func NewConfiguration() *Configuration {
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{
-			"SloApiService.CreateSlo": {
+			"SloAPIService.CreateSloOp": {
 				{
 					URL:         "https://localhost:5601",
 					Description: "No description provided",

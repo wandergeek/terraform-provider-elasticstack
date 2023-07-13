@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of the SLO. | [optional] 
 **Description** | Pointer to **string** | The description of the SLO. | [optional] 
 **Indicator** | Pointer to [**SloResponseIndicator**](SloResponseIndicator.md) |  | [optional] 
-**TimeWindow** | Pointer to [**SloResponseTimeWindow**](SloResponseTimeWindow.md) |  | [optional] 
+**TimeWindow** | Pointer to [**TimeWindow**](TimeWindow.md) |  | [optional] 
 **BudgetingMethod** | Pointer to [**BudgetingMethod**](BudgetingMethod.md) |  | [optional] 
 **Objective** | Pointer to [**Objective**](Objective.md) |  | [optional] 
 **Settings** | Pointer to [**Settings**](Settings.md) |  | [optional] 
@@ -139,20 +139,20 @@ HasIndicator returns a boolean if a field has been set.
 
 ### GetTimeWindow
 
-`func (o *SloResponse) GetTimeWindow() SloResponseTimeWindow`
+`func (o *SloResponse) GetTimeWindow() TimeWindow`
 
 GetTimeWindow returns the TimeWindow field if non-nil, zero value otherwise.
 
 ### GetTimeWindowOk
 
-`func (o *SloResponse) GetTimeWindowOk() (*SloResponseTimeWindow, bool)`
+`func (o *SloResponse) GetTimeWindowOk() (*TimeWindow, bool)`
 
 GetTimeWindowOk returns a tuple with the TimeWindow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeWindow
 
-`func (o *SloResponse) SetTimeWindow(v SloResponseTimeWindow)`
+`func (o *SloResponse) SetTimeWindow(v TimeWindow)`
 
 SetTimeWindow sets TimeWindow field to given value.
 

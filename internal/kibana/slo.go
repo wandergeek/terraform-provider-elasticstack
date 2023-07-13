@@ -102,15 +102,9 @@ func ResourceSlo() *schema.Resource {
 						Type:     schema.TypeString,
 						Required: true,
 					},
-					"is_rolling": {
-						Type:     schema.TypeBool,
-						Optional: true,
-						Default:  false,
-					},
-					"is_calendar": {
-						Type:     schema.TypeBool,
-						Optional: true,
-						Default:  false,
+					"type": {
+						Type:     schema.TypeString,
+						Required: true,
 					},
 				},
 			},
@@ -193,14 +187,6 @@ func getOrNilString(path string, d *schema.ResourceData) *string {
 	return nil
 }
 
-func getOrNilFloat32(path string, d *schema.ResourceData) *float32 {
-	if v, ok := d.GetOk(path); ok {
-		r := v.(float32)
-		return &r
-	}
-	return nil
-}
-
 func getSloFromResourceData(d *schema.ResourceData) (models.Slo, diag.Diagnostics) {
 	var diags diag.Diagnostics
 
@@ -257,21 +243,9 @@ func getSloFromResourceData(d *schema.ResourceData) (models.Slo, diag.Diagnostic
 		return models.Slo{}, diag.Errorf("unknown indicator type %s", indicatorType)
 	}
 
-	var timeWindow slo.SloResponseTimeWindow
-	if d.Get("time_window.0.is_rolling").(bool) {
-		timeWindow = slo.SloResponseTimeWindow{
-			TimeWindowRolling: &slo.TimeWindowRolling{
-				IsRolling: true,
-				Duration:  d.Get("time_window.0.duration").(string),
-			},
-		}
-	} else {
-		timeWindow = slo.SloResponseTimeWindow{
-			TimeWindowCalendarAligned: &slo.TimeWindowCalendarAligned{
-				IsCalendar: true,
-				Duration:   d.Get("time_window.0.duration").(string),
-			},
-		}
+	timeWindow := slo.TimeWindow{
+		Type:     d.Get("time_window.0.type").(string),
+		Duration: d.Get("time_window.0.duration").(string),
 	}
 
 	//this is weird because I receive a float64 back and need to convert it to a float32
@@ -343,7 +317,7 @@ func resourceSloUpdate(ctx context.Context, d *schema.ResourceData, meta interfa
 		return diags
 	}
 
-	rule, diags := getAlertingRuleFromResourceData(d)
+	slo, diags := getSloFromResourceData(d)
 	if diags.HasError() {
 		return diags
 	}
@@ -352,15 +326,15 @@ func resourceSloUpdate(ctx context.Context, d *schema.ResourceData, meta interfa
 	if diags.HasError() {
 		return diags
 	}
-	rule.ID = compId.ResourceId
+	slo.ID = compId.ResourceId
 
-	res, diags := kibana.UpdateAlertingRule(ctx, client, rule)
+	res, diags := kibana.UpdateSlo(ctx, client, slo)
 
 	if diags.HasError() {
 		return diags
 	}
 
-	id := &clients.CompositeId{ClusterId: rule.SpaceID, ResourceId: res.ID}
+	id := &clients.CompositeId{ClusterId: slo.SpaceID, ResourceId: res.ID}
 	d.SetId(id.String())
 
 	return resourceSloRead(ctx, d, meta)
@@ -387,111 +361,78 @@ func resourceSloRead(ctx context.Context, d *schema.ResourceData, meta interface
 		return diags
 	}
 
-	if err := d.Set("indicator_type", "sli.apm.transactionDuration"); err != nil {
-		return diag.FromErr(err)
-	}
-
-	//I hate this so much
+	indicators := []interface{}{}
 	if s.Indicator.IndicatorPropertiesApmAvailability != nil {
-		if err := d.Set("indicator.type", "sli.apm.transactionErrorRate"); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.service", s.Indicator.IndicatorPropertiesApmAvailability.Params.Service); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.environment", s.Indicator.IndicatorPropertiesApmAvailability.Params.Environment); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.transaction_type", s.Indicator.IndicatorPropertiesApmAvailability.Params.TransactionType); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.transaction_name", s.Indicator.IndicatorPropertiesApmAvailability.Params.TransactionName); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.filter", s.Indicator.IndicatorPropertiesApmAvailability.Params.TransactionName); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.index", s.Indicator.IndicatorPropertiesApmAvailability.Params.Index); err != nil {
-			return diag.FromErr(err)
-		}
+		params := s.Indicator.IndicatorPropertiesApmAvailability.Params
+		indicators = append(indicators, map[string]interface{}{
+			"type": s.Indicator.IndicatorPropertiesApmAvailability.Type,
+			"params": []map[string]interface{}{{
+				"environment":      params.Environment,
+				"service":          params.Service,
+				"transaction_type": params.TransactionType,
+				"transaction_name": params.TransactionName,
+				"index":            params.Index,
+				"filter":           params.Filter,
+			}},
+		})
 	} else if s.Indicator.IndicatorPropertiesApmLatency != nil {
-		if err := d.Set("indicator.type", "sli.apm.transactionDuration"); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.0.params.0.service", s.Indicator.IndicatorPropertiesApmLatency.Params.Service); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.environment", s.Indicator.IndicatorPropertiesApmLatency.Params.Environment); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.transaction_type", s.Indicator.IndicatorPropertiesApmLatency.Params.TransactionType); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.transaction_name", s.Indicator.IndicatorPropertiesApmLatency.Params.TransactionName); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.filter", s.Indicator.IndicatorPropertiesApmLatency.Params.Filter); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.index", s.Indicator.IndicatorPropertiesApmLatency.Params.Index); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.threshold", s.Indicator.IndicatorPropertiesApmLatency.Params.Threshold); err != nil {
-			return diag.FromErr(err)
-		}
+		params := s.Indicator.IndicatorPropertiesApmLatency.Params
+		indicators = append(indicators, map[string]interface{}{
+			"type": s.Indicator.IndicatorPropertiesApmLatency.Type,
+			"params": []map[string]interface{}{{
+				"environment":      params.Environment,
+				"service":          params.Service,
+				"transaction_type": params.TransactionType,
+				"transaction_name": params.TransactionName,
+				"index":            params.Index,
+				"filter":           params.Filter,
+				"threshold":        params.Threshold,
+			}},
+		})
 	} else if s.Indicator.IndicatorPropertiesCustomKql != nil {
-		if err := d.Set("indicator.type", "sli.kql.custom"); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.index", s.Indicator.IndicatorPropertiesCustomKql.Params.Index); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.filter", s.Indicator.IndicatorPropertiesCustomKql.Params.Filter); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.good", s.Indicator.IndicatorPropertiesCustomKql.Params.Good); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.total", s.Indicator.IndicatorPropertiesCustomKql.Params.Total); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("indicator.params.timestamp_field", s.Indicator.IndicatorPropertiesCustomKql.Params.TimestampField); err != nil {
-			return diag.FromErr(err)
-		}
+		params := s.Indicator.IndicatorPropertiesCustomKql.Params
+		indicators = append(indicators, map[string]interface{}{
+			"type": s.Indicator.IndicatorPropertiesCustomKql.Type,
+			"params": []map[string]interface{}{{
+				"index":           params.Index,
+				"filter":          params.Filter,
+				"good":            params.Filter,
+				"total":           params.Total,
+				"timestamp_field": params.TimestampField,
+			}},
+		})
 	} else {
 		return diag.Errorf("unknown indicator type")
 	}
-
-	if s.TimeWindow.TimeWindowCalendarAligned != nil {
-		if err := d.Set("time_window.duration", s.TimeWindow.TimeWindowCalendarAligned.Duration); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("time_window.is_calendar", s.TimeWindow.TimeWindowCalendarAligned.IsCalendar); err != nil {
-			return diag.FromErr(err)
-		}
-	} else if s.TimeWindow.TimeWindowRolling != nil {
-		if err := d.Set("time_window.duration", s.TimeWindow.TimeWindowRolling.Duration); err != nil {
-			return diag.FromErr(err)
-		}
-		if err := d.Set("time_window.is_rolling", s.TimeWindow.TimeWindowRolling.IsRolling); err != nil {
-			return diag.FromErr(err)
-		}
-	}
-
-	if err := d.Set("objective.target", s.Objective.Target); err != nil {
-		return diag.FromErr(err)
-	}
-	if err := d.Set("objective.timeslice_target", s.Objective.TimesliceTarget); err != nil {
-		return diag.FromErr(err)
-	}
-	if err := d.Set("objective.timeslice_window", s.Objective.TimesliceWindow); err != nil {
+	if err := d.Set("indicator", indicators); err != nil {
 		return diag.FromErr(err)
 	}
 
-	if err := d.Set("settings.sync_delay", s.Settings.SyncDelay); err != nil {
+	time_window := []interface{}{}
+	time_window = append(time_window, map[string]interface{}{
+		"duration": s.TimeWindow.Duration,
+		"type":     s.TimeWindow.Type,
+	})
+	if err := d.Set("time_window", time_window); err != nil {
 		return diag.FromErr(err)
 	}
-	if err := d.Set("settings.frequency", s.Settings.Frequency); err != nil {
+
+	objective := []interface{}{}
+	objective = append(objective, map[string]interface{}{
+		"target":           s.Objective.Target,
+		"timeslice_target": s.Objective.TimesliceTarget,
+		"timeslice_window": s.Objective.TimesliceWindow,
+	})
+	if err := d.Set("objective", objective); err != nil {
+		return diag.FromErr(err)
+	}
+
+	settings := []interface{}{}
+	settings = append(settings, map[string]interface{}{
+		"sync_delay": s.Settings.SyncDelay,
+		"frequency":  s.Settings.Frequency,
+	})
+	if err := d.Set("settings", settings); err != nil {
 		return diag.FromErr(err)
 	}
 
