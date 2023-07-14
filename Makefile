@@ -268,7 +268,8 @@ generate-slo-client: tools ## generate Kibana slo client
 		-p generateInterfaces=true \
 		-p useOneOfDiscriminatorLookup=true \
 		-g go \
-		-o /local/generated/slo
+		-o /local/generated/slo \
+		 --type-mappings=float32=float64
 	@ rm -rf generated/slo/go.mod generated/slo/go.sum generated/slo/test
 	@ go fmt ./generated/...
 
