@@ -16,7 +16,7 @@ import (
 )
 
 func TestAccResourceSlo(t *testing.T) {
-	minSupportedVersion := version.Must(version.NewSemver("7.14.0"))
+	minSupportedVersion := version.Must(version.NewSemver("8.8.0"))
 
 	sloName := sdkacctest.RandStringFromCharSet(22, sdkacctest.CharSetAlphaNum)
 
@@ -71,7 +71,7 @@ resource "elasticstack_kibana_slo" "test_slo" {
   
 	time_window {
 	  duration   = "1w"
-	  is_calendar = true
+	  type = "rolling"
 	}
   
 	budgeting_method = "timeslices"
@@ -116,7 +116,7 @@ resource "elasticstack_kibana_slo" "test_slo" {
   
 	time_window {
 	  duration   = "1w"
-	  is_calendar = true
+	  type = "rolling"
 	}
   
 	budgeting_method = "timeslices"
