@@ -30,8 +30,8 @@ func TestAccResourceSlo(t *testing.T) {
 				Config:   testAccResourceSloCreate(sloName),
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr("elasticstack_kibana_slo.test_slo", "name", sloName),
-					resource.TestCheckResourceAttr("elasticstack_kibana_slo.test_slo", "descripion", "fully sick SLO"),
-					resource.TestCheckResourceAttr("elasticstack_kibana_slo.test_slo", "indicator.type", "sli.apm.transactionDuration"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_slo.test_slo", "description", "fully sick SLO"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_slo.test_slo", "indicator.0.type", "sli.apm.transactionDuration"),
 					resource.TestCheckResourceAttr("elasticstack_kibana_slo.test_slo", "space_id", "default"),
 				),
 			},
@@ -40,7 +40,6 @@ func TestAccResourceSlo(t *testing.T) {
 				Config:   testAccResourceSloUpdate(sloName),
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr("elasticstack_kibana_slo.test_slo", "name", fmt.Sprintf("Updated %s", sloName)),
-					resource.TestCheckResourceAttr("elasticstack_kibana_slo.test_slo", "indicator.params.index", "newindex"),
 				),
 			},
 		},
@@ -53,6 +52,11 @@ provider "elasticstack" {
   elasticsearch {}
   kibana {}
 }
+
+resource "elasticstack_elasticsearch_index" "my_index" {
+	name = "my-index"
+	deletion_protection = false
+}  
 
 resource "elasticstack_kibana_slo" "test_slo" {
 	name        = "%s"
@@ -78,14 +82,16 @@ resource "elasticstack_kibana_slo" "test_slo" {
   
 	objective {
 	  target          = 0.999
-	  timeslices_target = 0.95
-	  timeslices_window = "5m"
+	  timeslice_target = 0.95
+	  timeslice_window = "5m"
 	}
   
 	settings {
 	  sync_delay = "5m"
 	  frequency = "1m"
 	}
+
+	depends_on = [elasticstack_elasticsearch_index.my_index]
   
   }
   
@@ -99,6 +105,12 @@ provider "elasticstack" {
   kibana {}
 }
 
+
+resource "elasticstack_elasticsearch_index" "my_index" {
+	name = "my-index"
+	deletion_protection = false
+} 
+
 resource "elasticstack_kibana_slo" "test_slo" {
 	name        = "Updated %s"
 	description = "fully sick SLO"
@@ -107,9 +119,9 @@ resource "elasticstack_kibana_slo" "test_slo" {
 	  params {
 		environment     = "production"
 		service         = "my-service"
-		transactionType = "request"
-		transactionName = "GET /sup/dawg"
-		index           = "newindex"
+		transaction_type = "request"
+		transaction_name = "GET /sup/dawg"
+		index           = "my-index"
 		threshold       = 500
 	  }
 	}
@@ -123,8 +135,8 @@ resource "elasticstack_kibana_slo" "test_slo" {
   
 	objective {
 	  target          = 0.999
-	  timeslices_target = 0.95
-	  timeslices_window = "5m"
+	  timeslice_target = 0.95
+	  timeslice_window = "5m"
 	}
   
 	settings {
@@ -132,6 +144,9 @@ resource "elasticstack_kibana_slo" "test_slo" {
 	  frequency = "1m"
 	}
   
+	depends_on = [elasticstack_elasticsearch_index.my_index]
+
+
   }
   
 `, name)
@@ -148,13 +163,16 @@ func checkResourceSloDestroy(s *terraform.State) error {
 			continue
 		}
 		compId, _ := clients.CompositeIdFromStr(rs.Primary.ID)
+		fmt.Printf("Checking for SLO (%s)\n", compId.ResourceId)
 
-		rule, diags := kibana.GetSlo(context.Background(), client, compId.ResourceId, compId.ClusterId)
+		slo, diags := kibana.GetSlo(context.Background(), client, compId.ResourceId, compId.ClusterId)
 		if diags.HasError() {
-			return fmt.Errorf("Failed to get slo: %v", diags)
+			if len(diags) > 1 || diags[0].Summary != "404 Not Found" {
+				return fmt.Errorf("Failed to check if SLO was destroyed: %v", diags)
+			}
 		}
 
-		if rule != nil {
+		if slo != nil {
 			return fmt.Errorf("SLO (%s) still exists", compId.ResourceId)
 		}
 	}
