@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/elastic/terraform-provider-elasticstack/generated/slo"
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients"
 	"github.com/elastic/terraform-provider-elasticstack/internal/models"
@@ -19,7 +18,7 @@ func GetSlo(ctx context.Context, apiClient *clients.ApiClient, id, spaceID strin
 		return nil, diag.FromErr(err)
 	}
 
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
+	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
 	req := client.GetSloOp(ctxWithAuth, "default", id).KbnXsrf("true") //fuck kibana spaces
 	sloRes, res, err := req.Execute()
 	if err != nil {
@@ -39,7 +38,7 @@ func DeleteSlo(ctx context.Context, apiClient *clients.ApiClient, sloId string, 
 		return diag.FromErr(err)
 	}
 
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
+	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
 	req := client.DeleteSloOp(ctxWithAuth, sloId, spaceId).KbnXsrf("true")
 	res, err := req.Execute()
 	if err != nil && res == nil {
@@ -56,7 +55,7 @@ func UpdateSlo(ctx context.Context, apiClient *clients.ApiClient, s models.Slo) 
 		return nil, diag.FromErr(err)
 	}
 
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
+	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
 	indicator, err := responseIndicatorToCreateSloRequestIndicator(s.Indicator)
 	if err != nil {
 		return nil, diag.FromErr(err)
@@ -91,7 +90,7 @@ func CreateSlo(ctx context.Context, apiClient *clients.ApiClient, s models.Slo) 
 		return nil, diag.FromErr(err)
 	}
 
-	ctxWithAuth := apiClient.SetGeneratedClientAuthContextFuck(ctx)
+	ctxWithAuth := apiClient.SetGeneratedClientAuthContext(ctx)
 	indicator, err := responseIndicatorToCreateSloRequestIndicator(s.Indicator)
 	if err != nil {
 		return nil, diag.FromErr(err)
@@ -142,12 +141,13 @@ func responseIndicatorToCreateSloRequestIndicator(s slo.SloResponseIndicator) (s
 		i, _ := ind.(*slo.IndicatorPropertiesCustomMetric)
 		ret.IndicatorPropertiesCustomMetric = i
 
+	case *slo.IndicatorPropertiesHistogram:
+		i, _ := ind.(*slo.IndicatorPropertiesHistogram)
+		ret.IndicatorPropertiesHistogram = i
+
 	default:
 		return ret, fmt.Errorf("unknown indicator type: %T", ind)
 	}
-
-	fmt.Println("returning indicator:")
-	spew.Dump(ret)
 
 	return ret, nil
 }

@@ -187,6 +187,14 @@ func getOrNilString(path string, d *schema.ResourceData) *string {
 	return nil
 }
 
+func getOrNilFloat(path string, d *schema.ResourceData) *float64 {
+	if v, ok := d.GetOk(path); ok {
+		f := v.(float64)
+		return &f
+	}
+	return nil
+}
+
 func getSloFromResourceData(d *schema.ResourceData) (models.Slo, diag.Diagnostics) {
 	var diags diag.Diagnostics
 
@@ -234,7 +242,7 @@ func getSloFromResourceData(d *schema.ResourceData) (models.Slo, diag.Diagnostic
 					TransactionName: d.Get("indicator.0.params.0.transaction_name").(string),
 					Filter:          getOrNilString("indicator.0.params.0.filter", d),
 					Index:           d.Get("indicator.0.params.0.index").(string),
-					Threshold:       float32(d.Get("indicator.0.params.0.threshold").(int)),
+					Threshold:       float64(d.Get("indicator.0.params.0.threshold").(int)),
 				},
 			},
 		}
@@ -248,16 +256,9 @@ func getSloFromResourceData(d *schema.ResourceData) (models.Slo, diag.Diagnostic
 		Duration: d.Get("time_window.0.duration").(string),
 	}
 
-	//this is weird because I receive a float64 back and need to convert it to a float32
-	var timeSliceTarget *float32
-	if v, ok := d.GetOk("objective.0.timeslice_target"); ok {
-		fuck := float32(v.(float64))
-		timeSliceTarget = &fuck
-	}
-
 	objective := slo.Objective{
-		Target:          float32(d.Get("objective.0.target").(float64)),
-		TimesliceTarget: timeSliceTarget,
+		Target:          d.Get("objective.0.target").(float64),
+		TimesliceTarget: getOrNilFloat("objective.0.timeslice_target", d),
 		TimesliceWindow: getOrNilString("objective.0.timeslice_window", d),
 	}
 
@@ -467,7 +468,7 @@ func resourceSloDelete(ctx context.Context, d *schema.ResourceData, meta interfa
 
 	spaceId := d.Get("space_id").(string)
 
-	if diags = kibana.DeleteAlertingRule(ctx, client, compId.ResourceId, spaceId); diags.HasError() {
+	if diags = kibana.DeleteSlo(ctx, client, spaceId, compId.ResourceId); diags.HasError() {
 		return diags
 	}
 

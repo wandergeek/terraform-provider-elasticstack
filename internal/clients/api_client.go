@@ -258,14 +258,6 @@ func (a *ApiClient) GetFleetClient() (*fleet.Client, error) {
 }
 
 func (a *ApiClient) SetGeneratedClientAuthContext(ctx context.Context) context.Context {
-	//I don't like that I'm using "alerting" here when the context is used for more than just alerting -- worth pulling these structs out somewhere else?
-	return context.WithValue(ctx, alerting.ContextBasicAuth, alerting.BasicAuth{
-		UserName: a.kibanaConfig.Username,
-		Password: a.kibanaConfig.Password,
-	})
-}
-
-func (a *ApiClient) SetGeneratedClientAuthContextFuck(ctx context.Context) context.Context {
 	return context.WithValue(ctx, slo.ContextBasicAuth, slo.BasicAuth{
 		UserName: a.kibanaConfig.Username,
 		Password: a.kibanaConfig.Password,
