@@ -25,6 +25,8 @@ type IndicatorPropertiesCustomMetricParamsGoodMetricsInner struct {
 	Aggregation string `json:"aggregation"`
 	// The field of the metric.
 	Field string `json:"field"`
+	// The filter to apply to the metric.
+	Filter *string `json:"filter,omitempty"`
 }
 
 // NewIndicatorPropertiesCustomMetricParamsGoodMetricsInner instantiates a new IndicatorPropertiesCustomMetricParamsGoodMetricsInner object
@@ -119,6 +121,38 @@ func (o *IndicatorPropertiesCustomMetricParamsGoodMetricsInner) SetField(v strin
 	o.Field = v
 }
 
+// GetFilter returns the Filter field value if set, zero value otherwise.
+func (o *IndicatorPropertiesCustomMetricParamsGoodMetricsInner) GetFilter() string {
+	if o == nil || IsNil(o.Filter) {
+		var ret string
+		return ret
+	}
+	return *o.Filter
+}
+
+// GetFilterOk returns a tuple with the Filter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IndicatorPropertiesCustomMetricParamsGoodMetricsInner) GetFilterOk() (*string, bool) {
+	if o == nil || IsNil(o.Filter) {
+		return nil, false
+	}
+	return o.Filter, true
+}
+
+// HasFilter returns a boolean if a field has been set.
+func (o *IndicatorPropertiesCustomMetricParamsGoodMetricsInner) HasFilter() bool {
+	if o != nil && !IsNil(o.Filter) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilter gets a reference to the given string and assigns it to the Filter field.
+func (o *IndicatorPropertiesCustomMetricParamsGoodMetricsInner) SetFilter(v string) {
+	o.Filter = &v
+}
+
 func (o IndicatorPropertiesCustomMetricParamsGoodMetricsInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -132,6 +166,9 @@ func (o IndicatorPropertiesCustomMetricParamsGoodMetricsInner) ToMap() (map[stri
 	toSerialize["name"] = o.Name
 	toSerialize["aggregation"] = o.Aggregation
 	toSerialize["field"] = o.Field
+	if !IsNil(o.Filter) {
+		toSerialize["filter"] = o.Filter
+	}
 	return toSerialize, nil
 }
 

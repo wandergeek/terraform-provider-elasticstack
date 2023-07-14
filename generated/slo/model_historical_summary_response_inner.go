@@ -21,7 +21,7 @@ var _ MappedNullable = &HistoricalSummaryResponseInner{}
 type HistoricalSummaryResponseInner struct {
 	Date        *string        `json:"date,omitempty"`
 	Status      *SummaryStatus `json:"status,omitempty"`
-	SliValue    *float32       `json:"sliValue,omitempty"`
+	SliValue    *float64       `json:"sliValue,omitempty"`
 	ErrorBudget *ErrorBudget   `json:"errorBudget,omitempty"`
 }
 
@@ -107,9 +107,9 @@ func (o *HistoricalSummaryResponseInner) SetStatus(v SummaryStatus) {
 }
 
 // GetSliValue returns the SliValue field value if set, zero value otherwise.
-func (o *HistoricalSummaryResponseInner) GetSliValue() float32 {
+func (o *HistoricalSummaryResponseInner) GetSliValue() float64 {
 	if o == nil || IsNil(o.SliValue) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.SliValue
@@ -117,7 +117,7 @@ func (o *HistoricalSummaryResponseInner) GetSliValue() float32 {
 
 // GetSliValueOk returns a tuple with the SliValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HistoricalSummaryResponseInner) GetSliValueOk() (*float32, bool) {
+func (o *HistoricalSummaryResponseInner) GetSliValueOk() (*float64, bool) {
 	if o == nil || IsNil(o.SliValue) {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *HistoricalSummaryResponseInner) HasSliValue() bool {
 	return false
 }
 
-// SetSliValue gets a reference to the given float32 and assigns it to the SliValue field.
-func (o *HistoricalSummaryResponseInner) SetSliValue(v float32) {
+// SetSliValue gets a reference to the given float64 and assigns it to the SliValue field.
+func (o *HistoricalSummaryResponseInner) SetSliValue(v float64) {
 	o.SliValue = &v
 }
 

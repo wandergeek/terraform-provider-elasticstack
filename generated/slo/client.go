@@ -48,8 +48,6 @@ type APIClient struct {
 
 	// API Services
 
-	CompositeSloAPI CompositeSloAPI
-
 	SloAPI SloAPI
 }
 
@@ -69,7 +67,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.CompositeSloAPI = (*CompositeSloAPIService)(&c.common)
 	c.SloAPI = (*SloAPIService)(&c.common)
 
 	return c

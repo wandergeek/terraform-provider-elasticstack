@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Metrics** | [**[]IndicatorPropertiesCustomMetricParamsGoodMetricsInner**](IndicatorPropertiesCustomMetricParamsGoodMetricsInner.md) | List of metrics with their name, aggregation type, and field. | 
+**Metrics** | [**[]IndicatorPropertiesCustomMetricParamsTotalMetricsInner**](IndicatorPropertiesCustomMetricParamsTotalMetricsInner.md) | List of metrics with their name, aggregation type, and field. | 
 **Equation** | **string** | The equation to calculate the \&quot;total\&quot; metric. | 
 
 ## Methods
 
 ### NewIndicatorPropertiesCustomMetricParamsTotal
 
-`func NewIndicatorPropertiesCustomMetricParamsTotal(metrics []IndicatorPropertiesCustomMetricParamsGoodMetricsInner, equation string, ) *IndicatorPropertiesCustomMetricParamsTotal`
+`func NewIndicatorPropertiesCustomMetricParamsTotal(metrics []IndicatorPropertiesCustomMetricParamsTotalMetricsInner, equation string, ) *IndicatorPropertiesCustomMetricParamsTotal`
 
 NewIndicatorPropertiesCustomMetricParamsTotal instantiates a new IndicatorPropertiesCustomMetricParamsTotal object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMetrics
 
-`func (o *IndicatorPropertiesCustomMetricParamsTotal) GetMetrics() []IndicatorPropertiesCustomMetricParamsGoodMetricsInner`
+`func (o *IndicatorPropertiesCustomMetricParamsTotal) GetMetrics() []IndicatorPropertiesCustomMetricParamsTotalMetricsInner`
 
 GetMetrics returns the Metrics field if non-nil, zero value otherwise.
 
 ### GetMetricsOk
 
-`func (o *IndicatorPropertiesCustomMetricParamsTotal) GetMetricsOk() (*[]IndicatorPropertiesCustomMetricParamsGoodMetricsInner, bool)`
+`func (o *IndicatorPropertiesCustomMetricParamsTotal) GetMetricsOk() (*[]IndicatorPropertiesCustomMetricParamsTotalMetricsInner, bool)`
 
 GetMetricsOk returns a tuple with the Metrics field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetrics
 
-`func (o *IndicatorPropertiesCustomMetricParamsTotal) SetMetrics(v []IndicatorPropertiesCustomMetricParamsGoodMetricsInner)`
+`func (o *IndicatorPropertiesCustomMetricParamsTotal) SetMetrics(v []IndicatorPropertiesCustomMetricParamsTotalMetricsInner)`
 
 SetMetrics sets Metrics field to given value.
 

@@ -20,7 +20,7 @@ var _ MappedNullable = &IndicatorPropertiesCustomMetricParamsTotal{}
 // IndicatorPropertiesCustomMetricParamsTotal An object defining the \"total\" metrics and equation
 type IndicatorPropertiesCustomMetricParamsTotal struct {
 	// List of metrics with their name, aggregation type, and field.
-	Metrics []IndicatorPropertiesCustomMetricParamsGoodMetricsInner `json:"metrics"`
+	Metrics []IndicatorPropertiesCustomMetricParamsTotalMetricsInner `json:"metrics"`
 	// The equation to calculate the \"total\" metric.
 	Equation string `json:"equation"`
 }
@@ -29,7 +29,7 @@ type IndicatorPropertiesCustomMetricParamsTotal struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIndicatorPropertiesCustomMetricParamsTotal(metrics []IndicatorPropertiesCustomMetricParamsGoodMetricsInner, equation string) *IndicatorPropertiesCustomMetricParamsTotal {
+func NewIndicatorPropertiesCustomMetricParamsTotal(metrics []IndicatorPropertiesCustomMetricParamsTotalMetricsInner, equation string) *IndicatorPropertiesCustomMetricParamsTotal {
 	this := IndicatorPropertiesCustomMetricParamsTotal{}
 	this.Metrics = metrics
 	this.Equation = equation
@@ -45,9 +45,9 @@ func NewIndicatorPropertiesCustomMetricParamsTotalWithDefaults() *IndicatorPrope
 }
 
 // GetMetrics returns the Metrics field value
-func (o *IndicatorPropertiesCustomMetricParamsTotal) GetMetrics() []IndicatorPropertiesCustomMetricParamsGoodMetricsInner {
+func (o *IndicatorPropertiesCustomMetricParamsTotal) GetMetrics() []IndicatorPropertiesCustomMetricParamsTotalMetricsInner {
 	if o == nil {
-		var ret []IndicatorPropertiesCustomMetricParamsGoodMetricsInner
+		var ret []IndicatorPropertiesCustomMetricParamsTotalMetricsInner
 		return ret
 	}
 
@@ -56,7 +56,7 @@ func (o *IndicatorPropertiesCustomMetricParamsTotal) GetMetrics() []IndicatorPro
 
 // GetMetricsOk returns a tuple with the Metrics field value
 // and a boolean to check if the value has been set.
-func (o *IndicatorPropertiesCustomMetricParamsTotal) GetMetricsOk() ([]IndicatorPropertiesCustomMetricParamsGoodMetricsInner, bool) {
+func (o *IndicatorPropertiesCustomMetricParamsTotal) GetMetricsOk() ([]IndicatorPropertiesCustomMetricParamsTotalMetricsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *IndicatorPropertiesCustomMetricParamsTotal) GetMetricsOk() ([]Indicator
 }
 
 // SetMetrics sets field value
-func (o *IndicatorPropertiesCustomMetricParamsTotal) SetMetrics(v []IndicatorPropertiesCustomMetricParamsGoodMetricsInner) {
+func (o *IndicatorPropertiesCustomMetricParamsTotal) SetMetrics(v []IndicatorPropertiesCustomMetricParamsTotalMetricsInner) {
 	o.Metrics = v
 }
 

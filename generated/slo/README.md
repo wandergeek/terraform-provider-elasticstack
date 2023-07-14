@@ -77,11 +77,6 @@ All URIs are relative to *http://localhost:5601*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CompositeSloAPI* | [**CreateCompositeSloOp**](docs/CompositeSloAPI.md#createcompositesloop) | **Post** /s/{spaceId}/api/observability/composite_slos | Creates a Composite SLO
-*CompositeSloAPI* | [**DeleteCompositeSloOp**](docs/CompositeSloAPI.md#deletecompositesloop) | **Delete** /s/{spaceId}/api/observability/composite_slos/{compositeSloId} | Deletes a composite SLO
-*CompositeSloAPI* | [**FindCompositeSloOp**](docs/CompositeSloAPI.md#findcompositesloop) | **Get** /s/{spaceId}/api/observability/composite_slos | Retrieves a paginated list of composite SLOs with summary
-*CompositeSloAPI* | [**GetCompositeSloOp**](docs/CompositeSloAPI.md#getcompositesloop) | **Get** /s/{spaceId}/api/observability/composite_slos/{compositeSloId} | Retrieves a composite SLO
-*CompositeSloAPI* | [**UpdateCompositeSloOp**](docs/CompositeSloAPI.md#updatecompositesloop) | **Put** /s/{spaceId}/api/observability/composite_slos/{compositeSloId} | Updates a composite SLO
 *SloAPI* | [**CreateSloOp**](docs/SloAPI.md#createsloop) | **Post** /s/{spaceId}/api/observability/slos | Creates an SLO.
 *SloAPI* | [**DeleteSloOp**](docs/SloAPI.md#deletesloop) | **Delete** /s/{spaceId}/api/observability/slos/{sloId} | Deletes an SLO
 *SloAPI* | [**DisableSloOp**](docs/SloAPI.md#disablesloop) | **Post** /s/{spaceId}/api/observability/slos/{sloId}/disable | Disables an SLO
@@ -94,17 +89,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [BaseCompositeSloResponse](docs/BaseCompositeSloResponse.md)
  - [BudgetingMethod](docs/BudgetingMethod.md)
- - [CompositeMethod](docs/CompositeMethod.md)
- - [CompositeSloResponse](docs/CompositeSloResponse.md)
- - [CreateCompositeSloRequest](docs/CreateCompositeSloRequest.md)
- - [CreateCompositeSloResponse](docs/CreateCompositeSloResponse.md)
  - [CreateSloRequest](docs/CreateSloRequest.md)
  - [CreateSloRequestIndicator](docs/CreateSloRequestIndicator.md)
  - [CreateSloResponse](docs/CreateSloResponse.md)
  - [ErrorBudget](docs/ErrorBudget.md)
- - [FindCompositeSloResponse](docs/FindCompositeSloResponse.md)
  - [FindSloResponse](docs/FindSloResponse.md)
  - [HistoricalSummaryRequest](docs/HistoricalSummaryRequest.md)
  - [HistoricalSummaryResponseInner](docs/HistoricalSummaryResponseInner.md)
@@ -119,6 +108,11 @@ Class | Method | HTTP request | Description
  - [IndicatorPropertiesCustomMetricParamsGood](docs/IndicatorPropertiesCustomMetricParamsGood.md)
  - [IndicatorPropertiesCustomMetricParamsGoodMetricsInner](docs/IndicatorPropertiesCustomMetricParamsGoodMetricsInner.md)
  - [IndicatorPropertiesCustomMetricParamsTotal](docs/IndicatorPropertiesCustomMetricParamsTotal.md)
+ - [IndicatorPropertiesCustomMetricParamsTotalMetricsInner](docs/IndicatorPropertiesCustomMetricParamsTotalMetricsInner.md)
+ - [IndicatorPropertiesHistogram](docs/IndicatorPropertiesHistogram.md)
+ - [IndicatorPropertiesHistogramParams](docs/IndicatorPropertiesHistogramParams.md)
+ - [IndicatorPropertiesHistogramParamsGood](docs/IndicatorPropertiesHistogramParamsGood.md)
+ - [IndicatorPropertiesHistogramParamsTotal](docs/IndicatorPropertiesHistogramParamsTotal.md)
  - [Model400Response](docs/Model400Response.md)
  - [Model401Response](docs/Model401Response.md)
  - [Model403Response](docs/Model403Response.md)
@@ -131,9 +125,7 @@ Class | Method | HTTP request | Description
  - [Summary](docs/Summary.md)
  - [SummaryStatus](docs/SummaryStatus.md)
  - [TimeWindow](docs/TimeWindow.md)
- - [UpdateCompositeSloRequest](docs/UpdateCompositeSloRequest.md)
  - [UpdateSloRequest](docs/UpdateSloRequest.md)
- - [WeightedCompositeSourcesInner](docs/WeightedCompositeSourcesInner.md)
 
 
 ## Documentation For Authorization

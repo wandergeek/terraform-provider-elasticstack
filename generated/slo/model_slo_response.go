@@ -31,7 +31,7 @@ type SloResponse struct {
 	Objective       *Objective            `json:"objective,omitempty"`
 	Settings        *Settings             `json:"settings,omitempty"`
 	// The SLO revision
-	Revision *float32 `json:"revision,omitempty"`
+	Revision *float64 `json:"revision,omitempty"`
 	Summary  *Summary `json:"summary,omitempty"`
 	// Indicate if the SLO is enabled
 	Enabled *bool `json:"enabled,omitempty"`
@@ -315,9 +315,9 @@ func (o *SloResponse) SetSettings(v Settings) {
 }
 
 // GetRevision returns the Revision field value if set, zero value otherwise.
-func (o *SloResponse) GetRevision() float32 {
+func (o *SloResponse) GetRevision() float64 {
 	if o == nil || IsNil(o.Revision) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.Revision
@@ -325,7 +325,7 @@ func (o *SloResponse) GetRevision() float32 {
 
 // GetRevisionOk returns a tuple with the Revision field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SloResponse) GetRevisionOk() (*float32, bool) {
+func (o *SloResponse) GetRevisionOk() (*float64, bool) {
 	if o == nil || IsNil(o.Revision) {
 		return nil, false
 	}
@@ -341,8 +341,8 @@ func (o *SloResponse) HasRevision() bool {
 	return false
 }
 
-// SetRevision gets a reference to the given float32 and assigns it to the Revision field.
-func (o *SloResponse) SetRevision(v float32) {
+// SetRevision gets a reference to the given float64 and assigns it to the Revision field.
+func (o *SloResponse) SetRevision(v float64) {
 	o.Revision = &v
 }
 

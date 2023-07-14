@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Duration** | **string** | the duration formatted as {duration}{unit} | 
-**Type** | **string** | Type of time window | 
+**Duration** | **string** | the duration formatted as {duration}{unit}. Accepted values for rolling: 7d, 30d, 90d. Accepted values for calendar aligned: 1w (weekly) or 1M (monthly) | 
+**Type** | **string** | Indicates weither the time window is a rolling or a calendar aligned time window. | 
 
 ## Methods
 

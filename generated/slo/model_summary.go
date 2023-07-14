@@ -20,7 +20,7 @@ var _ MappedNullable = &Summary{}
 // Summary The SLO computed data
 type Summary struct {
 	Status      *SummaryStatus `json:"status,omitempty"`
-	SliValue    *float32       `json:"sliValue,omitempty"`
+	SliValue    *float64       `json:"sliValue,omitempty"`
 	ErrorBudget *ErrorBudget   `json:"errorBudget,omitempty"`
 }
 
@@ -74,9 +74,9 @@ func (o *Summary) SetStatus(v SummaryStatus) {
 }
 
 // GetSliValue returns the SliValue field value if set, zero value otherwise.
-func (o *Summary) GetSliValue() float32 {
+func (o *Summary) GetSliValue() float64 {
 	if o == nil || IsNil(o.SliValue) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.SliValue
@@ -84,7 +84,7 @@ func (o *Summary) GetSliValue() float32 {
 
 // GetSliValueOk returns a tuple with the SliValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Summary) GetSliValueOk() (*float32, bool) {
+func (o *Summary) GetSliValueOk() (*float64, bool) {
 	if o == nil || IsNil(o.SliValue) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *Summary) HasSliValue() bool {
 	return false
 }
 
-// SetSliValue gets a reference to the given float32 and assigns it to the SliValue field.
-func (o *Summary) SetSliValue(v float32) {
+// SetSliValue gets a reference to the given float64 and assigns it to the SliValue field.
+func (o *Summary) SetSliValue(v float64) {
 	o.SliValue = &v
 }
 

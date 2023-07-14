@@ -32,14 +32,14 @@ type IndicatorPropertiesApmLatencyParams struct {
 	// The index used by APM metrics
 	Index string `json:"index"`
 	// The latency threshold in milliseconds
-	Threshold float32 `json:"threshold"`
+	Threshold float64 `json:"threshold"`
 }
 
 // NewIndicatorPropertiesApmLatencyParams instantiates a new IndicatorPropertiesApmLatencyParams object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIndicatorPropertiesApmLatencyParams(service string, environment string, transactionType string, transactionName string, index string, threshold float32) *IndicatorPropertiesApmLatencyParams {
+func NewIndicatorPropertiesApmLatencyParams(service string, environment string, transactionType string, transactionName string, index string, threshold float64) *IndicatorPropertiesApmLatencyParams {
 	this := IndicatorPropertiesApmLatencyParams{}
 	this.Service = service
 	this.Environment = environment
@@ -211,9 +211,9 @@ func (o *IndicatorPropertiesApmLatencyParams) SetIndex(v string) {
 }
 
 // GetThreshold returns the Threshold field value
-func (o *IndicatorPropertiesApmLatencyParams) GetThreshold() float32 {
+func (o *IndicatorPropertiesApmLatencyParams) GetThreshold() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -222,7 +222,7 @@ func (o *IndicatorPropertiesApmLatencyParams) GetThreshold() float32 {
 
 // GetThresholdOk returns a tuple with the Threshold field value
 // and a boolean to check if the value has been set.
-func (o *IndicatorPropertiesApmLatencyParams) GetThresholdOk() (*float32, bool) {
+func (o *IndicatorPropertiesApmLatencyParams) GetThresholdOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -230,7 +230,7 @@ func (o *IndicatorPropertiesApmLatencyParams) GetThresholdOk() (*float32, bool) 
 }
 
 // SetThreshold sets field value
-func (o *IndicatorPropertiesApmLatencyParams) SetThreshold(v float32) {
+func (o *IndicatorPropertiesApmLatencyParams) SetThreshold(v float64) {
 	o.Threshold = v
 }
 

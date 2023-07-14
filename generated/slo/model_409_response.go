@@ -19,7 +19,7 @@ var _ MappedNullable = &Model409Response{}
 
 // Model409Response struct for Model409Response
 type Model409Response struct {
-	StatusCode float32 `json:"statusCode"`
+	StatusCode float64 `json:"statusCode"`
 	Error      string  `json:"error"`
 	Message    string  `json:"message"`
 }
@@ -28,7 +28,7 @@ type Model409Response struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModel409Response(statusCode float32, error_ string, message string) *Model409Response {
+func NewModel409Response(statusCode float64, error_ string, message string) *Model409Response {
 	this := Model409Response{}
 	this.StatusCode = statusCode
 	this.Error = error_
@@ -45,9 +45,9 @@ func NewModel409ResponseWithDefaults() *Model409Response {
 }
 
 // GetStatusCode returns the StatusCode field value
-func (o *Model409Response) GetStatusCode() float32 {
+func (o *Model409Response) GetStatusCode() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -56,7 +56,7 @@ func (o *Model409Response) GetStatusCode() float32 {
 
 // GetStatusCodeOk returns a tuple with the StatusCode field value
 // and a boolean to check if the value has been set.
-func (o *Model409Response) GetStatusCodeOk() (*float32, bool) {
+func (o *Model409Response) GetStatusCodeOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *Model409Response) GetStatusCodeOk() (*float32, bool) {
 }
 
 // SetStatusCode sets field value
-func (o *Model409Response) SetStatusCode(v float32) {
+func (o *Model409Response) SetStatusCode(v float64) {
 	o.StatusCode = v
 }
 

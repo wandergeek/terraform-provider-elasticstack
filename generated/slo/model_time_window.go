@@ -17,11 +17,11 @@ import (
 // checks if the TimeWindow type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TimeWindow{}
 
-// TimeWindow Defines properties for time window
+// TimeWindow Defines properties for the SLO time window
 type TimeWindow struct {
-	// the duration formatted as {duration}{unit}
+	// the duration formatted as {duration}{unit}. Accepted values for rolling: 7d, 30d, 90d. Accepted values for calendar aligned: 1w (weekly) or 1M (monthly)
 	Duration string `json:"duration"`
-	// Type of time window
+	// Indicates weither the time window is a rolling or a calendar aligned time window.
 	Type string `json:"type"`
 }
 

@@ -1,4 +1,4 @@
-# CreateSloRequestIndicator
+# IndicatorPropertiesHistogram
 
 ## Properties
 
@@ -9,59 +9,59 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCreateSloRequestIndicator
+### NewIndicatorPropertiesHistogram
 
-`func NewCreateSloRequestIndicator(params IndicatorPropertiesHistogramParams, type_ string, ) *CreateSloRequestIndicator`
+`func NewIndicatorPropertiesHistogram(params IndicatorPropertiesHistogramParams, type_ string, ) *IndicatorPropertiesHistogram`
 
-NewCreateSloRequestIndicator instantiates a new CreateSloRequestIndicator object
+NewIndicatorPropertiesHistogram instantiates a new IndicatorPropertiesHistogram object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCreateSloRequestIndicatorWithDefaults
+### NewIndicatorPropertiesHistogramWithDefaults
 
-`func NewCreateSloRequestIndicatorWithDefaults() *CreateSloRequestIndicator`
+`func NewIndicatorPropertiesHistogramWithDefaults() *IndicatorPropertiesHistogram`
 
-NewCreateSloRequestIndicatorWithDefaults instantiates a new CreateSloRequestIndicator object
+NewIndicatorPropertiesHistogramWithDefaults instantiates a new IndicatorPropertiesHistogram object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetParams
 
-`func (o *CreateSloRequestIndicator) GetParams() IndicatorPropertiesHistogramParams`
+`func (o *IndicatorPropertiesHistogram) GetParams() IndicatorPropertiesHistogramParams`
 
 GetParams returns the Params field if non-nil, zero value otherwise.
 
 ### GetParamsOk
 
-`func (o *CreateSloRequestIndicator) GetParamsOk() (*IndicatorPropertiesHistogramParams, bool)`
+`func (o *IndicatorPropertiesHistogram) GetParamsOk() (*IndicatorPropertiesHistogramParams, bool)`
 
 GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParams
 
-`func (o *CreateSloRequestIndicator) SetParams(v IndicatorPropertiesHistogramParams)`
+`func (o *IndicatorPropertiesHistogram) SetParams(v IndicatorPropertiesHistogramParams)`
 
 SetParams sets Params field to given value.
 
 
 ### GetType
 
-`func (o *CreateSloRequestIndicator) GetType() string`
+`func (o *IndicatorPropertiesHistogram) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CreateSloRequestIndicator) GetTypeOk() (*string, bool)`
+`func (o *IndicatorPropertiesHistogram) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CreateSloRequestIndicator) SetType(v string)`
+`func (o *IndicatorPropertiesHistogram) SetType(v string)`
 
 SetType sets Type field to given value.
 

@@ -21,6 +21,7 @@ type CreateSloRequestIndicator struct {
 	IndicatorPropertiesApmLatency      *IndicatorPropertiesApmLatency
 	IndicatorPropertiesCustomKql       *IndicatorPropertiesCustomKql
 	IndicatorPropertiesCustomMetric    *IndicatorPropertiesCustomMetric
+	IndicatorPropertiesHistogram       *IndicatorPropertiesHistogram
 }
 
 // IndicatorPropertiesApmAvailabilityAsCreateSloRequestIndicator is a convenience function that returns IndicatorPropertiesApmAvailability wrapped in CreateSloRequestIndicator
@@ -48,6 +49,13 @@ func IndicatorPropertiesCustomKqlAsCreateSloRequestIndicator(v *IndicatorPropert
 func IndicatorPropertiesCustomMetricAsCreateSloRequestIndicator(v *IndicatorPropertiesCustomMetric) CreateSloRequestIndicator {
 	return CreateSloRequestIndicator{
 		IndicatorPropertiesCustomMetric: v,
+	}
+}
+
+// IndicatorPropertiesHistogramAsCreateSloRequestIndicator is a convenience function that returns IndicatorPropertiesHistogram wrapped in CreateSloRequestIndicator
+func IndicatorPropertiesHistogramAsCreateSloRequestIndicator(v *IndicatorPropertiesHistogram) CreateSloRequestIndicator {
+	return CreateSloRequestIndicator{
+		IndicatorPropertiesHistogram: v,
 	}
 }
 
@@ -107,12 +115,26 @@ func (dst *CreateSloRequestIndicator) UnmarshalJSON(data []byte) error {
 		dst.IndicatorPropertiesCustomMetric = nil
 	}
 
+	// try to unmarshal data into IndicatorPropertiesHistogram
+	err = json.Unmarshal(data, &dst.IndicatorPropertiesHistogram)
+	if err == nil {
+		jsonIndicatorPropertiesHistogram, _ := json.Marshal(dst.IndicatorPropertiesHistogram)
+		if string(jsonIndicatorPropertiesHistogram) == "{}" { // empty struct
+			dst.IndicatorPropertiesHistogram = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.IndicatorPropertiesHistogram = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.IndicatorPropertiesApmAvailability = nil
 		dst.IndicatorPropertiesApmLatency = nil
 		dst.IndicatorPropertiesCustomKql = nil
 		dst.IndicatorPropertiesCustomMetric = nil
+		dst.IndicatorPropertiesHistogram = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(CreateSloRequestIndicator)")
 	} else if match == 1 {
@@ -140,6 +162,10 @@ func (src CreateSloRequestIndicator) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.IndicatorPropertiesCustomMetric)
 	}
 
+	if src.IndicatorPropertiesHistogram != nil {
+		return json.Marshal(&src.IndicatorPropertiesHistogram)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -162,6 +188,10 @@ func (obj *CreateSloRequestIndicator) GetActualInstance() interface{} {
 
 	if obj.IndicatorPropertiesCustomMetric != nil {
 		return obj.IndicatorPropertiesCustomMetric
+	}
+
+	if obj.IndicatorPropertiesHistogram != nil {
+		return obj.IndicatorPropertiesHistogram
 	}
 
 	// all schemas are nil

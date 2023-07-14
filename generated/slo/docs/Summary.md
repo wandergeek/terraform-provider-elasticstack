@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | Pointer to [**SummaryStatus**](SummaryStatus.md) |  | [optional] 
-**SliValue** | Pointer to **float32** |  | [optional] 
+**SliValue** | Pointer to **float64** |  | [optional] 
 **ErrorBudget** | Pointer to [**ErrorBudget**](ErrorBudget.md) |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetSliValue
 
-`func (o *Summary) GetSliValue() float32`
+`func (o *Summary) GetSliValue() float64`
 
 GetSliValue returns the SliValue field if non-nil, zero value otherwise.
 
 ### GetSliValueOk
 
-`func (o *Summary) GetSliValueOk() (*float32, bool)`
+`func (o *Summary) GetSliValueOk() (*float64, bool)`
 
 GetSliValueOk returns a tuple with the SliValue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSliValue
 
-`func (o *Summary) SetSliValue(v float32)`
+`func (o *Summary) SetSliValue(v float64)`
 
 SetSliValue sets SliValue field to given value.
 

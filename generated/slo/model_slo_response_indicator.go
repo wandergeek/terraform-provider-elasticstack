@@ -21,6 +21,7 @@ type SloResponseIndicator struct {
 	IndicatorPropertiesApmLatency      *IndicatorPropertiesApmLatency
 	IndicatorPropertiesCustomKql       *IndicatorPropertiesCustomKql
 	IndicatorPropertiesCustomMetric    *IndicatorPropertiesCustomMetric
+	IndicatorPropertiesHistogram       *IndicatorPropertiesHistogram
 }
 
 // IndicatorPropertiesApmAvailabilityAsSloResponseIndicator is a convenience function that returns IndicatorPropertiesApmAvailability wrapped in SloResponseIndicator
@@ -48,6 +49,13 @@ func IndicatorPropertiesCustomKqlAsSloResponseIndicator(v *IndicatorPropertiesCu
 func IndicatorPropertiesCustomMetricAsSloResponseIndicator(v *IndicatorPropertiesCustomMetric) SloResponseIndicator {
 	return SloResponseIndicator{
 		IndicatorPropertiesCustomMetric: v,
+	}
+}
+
+// IndicatorPropertiesHistogramAsSloResponseIndicator is a convenience function that returns IndicatorPropertiesHistogram wrapped in SloResponseIndicator
+func IndicatorPropertiesHistogramAsSloResponseIndicator(v *IndicatorPropertiesHistogram) SloResponseIndicator {
+	return SloResponseIndicator{
+		IndicatorPropertiesHistogram: v,
 	}
 }
 
@@ -106,6 +114,18 @@ func (dst *SloResponseIndicator) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.IndicatorPropertiesCustomMetric = nil
 			return fmt.Errorf("failed to unmarshal SloResponseIndicator as IndicatorPropertiesCustomMetric: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'indicator_properties_histogram'
+	if jsonDict["type"] == "indicator_properties_histogram" {
+		// try to unmarshal JSON data into IndicatorPropertiesHistogram
+		err = json.Unmarshal(data, &dst.IndicatorPropertiesHistogram)
+		if err == nil {
+			return nil // data stored in dst.IndicatorPropertiesHistogram, return on the first match
+		} else {
+			dst.IndicatorPropertiesHistogram = nil
+			return fmt.Errorf("failed to unmarshal SloResponseIndicator as IndicatorPropertiesHistogram: %s", err.Error())
 		}
 	}
 
@@ -178,6 +198,10 @@ func (src SloResponseIndicator) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.IndicatorPropertiesCustomMetric)
 	}
 
+	if src.IndicatorPropertiesHistogram != nil {
+		return json.Marshal(&src.IndicatorPropertiesHistogram)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -200,6 +224,10 @@ func (obj *SloResponseIndicator) GetActualInstance() interface{} {
 
 	if obj.IndicatorPropertiesCustomMetric != nil {
 		return obj.IndicatorPropertiesCustomMetric
+	}
+
+	if obj.IndicatorPropertiesHistogram != nil {
+		return obj.IndicatorPropertiesHistogram
 	}
 
 	// all schemas are nil

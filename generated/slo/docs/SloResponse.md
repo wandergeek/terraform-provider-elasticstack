@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **BudgetingMethod** | Pointer to [**BudgetingMethod**](BudgetingMethod.md) |  | [optional] 
 **Objective** | Pointer to [**Objective**](Objective.md) |  | [optional] 
 **Settings** | Pointer to [**Settings**](Settings.md) |  | [optional] 
-**Revision** | Pointer to **float32** | The SLO revision | [optional] 
+**Revision** | Pointer to **float64** | The SLO revision | [optional] 
 **Summary** | Pointer to [**Summary**](Summary.md) |  | [optional] 
 **Enabled** | Pointer to **bool** | Indicate if the SLO is enabled | [optional] 
 **CreatedAt** | Pointer to **string** | The creation date | [optional] 
@@ -239,20 +239,20 @@ HasSettings returns a boolean if a field has been set.
 
 ### GetRevision
 
-`func (o *SloResponse) GetRevision() float32`
+`func (o *SloResponse) GetRevision() float64`
 
 GetRevision returns the Revision field if non-nil, zero value otherwise.
 
 ### GetRevisionOk
 
-`func (o *SloResponse) GetRevisionOk() (*float32, bool)`
+`func (o *SloResponse) GetRevisionOk() (*float64, bool)`
 
 GetRevisionOk returns a tuple with the Revision field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRevision
 
-`func (o *SloResponse) SetRevision(v float32)`
+`func (o *SloResponse) SetRevision(v float64)`
 
 SetRevision sets Revision field to given value.
 
