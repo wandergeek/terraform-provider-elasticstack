@@ -21,6 +21,105 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 )
 
+const testAccResourceKibanaSloInvalidIdTooShort = `
+provider "elasticstack" {
+  elasticsearch {}
+  kibana {}
+}
+
+resource "elasticstack_kibana_slo" "test_slo_short_id" {
+  slo_id      = "short"
+  name        = "Test SLO Too Short"
+  description = "Test description for SLO with too short ID"
+  kql_custom_indicator {
+    index = "logs-*"
+    good = "response_time < 100"
+    total = "*"
+  }
+  time_window {
+    duration = "7d"
+    type = "rolling"
+  }
+  budgeting_method = "occurrences"
+  objective {
+    target = 0.99
+  }
+}
+`
+
+const testAccResourceKibanaSloInvalidIdTooLong = `
+provider "elasticstack" {
+  elasticsearch {}
+  kibana {}
+}
+
+resource "elasticstack_kibana_slo" "test_slo_long_id" {
+  slo_id      = "thisidistoolongandoverfortyeightcharacterslonggggg12345" // 53 chars
+  name        = "Test SLO Too Long"
+  description = "Test description for SLO with too long ID"
+  kql_custom_indicator {
+    index = "logs-*"
+    good = "response_time < 200"
+    total = "*"
+  }
+  time_window {
+    duration = "14d"
+    type = "rolling"
+  }
+  budgeting_method = "occurrences"
+  objective {
+    target = 0.995
+  }
+}
+`
+
+const testAccResourceKibanaSloInvalidIdChars = `
+provider "elasticstack" {
+  elasticsearch {}
+  kibana {}
+}
+
+resource "elasticstack_kibana_slo" "test_slo_invalid_chars_id" {
+  slo_id      = "invalid!id@#"
+  name        = "Test SLO Invalid Chars"
+  description = "Test description for SLO with invalid characters in ID"
+  kql_custom_indicator {
+    index = "logs-*"
+    good = "response_time < 300"
+    total = "*"
+  }
+  time_window {
+    duration = "30d"
+    type = "rolling"
+  }
+  budgeting_method = "occurrences"
+  objective {
+    target = 0.999
+  }
+}
+`
+
+func TestAccResourceKibanaSlo_slo_id_validation(t *testing.T) {
+	resource.Test(t, resource.TestCase{
+		PreCheck:                 func() { acctest.PreCheck(t) },
+		ProtoV6ProviderFactories: acctest.Providers,
+		Steps: []resource.TestStep{
+			{
+				Config:      testAccResourceKibanaSloInvalidIdTooShort,
+				ExpectError: regexp.MustCompile("slo_id must be between 8 and 48 characters and contain only letters, numbers, hyphens, and underscores"),
+			},
+			{
+				Config:      testAccResourceKibanaSloInvalidIdTooLong,
+				ExpectError: regexp.MustCompile("slo_id must be between 8 and 48 characters and contain only letters, numbers, hyphens, and underscores"),
+			},
+			{
+				Config:      testAccResourceKibanaSloInvalidIdChars,
+				ExpectError: regexp.MustCompile("slo_id must be between 8 and 48 characters and contain only letters, numbers, hyphens, and underscores"),
+			},
+		},
+	})
+}
+
 func TestAccResourceSlo(t *testing.T) {
 	// This test exposes a bug in Kibana present in 8.11.x
 	slo8_9Constraints, err := version.NewConstraint(">=8.9.0,!=8.11.0,!=8.11.1,!=8.11.2,!=8.11.3,!=8.11.4")
