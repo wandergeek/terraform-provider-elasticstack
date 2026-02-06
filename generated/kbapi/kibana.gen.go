@@ -451,7 +451,7 @@ const (
 
 // Defines values for SecurityAIAssistantAPIEsqlContentReferenceType.
 const (
-	SecurityAIAssistantAPIEsqlContentReferenceTypeEsqlQuery SecurityAIAssistantAPIEsqlContentReferenceType = "EsqlQuery"
+	EsqlQuery SecurityAIAssistantAPIEsqlContentReferenceType = "EsqlQuery"
 )
 
 // Defines values for SecurityAIAssistantAPIFindAnonymizationFieldsSortField.
@@ -2643,15 +2643,6 @@ const (
 	AgentPolicyStatusInactive AgentPolicyStatus = "inactive"
 )
 
-// Defines values for Aggtype.
-const (
-	AggtypeAvg   Aggtype = "avg"
-	AggtypeCount Aggtype = "count"
-	AggtypeMax   Aggtype = "max"
-	AggtypeMin   Aggtype = "min"
-	AggtypeSum   Aggtype = "sum"
-)
-
 // Defines values for AuthType.
 const (
 	WebhookAuthenticationBasic AuthType = "webhook-authentication-basic"
@@ -3201,12 +3192,6 @@ const (
 // Defines values for GradientColorMappingMode.
 const (
 	Gradient GradientColorMappingMode = "gradient"
-)
-
-// Defines values for Groupby.
-const (
-	GroupbyAll Groupby = "all"
-	GroupbyTop Groupby = "top"
 )
 
 // Defines values for HeatmapESQLMetricOperation.
@@ -3868,379 +3853,6 @@ const (
 	PackageListItemVarGroupsOptionsHideInDeploymentModesDefault   PackageListItemVarGroupsOptionsHideInDeploymentModes = "default"
 )
 
-// Defines values for ParamsEsQueryDslRuleSearchType.
-const (
-	EsQuery ParamsEsQueryDslRuleSearchType = "esQuery"
-)
-
-// Defines values for ParamsEsQueryEsqlRuleSearchType.
-const (
-	ParamsEsQueryEsqlRuleSearchTypeEsqlQuery ParamsEsQueryEsqlRuleSearchType = "esqlQuery"
-)
-
-// Defines values for ParamsEsQueryEsqlRuleThresholdComparator.
-const (
-	ParamsEsQueryEsqlRuleThresholdComparatorGreaterThan ParamsEsQueryEsqlRuleThresholdComparator = ">"
-)
-
-// Defines values for ParamsEsQueryKqlRuleSearchType.
-const (
-	SearchSource ParamsEsQueryKqlRuleSearchType = "searchSource"
-)
-
-// Defines values for ParamsPropertyApmAnomalyAnomalySeverityType.
-const (
-	ParamsPropertyApmAnomalyAnomalySeverityTypeCritical ParamsPropertyApmAnomalyAnomalySeverityType = "critical"
-	ParamsPropertyApmAnomalyAnomalySeverityTypeMajor    ParamsPropertyApmAnomalyAnomalySeverityType = "major"
-	ParamsPropertyApmAnomalyAnomalySeverityTypeMinor    ParamsPropertyApmAnomalyAnomalySeverityType = "minor"
-	ParamsPropertyApmAnomalyAnomalySeverityTypeWarning  ParamsPropertyApmAnomalyAnomalySeverityType = "warning"
-)
-
-// Defines values for ParamsPropertyApmAnomalyWindowUnit.
-const (
-	ParamsPropertyApmAnomalyWindowUnitD ParamsPropertyApmAnomalyWindowUnit = "d"
-	ParamsPropertyApmAnomalyWindowUnitH ParamsPropertyApmAnomalyWindowUnit = "h"
-	ParamsPropertyApmAnomalyWindowUnitM ParamsPropertyApmAnomalyWindowUnit = "m"
-)
-
-// Defines values for ParamsPropertyApmErrorCountGroupBy.
-const (
-	ParamsPropertyApmErrorCountGroupByErrorGroupingKey   ParamsPropertyApmErrorCountGroupBy = "error.grouping_key"
-	ParamsPropertyApmErrorCountGroupByServiceEnvironment ParamsPropertyApmErrorCountGroupBy = "service.environment"
-	ParamsPropertyApmErrorCountGroupByServiceName        ParamsPropertyApmErrorCountGroupBy = "service.name"
-	ParamsPropertyApmErrorCountGroupByTransactionName    ParamsPropertyApmErrorCountGroupBy = "transaction.name"
-)
-
-// Defines values for ParamsPropertyApmErrorCountWindowUnit.
-const (
-	ParamsPropertyApmErrorCountWindowUnitD ParamsPropertyApmErrorCountWindowUnit = "d"
-	ParamsPropertyApmErrorCountWindowUnitH ParamsPropertyApmErrorCountWindowUnit = "h"
-	ParamsPropertyApmErrorCountWindowUnitM ParamsPropertyApmErrorCountWindowUnit = "m"
-)
-
-// Defines values for ParamsPropertyApmTransactionDurationAggregationType.
-const (
-	ParamsPropertyApmTransactionDurationAggregationTypeAvg   ParamsPropertyApmTransactionDurationAggregationType = "avg"
-	ParamsPropertyApmTransactionDurationAggregationTypeN95th ParamsPropertyApmTransactionDurationAggregationType = "95th"
-	ParamsPropertyApmTransactionDurationAggregationTypeN99th ParamsPropertyApmTransactionDurationAggregationType = "99th"
-)
-
-// Defines values for ParamsPropertyApmTransactionDurationGroupBy.
-const (
-	ParamsPropertyApmTransactionDurationGroupByServiceEnvironment ParamsPropertyApmTransactionDurationGroupBy = "service.environment"
-	ParamsPropertyApmTransactionDurationGroupByServiceName        ParamsPropertyApmTransactionDurationGroupBy = "service.name"
-	ParamsPropertyApmTransactionDurationGroupByTransactionName    ParamsPropertyApmTransactionDurationGroupBy = "transaction.name"
-	ParamsPropertyApmTransactionDurationGroupByTransactionType    ParamsPropertyApmTransactionDurationGroupBy = "transaction.type"
-)
-
-// Defines values for ParamsPropertyApmTransactionDurationWindowUnit.
-const (
-	ParamsPropertyApmTransactionDurationWindowUnitD ParamsPropertyApmTransactionDurationWindowUnit = "d"
-	ParamsPropertyApmTransactionDurationWindowUnitH ParamsPropertyApmTransactionDurationWindowUnit = "h"
-	ParamsPropertyApmTransactionDurationWindowUnitM ParamsPropertyApmTransactionDurationWindowUnit = "m"
-)
-
-// Defines values for ParamsPropertyApmTransactionErrorRateGroupBy.
-const (
-	ServiceEnvironment ParamsPropertyApmTransactionErrorRateGroupBy = "service.environment"
-	ServiceName        ParamsPropertyApmTransactionErrorRateGroupBy = "service.name"
-	TransactionName    ParamsPropertyApmTransactionErrorRateGroupBy = "transaction.name"
-	TransactionType    ParamsPropertyApmTransactionErrorRateGroupBy = "transaction.type"
-)
-
-// Defines values for ParamsPropertyApmTransactionErrorRateWindowUnit.
-const (
-	ParamsPropertyApmTransactionErrorRateWindowUnitD ParamsPropertyApmTransactionErrorRateWindowUnit = "d"
-	ParamsPropertyApmTransactionErrorRateWindowUnitH ParamsPropertyApmTransactionErrorRateWindowUnit = "h"
-	ParamsPropertyApmTransactionErrorRateWindowUnitM ParamsPropertyApmTransactionErrorRateWindowUnit = "m"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaComparator.
-const (
-	ParamsPropertyInfraInventoryCriteriaComparatorBetween          ParamsPropertyInfraInventoryCriteriaComparator = "between"
-	ParamsPropertyInfraInventoryCriteriaComparatorGreaterThan      ParamsPropertyInfraInventoryCriteriaComparator = ">"
-	ParamsPropertyInfraInventoryCriteriaComparatorGreaterThanEqual ParamsPropertyInfraInventoryCriteriaComparator = ">="
-	ParamsPropertyInfraInventoryCriteriaComparatorLessThan         ParamsPropertyInfraInventoryCriteriaComparator = "<"
-	ParamsPropertyInfraInventoryCriteriaComparatorLessThanEqual    ParamsPropertyInfraInventoryCriteriaComparator = "<="
-	ParamsPropertyInfraInventoryCriteriaComparatorOutside          ParamsPropertyInfraInventoryCriteriaComparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation.
-const (
-	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationAvg  ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "avg"
-	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationMax  ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "max"
-	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationMin  ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "min"
-	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationRate ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "rate"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaCustomMetricType.
-const (
-	ParamsPropertyInfraInventoryCriteriaCustomMetricTypeCustom ParamsPropertyInfraInventoryCriteriaCustomMetricType = "custom"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaMetric.
-const (
-	ParamsPropertyInfraInventoryCriteriaMetricCount                 ParamsPropertyInfraInventoryCriteriaMetric = "count"
-	ParamsPropertyInfraInventoryCriteriaMetricCpu                   ParamsPropertyInfraInventoryCriteriaMetric = "cpu"
-	ParamsPropertyInfraInventoryCriteriaMetricCustom                ParamsPropertyInfraInventoryCriteriaMetric = "custom"
-	ParamsPropertyInfraInventoryCriteriaMetricDiskIOReadBytes       ParamsPropertyInfraInventoryCriteriaMetric = "diskIOReadBytes"
-	ParamsPropertyInfraInventoryCriteriaMetricDiskIOWriteBytes      ParamsPropertyInfraInventoryCriteriaMetric = "diskIOWriteBytes"
-	ParamsPropertyInfraInventoryCriteriaMetricDiskLatency           ParamsPropertyInfraInventoryCriteriaMetric = "diskLatency"
-	ParamsPropertyInfraInventoryCriteriaMetricLoad                  ParamsPropertyInfraInventoryCriteriaMetric = "load"
-	ParamsPropertyInfraInventoryCriteriaMetricLogRate               ParamsPropertyInfraInventoryCriteriaMetric = "logRate"
-	ParamsPropertyInfraInventoryCriteriaMetricMemory                ParamsPropertyInfraInventoryCriteriaMetric = "memory"
-	ParamsPropertyInfraInventoryCriteriaMetricMemoryTotal           ParamsPropertyInfraInventoryCriteriaMetric = "memoryTotal"
-	ParamsPropertyInfraInventoryCriteriaMetricRdsActiveTransactions ParamsPropertyInfraInventoryCriteriaMetric = "rdsActiveTransactions"
-	ParamsPropertyInfraInventoryCriteriaMetricRdsConnections        ParamsPropertyInfraInventoryCriteriaMetric = "rdsConnections"
-	ParamsPropertyInfraInventoryCriteriaMetricRdsLatency            ParamsPropertyInfraInventoryCriteriaMetric = "rdsLatency"
-	ParamsPropertyInfraInventoryCriteriaMetricRdsQueriesExecuted    ParamsPropertyInfraInventoryCriteriaMetric = "rdsQueriesExecuted"
-	ParamsPropertyInfraInventoryCriteriaMetricRx                    ParamsPropertyInfraInventoryCriteriaMetric = "rx"
-	ParamsPropertyInfraInventoryCriteriaMetricS3BucketSize          ParamsPropertyInfraInventoryCriteriaMetric = "s3BucketSize"
-	ParamsPropertyInfraInventoryCriteriaMetricS3DownloadBytes       ParamsPropertyInfraInventoryCriteriaMetric = "s3DownloadBytes"
-	ParamsPropertyInfraInventoryCriteriaMetricS3NumberOfObjects     ParamsPropertyInfraInventoryCriteriaMetric = "s3NumberOfObjects"
-	ParamsPropertyInfraInventoryCriteriaMetricS3TotalRequests       ParamsPropertyInfraInventoryCriteriaMetric = "s3TotalRequests"
-	ParamsPropertyInfraInventoryCriteriaMetricS3UploadBytes         ParamsPropertyInfraInventoryCriteriaMetric = "s3UploadBytes"
-	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesDelayed    ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesDelayed"
-	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesEmpty      ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesEmpty"
-	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesSent       ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesSent"
-	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesVisible    ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesVisible"
-	ParamsPropertyInfraInventoryCriteriaMetricSqsOldestMessage      ParamsPropertyInfraInventoryCriteriaMetric = "sqsOldestMessage"
-	ParamsPropertyInfraInventoryCriteriaMetricTx                    ParamsPropertyInfraInventoryCriteriaMetric = "tx"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaTimeUnit.
-const (
-	ParamsPropertyInfraInventoryCriteriaTimeUnitD ParamsPropertyInfraInventoryCriteriaTimeUnit = "d"
-	ParamsPropertyInfraInventoryCriteriaTimeUnitH ParamsPropertyInfraInventoryCriteriaTimeUnit = "h"
-	ParamsPropertyInfraInventoryCriteriaTimeUnitM ParamsPropertyInfraInventoryCriteriaTimeUnit = "m"
-	ParamsPropertyInfraInventoryCriteriaTimeUnitS ParamsPropertyInfraInventoryCriteriaTimeUnit = "s"
-)
-
-// Defines values for ParamsPropertyInfraInventoryCriteriaWarningComparator.
-const (
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorBetween          ParamsPropertyInfraInventoryCriteriaWarningComparator = "between"
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorGreaterThan      ParamsPropertyInfraInventoryCriteriaWarningComparator = ">"
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorGreaterThanEqual ParamsPropertyInfraInventoryCriteriaWarningComparator = ">="
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorLessThan         ParamsPropertyInfraInventoryCriteriaWarningComparator = "<"
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorLessThanEqual    ParamsPropertyInfraInventoryCriteriaWarningComparator = "<="
-	ParamsPropertyInfraInventoryCriteriaWarningComparatorOutside          ParamsPropertyInfraInventoryCriteriaWarningComparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraInventoryNodeType.
-const (
-	ParamsPropertyInfraInventoryNodeTypeAwsEC2    ParamsPropertyInfraInventoryNodeType = "awsEC2"
-	ParamsPropertyInfraInventoryNodeTypeAwsRDS    ParamsPropertyInfraInventoryNodeType = "awsRDS"
-	ParamsPropertyInfraInventoryNodeTypeAwsS3     ParamsPropertyInfraInventoryNodeType = "awsS3"
-	ParamsPropertyInfraInventoryNodeTypeAwsSQS    ParamsPropertyInfraInventoryNodeType = "awsSQS"
-	ParamsPropertyInfraInventoryNodeTypeContainer ParamsPropertyInfraInventoryNodeType = "container"
-	ParamsPropertyInfraInventoryNodeTypeHost      ParamsPropertyInfraInventoryNodeType = "host"
-	ParamsPropertyInfraInventoryNodeTypePod       ParamsPropertyInfraInventoryNodeType = "pod"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria0AggType.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeAvg         ParamsPropertyInfraMetricThresholdCriteria0AggType = "avg"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeCardinality ParamsPropertyInfraMetricThresholdCriteria0AggType = "cardinality"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeCount       ParamsPropertyInfraMetricThresholdCriteria0AggType = "count"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeCustom      ParamsPropertyInfraMetricThresholdCriteria0AggType = "custom"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeMax         ParamsPropertyInfraMetricThresholdCriteria0AggType = "max"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeMin         ParamsPropertyInfraMetricThresholdCriteria0AggType = "min"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeP95         ParamsPropertyInfraMetricThresholdCriteria0AggType = "p95"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeP99         ParamsPropertyInfraMetricThresholdCriteria0AggType = "p99"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeRate        ParamsPropertyInfraMetricThresholdCriteria0AggType = "rate"
-	ParamsPropertyInfraMetricThresholdCriteria0AggTypeSum         ParamsPropertyInfraMetricThresholdCriteria0AggType = "sum"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria0Comparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria0Comparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria0Comparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria0Comparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria0Comparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria0Comparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria0ComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria0Comparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria0TimeUnit.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria0TimeUnitD ParamsPropertyInfraMetricThresholdCriteria0TimeUnit = "d"
-	ParamsPropertyInfraMetricThresholdCriteria0TimeUnitH ParamsPropertyInfraMetricThresholdCriteria0TimeUnit = "h"
-	ParamsPropertyInfraMetricThresholdCriteria0TimeUnitM ParamsPropertyInfraMetricThresholdCriteria0TimeUnit = "m"
-	ParamsPropertyInfraMetricThresholdCriteria0TimeUnitS ParamsPropertyInfraMetricThresholdCriteria0TimeUnit = "s"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria0WarningComparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria1AggType.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria1AggTypeCount ParamsPropertyInfraMetricThresholdCriteria1AggType = "count"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria1Comparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria1Comparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria1Comparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria1Comparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria1Comparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria1Comparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria1ComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria1Comparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria1TimeUnit.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria1TimeUnitD ParamsPropertyInfraMetricThresholdCriteria1TimeUnit = "d"
-	ParamsPropertyInfraMetricThresholdCriteria1TimeUnitH ParamsPropertyInfraMetricThresholdCriteria1TimeUnit = "h"
-	ParamsPropertyInfraMetricThresholdCriteria1TimeUnitM ParamsPropertyInfraMetricThresholdCriteria1TimeUnit = "m"
-	ParamsPropertyInfraMetricThresholdCriteria1TimeUnitS ParamsPropertyInfraMetricThresholdCriteria1TimeUnit = "s"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria1WarningComparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2AggType.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria2AggTypeCustom ParamsPropertyInfraMetricThresholdCriteria2AggType = "custom"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2Comparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria2Comparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria2Comparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria2Comparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria2Comparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria2Comparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria2ComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria2Comparator = "outside"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeAvg         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "avg"
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeCardinality ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "cardinality"
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeMax         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "max"
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeMin         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "min"
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeSum         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "sum"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggTypeCount ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType = "count"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2TimeUnit.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria2TimeUnitD ParamsPropertyInfraMetricThresholdCriteria2TimeUnit = "d"
-	ParamsPropertyInfraMetricThresholdCriteria2TimeUnitH ParamsPropertyInfraMetricThresholdCriteria2TimeUnit = "h"
-	ParamsPropertyInfraMetricThresholdCriteria2TimeUnitM ParamsPropertyInfraMetricThresholdCriteria2TimeUnit = "m"
-	ParamsPropertyInfraMetricThresholdCriteria2TimeUnitS ParamsPropertyInfraMetricThresholdCriteria2TimeUnit = "s"
-)
-
-// Defines values for ParamsPropertyInfraMetricThresholdCriteria2WarningComparator.
-const (
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "between"
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = ">"
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = ">="
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "<"
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "<="
-	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "outside"
-)
-
-// Defines values for ParamsPropertyLogThreshold0CountComparator.
-const (
-	ParamsPropertyLogThreshold0CountComparatorDoesNotEqual       ParamsPropertyLogThreshold0CountComparator = "does not equal"
-	ParamsPropertyLogThreshold0CountComparatorDoesNotMatch       ParamsPropertyLogThreshold0CountComparator = "does not match"
-	ParamsPropertyLogThreshold0CountComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold0CountComparator = "does not match phrase"
-	ParamsPropertyLogThreshold0CountComparatorEquals             ParamsPropertyLogThreshold0CountComparator = "equals"
-	ParamsPropertyLogThreshold0CountComparatorLessThan           ParamsPropertyLogThreshold0CountComparator = "less than"
-	ParamsPropertyLogThreshold0CountComparatorLessThanOrEquals   ParamsPropertyLogThreshold0CountComparator = "less than or equals"
-	ParamsPropertyLogThreshold0CountComparatorMatches            ParamsPropertyLogThreshold0CountComparator = "matches"
-	ParamsPropertyLogThreshold0CountComparatorMatchesPhrase      ParamsPropertyLogThreshold0CountComparator = "matches phrase"
-	ParamsPropertyLogThreshold0CountComparatorMoreThan           ParamsPropertyLogThreshold0CountComparator = "more than"
-	ParamsPropertyLogThreshold0CountComparatorMoreThanOrEquals   ParamsPropertyLogThreshold0CountComparator = "more than or equals"
-)
-
-// Defines values for ParamsPropertyLogThreshold0CriteriaComparator.
-const (
-	ParamsPropertyLogThreshold0CriteriaComparatorDoesNotEqual       ParamsPropertyLogThreshold0CriteriaComparator = "does not equal"
-	ParamsPropertyLogThreshold0CriteriaComparatorDoesNotMatch       ParamsPropertyLogThreshold0CriteriaComparator = "does not match"
-	ParamsPropertyLogThreshold0CriteriaComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold0CriteriaComparator = "does not match phrase"
-	ParamsPropertyLogThreshold0CriteriaComparatorEquals             ParamsPropertyLogThreshold0CriteriaComparator = "equals"
-	ParamsPropertyLogThreshold0CriteriaComparatorLessThan           ParamsPropertyLogThreshold0CriteriaComparator = "less than"
-	ParamsPropertyLogThreshold0CriteriaComparatorLessThanOrEquals   ParamsPropertyLogThreshold0CriteriaComparator = "less than or equals"
-	ParamsPropertyLogThreshold0CriteriaComparatorMatches            ParamsPropertyLogThreshold0CriteriaComparator = "matches"
-	ParamsPropertyLogThreshold0CriteriaComparatorMatchesPhrase      ParamsPropertyLogThreshold0CriteriaComparator = "matches phrase"
-	ParamsPropertyLogThreshold0CriteriaComparatorMoreThan           ParamsPropertyLogThreshold0CriteriaComparator = "more than"
-	ParamsPropertyLogThreshold0CriteriaComparatorMoreThanOrEquals   ParamsPropertyLogThreshold0CriteriaComparator = "more than or equals"
-)
-
-// Defines values for ParamsPropertyLogThreshold0LogViewType.
-const (
-	ParamsPropertyLogThreshold0LogViewTypeLogViewReference ParamsPropertyLogThreshold0LogViewType = "log-view-reference"
-)
-
-// Defines values for ParamsPropertyLogThreshold0TimeUnit.
-const (
-	ParamsPropertyLogThreshold0TimeUnitD ParamsPropertyLogThreshold0TimeUnit = "d"
-	ParamsPropertyLogThreshold0TimeUnitH ParamsPropertyLogThreshold0TimeUnit = "h"
-	ParamsPropertyLogThreshold0TimeUnitM ParamsPropertyLogThreshold0TimeUnit = "m"
-	ParamsPropertyLogThreshold0TimeUnitS ParamsPropertyLogThreshold0TimeUnit = "s"
-)
-
-// Defines values for ParamsPropertyLogThreshold1CountComparator.
-const (
-	ParamsPropertyLogThreshold1CountComparatorDoesNotEqual       ParamsPropertyLogThreshold1CountComparator = "does not equal"
-	ParamsPropertyLogThreshold1CountComparatorDoesNotMatch       ParamsPropertyLogThreshold1CountComparator = "does not match"
-	ParamsPropertyLogThreshold1CountComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold1CountComparator = "does not match phrase"
-	ParamsPropertyLogThreshold1CountComparatorEquals             ParamsPropertyLogThreshold1CountComparator = "equals"
-	ParamsPropertyLogThreshold1CountComparatorLessThan           ParamsPropertyLogThreshold1CountComparator = "less than"
-	ParamsPropertyLogThreshold1CountComparatorLessThanOrEquals   ParamsPropertyLogThreshold1CountComparator = "less than or equals"
-	ParamsPropertyLogThreshold1CountComparatorMatches            ParamsPropertyLogThreshold1CountComparator = "matches"
-	ParamsPropertyLogThreshold1CountComparatorMatchesPhrase      ParamsPropertyLogThreshold1CountComparator = "matches phrase"
-	ParamsPropertyLogThreshold1CountComparatorMoreThan           ParamsPropertyLogThreshold1CountComparator = "more than"
-	ParamsPropertyLogThreshold1CountComparatorMoreThanOrEquals   ParamsPropertyLogThreshold1CountComparator = "more than or equals"
-)
-
-// Defines values for ParamsPropertyLogThreshold1CriteriaComparator.
-const (
-	ParamsPropertyLogThreshold1CriteriaComparatorDoesNotEqual       ParamsPropertyLogThreshold1CriteriaComparator = "does not equal"
-	ParamsPropertyLogThreshold1CriteriaComparatorDoesNotMatch       ParamsPropertyLogThreshold1CriteriaComparator = "does not match"
-	ParamsPropertyLogThreshold1CriteriaComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold1CriteriaComparator = "does not match phrase"
-	ParamsPropertyLogThreshold1CriteriaComparatorEquals             ParamsPropertyLogThreshold1CriteriaComparator = "equals"
-	ParamsPropertyLogThreshold1CriteriaComparatorLessThan           ParamsPropertyLogThreshold1CriteriaComparator = "less than"
-	ParamsPropertyLogThreshold1CriteriaComparatorLessThanOrEquals   ParamsPropertyLogThreshold1CriteriaComparator = "less than or equals"
-	ParamsPropertyLogThreshold1CriteriaComparatorMatches            ParamsPropertyLogThreshold1CriteriaComparator = "matches"
-	ParamsPropertyLogThreshold1CriteriaComparatorMatchesPhrase      ParamsPropertyLogThreshold1CriteriaComparator = "matches phrase"
-	ParamsPropertyLogThreshold1CriteriaComparatorMoreThan           ParamsPropertyLogThreshold1CriteriaComparator = "more than"
-	ParamsPropertyLogThreshold1CriteriaComparatorMoreThanOrEquals   ParamsPropertyLogThreshold1CriteriaComparator = "more than or equals"
-)
-
-// Defines values for ParamsPropertyLogThreshold1LogViewType.
-const (
-	ParamsPropertyLogThreshold1LogViewTypeLogViewReference ParamsPropertyLogThreshold1LogViewType = "log-view-reference"
-)
-
-// Defines values for ParamsPropertyLogThreshold1TimeUnit.
-const (
-	ParamsPropertyLogThreshold1TimeUnitD ParamsPropertyLogThreshold1TimeUnit = "d"
-	ParamsPropertyLogThreshold1TimeUnitH ParamsPropertyLogThreshold1TimeUnit = "h"
-	ParamsPropertyLogThreshold1TimeUnitM ParamsPropertyLogThreshold1TimeUnit = "m"
-	ParamsPropertyLogThreshold1TimeUnitS ParamsPropertyLogThreshold1TimeUnit = "s"
-)
-
 // Defines values for PercentileOperationOperation.
 const (
 	PercentileOperationOperationPercentile PercentileOperationOperation = "percentile"
@@ -4438,7 +4050,7 @@ const (
 
 // Defines values for SumMetricOperationOperation.
 const (
-	SumMetricOperationOperationSum SumMetricOperationOperation = "sum"
+	Sum SumMetricOperationOperation = "sum"
 )
 
 // Defines values for SwimlaneConfigConnectorType.
@@ -4553,24 +4165,6 @@ const (
 // Defines values for TermsOperationSchemaRankBy4Type.
 const (
 	TermsOperationSchemaRankBy4TypeCustom TermsOperationSchemaRankBy4Type = "custom"
-)
-
-// Defines values for Thresholdcomparator.
-const (
-	ThresholdcomparatorBetween          Thresholdcomparator = "between"
-	ThresholdcomparatorGreaterThan      Thresholdcomparator = ">"
-	ThresholdcomparatorGreaterThanEqual Thresholdcomparator = ">="
-	ThresholdcomparatorLessThan         Thresholdcomparator = "<"
-	ThresholdcomparatorLessThanEqual    Thresholdcomparator = "<="
-	ThresholdcomparatorNotBetween       Thresholdcomparator = "notBetween"
-)
-
-// Defines values for Timewindowunit.
-const (
-	D Timewindowunit = "d"
-	H Timewindowunit = "h"
-	M Timewindowunit = "m"
-	S Timewindowunit = "s"
 )
 
 // Defines values for UniqueCountMetricOperationOperation.
@@ -4998,30 +4592,30 @@ const (
 
 // Defines values for XyLegendOutsideStatistics.
 const (
-	Avg                  XyLegendOutsideStatistics = "avg"
-	Count                XyLegendOutsideStatistics = "count"
-	CurrentAndLastValue  XyLegendOutsideStatistics = "current_and_last_value"
-	Difference           XyLegendOutsideStatistics = "difference"
-	DifferencePercentage XyLegendOutsideStatistics = "difference_percentage"
-	DistinctCount        XyLegendOutsideStatistics = "distinct_count"
-	FirstNonNullValue    XyLegendOutsideStatistics = "first_non_null_value"
-	FirstValue           XyLegendOutsideStatistics = "first_value"
-	LastNonNullValue     XyLegendOutsideStatistics = "last_non_null_value"
-	LastValue            XyLegendOutsideStatistics = "last_value"
-	Max                  XyLegendOutsideStatistics = "max"
-	Median               XyLegendOutsideStatistics = "median"
-	Min                  XyLegendOutsideStatistics = "min"
-	Range                XyLegendOutsideStatistics = "range"
-	StandardDeviation    XyLegendOutsideStatistics = "standard_deviation"
-	Total                XyLegendOutsideStatistics = "total"
-	Variance             XyLegendOutsideStatistics = "variance"
+	XyLegendOutsideStatisticsAvg                  XyLegendOutsideStatistics = "avg"
+	XyLegendOutsideStatisticsCount                XyLegendOutsideStatistics = "count"
+	XyLegendOutsideStatisticsCurrentAndLastValue  XyLegendOutsideStatistics = "current_and_last_value"
+	XyLegendOutsideStatisticsDifference           XyLegendOutsideStatistics = "difference"
+	XyLegendOutsideStatisticsDifferencePercentage XyLegendOutsideStatistics = "difference_percentage"
+	XyLegendOutsideStatisticsDistinctCount        XyLegendOutsideStatistics = "distinct_count"
+	XyLegendOutsideStatisticsFirstNonNullValue    XyLegendOutsideStatistics = "first_non_null_value"
+	XyLegendOutsideStatisticsFirstValue           XyLegendOutsideStatistics = "first_value"
+	XyLegendOutsideStatisticsLastNonNullValue     XyLegendOutsideStatistics = "last_non_null_value"
+	XyLegendOutsideStatisticsLastValue            XyLegendOutsideStatistics = "last_value"
+	XyLegendOutsideStatisticsMax                  XyLegendOutsideStatistics = "max"
+	XyLegendOutsideStatisticsMedian               XyLegendOutsideStatistics = "median"
+	XyLegendOutsideStatisticsMin                  XyLegendOutsideStatistics = "min"
+	XyLegendOutsideStatisticsRange                XyLegendOutsideStatistics = "range"
+	XyLegendOutsideStatisticsStandardDeviation    XyLegendOutsideStatistics = "standard_deviation"
+	XyLegendOutsideStatisticsTotal                XyLegendOutsideStatistics = "total"
+	XyLegendOutsideStatisticsVariance             XyLegendOutsideStatistics = "variance"
 )
 
 // Defines values for XyReferenceLineLayerESQLThresholdsAxis.
 const (
-	XyReferenceLineLayerESQLThresholdsAxisBottom XyReferenceLineLayerESQLThresholdsAxis = "bottom"
-	XyReferenceLineLayerESQLThresholdsAxisLeft   XyReferenceLineLayerESQLThresholdsAxis = "left"
-	XyReferenceLineLayerESQLThresholdsAxisRight  XyReferenceLineLayerESQLThresholdsAxis = "right"
+	Bottom XyReferenceLineLayerESQLThresholdsAxis = "bottom"
+	Left   XyReferenceLineLayerESQLThresholdsAxis = "left"
+	Right  XyReferenceLineLayerESQLThresholdsAxis = "right"
 )
 
 // Defines values for XyReferenceLineLayerESQLThresholdsFill.
@@ -5032,22 +4626,22 @@ const (
 
 // Defines values for XyReferenceLineLayerESQLThresholdsIcon.
 const (
-	XyReferenceLineLayerESQLThresholdsIconAlert         XyReferenceLineLayerESQLThresholdsIcon = "alert"
-	XyReferenceLineLayerESQLThresholdsIconAsterisk      XyReferenceLineLayerESQLThresholdsIcon = "asterisk"
-	XyReferenceLineLayerESQLThresholdsIconBell          XyReferenceLineLayerESQLThresholdsIcon = "bell"
-	XyReferenceLineLayerESQLThresholdsIconBolt          XyReferenceLineLayerESQLThresholdsIcon = "bolt"
-	XyReferenceLineLayerESQLThresholdsIconBug           XyReferenceLineLayerESQLThresholdsIcon = "bug"
-	XyReferenceLineLayerESQLThresholdsIconCircle        XyReferenceLineLayerESQLThresholdsIcon = "circle"
-	XyReferenceLineLayerESQLThresholdsIconEditorComment XyReferenceLineLayerESQLThresholdsIcon = "editorComment"
-	XyReferenceLineLayerESQLThresholdsIconEmpty         XyReferenceLineLayerESQLThresholdsIcon = "empty"
-	XyReferenceLineLayerESQLThresholdsIconFlag          XyReferenceLineLayerESQLThresholdsIcon = "flag"
-	XyReferenceLineLayerESQLThresholdsIconHeart         XyReferenceLineLayerESQLThresholdsIcon = "heart"
-	XyReferenceLineLayerESQLThresholdsIconMapMarker     XyReferenceLineLayerESQLThresholdsIcon = "mapMarker"
-	XyReferenceLineLayerESQLThresholdsIconPinFilled     XyReferenceLineLayerESQLThresholdsIcon = "pinFilled"
-	XyReferenceLineLayerESQLThresholdsIconStarEmpty     XyReferenceLineLayerESQLThresholdsIcon = "starEmpty"
-	XyReferenceLineLayerESQLThresholdsIconStarFilled    XyReferenceLineLayerESQLThresholdsIcon = "starFilled"
-	XyReferenceLineLayerESQLThresholdsIconTag           XyReferenceLineLayerESQLThresholdsIcon = "tag"
-	XyReferenceLineLayerESQLThresholdsIconTriangle      XyReferenceLineLayerESQLThresholdsIcon = "triangle"
+	Alert         XyReferenceLineLayerESQLThresholdsIcon = "alert"
+	Asterisk      XyReferenceLineLayerESQLThresholdsIcon = "asterisk"
+	Bell          XyReferenceLineLayerESQLThresholdsIcon = "bell"
+	Bolt          XyReferenceLineLayerESQLThresholdsIcon = "bolt"
+	Bug           XyReferenceLineLayerESQLThresholdsIcon = "bug"
+	Circle        XyReferenceLineLayerESQLThresholdsIcon = "circle"
+	EditorComment XyReferenceLineLayerESQLThresholdsIcon = "editorComment"
+	Empty         XyReferenceLineLayerESQLThresholdsIcon = "empty"
+	Flag          XyReferenceLineLayerESQLThresholdsIcon = "flag"
+	Heart         XyReferenceLineLayerESQLThresholdsIcon = "heart"
+	MapMarker     XyReferenceLineLayerESQLThresholdsIcon = "mapMarker"
+	PinFilled     XyReferenceLineLayerESQLThresholdsIcon = "pinFilled"
+	StarEmpty     XyReferenceLineLayerESQLThresholdsIcon = "starEmpty"
+	StarFilled    XyReferenceLineLayerESQLThresholdsIcon = "starFilled"
+	Tag           XyReferenceLineLayerESQLThresholdsIcon = "tag"
+	Triangle      XyReferenceLineLayerESQLThresholdsIcon = "triangle"
 )
 
 // Defines values for XyReferenceLineLayerESQLThresholdsOperation.
@@ -5611,7 +5205,7 @@ const (
 
 // Defines values for RulePreviewJSONBody3Type.
 const (
-	RulePreviewJSONBody3TypeThreshold RulePreviewJSONBody3Type = "threshold"
+	Threshold RulePreviewJSONBody3Type = "threshold"
 )
 
 // Defines values for RulePreviewJSONBody4Type.
@@ -5760,10 +5354,10 @@ const (
 
 // Defines values for PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel.
 const (
-	PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevelDebug   PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "debug"
-	PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevelError   PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "error"
-	PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevelInfo    PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "info"
-	PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevelWarning PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "warning"
+	Debug   PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "debug"
+	Error   PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "error"
+	Info    PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "info"
+	Warning PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "warning"
 )
 
 // Defines values for PostFleetAgentsAgentidActionsJSONBodyAction1Type.
@@ -27183,12 +26777,6 @@ type AgentPolicyGlobalDataTagsItem_Value struct {
 	union json.RawMessage
 }
 
-// Aggfield The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
-type Aggfield = string
-
-// Aggtype The type of aggregation to perform.
-type Aggtype string
-
 // AuthType The type of authentication to use: basic, SSL, or none.
 type AuthType string
 
@@ -28484,32 +28072,9 @@ type EsqlDatasetTypeSchema struct {
 // EsqlDatasetTypeSchemaType defines model for EsqlDatasetTypeSchema.Type.
 type EsqlDatasetTypeSchemaType string
 
-// Excludehitsfrompreviousrun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
-type Excludehitsfrompreviousrun = bool
-
 // FieldMetricOperations defines model for fieldMetricOperations.
 type FieldMetricOperations struct {
 	union json.RawMessage
-}
-
-// Filter A filter written in Elasticsearch Query Domain Specific Language (DSL) as defined in the `kbn-es-query` package.
-type Filter struct {
-	State *map[string]interface{} `json:"$state,omitempty"`
-	Meta  *struct {
-		Alias        *string                 `json:"alias,omitempty"`
-		ControlledBy *string                 `json:"controlledBy,omitempty"`
-		Disabled     *bool                   `json:"disabled,omitempty"`
-		Field        *string                 `json:"field,omitempty"`
-		Group        *string                 `json:"group,omitempty"`
-		Index        *string                 `json:"index,omitempty"`
-		IsMultiIndex *bool                   `json:"isMultiIndex,omitempty"`
-		Key          *string                 `json:"key,omitempty"`
-		Negate       *bool                   `json:"negate,omitempty"`
-		Params       *map[string]interface{} `json:"params,omitempty"`
-		Type         *string                 `json:"type,omitempty"`
-		Value        *string                 `json:"value,omitempty"`
-	} `json:"meta,omitempty"`
-	Query *map[string]interface{} `json:"query,omitempty"`
 }
 
 // FilterQueryTypeSchema defines model for filterQueryTypeSchema.
@@ -28915,9 +28480,6 @@ type GradientColorMapping_Mapping_Values_Item struct {
 
 // GradientColorMappingMode defines model for GradientColorMapping.Mode.
 type GradientColorMappingMode string
-
-// Groupby Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
-type Groupby string
 
 // HasAuth If true, a username and password for login type authentication must be provided.
 type HasAuth = bool
@@ -31303,719 +30865,6 @@ type PagerdutySecrets struct {
 	RoutingKey string `json:"routingKey"`
 }
 
-// ParamsEsQueryDslRule An Elasticsearch query rule can run a query defined in Elasticsearch Query DSL and compare the number of matches to a configured threshold. These parameters are appropriate when `rule_type_id` is `.es-query`.
-type ParamsEsQueryDslRule struct {
-	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
-	AggField *Aggfield `json:"aggField,omitempty"`
-
-	// AggType The type of aggregation to perform.
-	AggType *Aggtype `json:"aggType,omitempty"`
-
-	// EsQuery The query definition, which uses Elasticsearch Query DSL.
-	EsQuery string `json:"esQuery"`
-
-	// ExcludeHitsFromPreviousRun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
-	ExcludeHitsFromPreviousRun *Excludehitsfrompreviousrun `json:"excludeHitsFromPreviousRun,omitempty"`
-
-	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
-	GroupBy *Groupby `json:"groupBy,omitempty"`
-
-	// Index The indices to query.
-	Index ParamsEsQueryDslRule_Index `json:"index"`
-
-	// SearchType The type of query, in this case a query that uses Elasticsearch Query DSL.
-	SearchType *ParamsEsQueryDslRuleSearchType `json:"searchType,omitempty"`
-
-	// Size The number of documents to pass to the configured actions when the threshold condition is met.
-	Size *Size `json:"size,omitempty"`
-
-	// TermField The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
-	TermField *Termfield `json:"termField,omitempty"`
-
-	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
-	TermSize *Termsize `json:"termSize,omitempty"`
-
-	// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
-	Threshold Threshold `json:"threshold"`
-
-	// ThresholdComparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
-	ThresholdComparator Thresholdcomparator `json:"thresholdComparator"`
-
-	// TimeField The field that is used to calculate the time window.
-	TimeField Timefield `json:"timeField"`
-
-	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
-
-	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
-}
-
-// ParamsEsQueryDslRuleIndex0 defines model for .
-type ParamsEsQueryDslRuleIndex0 = []string
-
-// ParamsEsQueryDslRuleIndex1 defines model for .
-type ParamsEsQueryDslRuleIndex1 = string
-
-// ParamsEsQueryDslRule_Index The indices to query.
-type ParamsEsQueryDslRule_Index struct {
-	union json.RawMessage
-}
-
-// ParamsEsQueryDslRuleSearchType The type of query, in this case a query that uses Elasticsearch Query DSL.
-type ParamsEsQueryDslRuleSearchType string
-
-// ParamsEsQueryEsqlRule An Elasticsearch query rule can run an ES|QL query and compare the number of matches to a configured threshold. These parameters are appropriate when `rule_type_id` is `.es-query`.
-type ParamsEsQueryEsqlRule struct {
-	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
-	AggField *Aggfield `json:"aggField,omitempty"`
-
-	// AggType The type of aggregation to perform.
-	AggType   *Aggtype `json:"aggType,omitempty"`
-	EsqlQuery struct {
-		// Esql The query definition, which uses Elasticsearch Query Language.
-		Esql string `json:"esql"`
-	} `json:"esqlQuery"`
-
-	// ExcludeHitsFromPreviousRun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
-	ExcludeHitsFromPreviousRun *Excludehitsfrompreviousrun `json:"excludeHitsFromPreviousRun,omitempty"`
-
-	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
-	GroupBy *Groupby `json:"groupBy,omitempty"`
-
-	// SearchType The type of query, in this case a query that uses Elasticsearch Query Language (ES|QL).
-	SearchType ParamsEsQueryEsqlRuleSearchType `json:"searchType"`
-
-	// Size When `searchType` is `esqlQuery`, this property is required but it does not affect the rule behavior.
-	Size int `json:"size"`
-
-	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
-	TermSize *Termsize `json:"termSize,omitempty"`
-
-	// Threshold The threshold value that is used with the `thresholdComparator`. When `searchType` is `esqlQuery`, this property is required and must be set to zero.
-	Threshold []int `json:"threshold"`
-
-	// ThresholdComparator The comparison function for the threshold. When `searchType` is `esqlQuery`, this property is required and must be set to ">". Since the `threshold` value must be `0`, the result is that an alert occurs whenever the query returns results.
-	ThresholdComparator ParamsEsQueryEsqlRuleThresholdComparator `json:"thresholdComparator"`
-
-	// TimeField The field that is used to calculate the time window.
-	TimeField *Timefield `json:"timeField,omitempty"`
-
-	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
-
-	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
-}
-
-// ParamsEsQueryEsqlRuleSearchType The type of query, in this case a query that uses Elasticsearch Query Language (ES|QL).
-type ParamsEsQueryEsqlRuleSearchType string
-
-// ParamsEsQueryEsqlRuleThresholdComparator The comparison function for the threshold. When `searchType` is `esqlQuery`, this property is required and must be set to ">". Since the `threshold` value must be `0`, the result is that an alert occurs whenever the query returns results.
-type ParamsEsQueryEsqlRuleThresholdComparator string
-
-// ParamsEsQueryKqlRule An Elasticsearch query rule can run a query defined in KQL or Lucene and compare the number of matches to a configured threshold. These parameters are appropriate when `rule_type_id` is `.es-query`.
-type ParamsEsQueryKqlRule struct {
-	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
-	AggField *Aggfield `json:"aggField,omitempty"`
-
-	// AggType The type of aggregation to perform.
-	AggType *Aggtype `json:"aggType,omitempty"`
-
-	// ExcludeHitsFromPreviousRun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
-	ExcludeHitsFromPreviousRun *Excludehitsfrompreviousrun `json:"excludeHitsFromPreviousRun,omitempty"`
-
-	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
-	GroupBy *Groupby `json:"groupBy,omitempty"`
-
-	// SearchConfiguration The query definition, which uses KQL or Lucene to fetch the documents from Elasticsearch.
-	SearchConfiguration *struct {
-		Filter *[]Filter `json:"filter,omitempty"`
-
-		// Index The indices to query.
-		Index *ParamsEsQueryKqlRule_SearchConfiguration_Index `json:"index,omitempty"`
-		Query *struct {
-			Language *string `json:"language,omitempty"`
-			Query    *string `json:"query,omitempty"`
-		} `json:"query,omitempty"`
-	} `json:"searchConfiguration,omitempty"`
-
-	// SearchType The type of query, in this case a text-based query that uses KQL or Lucene.
-	SearchType ParamsEsQueryKqlRuleSearchType `json:"searchType"`
-
-	// Size The number of documents to pass to the configured actions when the threshold condition is met.
-	Size Size `json:"size"`
-
-	// TermField The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
-	TermField *Termfield `json:"termField,omitempty"`
-
-	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
-	TermSize *Termsize `json:"termSize,omitempty"`
-
-	// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
-	Threshold Threshold `json:"threshold"`
-
-	// ThresholdComparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
-	ThresholdComparator Thresholdcomparator `json:"thresholdComparator"`
-
-	// TimeField The field that is used to calculate the time window.
-	TimeField *Timefield `json:"timeField,omitempty"`
-
-	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
-
-	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
-}
-
-// ParamsEsQueryKqlRuleSearchConfigurationIndex0 defines model for .
-type ParamsEsQueryKqlRuleSearchConfigurationIndex0 = string
-
-// ParamsEsQueryKqlRuleSearchConfigurationIndex1 defines model for .
-type ParamsEsQueryKqlRuleSearchConfigurationIndex1 = []string
-
-// ParamsEsQueryKqlRule_SearchConfiguration_Index The indices to query.
-type ParamsEsQueryKqlRule_SearchConfiguration_Index struct {
-	union json.RawMessage
-}
-
-// ParamsEsQueryKqlRuleSearchType The type of query, in this case a text-based query that uses KQL or Lucene.
-type ParamsEsQueryKqlRuleSearchType string
-
-// ParamsIndexThresholdRule An index threshold rule runs an Elasticsearch query, aggregates field values from documents, compares them to threshold values, and schedules actions to run when the thresholds are met. These parameters are appropriate when `rule_type_id` is `.index-threshold`.
-type ParamsIndexThresholdRule struct {
-	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
-	AggField *Aggfield `json:"aggField,omitempty"`
-
-	// AggType The type of aggregation to perform.
-	AggType *Aggtype `json:"aggType,omitempty"`
-
-	// FilterKuery A KQL expression thats limits the scope of alerts.
-	FilterKuery *string `json:"filterKuery,omitempty"`
-
-	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
-	GroupBy *Groupby `json:"groupBy,omitempty"`
-
-	// Index The indices to query.
-	Index []string `json:"index"`
-
-	// TermField The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
-	TermField *Termfield `json:"termField,omitempty"`
-
-	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
-	TermSize *Termsize `json:"termSize,omitempty"`
-
-	// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
-	Threshold Threshold `json:"threshold"`
-
-	// ThresholdComparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
-	ThresholdComparator Thresholdcomparator `json:"thresholdComparator"`
-
-	// TimeField The field that is used to calculate the time window.
-	TimeField Timefield `json:"timeField"`
-
-	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
-
-	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
-}
-
-// ParamsPropertyApmAnomaly The parameters for the APM anomaly rule. These parameters are appropriate when `rule_type_id` is `apm.rules.anomaly`.
-type ParamsPropertyApmAnomaly struct {
-	// AnomalySeverityType The severity of anomalies that will generate alerts: critical, major, minor, or warning.
-	AnomalySeverityType ParamsPropertyApmAnomalyAnomalySeverityType `json:"anomalySeverityType"`
-
-	// Environment Filter the rule to apply to a specific environment.
-	Environment string `json:"environment"`
-
-	// ServiceName Filter the rule to apply to a specific service name.
-	ServiceName *string `json:"serviceName,omitempty"`
-
-	// TransactionType Filter the rule to apply to a specific transaction type.
-	TransactionType *string `json:"transactionType,omitempty"`
-
-	// WindowSize The size of the time window (in `windowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	WindowSize float32 `json:"windowSize"`
-
-	// WindowUnit The type of units for the time window. For example: minutes, hours, or days.
-	WindowUnit ParamsPropertyApmAnomalyWindowUnit `json:"windowUnit"`
-}
-
-// ParamsPropertyApmAnomalyAnomalySeverityType The severity of anomalies that will generate alerts: critical, major, minor, or warning.
-type ParamsPropertyApmAnomalyAnomalySeverityType string
-
-// ParamsPropertyApmAnomalyWindowUnit The type of units for the time window. For example: minutes, hours, or days.
-type ParamsPropertyApmAnomalyWindowUnit string
-
-// ParamsPropertyApmErrorCount The parameters for the APM error count rule. These parameters are appropriate when `rule_type_id` is `apm.error_rate`.
-type ParamsPropertyApmErrorCount struct {
-	// Environment Filter the errors coming from your application to apply the rule to a specific environment.
-	Environment string `json:"environment"`
-
-	// ErrorGroupingKey Filter the errors coming from your application to apply the rule to a specific error grouping key, which is a hash of the stack trace and other properties.
-	ErrorGroupingKey *string `json:"errorGroupingKey,omitempty"`
-
-	// GroupBy Perform a composite aggregation against the selected fields. When any of these groups match the selected rule conditions, an alert is triggered per group.
-	GroupBy *[]ParamsPropertyApmErrorCountGroupBy `json:"groupBy,omitempty"`
-
-	// ServiceName Filter the errors coming from your application to apply the rule to a specific service.
-	ServiceName *string `json:"serviceName,omitempty"`
-
-	// Threshold The error count threshold.
-	Threshold float32 `json:"threshold"`
-
-	// WindowSize The time frame in which the errors must occur (in `windowUnit` units). Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	WindowSize float32 `json:"windowSize"`
-
-	// WindowUnit The type of units for the time window: minutes, hours, or days.
-	WindowUnit ParamsPropertyApmErrorCountWindowUnit `json:"windowUnit"`
-}
-
-// ParamsPropertyApmErrorCountGroupBy defines model for ParamsPropertyApmErrorCount.GroupBy.
-type ParamsPropertyApmErrorCountGroupBy string
-
-// ParamsPropertyApmErrorCountWindowUnit The type of units for the time window: minutes, hours, or days.
-type ParamsPropertyApmErrorCountWindowUnit string
-
-// ParamsPropertyApmTransactionDuration The parameters for the APM transaction duration rule. These parameters are appropriate when `rule_type_id` is `apm.transaction_duration`.
-type ParamsPropertyApmTransactionDuration struct {
-	// AggregationType The type of aggregation to perform.
-	AggregationType ParamsPropertyApmTransactionDurationAggregationType `json:"aggregationType"`
-
-	// Environment Filter the rule to apply to a specific environment.
-	Environment string `json:"environment"`
-
-	// GroupBy Perform a composite aggregation against the selected fields. When any of these groups match the selected rule conditions, an alert is triggered per group.
-	GroupBy *[]ParamsPropertyApmTransactionDurationGroupBy `json:"groupBy,omitempty"`
-
-	// ServiceName Filter the rule to apply to a specific service.
-	ServiceName *string `json:"serviceName,omitempty"`
-
-	// Threshold The latency threshold value.
-	Threshold float32 `json:"threshold"`
-
-	// TransactionName Filter the rule to apply to a specific transaction name.
-	TransactionName *string `json:"transactionName,omitempty"`
-
-	// TransactionType Filter the rule to apply to a specific transaction type.
-	TransactionType *string `json:"transactionType,omitempty"`
-
-	// WindowSize The size of the time window (in `windowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	WindowSize float32 `json:"windowSize"`
-
-	// WindowUnit The type of units for the time window. For example: minutes, hours, or days.
-	WindowUnit ParamsPropertyApmTransactionDurationWindowUnit `json:"windowUnit"`
-}
-
-// ParamsPropertyApmTransactionDurationAggregationType The type of aggregation to perform.
-type ParamsPropertyApmTransactionDurationAggregationType string
-
-// ParamsPropertyApmTransactionDurationGroupBy defines model for ParamsPropertyApmTransactionDuration.GroupBy.
-type ParamsPropertyApmTransactionDurationGroupBy string
-
-// ParamsPropertyApmTransactionDurationWindowUnit The type of units for the time window. For example: minutes, hours, or days.
-type ParamsPropertyApmTransactionDurationWindowUnit string
-
-// ParamsPropertyApmTransactionErrorRate The parameters for the APM transaction error rate rule. These parameters are appropriate when `rule_type_id` is `apm.transaction_error_rate`.
-type ParamsPropertyApmTransactionErrorRate struct {
-	// Environment The environment from APM
-	Environment string                                          `json:"environment"`
-	GroupBy     *[]ParamsPropertyApmTransactionErrorRateGroupBy `json:"groupBy,omitempty"`
-
-	// ServiceName The service name from APM
-	ServiceName *string `json:"serviceName,omitempty"`
-
-	// Threshold The error rate threshold value
-	Threshold float32 `json:"threshold"`
-
-	// TransactionName The transaction name from APM
-	TransactionName *string `json:"transactionName,omitempty"`
-
-	// TransactionType The transaction type from APM
-	TransactionType *string `json:"transactionType,omitempty"`
-
-	// WindowSize The window size
-	WindowSize float32 `json:"windowSize"`
-
-	// WindowUnit The window size unit
-	WindowUnit ParamsPropertyApmTransactionErrorRateWindowUnit `json:"windowUnit"`
-}
-
-// ParamsPropertyApmTransactionErrorRateGroupBy defines model for ParamsPropertyApmTransactionErrorRate.GroupBy.
-type ParamsPropertyApmTransactionErrorRateGroupBy string
-
-// ParamsPropertyApmTransactionErrorRateWindowUnit The window size unit
-type ParamsPropertyApmTransactionErrorRateWindowUnit string
-
-// ParamsPropertyInfraInventory The parameters for the infrastructure inventory rule. These parameters are appropriate when `rule_type_id` is `metrics.alert.inventory.threshold`.
-type ParamsPropertyInfraInventory struct {
-	AlertOnNoData *bool `json:"alertOnNoData,omitempty"`
-	Criteria      *[]struct {
-		Comparator   *ParamsPropertyInfraInventoryCriteriaComparator `json:"comparator,omitempty"`
-		CustomMetric *struct {
-			Aggregation *ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation `json:"aggregation,omitempty"`
-			Field       *string                                                      `json:"field,omitempty"`
-			Id          *string                                                      `json:"id,omitempty"`
-			Label       *string                                                      `json:"label,omitempty"`
-			Type        *ParamsPropertyInfraInventoryCriteriaCustomMetricType        `json:"type,omitempty"`
-		} `json:"customMetric,omitempty"`
-		Metric            *ParamsPropertyInfraInventoryCriteriaMetric            `json:"metric,omitempty"`
-		SourceId          *string                                                `json:"sourceId,omitempty"`
-		Threshold         *[]float32                                             `json:"threshold,omitempty"`
-		TimeSize          *float32                                               `json:"timeSize,omitempty"`
-		TimeUnit          *ParamsPropertyInfraInventoryCriteriaTimeUnit          `json:"timeUnit,omitempty"`
-		WarningComparator *ParamsPropertyInfraInventoryCriteriaWarningComparator `json:"warningComparator,omitempty"`
-		WarningThreshold  *[]float32                                             `json:"warningThreshold,omitempty"`
-	} `json:"criteria,omitempty"`
-	FilterQuery     *string                               `json:"filterQuery,omitempty"`
-	FilterQueryText *string                               `json:"filterQueryText,omitempty"`
-	NodeType        *ParamsPropertyInfraInventoryNodeType `json:"nodeType,omitempty"`
-	SourceId        *string                               `json:"sourceId,omitempty"`
-}
-
-// ParamsPropertyInfraInventoryCriteriaComparator defines model for ParamsPropertyInfraInventory.Criteria.Comparator.
-type ParamsPropertyInfraInventoryCriteriaComparator string
-
-// ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation defines model for ParamsPropertyInfraInventory.Criteria.CustomMetric.Aggregation.
-type ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation string
-
-// ParamsPropertyInfraInventoryCriteriaCustomMetricType defines model for ParamsPropertyInfraInventory.Criteria.CustomMetric.Type.
-type ParamsPropertyInfraInventoryCriteriaCustomMetricType string
-
-// ParamsPropertyInfraInventoryCriteriaMetric defines model for ParamsPropertyInfraInventory.Criteria.Metric.
-type ParamsPropertyInfraInventoryCriteriaMetric string
-
-// ParamsPropertyInfraInventoryCriteriaTimeUnit defines model for ParamsPropertyInfraInventory.Criteria.TimeUnit.
-type ParamsPropertyInfraInventoryCriteriaTimeUnit string
-
-// ParamsPropertyInfraInventoryCriteriaWarningComparator defines model for ParamsPropertyInfraInventory.Criteria.WarningComparator.
-type ParamsPropertyInfraInventoryCriteriaWarningComparator string
-
-// ParamsPropertyInfraInventoryNodeType defines model for ParamsPropertyInfraInventory.NodeType.
-type ParamsPropertyInfraInventoryNodeType string
-
-// ParamsPropertyInfraMetricThreshold The parameters for the metric threshold rule. These parameters are appropriate when `rule_type_id` is `metrics.alert.threshold`.
-type ParamsPropertyInfraMetricThreshold struct {
-	// AlertOnGroupDisappear If true, an alert occurs if a group that previously reported metrics does not report them again over the expected time period. This check is not recommended for dynamically scaling infrastructures that might rapidly start and stop nodes automatically.
-	AlertOnGroupDisappear *bool `json:"alertOnGroupDisappear,omitempty"`
-
-	// AlertOnNoData If true, an alert occurs if the metrics do not report any data over the expected period or if the query fails.
-	AlertOnNoData *bool                                               `json:"alertOnNoData,omitempty"`
-	Criteria      *[]ParamsPropertyInfraMetricThreshold_Criteria_Item `json:"criteria,omitempty"`
-
-	// FilterQuery A query that limits the scope of the rule. The rule evaluates only metric data that matches the query.
-	FilterQuery *string `json:"filterQuery,omitempty"`
-
-	// GroupBy Create an alert for every unique value of the specified fields. For example, you can create a rule per host or every mount point of each host.
-	// IMPORTANT: If you include the same field in both the `filterQuery` and `groupBy`, you might receive fewer results than you expect. For example, if you filter by `cloud.region: us-east`, grouping by `cloud.region` will have no effect because the filter query can match only one region.
-	GroupBy  *ParamsPropertyInfraMetricThreshold_GroupBy `json:"groupBy,omitempty"`
-	SourceId *string                                     `json:"sourceId,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria0 defines model for .
-type ParamsPropertyInfraMetricThresholdCriteria0 struct {
-	AggType *ParamsPropertyInfraMetricThresholdCriteria0AggType `json:"aggType,omitempty"`
-
-	// Comparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "outside".
-	Comparator *ParamsPropertyInfraMetricThresholdCriteria0Comparator `json:"comparator,omitempty"`
-	Metric     *string                                                `json:"metric,omitempty"`
-
-	// Threshold The threshold value that is used with the `comparator`. If the `comparator` is `between`, you must specify the boundary values.
-	Threshold *[]float32 `json:"threshold,omitempty"`
-
-	// TimeSize The size of the time window (in `timeUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeSize *float32 `json:"timeSize,omitempty"`
-
-	// TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeUnit          *ParamsPropertyInfraMetricThresholdCriteria0TimeUnit          `json:"timeUnit,omitempty"`
-	WarningComparator *ParamsPropertyInfraMetricThresholdCriteria0WarningComparator `json:"warningComparator,omitempty"`
-
-	// WarningThreshold The threshold value that is used with the `warningComparator`. If the `warningComparator` is `between`, you must specify the boundary values.
-	WarningThreshold *[]float32 `json:"warningThreshold,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria0AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.0.AggType.
-type ParamsPropertyInfraMetricThresholdCriteria0AggType string
-
-// ParamsPropertyInfraMetricThresholdCriteria0Comparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "outside".
-type ParamsPropertyInfraMetricThresholdCriteria0Comparator string
-
-// ParamsPropertyInfraMetricThresholdCriteria0TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
-type ParamsPropertyInfraMetricThresholdCriteria0TimeUnit string
-
-// ParamsPropertyInfraMetricThresholdCriteria0WarningComparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.0.WarningComparator.
-type ParamsPropertyInfraMetricThresholdCriteria0WarningComparator string
-
-// ParamsPropertyInfraMetricThresholdCriteria1 defines model for .
-type ParamsPropertyInfraMetricThresholdCriteria1 struct {
-	AggType    *ParamsPropertyInfraMetricThresholdCriteria1AggType    `json:"aggType,omitempty"`
-	Comparator *ParamsPropertyInfraMetricThresholdCriteria1Comparator `json:"comparator,omitempty"`
-	Threshold  *[]float32                                             `json:"threshold,omitempty"`
-
-	// TimeSize The size of the time window (in `timeUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeSize *float32 `json:"timeSize,omitempty"`
-
-	// TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeUnit          *ParamsPropertyInfraMetricThresholdCriteria1TimeUnit          `json:"timeUnit,omitempty"`
-	WarningComparator *ParamsPropertyInfraMetricThresholdCriteria1WarningComparator `json:"warningComparator,omitempty"`
-	WarningThreshold  *[]float32                                                    `json:"warningThreshold,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria1AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.1.AggType.
-type ParamsPropertyInfraMetricThresholdCriteria1AggType string
-
-// ParamsPropertyInfraMetricThresholdCriteria1Comparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.1.Comparator.
-type ParamsPropertyInfraMetricThresholdCriteria1Comparator string
-
-// ParamsPropertyInfraMetricThresholdCriteria1TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
-type ParamsPropertyInfraMetricThresholdCriteria1TimeUnit string
-
-// ParamsPropertyInfraMetricThresholdCriteria1WarningComparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.1.WarningComparator.
-type ParamsPropertyInfraMetricThresholdCriteria1WarningComparator string
-
-// ParamsPropertyInfraMetricThresholdCriteria2 defines model for .
-type ParamsPropertyInfraMetricThresholdCriteria2 struct {
-	AggType      *ParamsPropertyInfraMetricThresholdCriteria2AggType                `json:"aggType,omitempty"`
-	Comparator   *ParamsPropertyInfraMetricThresholdCriteria2Comparator             `json:"comparator,omitempty"`
-	CustomMetric *[]ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item `json:"customMetric,omitempty"`
-	Equation     *string                                                            `json:"equation,omitempty"`
-	Label        *string                                                            `json:"label,omitempty"`
-	Threshold    *[]float32                                                         `json:"threshold,omitempty"`
-
-	// TimeSize The size of the time window (in `timeUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-	TimeSize *float32 `json:"timeSize,omitempty"`
-
-	// TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
-	TimeUnit          *ParamsPropertyInfraMetricThresholdCriteria2TimeUnit          `json:"timeUnit,omitempty"`
-	WarningComparator *ParamsPropertyInfraMetricThresholdCriteria2WarningComparator `json:"warningComparator,omitempty"`
-	WarningThreshold  *[]float32                                                    `json:"warningThreshold,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria2AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.AggType.
-type ParamsPropertyInfraMetricThresholdCriteria2AggType string
-
-// ParamsPropertyInfraMetricThresholdCriteria2Comparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.Comparator.
-type ParamsPropertyInfraMetricThresholdCriteria2Comparator string
-
-// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 defines model for .
-type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 struct {
-	// AggType An aggregation to gather data for the rule. For example, find the average, highest or lowest value of a numeric field. Or use a cardinality aggregation to find the approximate number of unique values in a field.
-	AggType *ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType `json:"aggType,omitempty"`
-	Field   *string                                                          `json:"field,omitempty"`
-	Name    *string                                                          `json:"name,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType An aggregation to gather data for the rule. For example, find the average, highest or lowest value of a numeric field. Or use a cardinality aggregation to find the approximate number of unique values in a field.
-type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType string
-
-// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 defines model for .
-type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 struct {
-	AggType *ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType `json:"aggType,omitempty"`
-	Filter  *string                                                          `json:"filter,omitempty"`
-	Name    *string                                                          `json:"name,omitempty"`
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.CustomMetric.1.AggType.
-type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType string
-
-// ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.customMetric.Item.
-type ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyInfraMetricThresholdCriteria2TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
-type ParamsPropertyInfraMetricThresholdCriteria2TimeUnit string
-
-// ParamsPropertyInfraMetricThresholdCriteria2WarningComparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.WarningComparator.
-type ParamsPropertyInfraMetricThresholdCriteria2WarningComparator string
-
-// ParamsPropertyInfraMetricThreshold_Criteria_Item defines model for params_property_infra_metric_threshold.criteria.Item.
-type ParamsPropertyInfraMetricThreshold_Criteria_Item struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyInfraMetricThresholdGroupBy0 defines model for .
-type ParamsPropertyInfraMetricThresholdGroupBy0 = string
-
-// ParamsPropertyInfraMetricThresholdGroupBy1 defines model for .
-type ParamsPropertyInfraMetricThresholdGroupBy1 = []string
-
-// ParamsPropertyInfraMetricThreshold_GroupBy Create an alert for every unique value of the specified fields. For example, you can create a rule per host or every mount point of each host.
-// IMPORTANT: If you include the same field in both the `filterQuery` and `groupBy`, you might receive fewer results than you expect. For example, if you filter by `cloud.region: us-east`, grouping by `cloud.region` will have no effect because the filter query can match only one region.
-type ParamsPropertyInfraMetricThreshold_GroupBy struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyLogThreshold defines model for params_property_log_threshold.
-type ParamsPropertyLogThreshold struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyLogThreshold0 The parameters for a log threshold rule that counts the number of log entries that match the criteria. These parameters are appropriate when `rule_type_id` is `logs.alert.document.count`.
-type ParamsPropertyLogThreshold0 struct {
-	Count struct {
-		Comparator *ParamsPropertyLogThreshold0CountComparator `json:"comparator,omitempty"`
-		Value      *float32                                    `json:"value,omitempty"`
-	} `json:"count"`
-	Criteria *[]struct {
-		Comparator *ParamsPropertyLogThreshold0CriteriaComparator `json:"comparator,omitempty"`
-		Field      *string                                        `json:"field,omitempty"`
-		Value      *ParamsPropertyLogThreshold_0_Criteria_Value   `json:"value,omitempty"`
-	} `json:"criteria,omitempty"`
-	GroupBy *[]string `json:"groupBy,omitempty"`
-	LogView struct {
-		LogViewId *string                                 `json:"logViewId,omitempty"`
-		Type      *ParamsPropertyLogThreshold0LogViewType `json:"type,omitempty"`
-	} `json:"logView"`
-	TimeSize float32                             `json:"timeSize"`
-	TimeUnit ParamsPropertyLogThreshold0TimeUnit `json:"timeUnit"`
-}
-
-// ParamsPropertyLogThreshold0CountComparator defines model for ParamsPropertyLogThreshold.0.Count.Comparator.
-type ParamsPropertyLogThreshold0CountComparator string
-
-// ParamsPropertyLogThreshold0CriteriaComparator defines model for ParamsPropertyLogThreshold.0.Criteria.Comparator.
-type ParamsPropertyLogThreshold0CriteriaComparator string
-
-// ParamsPropertyLogThreshold0CriteriaValue0 defines model for .
-type ParamsPropertyLogThreshold0CriteriaValue0 = float32
-
-// ParamsPropertyLogThreshold0CriteriaValue1 defines model for .
-type ParamsPropertyLogThreshold0CriteriaValue1 = string
-
-// ParamsPropertyLogThreshold_0_Criteria_Value defines model for ParamsPropertyLogThreshold.0.Criteria.Value.
-type ParamsPropertyLogThreshold_0_Criteria_Value struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyLogThreshold0LogViewType defines model for ParamsPropertyLogThreshold.0.LogView.Type.
-type ParamsPropertyLogThreshold0LogViewType string
-
-// ParamsPropertyLogThreshold0TimeUnit defines model for ParamsPropertyLogThreshold.0.TimeUnit.
-type ParamsPropertyLogThreshold0TimeUnit string
-
-// ParamsPropertyLogThreshold1 The parameters for a log threshold rule that calculates the ratio of log entries that match the criteria. These parameters are appropriate when `rule_type_id` is `logs.alert.document.count`.
-type ParamsPropertyLogThreshold1 struct {
-	Count struct {
-		Comparator *ParamsPropertyLogThreshold1CountComparator `json:"comparator,omitempty"`
-		Value      *float32                                    `json:"value,omitempty"`
-	} `json:"count"`
-	Criteria *[][]struct {
-		Comparator *ParamsPropertyLogThreshold1CriteriaComparator `json:"comparator,omitempty"`
-		Field      *string                                        `json:"field,omitempty"`
-		Value      *ParamsPropertyLogThreshold_1_Criteria_Value   `json:"value,omitempty"`
-	} `json:"criteria,omitempty"`
-	GroupBy *[]string `json:"groupBy,omitempty"`
-	LogView struct {
-		LogViewId *string                                 `json:"logViewId,omitempty"`
-		Type      *ParamsPropertyLogThreshold1LogViewType `json:"type,omitempty"`
-	} `json:"logView"`
-	TimeSize float32                             `json:"timeSize"`
-	TimeUnit ParamsPropertyLogThreshold1TimeUnit `json:"timeUnit"`
-}
-
-// ParamsPropertyLogThreshold1CountComparator defines model for ParamsPropertyLogThreshold.1.Count.Comparator.
-type ParamsPropertyLogThreshold1CountComparator string
-
-// ParamsPropertyLogThreshold1CriteriaComparator defines model for ParamsPropertyLogThreshold.1.Criteria.Comparator.
-type ParamsPropertyLogThreshold1CriteriaComparator string
-
-// ParamsPropertyLogThreshold1CriteriaValue0 defines model for .
-type ParamsPropertyLogThreshold1CriteriaValue0 = float32
-
-// ParamsPropertyLogThreshold1CriteriaValue1 defines model for .
-type ParamsPropertyLogThreshold1CriteriaValue1 = string
-
-// ParamsPropertyLogThreshold_1_Criteria_Value defines model for ParamsPropertyLogThreshold.1.Criteria.Value.
-type ParamsPropertyLogThreshold_1_Criteria_Value struct {
-	union json.RawMessage
-}
-
-// ParamsPropertyLogThreshold1LogViewType defines model for ParamsPropertyLogThreshold.1.LogView.Type.
-type ParamsPropertyLogThreshold1LogViewType string
-
-// ParamsPropertyLogThreshold1TimeUnit defines model for ParamsPropertyLogThreshold.1.TimeUnit.
-type ParamsPropertyLogThreshold1TimeUnit string
-
-// ParamsPropertySloBurnRate The parameters for the SLO burn rate rule. These parameters are appropriate when `rule_type_id` is `slo.rules.burnRate`.
-type ParamsPropertySloBurnRate struct {
-	// BurnRateThreshold The burn rate threshold used to trigger the alert
-	BurnRateThreshold *float32 `json:"burnRateThreshold,omitempty"`
-
-	// LongWindow The duration of the long window used to compute the burn rate
-	LongWindow *struct {
-		// Unit The duration unit
-		Unit *string `json:"unit,omitempty"`
-
-		// Value The duration value
-		Value *float32 `json:"value,omitempty"`
-	} `json:"longWindow,omitempty"`
-
-	// MaxBurnRateThreshold The maximum burn rate threshold value defined by the SLO error budget
-	MaxBurnRateThreshold *float32 `json:"maxBurnRateThreshold,omitempty"`
-
-	// ShortWindow The duration of the short window used to compute the burn rate
-	ShortWindow *struct {
-		// Unit The duration unit
-		Unit *string `json:"unit,omitempty"`
-
-		// Value The duration value
-		Value *float32 `json:"value,omitempty"`
-	} `json:"shortWindow,omitempty"`
-
-	// SloId The SLO identifier used by the rule
-	SloId *string `json:"sloId,omitempty"`
-}
-
-// ParamsPropertySyntheticsMonitorStatus The parameters for the Synthetics monitor status rule. These parameters are appropriate when `rule_type_id` is `xpack.uptime.alerts.monitorStatus`.
-type ParamsPropertySyntheticsMonitorStatus struct {
-	Availability *struct {
-		Range     *float32 `json:"range,omitempty"`
-		RangeUnit *string  `json:"rangeUnit,omitempty"`
-		Threshold *string  `json:"threshold,omitempty"`
-	} `json:"availability,omitempty"`
-	Filters         *ParamsPropertySyntheticsMonitorStatus_Filters `json:"filters,omitempty"`
-	IsAutoGenerated *bool                                          `json:"isAutoGenerated,omitempty"`
-	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
-	Locations               *[]string `json:"locations,omitempty"`
-	NumTimes                float32   `json:"numTimes"`
-	Search                  *string   `json:"search,omitempty"`
-	ShouldCheckAvailability bool      `json:"shouldCheckAvailability"`
-	ShouldCheckStatus       bool      `json:"shouldCheckStatus"`
-	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
-	Timerange *struct {
-		From *string `json:"from,omitempty"`
-		To   *string `json:"to,omitempty"`
-	} `json:"timerange,omitempty"`
-	TimerangeCount *float32 `json:"timerangeCount,omitempty"`
-	TimerangeUnit  *string  `json:"timerangeUnit,omitempty"`
-	Version        *float32 `json:"version,omitempty"`
-}
-
-// ParamsPropertySyntheticsMonitorStatusFilters0 defines model for .
-type ParamsPropertySyntheticsMonitorStatusFilters0 = string
-
-// ParamsPropertySyntheticsMonitorStatusFilters1 defines model for .
-type ParamsPropertySyntheticsMonitorStatusFilters1 struct {
-	MonitorType     *[]string `json:"monitor.type,omitempty"`
-	ObserverGeoName *[]string `json:"observer.geo.name,omitempty"`
-	Tags            *[]string `json:"tags,omitempty"`
-	UrlPort         *[]string `json:"url.port,omitempty"`
-}
-
-// ParamsPropertySyntheticsMonitorStatus_Filters defines model for ParamsPropertySyntheticsMonitorStatus.Filters.
-type ParamsPropertySyntheticsMonitorStatus_Filters struct {
-	union json.RawMessage
-}
-
-// ParamsPropertySyntheticsUptimeTls The parameters for the synthetics TLS certificate rule. These parameters are appropriate when `rule_type_id` is `xpack.uptime.alerts.tls`.
-type ParamsPropertySyntheticsUptimeTls struct {
-	CertAgeThreshold        *float32 `json:"certAgeThreshold,omitempty"`
-	CertExpirationThreshold *float32 `json:"certExpirationThreshold,omitempty"`
-	Search                  *string  `json:"search,omitempty"`
-}
-
 // PercentileOperation defines model for percentileOperation.
 type PercentileOperation struct {
 	// Field Field to be used for the metric
@@ -33033,9 +31882,6 @@ type ServicenowSecrets struct {
 	Username *string `json:"username,omitempty"`
 }
 
-// Size The number of documents to pass to the configured actions when the threshold condition is met.
-type Size = int
-
 // SlackApiConfig Defines properties for connectors when type is `.slack_api`.
 type SlackApiConfig struct {
 	// AllowedChannels A list of valid Slack channels.
@@ -33404,17 +32250,6 @@ type TeamsSecrets struct {
 	WebhookUrl string `json:"webhookUrl"`
 }
 
-// Termfield The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
-type Termfield struct {
-	union json.RawMessage
-}
-
-// Termfield0 defines model for .
-type Termfield0 = string
-
-// Termfield1 defines model for .
-type Termfield1 = []string
-
 // TermsOperationSchema defines model for termsOperationSchema.
 type TermsOperationSchema struct {
 	Excludes *struct {
@@ -33518,9 +32353,6 @@ type TermsOperationSchema_RankBy struct {
 	union json.RawMessage
 }
 
-// Termsize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
-type Termsize = int
-
 // ThehiveConfig Defines configuration properties for connectors when type is `.thehive`.
 type ThehiveConfig struct {
 	// Organisation The organisation in TheHive that will contain the alerts or cases. By default, the connector uses the default organisation of the user account that created the API key.
@@ -33535,21 +32367,6 @@ type ThehiveSecrets struct {
 	// ApiKey The API key for authentication in TheHive.
 	ApiKey string `json:"apiKey"`
 }
-
-// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
-type Threshold = []int
-
-// Thresholdcomparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
-type Thresholdcomparator string
-
-// Timefield The field that is used to calculate the time window.
-type Timefield = string
-
-// Timewindowsize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
-type Timewindowsize = int
-
-// Timewindowunit The type of units for the time window: seconds, minutes, hours, or days.
-type Timewindowunit string
 
 // TinesConfig Defines properties for connectors when type is `.tines`.
 type TinesConfig struct {
@@ -35253,9 +34070,7 @@ type PostAlertingRuleIdJSONBody struct {
 
 	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
 	NotifyWhen *PostAlertingRuleIdJSONBodyNotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for the rule.
-	Params *PostAlertingRuleIdJSONBody_Params `json:"params,omitempty"`
+	Params     *map[string]interface{}               `json:"params,omitempty"`
 
 	// RuleTypeId The rule type identifier.
 	RuleTypeId string `json:"rule_type_id"`
@@ -35284,12 +34099,6 @@ type PostAlertingRuleIdJSONBodyActionsFrequencyNotifyWhen string
 
 // PostAlertingRuleIdJSONBodyNotifyWhen defines parameters for PostAlertingRuleId.
 type PostAlertingRuleIdJSONBodyNotifyWhen string
-
-// PostAlertingRuleIdJSONBody_Params defines parameters for PostAlertingRuleId.
-type PostAlertingRuleIdJSONBody_Params struct {
-	AdditionalProperties map[string]interface{} `json:"-"`
-	union                json.RawMessage
-}
 
 // PutAlertingRuleIdJSONBody defines parameters for PutAlertingRuleId.
 type PutAlertingRuleIdJSONBody struct {
@@ -35389,10 +34198,8 @@ type PutAlertingRuleIdJSONBody struct {
 
 	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
 	NotifyWhen *PutAlertingRuleIdJSONBodyNotifyWhen `json:"notify_when,omitempty"`
-
-	// Params The parameters for the rule.
-	Params   *map[string]interface{} `json:"params,omitempty"`
-	Schedule struct {
+	Params     *map[string]interface{}              `json:"params,omitempty"`
+	Schedule   struct {
 		// Interval The interval is specified in seconds, minutes, hours, or days.
 		Interval string `json:"interval"`
 	} `json:"schedule"`
@@ -68783,23 +67590,6 @@ func (a *PostActionsConnectorIdExecuteJSONBody_Params) Set(fieldName string, val
 	a.AdditionalProperties[fieldName] = value
 }
 
-// Getter for additional properties for PostAlertingRuleIdJSONBody_Params. Returns the specified
-// element and whether it was found
-func (a PostAlertingRuleIdJSONBody_Params) Get(fieldName string) (value interface{}, found bool) {
-	if a.AdditionalProperties != nil {
-		value, found = a.AdditionalProperties[fieldName]
-	}
-	return
-}
-
-// Setter for additional properties for PostAlertingRuleIdJSONBody_Params
-func (a *PostAlertingRuleIdJSONBody_Params) Set(fieldName string, value interface{}) {
-	if a.AdditionalProperties == nil {
-		a.AdditionalProperties = make(map[string]interface{})
-	}
-	a.AdditionalProperties[fieldName] = value
-}
-
 // Getter for additional properties for PostDashboardsJSONBodyDataPinnedPanels0. Returns the specified
 // element and whether it was found
 func (a PostDashboardsJSONBodyDataPinnedPanels0) Get(fieldName string) (value interface{}, found bool) {
@@ -84895,7 +83685,7 @@ func (t SLOsIndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) AsSLO
 
 // FromSLOsTimesliceMetricBasicMetricWithField overwrites any union data inside the SLOsIndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item as the provided SLOsTimesliceMetricBasicMetricWithField
 func (t *SLOsIndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) FromSLOsTimesliceMetricBasicMetricWithField(v SLOsTimesliceMetricBasicMetricWithField) error {
-	v.Aggregation = "last_value"
+	v.Aggregation = "max"
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
@@ -84903,7 +83693,7 @@ func (t *SLOsIndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) From
 
 // MergeSLOsTimesliceMetricBasicMetricWithField performs a merge with any union data inside the SLOsIndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item, using the provided SLOsTimesliceMetricBasicMetricWithField
 func (t *SLOsIndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) MergeSLOsTimesliceMetricBasicMetricWithField(v SLOsTimesliceMetricBasicMetricWithField) error {
-	v.Aggregation = "last_value"
+	v.Aggregation = "max"
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -84986,7 +83776,7 @@ func (t SLOsIndicatorPropertiesTimesliceMetric_Params_Metric_Metrics_Item) Value
 	switch discriminator {
 	case "doc_count":
 		return t.AsSLOsTimesliceMetricDocCountMetric()
-	case "last_value":
+	case "max":
 		return t.AsSLOsTimesliceMetricBasicMetricWithField()
 	case "percentile":
 		return t.AsSLOsTimesliceMetricPercentileMetric()
@@ -104254,590 +103044,6 @@ func (t *PackageListItem_Type) UnmarshalJSON(b []byte) error {
 	return err
 }
 
-// AsParamsEsQueryDslRuleIndex0 returns the union data inside the ParamsEsQueryDslRule_Index as a ParamsEsQueryDslRuleIndex0
-func (t ParamsEsQueryDslRule_Index) AsParamsEsQueryDslRuleIndex0() (ParamsEsQueryDslRuleIndex0, error) {
-	var body ParamsEsQueryDslRuleIndex0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryDslRuleIndex0 overwrites any union data inside the ParamsEsQueryDslRule_Index as the provided ParamsEsQueryDslRuleIndex0
-func (t *ParamsEsQueryDslRule_Index) FromParamsEsQueryDslRuleIndex0(v ParamsEsQueryDslRuleIndex0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryDslRuleIndex0 performs a merge with any union data inside the ParamsEsQueryDslRule_Index, using the provided ParamsEsQueryDslRuleIndex0
-func (t *ParamsEsQueryDslRule_Index) MergeParamsEsQueryDslRuleIndex0(v ParamsEsQueryDslRuleIndex0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsEsQueryDslRuleIndex1 returns the union data inside the ParamsEsQueryDslRule_Index as a ParamsEsQueryDslRuleIndex1
-func (t ParamsEsQueryDslRule_Index) AsParamsEsQueryDslRuleIndex1() (ParamsEsQueryDslRuleIndex1, error) {
-	var body ParamsEsQueryDslRuleIndex1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryDslRuleIndex1 overwrites any union data inside the ParamsEsQueryDslRule_Index as the provided ParamsEsQueryDslRuleIndex1
-func (t *ParamsEsQueryDslRule_Index) FromParamsEsQueryDslRuleIndex1(v ParamsEsQueryDslRuleIndex1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryDslRuleIndex1 performs a merge with any union data inside the ParamsEsQueryDslRule_Index, using the provided ParamsEsQueryDslRuleIndex1
-func (t *ParamsEsQueryDslRule_Index) MergeParamsEsQueryDslRuleIndex1(v ParamsEsQueryDslRuleIndex1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsEsQueryDslRule_Index) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsEsQueryDslRule_Index) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsEsQueryKqlRuleSearchConfigurationIndex0 returns the union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index as a ParamsEsQueryKqlRuleSearchConfigurationIndex0
-func (t ParamsEsQueryKqlRule_SearchConfiguration_Index) AsParamsEsQueryKqlRuleSearchConfigurationIndex0() (ParamsEsQueryKqlRuleSearchConfigurationIndex0, error) {
-	var body ParamsEsQueryKqlRuleSearchConfigurationIndex0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryKqlRuleSearchConfigurationIndex0 overwrites any union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index as the provided ParamsEsQueryKqlRuleSearchConfigurationIndex0
-func (t *ParamsEsQueryKqlRule_SearchConfiguration_Index) FromParamsEsQueryKqlRuleSearchConfigurationIndex0(v ParamsEsQueryKqlRuleSearchConfigurationIndex0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryKqlRuleSearchConfigurationIndex0 performs a merge with any union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index, using the provided ParamsEsQueryKqlRuleSearchConfigurationIndex0
-func (t *ParamsEsQueryKqlRule_SearchConfiguration_Index) MergeParamsEsQueryKqlRuleSearchConfigurationIndex0(v ParamsEsQueryKqlRuleSearchConfigurationIndex0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsEsQueryKqlRuleSearchConfigurationIndex1 returns the union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index as a ParamsEsQueryKqlRuleSearchConfigurationIndex1
-func (t ParamsEsQueryKqlRule_SearchConfiguration_Index) AsParamsEsQueryKqlRuleSearchConfigurationIndex1() (ParamsEsQueryKqlRuleSearchConfigurationIndex1, error) {
-	var body ParamsEsQueryKqlRuleSearchConfigurationIndex1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsEsQueryKqlRuleSearchConfigurationIndex1 overwrites any union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index as the provided ParamsEsQueryKqlRuleSearchConfigurationIndex1
-func (t *ParamsEsQueryKqlRule_SearchConfiguration_Index) FromParamsEsQueryKqlRuleSearchConfigurationIndex1(v ParamsEsQueryKqlRuleSearchConfigurationIndex1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsEsQueryKqlRuleSearchConfigurationIndex1 performs a merge with any union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index, using the provided ParamsEsQueryKqlRuleSearchConfigurationIndex1
-func (t *ParamsEsQueryKqlRule_SearchConfiguration_Index) MergeParamsEsQueryKqlRuleSearchConfigurationIndex1(v ParamsEsQueryKqlRuleSearchConfigurationIndex1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsEsQueryKqlRule_SearchConfiguration_Index) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsEsQueryKqlRule_SearchConfiguration_Index) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as a ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
-func (t ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric0() (ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0, error) {
-	var body ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric0(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric0(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as a ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
-func (t ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric1() (ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1, error) {
-	var body ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric1(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric1(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdCriteria0 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as a ParamsPropertyInfraMetricThresholdCriteria0
-func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) AsParamsPropertyInfraMetricThresholdCriteria0() (ParamsPropertyInfraMetricThresholdCriteria0, error) {
-	var body ParamsPropertyInfraMetricThresholdCriteria0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdCriteria0 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as the provided ParamsPropertyInfraMetricThresholdCriteria0
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) FromParamsPropertyInfraMetricThresholdCriteria0(v ParamsPropertyInfraMetricThresholdCriteria0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdCriteria0 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria0
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) MergeParamsPropertyInfraMetricThresholdCriteria0(v ParamsPropertyInfraMetricThresholdCriteria0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdCriteria1 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as a ParamsPropertyInfraMetricThresholdCriteria1
-func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) AsParamsPropertyInfraMetricThresholdCriteria1() (ParamsPropertyInfraMetricThresholdCriteria1, error) {
-	var body ParamsPropertyInfraMetricThresholdCriteria1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdCriteria1 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as the provided ParamsPropertyInfraMetricThresholdCriteria1
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) FromParamsPropertyInfraMetricThresholdCriteria1(v ParamsPropertyInfraMetricThresholdCriteria1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdCriteria1 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria1
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) MergeParamsPropertyInfraMetricThresholdCriteria1(v ParamsPropertyInfraMetricThresholdCriteria1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdCriteria2 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as a ParamsPropertyInfraMetricThresholdCriteria2
-func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) AsParamsPropertyInfraMetricThresholdCriteria2() (ParamsPropertyInfraMetricThresholdCriteria2, error) {
-	var body ParamsPropertyInfraMetricThresholdCriteria2
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdCriteria2 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as the provided ParamsPropertyInfraMetricThresholdCriteria2
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) FromParamsPropertyInfraMetricThresholdCriteria2(v ParamsPropertyInfraMetricThresholdCriteria2) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdCriteria2 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria2
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) MergeParamsPropertyInfraMetricThresholdCriteria2(v ParamsPropertyInfraMetricThresholdCriteria2) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdGroupBy0 returns the union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as a ParamsPropertyInfraMetricThresholdGroupBy0
-func (t ParamsPropertyInfraMetricThreshold_GroupBy) AsParamsPropertyInfraMetricThresholdGroupBy0() (ParamsPropertyInfraMetricThresholdGroupBy0, error) {
-	var body ParamsPropertyInfraMetricThresholdGroupBy0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdGroupBy0 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as the provided ParamsPropertyInfraMetricThresholdGroupBy0
-func (t *ParamsPropertyInfraMetricThreshold_GroupBy) FromParamsPropertyInfraMetricThresholdGroupBy0(v ParamsPropertyInfraMetricThresholdGroupBy0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdGroupBy0 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy, using the provided ParamsPropertyInfraMetricThresholdGroupBy0
-func (t *ParamsPropertyInfraMetricThreshold_GroupBy) MergeParamsPropertyInfraMetricThresholdGroupBy0(v ParamsPropertyInfraMetricThresholdGroupBy0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyInfraMetricThresholdGroupBy1 returns the union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as a ParamsPropertyInfraMetricThresholdGroupBy1
-func (t ParamsPropertyInfraMetricThreshold_GroupBy) AsParamsPropertyInfraMetricThresholdGroupBy1() (ParamsPropertyInfraMetricThresholdGroupBy1, error) {
-	var body ParamsPropertyInfraMetricThresholdGroupBy1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyInfraMetricThresholdGroupBy1 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as the provided ParamsPropertyInfraMetricThresholdGroupBy1
-func (t *ParamsPropertyInfraMetricThreshold_GroupBy) FromParamsPropertyInfraMetricThresholdGroupBy1(v ParamsPropertyInfraMetricThresholdGroupBy1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyInfraMetricThresholdGroupBy1 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy, using the provided ParamsPropertyInfraMetricThresholdGroupBy1
-func (t *ParamsPropertyInfraMetricThreshold_GroupBy) MergeParamsPropertyInfraMetricThresholdGroupBy1(v ParamsPropertyInfraMetricThresholdGroupBy1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyInfraMetricThreshold_GroupBy) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyInfraMetricThreshold_GroupBy) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyLogThreshold0 returns the union data inside the ParamsPropertyLogThreshold as a ParamsPropertyLogThreshold0
-func (t ParamsPropertyLogThreshold) AsParamsPropertyLogThreshold0() (ParamsPropertyLogThreshold0, error) {
-	var body ParamsPropertyLogThreshold0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold0 overwrites any union data inside the ParamsPropertyLogThreshold as the provided ParamsPropertyLogThreshold0
-func (t *ParamsPropertyLogThreshold) FromParamsPropertyLogThreshold0(v ParamsPropertyLogThreshold0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold0 performs a merge with any union data inside the ParamsPropertyLogThreshold, using the provided ParamsPropertyLogThreshold0
-func (t *ParamsPropertyLogThreshold) MergeParamsPropertyLogThreshold0(v ParamsPropertyLogThreshold0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyLogThreshold1 returns the union data inside the ParamsPropertyLogThreshold as a ParamsPropertyLogThreshold1
-func (t ParamsPropertyLogThreshold) AsParamsPropertyLogThreshold1() (ParamsPropertyLogThreshold1, error) {
-	var body ParamsPropertyLogThreshold1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold1 overwrites any union data inside the ParamsPropertyLogThreshold as the provided ParamsPropertyLogThreshold1
-func (t *ParamsPropertyLogThreshold) FromParamsPropertyLogThreshold1(v ParamsPropertyLogThreshold1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold1 performs a merge with any union data inside the ParamsPropertyLogThreshold, using the provided ParamsPropertyLogThreshold1
-func (t *ParamsPropertyLogThreshold) MergeParamsPropertyLogThreshold1(v ParamsPropertyLogThreshold1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyLogThreshold) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyLogThreshold) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyLogThreshold0CriteriaValue0 returns the union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as a ParamsPropertyLogThreshold0CriteriaValue0
-func (t ParamsPropertyLogThreshold_0_Criteria_Value) AsParamsPropertyLogThreshold0CriteriaValue0() (ParamsPropertyLogThreshold0CriteriaValue0, error) {
-	var body ParamsPropertyLogThreshold0CriteriaValue0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold0CriteriaValue0 overwrites any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as the provided ParamsPropertyLogThreshold0CriteriaValue0
-func (t *ParamsPropertyLogThreshold_0_Criteria_Value) FromParamsPropertyLogThreshold0CriteriaValue0(v ParamsPropertyLogThreshold0CriteriaValue0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold0CriteriaValue0 performs a merge with any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value, using the provided ParamsPropertyLogThreshold0CriteriaValue0
-func (t *ParamsPropertyLogThreshold_0_Criteria_Value) MergeParamsPropertyLogThreshold0CriteriaValue0(v ParamsPropertyLogThreshold0CriteriaValue0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyLogThreshold0CriteriaValue1 returns the union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as a ParamsPropertyLogThreshold0CriteriaValue1
-func (t ParamsPropertyLogThreshold_0_Criteria_Value) AsParamsPropertyLogThreshold0CriteriaValue1() (ParamsPropertyLogThreshold0CriteriaValue1, error) {
-	var body ParamsPropertyLogThreshold0CriteriaValue1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold0CriteriaValue1 overwrites any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as the provided ParamsPropertyLogThreshold0CriteriaValue1
-func (t *ParamsPropertyLogThreshold_0_Criteria_Value) FromParamsPropertyLogThreshold0CriteriaValue1(v ParamsPropertyLogThreshold0CriteriaValue1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold0CriteriaValue1 performs a merge with any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value, using the provided ParamsPropertyLogThreshold0CriteriaValue1
-func (t *ParamsPropertyLogThreshold_0_Criteria_Value) MergeParamsPropertyLogThreshold0CriteriaValue1(v ParamsPropertyLogThreshold0CriteriaValue1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyLogThreshold_0_Criteria_Value) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyLogThreshold_0_Criteria_Value) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertyLogThreshold1CriteriaValue0 returns the union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as a ParamsPropertyLogThreshold1CriteriaValue0
-func (t ParamsPropertyLogThreshold_1_Criteria_Value) AsParamsPropertyLogThreshold1CriteriaValue0() (ParamsPropertyLogThreshold1CriteriaValue0, error) {
-	var body ParamsPropertyLogThreshold1CriteriaValue0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold1CriteriaValue0 overwrites any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as the provided ParamsPropertyLogThreshold1CriteriaValue0
-func (t *ParamsPropertyLogThreshold_1_Criteria_Value) FromParamsPropertyLogThreshold1CriteriaValue0(v ParamsPropertyLogThreshold1CriteriaValue0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold1CriteriaValue0 performs a merge with any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value, using the provided ParamsPropertyLogThreshold1CriteriaValue0
-func (t *ParamsPropertyLogThreshold_1_Criteria_Value) MergeParamsPropertyLogThreshold1CriteriaValue0(v ParamsPropertyLogThreshold1CriteriaValue0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertyLogThreshold1CriteriaValue1 returns the union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as a ParamsPropertyLogThreshold1CriteriaValue1
-func (t ParamsPropertyLogThreshold_1_Criteria_Value) AsParamsPropertyLogThreshold1CriteriaValue1() (ParamsPropertyLogThreshold1CriteriaValue1, error) {
-	var body ParamsPropertyLogThreshold1CriteriaValue1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertyLogThreshold1CriteriaValue1 overwrites any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as the provided ParamsPropertyLogThreshold1CriteriaValue1
-func (t *ParamsPropertyLogThreshold_1_Criteria_Value) FromParamsPropertyLogThreshold1CriteriaValue1(v ParamsPropertyLogThreshold1CriteriaValue1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertyLogThreshold1CriteriaValue1 performs a merge with any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value, using the provided ParamsPropertyLogThreshold1CriteriaValue1
-func (t *ParamsPropertyLogThreshold_1_Criteria_Value) MergeParamsPropertyLogThreshold1CriteriaValue1(v ParamsPropertyLogThreshold1CriteriaValue1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertyLogThreshold_1_Criteria_Value) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertyLogThreshold_1_Criteria_Value) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsParamsPropertySyntheticsMonitorStatusFilters0 returns the union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as a ParamsPropertySyntheticsMonitorStatusFilters0
-func (t ParamsPropertySyntheticsMonitorStatus_Filters) AsParamsPropertySyntheticsMonitorStatusFilters0() (ParamsPropertySyntheticsMonitorStatusFilters0, error) {
-	var body ParamsPropertySyntheticsMonitorStatusFilters0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertySyntheticsMonitorStatusFilters0 overwrites any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as the provided ParamsPropertySyntheticsMonitorStatusFilters0
-func (t *ParamsPropertySyntheticsMonitorStatus_Filters) FromParamsPropertySyntheticsMonitorStatusFilters0(v ParamsPropertySyntheticsMonitorStatusFilters0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertySyntheticsMonitorStatusFilters0 performs a merge with any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters, using the provided ParamsPropertySyntheticsMonitorStatusFilters0
-func (t *ParamsPropertySyntheticsMonitorStatus_Filters) MergeParamsPropertySyntheticsMonitorStatusFilters0(v ParamsPropertySyntheticsMonitorStatusFilters0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsParamsPropertySyntheticsMonitorStatusFilters1 returns the union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as a ParamsPropertySyntheticsMonitorStatusFilters1
-func (t ParamsPropertySyntheticsMonitorStatus_Filters) AsParamsPropertySyntheticsMonitorStatusFilters1() (ParamsPropertySyntheticsMonitorStatusFilters1, error) {
-	var body ParamsPropertySyntheticsMonitorStatusFilters1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromParamsPropertySyntheticsMonitorStatusFilters1 overwrites any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as the provided ParamsPropertySyntheticsMonitorStatusFilters1
-func (t *ParamsPropertySyntheticsMonitorStatus_Filters) FromParamsPropertySyntheticsMonitorStatusFilters1(v ParamsPropertySyntheticsMonitorStatusFilters1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeParamsPropertySyntheticsMonitorStatusFilters1 performs a merge with any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters, using the provided ParamsPropertySyntheticsMonitorStatusFilters1
-func (t *ParamsPropertySyntheticsMonitorStatus_Filters) MergeParamsPropertySyntheticsMonitorStatusFilters1(v ParamsPropertySyntheticsMonitorStatusFilters1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t ParamsPropertySyntheticsMonitorStatus_Filters) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *ParamsPropertySyntheticsMonitorStatus_Filters) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
 // AsRangeKeyFrom0 returns the union data inside the RangeKey_From as a RangeKeyFrom0
 func (t RangeKey_From) AsRangeKeyFrom0() (RangeKeyFrom0, error) {
 	var body RangeKeyFrom0
@@ -106796,68 +105002,6 @@ func (t TagcloudNoESQL_TagBy) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TagcloudNoESQL_TagBy) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsTermfield0 returns the union data inside the Termfield as a Termfield0
-func (t Termfield) AsTermfield0() (Termfield0, error) {
-	var body Termfield0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromTermfield0 overwrites any union data inside the Termfield as the provided Termfield0
-func (t *Termfield) FromTermfield0(v Termfield0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeTermfield0 performs a merge with any union data inside the Termfield, using the provided Termfield0
-func (t *Termfield) MergeTermfield0(v Termfield0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsTermfield1 returns the union data inside the Termfield as a Termfield1
-func (t Termfield) AsTermfield1() (Termfield1, error) {
-	var body Termfield1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromTermfield1 overwrites any union data inside the Termfield as the provided Termfield1
-func (t *Termfield) FromTermfield1(v Termfield1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeTermfield1 performs a merge with any union data inside the Termfield, using the provided Termfield1
-func (t *Termfield) MergeTermfield1(v Termfield1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t Termfield) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *Termfield) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }

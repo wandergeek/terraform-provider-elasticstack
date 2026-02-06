@@ -574,6 +574,7 @@ var transformers = []TransformFunc{
 	fixSecurityExceptionListItems,
 	removeDuplicateOneOfRefs,
 	fixDashboardPanelItemRefs,
+	simplifyAlertingRuleParams,
 	transformRemoveExamples,
 	transformRemoveUnusedComponents,
 	transformOmitEmptyNullable,
@@ -1207,6 +1208,18 @@ func transformFleetPaths(schema *Schema) {
 	schema.Components.Set("schemas.package_policy_request.properties.vars", Map{"type": "object"})
 	schema.Components.Set("schemas.package_policy_request_input.properties.vars", Map{"type": "object"})
 	schema.Components.Set("schemas.package_policy_request_input_stream.properties.vars", Map{"type": "object"})
+}
+
+func simplifyAlertingRuleParams(schema *Schema) {
+	// Simplify params for POST /api/alerting/rule/{id}
+	// The params field is a free-form JSON object that varies by rule type.
+	// Simplifying it to just {"type": "object"} generates a map[string]interface{}
+	// which marshals/unmarshals correctly without custom JSON handling.
+	postAlertingPath := schema.MustGetPath("/api/alerting/rule/{id}")
+	postAlertingPath.Post.Set("requestBody.content.application/json.schema.properties.params", Map{"type": "object"})
+
+	// Simplify params for PUT /api/alerting/rule/{id}
+	postAlertingPath.Put.Set("requestBody.content.application/json.schema.properties.params", Map{"type": "object"})
 }
 
 func setAllXOmitEmpty(key string, node Map) {
