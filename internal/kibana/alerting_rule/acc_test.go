@@ -307,6 +307,145 @@ func TestAccResourceAlertingRuleFromSDK(t *testing.T) {
 					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule", "enabled", "true"),
 				),
 			},
+			{
+				// Update the rule with the new provider to verify full CRUD cycle
+				SkipFunc:                 versionutils.CheckIfVersionIsUnsupported(minSupportedVersion),
+				ProtoV6ProviderFactories: acctest.Providers,
+				ConfigDirectory:          acctest.NamedTestCaseDirectory("update"),
+				ConfigVariables: config.Variables{
+					"name": config.StringVariable(fmt.Sprintf("Updated %s", ruleName)),
+				},
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule", "name", fmt.Sprintf("Updated %s", ruleName)),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule", "rule_id", "ef33ce2d-9fc4-5131-a350-b5bd6482745e"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule", "consumer", "alerts"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule", "rule_type_id", ".index-threshold"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule", "interval", "5m"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule", "enabled", "true"),
+				),
+			},
+		},
+	})
+}
+
+//go:embed testdata/TestAccResourceAlertingRuleFromSDKWithActions/create/rule.tf
+var sdkWithActionsCreateTestConfig string
+
+func TestAccResourceAlertingRuleFromSDKWithActions(t *testing.T) {
+	minSupportedVersion := version.Must(version.NewSemver("8.7.0"))
+
+	t.Setenv("KIBANA_API_KEY", "")
+
+	ruleName := sdkacctest.RandStringFromCharSet(22, sdkacctest.CharSetAlphaNum)
+
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { acctest.PreCheck(t) },
+		CheckDestroy: checkResourceAlertingRuleDestroy,
+		Steps: []resource.TestStep{
+			{
+				// Create the alerting rule with actions using the old SDK-based provider
+				SkipFunc: versionutils.CheckIfVersionIsUnsupported(minSupportedVersion),
+				ExternalProviders: map[string]resource.ExternalProvider{
+					"elasticstack": {
+						Source:            "elastic/elasticstack",
+						VersionConstraint: "0.13.1",
+					},
+				},
+				Config: sdkWithActionsCreateTestConfig,
+				ConfigVariables: config.Variables{
+					"name": config.StringVariable(ruleName),
+				},
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "name", ruleName),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "rule_id", "ff33ce2d-9fc4-5131-a350-b5bd6482746f"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "consumer", "alerts"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "rule_type_id", ".index-threshold"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "interval", "1m"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "enabled", "true"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "actions.0.group", "threshold met"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "actions.0.frequency.summary", "true"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "actions.0.frequency.notify_when", "onActionGroupChange"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "actions.0.frequency.throttle", "10m"),
+				),
+			},
+			{
+				// Upgrade to current PFW provider and verify all action attributes are preserved
+				SkipFunc:                 versionutils.CheckIfVersionIsUnsupported(minSupportedVersion),
+				ProtoV6ProviderFactories: acctest.Providers,
+				ConfigDirectory:          acctest.NamedTestCaseDirectory("create"),
+				ConfigVariables: config.Variables{
+					"name": config.StringVariable(ruleName),
+				},
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "name", ruleName),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "rule_id", "ff33ce2d-9fc4-5131-a350-b5bd6482746f"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "consumer", "alerts"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "rule_type_id", ".index-threshold"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "interval", "1m"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "enabled", "true"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "actions.0.group", "threshold met"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "actions.0.frequency.summary", "true"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "actions.0.frequency.notify_when", "onActionGroupChange"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_with_actions", "actions.0.frequency.throttle", "10m"),
+				),
+			},
+		},
+	})
+}
+
+//go:embed testdata/TestAccResourceAlertingRuleFromSDKDisabled/create/rule.tf
+var sdkDisabledCreateTestConfig string
+
+func TestAccResourceAlertingRuleFromSDKDisabled(t *testing.T) {
+	minSupportedVersion := version.Must(version.NewSemver("7.14.0"))
+
+	t.Setenv("KIBANA_API_KEY", "")
+
+	ruleName := sdkacctest.RandStringFromCharSet(22, sdkacctest.CharSetAlphaNum)
+
+	resource.Test(t, resource.TestCase{
+		PreCheck:     func() { acctest.PreCheck(t) },
+		CheckDestroy: checkResourceAlertingRuleDestroy,
+		Steps: []resource.TestStep{
+			{
+				// Create a disabled alerting rule using the old SDK-based provider
+				SkipFunc: versionutils.CheckIfVersionIsUnsupported(minSupportedVersion),
+				ExternalProviders: map[string]resource.ExternalProvider{
+					"elasticstack": {
+						Source:            "elastic/elasticstack",
+						VersionConstraint: "0.13.1",
+					},
+				},
+				Config: sdkDisabledCreateTestConfig,
+				ConfigVariables: config.Variables{
+					"name": config.StringVariable(ruleName),
+				},
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "name", ruleName),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "rule_id", "gg33ce2d-9fc4-5131-a350-b5bd6482747g"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "consumer", "alerts"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "rule_type_id", ".index-threshold"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "interval", "1m"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "enabled", "false"),
+				),
+			},
+			{
+				// Upgrade to current PFW provider and verify enabled=false is preserved
+				SkipFunc:                 versionutils.CheckIfVersionIsUnsupported(minSupportedVersion),
+				ProtoV6ProviderFactories: acctest.Providers,
+				ConfigDirectory:          acctest.NamedTestCaseDirectory("create"),
+				ConfigVariables: config.Variables{
+					"name": config.StringVariable(ruleName),
+				},
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "name", ruleName),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "rule_id", "gg33ce2d-9fc4-5131-a350-b5bd6482747g"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "consumer", "alerts"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "rule_type_id", ".index-threshold"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "interval", "1m"),
+					resource.TestCheckResourceAttr("elasticstack_kibana_alerting_rule.test_rule_disabled", "enabled", "false"),
+				),
+			},
 		},
 	})
 }

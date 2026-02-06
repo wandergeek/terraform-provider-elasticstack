@@ -14,7 +14,7 @@ import (
 
 // CreateAlertingRule creates a new alerting rule using the Kibana API.
 func CreateAlertingRule(ctx context.Context, client *Client, spaceID string, rule models.AlertingRule) (*models.AlertingRule, diag.Diagnostics) {
-	body := buildCreateRequestBody(rule)
+	body := BuildCreateRequestBody(rule)
 
 	resp, err := client.API.PostAlertingRuleIdWithResponse(
 		ctx,
@@ -34,7 +34,7 @@ func CreateAlertingRule(ctx context.Context, client *Client, spaceID string, rul
 				fmt.Sprintf("Create rule returned an empty response with HTTP status code [%d].", resp.StatusCode()),
 			)}
 		}
-		return convertResponseToModel(spaceID, resp.JSON200)
+		return ConvertResponseToModel(spaceID, resp.JSON200)
 	case http.StatusConflict:
 		return nil, diag.Diagnostics{diag.NewErrorDiagnostic(
 			"Rule ID conflict",
@@ -64,7 +64,7 @@ func GetAlertingRule(ctx context.Context, client *Client, spaceID string, ruleID
 				fmt.Sprintf("Get rule returned an empty response with HTTP status code [%d].", resp.StatusCode()),
 			)}
 		}
-		return convertResponseToModel(spaceID, resp.JSON200)
+		return ConvertResponseToModel(spaceID, resp.JSON200)
 	case http.StatusNotFound:
 		return nil, nil
 	default:
@@ -74,7 +74,7 @@ func GetAlertingRule(ctx context.Context, client *Client, spaceID string, ruleID
 
 // UpdateAlertingRule updates an existing alerting rule using the Kibana API.
 func UpdateAlertingRule(ctx context.Context, client *Client, spaceID string, rule models.AlertingRule) (*models.AlertingRule, diag.Diagnostics) {
-	body := buildUpdateRequestBody(rule)
+	body := BuildUpdateRequestBody(rule)
 
 	resp, err := client.API.PutAlertingRuleIdWithResponse(
 		ctx,
@@ -121,7 +121,7 @@ func UpdateAlertingRule(ctx context.Context, client *Client, spaceID string, rul
 			}
 		}
 
-		returnedRule, convDiags := convertResponseToModel(spaceID, resp.JSON200)
+		returnedRule, convDiags := ConvertResponseToModel(spaceID, resp.JSON200)
 		if convDiags.HasError() {
 			return nil, convDiags
 		}
@@ -198,10 +198,11 @@ func DisableAlertingRule(ctx context.Context, client *Client, spaceID string, ru
 	}
 }
 
-// convertResponseToModel converts any kbapi rule response to models.AlertingRule using JSON marshaling.
+// ConvertResponseToModel converts any kbapi rule response to models.AlertingRule using JSON marshaling.
 // This handles the different anonymous struct types (GetAlertingRuleIdResponse.JSON200,
 // PostAlertingRuleIdResponse.JSON200, PutAlertingRuleIdResponse.JSON200) by converting through JSON.
-func convertResponseToModel(spaceID string, resp any) (*models.AlertingRule, diag.Diagnostics) {
+// This function is exported for testing purposes.
+func ConvertResponseToModel(spaceID string, resp any) (*models.AlertingRule, diag.Diagnostics) {
 	if resp == nil {
 		return nil, nil
 	}
@@ -341,8 +342,9 @@ func convertResponseToModel(spaceID string, resp any) (*models.AlertingRule, dia
 	}, nil
 }
 
-// buildCreateRequestBody builds a PostAlertingRuleIdJSONRequestBody from models.AlertingRule
-func buildCreateRequestBody(rule models.AlertingRule) kbapi.PostAlertingRuleIdJSONRequestBody {
+// BuildCreateRequestBody builds a PostAlertingRuleIdJSONRequestBody from models.AlertingRule.
+// This function is exported for testing purposes.
+func BuildCreateRequestBody(rule models.AlertingRule) kbapi.PostAlertingRuleIdJSONRequestBody {
 	body := kbapi.PostAlertingRuleIdJSONRequestBody{
 		Consumer:   rule.Consumer,
 		Name:       rule.Name,
@@ -356,7 +358,9 @@ func buildCreateRequestBody(rule models.AlertingRule) kbapi.PostAlertingRuleIdJS
 
 	// Params
 	if rule.Params != nil {
-		body.Params = &rule.Params
+		body.Params = &kbapi.PostAlertingRuleIdJSONBody_Params{
+			AdditionalProperties: rule.Params,
+		}
 	}
 
 	// Enabled
@@ -525,8 +529,9 @@ func buildCreateRequestBody(rule models.AlertingRule) kbapi.PostAlertingRuleIdJS
 	return body
 }
 
-// buildUpdateRequestBody builds a PutAlertingRuleIdJSONRequestBody from models.AlertingRule
-func buildUpdateRequestBody(rule models.AlertingRule) kbapi.PutAlertingRuleIdJSONRequestBody {
+// BuildUpdateRequestBody builds a PutAlertingRuleIdJSONRequestBody from models.AlertingRule.
+// This function is exported for testing purposes.
+func BuildUpdateRequestBody(rule models.AlertingRule) kbapi.PutAlertingRuleIdJSONRequestBody {
 	body := kbapi.PutAlertingRuleIdJSONRequestBody{
 		Name: rule.Name,
 		Schedule: struct {

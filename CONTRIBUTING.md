@@ -83,7 +83,7 @@ If your work involves the Kibana API, the API client can be generated directly f
 
 The codebase includes a number of deprecated clients which should not be used anymore:
 - `libs/go-kibana-rest`: Fork of an external library, which is not maintained anymore.
-- `generated/alerting`, `generated/connectors`, `generated/slo`: Older generated clients, but based on non-standard specs. If any of these APIs are needed, they should be included in the `kbapi` client.
+- `generated/connectors`, `generated/slo`: Older generated clients, but based on non-standard specs. If any of these APIs are needed, they should be included in the `kbapi` client.
 
 ### Updating Documentation
 
