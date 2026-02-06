@@ -451,7 +451,7 @@ const (
 
 // Defines values for SecurityAIAssistantAPIEsqlContentReferenceType.
 const (
-	EsqlQuery SecurityAIAssistantAPIEsqlContentReferenceType = "EsqlQuery"
+	SecurityAIAssistantAPIEsqlContentReferenceTypeEsqlQuery SecurityAIAssistantAPIEsqlContentReferenceType = "EsqlQuery"
 )
 
 // Defines values for SecurityAIAssistantAPIFindAnonymizationFieldsSortField.
@@ -2643,6 +2643,15 @@ const (
 	AgentPolicyStatusInactive AgentPolicyStatus = "inactive"
 )
 
+// Defines values for Aggtype.
+const (
+	AggtypeAvg   Aggtype = "avg"
+	AggtypeCount Aggtype = "count"
+	AggtypeMax   Aggtype = "max"
+	AggtypeMin   Aggtype = "min"
+	AggtypeSum   Aggtype = "sum"
+)
+
 // Defines values for AuthType.
 const (
 	WebhookAuthenticationBasic AuthType = "webhook-authentication-basic"
@@ -2827,6 +2836,16 @@ const (
 // Defines values for DashboardPanelItemConfig10Attributes1Version.
 const (
 	DashboardPanelItemConfig10Attributes1VersionN2 DashboardPanelItemConfig10Attributes1Version = 2
+)
+
+// Defines values for DashboardPanelSectionPanelsConfig10Attributes1Type.
+const (
+	DashboardPanelSectionPanelsConfig10Attributes1TypeLens DashboardPanelSectionPanelsConfig10Attributes1Type = "lens"
+)
+
+// Defines values for DashboardPanelSectionPanelsConfig10Attributes1Version.
+const (
+	DashboardPanelSectionPanelsConfig10Attributes1VersionN2 DashboardPanelSectionPanelsConfig10Attributes1Version = 2
 )
 
 // Defines values for DataViewDatasetTypeSchemaType.
@@ -3194,6 +3213,12 @@ const (
 	Gradient GradientColorMappingMode = "gradient"
 )
 
+// Defines values for Groupby.
+const (
+	GroupbyAll Groupby = "all"
+	GroupbyTop Groupby = "top"
+)
+
 // Defines values for HeatmapESQLMetricOperation.
 const (
 	HeatmapESQLMetricOperationValue HeatmapESQLMetricOperation = "value"
@@ -3329,50 +3354,9 @@ const (
 	LegendSizeXlarge LegendSize = "xlarge"
 )
 
-// Defines values for MetricChartSchema0BreakdownBy3Operation.
+// Defines values for MetricBreakdownByEsqlOperation.
 const (
-	MetricChartSchema0BreakdownBy3OperationRange MetricChartSchema0BreakdownBy3Operation = "range"
-)
-
-// Defines values for MetricChartSchema0Type.
-const (
-	MetricChartSchema0TypeMetric MetricChartSchema0Type = "metric"
-)
-
-// Defines values for MetricChartSchema1BreakdownByOperation.
-const (
-	MetricChartSchema1BreakdownByOperationValue MetricChartSchema1BreakdownByOperation = "value"
-)
-
-// Defines values for MetricChartSchema1Metrics0ApplyColorTo.
-const (
-	MetricChartSchema1Metrics0ApplyColorToBackground MetricChartSchema1Metrics0ApplyColorTo = "background"
-	MetricChartSchema1Metrics0ApplyColorToValue      MetricChartSchema1Metrics0ApplyColorTo = "value"
-)
-
-// Defines values for MetricChartSchema1Metrics0Operation.
-const (
-	MetricChartSchema1Metrics0OperationValue MetricChartSchema1Metrics0Operation = "value"
-)
-
-// Defines values for MetricChartSchema1Metrics0Type.
-const (
-	MetricChartSchema1Metrics0TypePrimary MetricChartSchema1Metrics0Type = "primary"
-)
-
-// Defines values for MetricChartSchema1Metrics1Operation.
-const (
-	MetricChartSchema1Metrics1OperationValue MetricChartSchema1Metrics1Operation = "value"
-)
-
-// Defines values for MetricChartSchema1Metrics1Type.
-const (
-	Secondary MetricChartSchema1Metrics1Type = "secondary"
-)
-
-// Defines values for MetricChartSchema1Type.
-const (
-	MetricChartSchema1TypeMetric MetricChartSchema1Type = "metric"
+	MetricBreakdownByEsqlOperationValue MetricBreakdownByEsqlOperation = "value"
 )
 
 // Defines values for MetricCompareToBaselineTo.
@@ -3382,18 +3366,13 @@ const (
 
 // Defines values for MetricCompareToPrimaryTo.
 const (
-	MetricCompareToPrimaryToPrimary MetricCompareToPrimaryTo = "primary"
+	Primary MetricCompareToPrimaryTo = "primary"
 )
 
 // Defines values for MetricComplementaryBarDirection.
 const (
 	MetricComplementaryBarDirectionHorizontal MetricComplementaryBarDirection = "horizontal"
 	MetricComplementaryBarDirectionVertical   MetricComplementaryBarDirection = "vertical"
-)
-
-// Defines values for MetricComplementaryBarGoalValueOperation.
-const (
-	MetricComplementaryBarGoalValueOperationValue MetricComplementaryBarGoalValueOperation = "value"
 )
 
 // Defines values for MetricComplementaryBarType.
@@ -3406,10 +3385,41 @@ const (
 	Trend MetricComplementaryTrendType = "trend"
 )
 
+// Defines values for MetricESQLMetricApplyColorTo.
+const (
+	MetricESQLMetricApplyColorToBackground MetricESQLMetricApplyColorTo = "background"
+	MetricESQLMetricApplyColorToValue      MetricESQLMetricApplyColorTo = "value"
+)
+
+// Defines values for MetricESQLMetricOperation.
+const (
+	MetricESQLMetricOperationValue MetricESQLMetricOperation = "value"
+)
+
+// Defines values for MetricESQLSecondaryMetricOperation.
+const (
+	MetricESQLSecondaryMetricOperationValue MetricESQLSecondaryMetricOperation = "value"
+)
+
+// Defines values for MetricESQLType.
+const (
+	MetricESQLTypeMetric MetricESQLType = "metric"
+)
+
 // Defines values for MetricIconConfigAlign.
 const (
 	MetricIconConfigAlignLeft  MetricIconConfigAlign = "left"
 	MetricIconConfigAlignRight MetricIconConfigAlign = "right"
+)
+
+// Defines values for MetricNoESQLBreakdownBy3Operation.
+const (
+	MetricNoESQLBreakdownBy3OperationRange MetricNoESQLBreakdownBy3Operation = "range"
+)
+
+// Defines values for MetricNoESQLType.
+const (
+	MetricNoESQLTypeMetric MetricNoESQLType = "metric"
 )
 
 // Defines values for MetricPrimaryMetricAlignmentsLabels.
@@ -3853,6 +3863,379 @@ const (
 	PackageListItemVarGroupsOptionsHideInDeploymentModesDefault   PackageListItemVarGroupsOptionsHideInDeploymentModes = "default"
 )
 
+// Defines values for ParamsEsQueryDslRuleSearchType.
+const (
+	EsQuery ParamsEsQueryDslRuleSearchType = "esQuery"
+)
+
+// Defines values for ParamsEsQueryEsqlRuleSearchType.
+const (
+	ParamsEsQueryEsqlRuleSearchTypeEsqlQuery ParamsEsQueryEsqlRuleSearchType = "esqlQuery"
+)
+
+// Defines values for ParamsEsQueryEsqlRuleThresholdComparator.
+const (
+	ParamsEsQueryEsqlRuleThresholdComparatorGreaterThan ParamsEsQueryEsqlRuleThresholdComparator = ">"
+)
+
+// Defines values for ParamsEsQueryKqlRuleSearchType.
+const (
+	SearchSource ParamsEsQueryKqlRuleSearchType = "searchSource"
+)
+
+// Defines values for ParamsPropertyApmAnomalyAnomalySeverityType.
+const (
+	ParamsPropertyApmAnomalyAnomalySeverityTypeCritical ParamsPropertyApmAnomalyAnomalySeverityType = "critical"
+	ParamsPropertyApmAnomalyAnomalySeverityTypeMajor    ParamsPropertyApmAnomalyAnomalySeverityType = "major"
+	ParamsPropertyApmAnomalyAnomalySeverityTypeMinor    ParamsPropertyApmAnomalyAnomalySeverityType = "minor"
+	ParamsPropertyApmAnomalyAnomalySeverityTypeWarning  ParamsPropertyApmAnomalyAnomalySeverityType = "warning"
+)
+
+// Defines values for ParamsPropertyApmAnomalyWindowUnit.
+const (
+	ParamsPropertyApmAnomalyWindowUnitD ParamsPropertyApmAnomalyWindowUnit = "d"
+	ParamsPropertyApmAnomalyWindowUnitH ParamsPropertyApmAnomalyWindowUnit = "h"
+	ParamsPropertyApmAnomalyWindowUnitM ParamsPropertyApmAnomalyWindowUnit = "m"
+)
+
+// Defines values for ParamsPropertyApmErrorCountGroupBy.
+const (
+	ParamsPropertyApmErrorCountGroupByErrorGroupingKey   ParamsPropertyApmErrorCountGroupBy = "error.grouping_key"
+	ParamsPropertyApmErrorCountGroupByServiceEnvironment ParamsPropertyApmErrorCountGroupBy = "service.environment"
+	ParamsPropertyApmErrorCountGroupByServiceName        ParamsPropertyApmErrorCountGroupBy = "service.name"
+	ParamsPropertyApmErrorCountGroupByTransactionName    ParamsPropertyApmErrorCountGroupBy = "transaction.name"
+)
+
+// Defines values for ParamsPropertyApmErrorCountWindowUnit.
+const (
+	ParamsPropertyApmErrorCountWindowUnitD ParamsPropertyApmErrorCountWindowUnit = "d"
+	ParamsPropertyApmErrorCountWindowUnitH ParamsPropertyApmErrorCountWindowUnit = "h"
+	ParamsPropertyApmErrorCountWindowUnitM ParamsPropertyApmErrorCountWindowUnit = "m"
+)
+
+// Defines values for ParamsPropertyApmTransactionDurationAggregationType.
+const (
+	ParamsPropertyApmTransactionDurationAggregationTypeAvg   ParamsPropertyApmTransactionDurationAggregationType = "avg"
+	ParamsPropertyApmTransactionDurationAggregationTypeN95th ParamsPropertyApmTransactionDurationAggregationType = "95th"
+	ParamsPropertyApmTransactionDurationAggregationTypeN99th ParamsPropertyApmTransactionDurationAggregationType = "99th"
+)
+
+// Defines values for ParamsPropertyApmTransactionDurationGroupBy.
+const (
+	ParamsPropertyApmTransactionDurationGroupByServiceEnvironment ParamsPropertyApmTransactionDurationGroupBy = "service.environment"
+	ParamsPropertyApmTransactionDurationGroupByServiceName        ParamsPropertyApmTransactionDurationGroupBy = "service.name"
+	ParamsPropertyApmTransactionDurationGroupByTransactionName    ParamsPropertyApmTransactionDurationGroupBy = "transaction.name"
+	ParamsPropertyApmTransactionDurationGroupByTransactionType    ParamsPropertyApmTransactionDurationGroupBy = "transaction.type"
+)
+
+// Defines values for ParamsPropertyApmTransactionDurationWindowUnit.
+const (
+	ParamsPropertyApmTransactionDurationWindowUnitD ParamsPropertyApmTransactionDurationWindowUnit = "d"
+	ParamsPropertyApmTransactionDurationWindowUnitH ParamsPropertyApmTransactionDurationWindowUnit = "h"
+	ParamsPropertyApmTransactionDurationWindowUnitM ParamsPropertyApmTransactionDurationWindowUnit = "m"
+)
+
+// Defines values for ParamsPropertyApmTransactionErrorRateGroupBy.
+const (
+	ServiceEnvironment ParamsPropertyApmTransactionErrorRateGroupBy = "service.environment"
+	ServiceName        ParamsPropertyApmTransactionErrorRateGroupBy = "service.name"
+	TransactionName    ParamsPropertyApmTransactionErrorRateGroupBy = "transaction.name"
+	TransactionType    ParamsPropertyApmTransactionErrorRateGroupBy = "transaction.type"
+)
+
+// Defines values for ParamsPropertyApmTransactionErrorRateWindowUnit.
+const (
+	ParamsPropertyApmTransactionErrorRateWindowUnitD ParamsPropertyApmTransactionErrorRateWindowUnit = "d"
+	ParamsPropertyApmTransactionErrorRateWindowUnitH ParamsPropertyApmTransactionErrorRateWindowUnit = "h"
+	ParamsPropertyApmTransactionErrorRateWindowUnitM ParamsPropertyApmTransactionErrorRateWindowUnit = "m"
+)
+
+// Defines values for ParamsPropertyInfraInventoryCriteriaComparator.
+const (
+	ParamsPropertyInfraInventoryCriteriaComparatorBetween          ParamsPropertyInfraInventoryCriteriaComparator = "between"
+	ParamsPropertyInfraInventoryCriteriaComparatorGreaterThan      ParamsPropertyInfraInventoryCriteriaComparator = ">"
+	ParamsPropertyInfraInventoryCriteriaComparatorGreaterThanEqual ParamsPropertyInfraInventoryCriteriaComparator = ">="
+	ParamsPropertyInfraInventoryCriteriaComparatorLessThan         ParamsPropertyInfraInventoryCriteriaComparator = "<"
+	ParamsPropertyInfraInventoryCriteriaComparatorLessThanEqual    ParamsPropertyInfraInventoryCriteriaComparator = "<="
+	ParamsPropertyInfraInventoryCriteriaComparatorOutside          ParamsPropertyInfraInventoryCriteriaComparator = "outside"
+)
+
+// Defines values for ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation.
+const (
+	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationAvg  ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "avg"
+	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationMax  ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "max"
+	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationMin  ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "min"
+	ParamsPropertyInfraInventoryCriteriaCustomMetricAggregationRate ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation = "rate"
+)
+
+// Defines values for ParamsPropertyInfraInventoryCriteriaCustomMetricType.
+const (
+	ParamsPropertyInfraInventoryCriteriaCustomMetricTypeCustom ParamsPropertyInfraInventoryCriteriaCustomMetricType = "custom"
+)
+
+// Defines values for ParamsPropertyInfraInventoryCriteriaMetric.
+const (
+	ParamsPropertyInfraInventoryCriteriaMetricCount                 ParamsPropertyInfraInventoryCriteriaMetric = "count"
+	ParamsPropertyInfraInventoryCriteriaMetricCpu                   ParamsPropertyInfraInventoryCriteriaMetric = "cpu"
+	ParamsPropertyInfraInventoryCriteriaMetricCustom                ParamsPropertyInfraInventoryCriteriaMetric = "custom"
+	ParamsPropertyInfraInventoryCriteriaMetricDiskIOReadBytes       ParamsPropertyInfraInventoryCriteriaMetric = "diskIOReadBytes"
+	ParamsPropertyInfraInventoryCriteriaMetricDiskIOWriteBytes      ParamsPropertyInfraInventoryCriteriaMetric = "diskIOWriteBytes"
+	ParamsPropertyInfraInventoryCriteriaMetricDiskLatency           ParamsPropertyInfraInventoryCriteriaMetric = "diskLatency"
+	ParamsPropertyInfraInventoryCriteriaMetricLoad                  ParamsPropertyInfraInventoryCriteriaMetric = "load"
+	ParamsPropertyInfraInventoryCriteriaMetricLogRate               ParamsPropertyInfraInventoryCriteriaMetric = "logRate"
+	ParamsPropertyInfraInventoryCriteriaMetricMemory                ParamsPropertyInfraInventoryCriteriaMetric = "memory"
+	ParamsPropertyInfraInventoryCriteriaMetricMemoryTotal           ParamsPropertyInfraInventoryCriteriaMetric = "memoryTotal"
+	ParamsPropertyInfraInventoryCriteriaMetricRdsActiveTransactions ParamsPropertyInfraInventoryCriteriaMetric = "rdsActiveTransactions"
+	ParamsPropertyInfraInventoryCriteriaMetricRdsConnections        ParamsPropertyInfraInventoryCriteriaMetric = "rdsConnections"
+	ParamsPropertyInfraInventoryCriteriaMetricRdsLatency            ParamsPropertyInfraInventoryCriteriaMetric = "rdsLatency"
+	ParamsPropertyInfraInventoryCriteriaMetricRdsQueriesExecuted    ParamsPropertyInfraInventoryCriteriaMetric = "rdsQueriesExecuted"
+	ParamsPropertyInfraInventoryCriteriaMetricRx                    ParamsPropertyInfraInventoryCriteriaMetric = "rx"
+	ParamsPropertyInfraInventoryCriteriaMetricS3BucketSize          ParamsPropertyInfraInventoryCriteriaMetric = "s3BucketSize"
+	ParamsPropertyInfraInventoryCriteriaMetricS3DownloadBytes       ParamsPropertyInfraInventoryCriteriaMetric = "s3DownloadBytes"
+	ParamsPropertyInfraInventoryCriteriaMetricS3NumberOfObjects     ParamsPropertyInfraInventoryCriteriaMetric = "s3NumberOfObjects"
+	ParamsPropertyInfraInventoryCriteriaMetricS3TotalRequests       ParamsPropertyInfraInventoryCriteriaMetric = "s3TotalRequests"
+	ParamsPropertyInfraInventoryCriteriaMetricS3UploadBytes         ParamsPropertyInfraInventoryCriteriaMetric = "s3UploadBytes"
+	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesDelayed    ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesDelayed"
+	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesEmpty      ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesEmpty"
+	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesSent       ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesSent"
+	ParamsPropertyInfraInventoryCriteriaMetricSqsMessagesVisible    ParamsPropertyInfraInventoryCriteriaMetric = "sqsMessagesVisible"
+	ParamsPropertyInfraInventoryCriteriaMetricSqsOldestMessage      ParamsPropertyInfraInventoryCriteriaMetric = "sqsOldestMessage"
+	ParamsPropertyInfraInventoryCriteriaMetricTx                    ParamsPropertyInfraInventoryCriteriaMetric = "tx"
+)
+
+// Defines values for ParamsPropertyInfraInventoryCriteriaTimeUnit.
+const (
+	ParamsPropertyInfraInventoryCriteriaTimeUnitD ParamsPropertyInfraInventoryCriteriaTimeUnit = "d"
+	ParamsPropertyInfraInventoryCriteriaTimeUnitH ParamsPropertyInfraInventoryCriteriaTimeUnit = "h"
+	ParamsPropertyInfraInventoryCriteriaTimeUnitM ParamsPropertyInfraInventoryCriteriaTimeUnit = "m"
+	ParamsPropertyInfraInventoryCriteriaTimeUnitS ParamsPropertyInfraInventoryCriteriaTimeUnit = "s"
+)
+
+// Defines values for ParamsPropertyInfraInventoryCriteriaWarningComparator.
+const (
+	ParamsPropertyInfraInventoryCriteriaWarningComparatorBetween          ParamsPropertyInfraInventoryCriteriaWarningComparator = "between"
+	ParamsPropertyInfraInventoryCriteriaWarningComparatorGreaterThan      ParamsPropertyInfraInventoryCriteriaWarningComparator = ">"
+	ParamsPropertyInfraInventoryCriteriaWarningComparatorGreaterThanEqual ParamsPropertyInfraInventoryCriteriaWarningComparator = ">="
+	ParamsPropertyInfraInventoryCriteriaWarningComparatorLessThan         ParamsPropertyInfraInventoryCriteriaWarningComparator = "<"
+	ParamsPropertyInfraInventoryCriteriaWarningComparatorLessThanEqual    ParamsPropertyInfraInventoryCriteriaWarningComparator = "<="
+	ParamsPropertyInfraInventoryCriteriaWarningComparatorOutside          ParamsPropertyInfraInventoryCriteriaWarningComparator = "outside"
+)
+
+// Defines values for ParamsPropertyInfraInventoryNodeType.
+const (
+	ParamsPropertyInfraInventoryNodeTypeAwsEC2    ParamsPropertyInfraInventoryNodeType = "awsEC2"
+	ParamsPropertyInfraInventoryNodeTypeAwsRDS    ParamsPropertyInfraInventoryNodeType = "awsRDS"
+	ParamsPropertyInfraInventoryNodeTypeAwsS3     ParamsPropertyInfraInventoryNodeType = "awsS3"
+	ParamsPropertyInfraInventoryNodeTypeAwsSQS    ParamsPropertyInfraInventoryNodeType = "awsSQS"
+	ParamsPropertyInfraInventoryNodeTypeContainer ParamsPropertyInfraInventoryNodeType = "container"
+	ParamsPropertyInfraInventoryNodeTypeHost      ParamsPropertyInfraInventoryNodeType = "host"
+	ParamsPropertyInfraInventoryNodeTypePod       ParamsPropertyInfraInventoryNodeType = "pod"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria0AggType.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria0AggTypeAvg         ParamsPropertyInfraMetricThresholdCriteria0AggType = "avg"
+	ParamsPropertyInfraMetricThresholdCriteria0AggTypeCardinality ParamsPropertyInfraMetricThresholdCriteria0AggType = "cardinality"
+	ParamsPropertyInfraMetricThresholdCriteria0AggTypeCount       ParamsPropertyInfraMetricThresholdCriteria0AggType = "count"
+	ParamsPropertyInfraMetricThresholdCriteria0AggTypeCustom      ParamsPropertyInfraMetricThresholdCriteria0AggType = "custom"
+	ParamsPropertyInfraMetricThresholdCriteria0AggTypeMax         ParamsPropertyInfraMetricThresholdCriteria0AggType = "max"
+	ParamsPropertyInfraMetricThresholdCriteria0AggTypeMin         ParamsPropertyInfraMetricThresholdCriteria0AggType = "min"
+	ParamsPropertyInfraMetricThresholdCriteria0AggTypeP95         ParamsPropertyInfraMetricThresholdCriteria0AggType = "p95"
+	ParamsPropertyInfraMetricThresholdCriteria0AggTypeP99         ParamsPropertyInfraMetricThresholdCriteria0AggType = "p99"
+	ParamsPropertyInfraMetricThresholdCriteria0AggTypeRate        ParamsPropertyInfraMetricThresholdCriteria0AggType = "rate"
+	ParamsPropertyInfraMetricThresholdCriteria0AggTypeSum         ParamsPropertyInfraMetricThresholdCriteria0AggType = "sum"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria0Comparator.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria0ComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria0Comparator = "between"
+	ParamsPropertyInfraMetricThresholdCriteria0ComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria0Comparator = ">"
+	ParamsPropertyInfraMetricThresholdCriteria0ComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria0Comparator = ">="
+	ParamsPropertyInfraMetricThresholdCriteria0ComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria0Comparator = "<"
+	ParamsPropertyInfraMetricThresholdCriteria0ComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria0Comparator = "<="
+	ParamsPropertyInfraMetricThresholdCriteria0ComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria0Comparator = "outside"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria0TimeUnit.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria0TimeUnitD ParamsPropertyInfraMetricThresholdCriteria0TimeUnit = "d"
+	ParamsPropertyInfraMetricThresholdCriteria0TimeUnitH ParamsPropertyInfraMetricThresholdCriteria0TimeUnit = "h"
+	ParamsPropertyInfraMetricThresholdCriteria0TimeUnitM ParamsPropertyInfraMetricThresholdCriteria0TimeUnit = "m"
+	ParamsPropertyInfraMetricThresholdCriteria0TimeUnitS ParamsPropertyInfraMetricThresholdCriteria0TimeUnit = "s"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria0WarningComparator.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "between"
+	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = ">"
+	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = ">="
+	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "<"
+	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "<="
+	ParamsPropertyInfraMetricThresholdCriteria0WarningComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria0WarningComparator = "outside"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria1AggType.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria1AggTypeCount ParamsPropertyInfraMetricThresholdCriteria1AggType = "count"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria1Comparator.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria1ComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria1Comparator = "between"
+	ParamsPropertyInfraMetricThresholdCriteria1ComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria1Comparator = ">"
+	ParamsPropertyInfraMetricThresholdCriteria1ComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria1Comparator = ">="
+	ParamsPropertyInfraMetricThresholdCriteria1ComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria1Comparator = "<"
+	ParamsPropertyInfraMetricThresholdCriteria1ComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria1Comparator = "<="
+	ParamsPropertyInfraMetricThresholdCriteria1ComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria1Comparator = "outside"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria1TimeUnit.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria1TimeUnitD ParamsPropertyInfraMetricThresholdCriteria1TimeUnit = "d"
+	ParamsPropertyInfraMetricThresholdCriteria1TimeUnitH ParamsPropertyInfraMetricThresholdCriteria1TimeUnit = "h"
+	ParamsPropertyInfraMetricThresholdCriteria1TimeUnitM ParamsPropertyInfraMetricThresholdCriteria1TimeUnit = "m"
+	ParamsPropertyInfraMetricThresholdCriteria1TimeUnitS ParamsPropertyInfraMetricThresholdCriteria1TimeUnit = "s"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria1WarningComparator.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "between"
+	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = ">"
+	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = ">="
+	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "<"
+	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "<="
+	ParamsPropertyInfraMetricThresholdCriteria1WarningComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria1WarningComparator = "outside"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria2AggType.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria2AggTypeCustom ParamsPropertyInfraMetricThresholdCriteria2AggType = "custom"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria2Comparator.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria2ComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria2Comparator = "between"
+	ParamsPropertyInfraMetricThresholdCriteria2ComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria2Comparator = ">"
+	ParamsPropertyInfraMetricThresholdCriteria2ComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria2Comparator = ">="
+	ParamsPropertyInfraMetricThresholdCriteria2ComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria2Comparator = "<"
+	ParamsPropertyInfraMetricThresholdCriteria2ComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria2Comparator = "<="
+	ParamsPropertyInfraMetricThresholdCriteria2ComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria2Comparator = "outside"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeAvg         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "avg"
+	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeCardinality ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "cardinality"
+	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeMax         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "max"
+	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeMin         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "min"
+	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggTypeSum         ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType = "sum"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggTypeCount ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType = "count"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria2TimeUnit.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria2TimeUnitD ParamsPropertyInfraMetricThresholdCriteria2TimeUnit = "d"
+	ParamsPropertyInfraMetricThresholdCriteria2TimeUnitH ParamsPropertyInfraMetricThresholdCriteria2TimeUnit = "h"
+	ParamsPropertyInfraMetricThresholdCriteria2TimeUnitM ParamsPropertyInfraMetricThresholdCriteria2TimeUnit = "m"
+	ParamsPropertyInfraMetricThresholdCriteria2TimeUnitS ParamsPropertyInfraMetricThresholdCriteria2TimeUnit = "s"
+)
+
+// Defines values for ParamsPropertyInfraMetricThresholdCriteria2WarningComparator.
+const (
+	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorBetween          ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "between"
+	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorGreaterThan      ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = ">"
+	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorGreaterThanEqual ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = ">="
+	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorLessThan         ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "<"
+	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorLessThanEqual    ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "<="
+	ParamsPropertyInfraMetricThresholdCriteria2WarningComparatorOutside          ParamsPropertyInfraMetricThresholdCriteria2WarningComparator = "outside"
+)
+
+// Defines values for ParamsPropertyLogThreshold0CountComparator.
+const (
+	ParamsPropertyLogThreshold0CountComparatorDoesNotEqual       ParamsPropertyLogThreshold0CountComparator = "does not equal"
+	ParamsPropertyLogThreshold0CountComparatorDoesNotMatch       ParamsPropertyLogThreshold0CountComparator = "does not match"
+	ParamsPropertyLogThreshold0CountComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold0CountComparator = "does not match phrase"
+	ParamsPropertyLogThreshold0CountComparatorEquals             ParamsPropertyLogThreshold0CountComparator = "equals"
+	ParamsPropertyLogThreshold0CountComparatorLessThan           ParamsPropertyLogThreshold0CountComparator = "less than"
+	ParamsPropertyLogThreshold0CountComparatorLessThanOrEquals   ParamsPropertyLogThreshold0CountComparator = "less than or equals"
+	ParamsPropertyLogThreshold0CountComparatorMatches            ParamsPropertyLogThreshold0CountComparator = "matches"
+	ParamsPropertyLogThreshold0CountComparatorMatchesPhrase      ParamsPropertyLogThreshold0CountComparator = "matches phrase"
+	ParamsPropertyLogThreshold0CountComparatorMoreThan           ParamsPropertyLogThreshold0CountComparator = "more than"
+	ParamsPropertyLogThreshold0CountComparatorMoreThanOrEquals   ParamsPropertyLogThreshold0CountComparator = "more than or equals"
+)
+
+// Defines values for ParamsPropertyLogThreshold0CriteriaComparator.
+const (
+	ParamsPropertyLogThreshold0CriteriaComparatorDoesNotEqual       ParamsPropertyLogThreshold0CriteriaComparator = "does not equal"
+	ParamsPropertyLogThreshold0CriteriaComparatorDoesNotMatch       ParamsPropertyLogThreshold0CriteriaComparator = "does not match"
+	ParamsPropertyLogThreshold0CriteriaComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold0CriteriaComparator = "does not match phrase"
+	ParamsPropertyLogThreshold0CriteriaComparatorEquals             ParamsPropertyLogThreshold0CriteriaComparator = "equals"
+	ParamsPropertyLogThreshold0CriteriaComparatorLessThan           ParamsPropertyLogThreshold0CriteriaComparator = "less than"
+	ParamsPropertyLogThreshold0CriteriaComparatorLessThanOrEquals   ParamsPropertyLogThreshold0CriteriaComparator = "less than or equals"
+	ParamsPropertyLogThreshold0CriteriaComparatorMatches            ParamsPropertyLogThreshold0CriteriaComparator = "matches"
+	ParamsPropertyLogThreshold0CriteriaComparatorMatchesPhrase      ParamsPropertyLogThreshold0CriteriaComparator = "matches phrase"
+	ParamsPropertyLogThreshold0CriteriaComparatorMoreThan           ParamsPropertyLogThreshold0CriteriaComparator = "more than"
+	ParamsPropertyLogThreshold0CriteriaComparatorMoreThanOrEquals   ParamsPropertyLogThreshold0CriteriaComparator = "more than or equals"
+)
+
+// Defines values for ParamsPropertyLogThreshold0LogViewType.
+const (
+	ParamsPropertyLogThreshold0LogViewTypeLogViewReference ParamsPropertyLogThreshold0LogViewType = "log-view-reference"
+)
+
+// Defines values for ParamsPropertyLogThreshold0TimeUnit.
+const (
+	ParamsPropertyLogThreshold0TimeUnitD ParamsPropertyLogThreshold0TimeUnit = "d"
+	ParamsPropertyLogThreshold0TimeUnitH ParamsPropertyLogThreshold0TimeUnit = "h"
+	ParamsPropertyLogThreshold0TimeUnitM ParamsPropertyLogThreshold0TimeUnit = "m"
+	ParamsPropertyLogThreshold0TimeUnitS ParamsPropertyLogThreshold0TimeUnit = "s"
+)
+
+// Defines values for ParamsPropertyLogThreshold1CountComparator.
+const (
+	ParamsPropertyLogThreshold1CountComparatorDoesNotEqual       ParamsPropertyLogThreshold1CountComparator = "does not equal"
+	ParamsPropertyLogThreshold1CountComparatorDoesNotMatch       ParamsPropertyLogThreshold1CountComparator = "does not match"
+	ParamsPropertyLogThreshold1CountComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold1CountComparator = "does not match phrase"
+	ParamsPropertyLogThreshold1CountComparatorEquals             ParamsPropertyLogThreshold1CountComparator = "equals"
+	ParamsPropertyLogThreshold1CountComparatorLessThan           ParamsPropertyLogThreshold1CountComparator = "less than"
+	ParamsPropertyLogThreshold1CountComparatorLessThanOrEquals   ParamsPropertyLogThreshold1CountComparator = "less than or equals"
+	ParamsPropertyLogThreshold1CountComparatorMatches            ParamsPropertyLogThreshold1CountComparator = "matches"
+	ParamsPropertyLogThreshold1CountComparatorMatchesPhrase      ParamsPropertyLogThreshold1CountComparator = "matches phrase"
+	ParamsPropertyLogThreshold1CountComparatorMoreThan           ParamsPropertyLogThreshold1CountComparator = "more than"
+	ParamsPropertyLogThreshold1CountComparatorMoreThanOrEquals   ParamsPropertyLogThreshold1CountComparator = "more than or equals"
+)
+
+// Defines values for ParamsPropertyLogThreshold1CriteriaComparator.
+const (
+	ParamsPropertyLogThreshold1CriteriaComparatorDoesNotEqual       ParamsPropertyLogThreshold1CriteriaComparator = "does not equal"
+	ParamsPropertyLogThreshold1CriteriaComparatorDoesNotMatch       ParamsPropertyLogThreshold1CriteriaComparator = "does not match"
+	ParamsPropertyLogThreshold1CriteriaComparatorDoesNotMatchPhrase ParamsPropertyLogThreshold1CriteriaComparator = "does not match phrase"
+	ParamsPropertyLogThreshold1CriteriaComparatorEquals             ParamsPropertyLogThreshold1CriteriaComparator = "equals"
+	ParamsPropertyLogThreshold1CriteriaComparatorLessThan           ParamsPropertyLogThreshold1CriteriaComparator = "less than"
+	ParamsPropertyLogThreshold1CriteriaComparatorLessThanOrEquals   ParamsPropertyLogThreshold1CriteriaComparator = "less than or equals"
+	ParamsPropertyLogThreshold1CriteriaComparatorMatches            ParamsPropertyLogThreshold1CriteriaComparator = "matches"
+	ParamsPropertyLogThreshold1CriteriaComparatorMatchesPhrase      ParamsPropertyLogThreshold1CriteriaComparator = "matches phrase"
+	ParamsPropertyLogThreshold1CriteriaComparatorMoreThan           ParamsPropertyLogThreshold1CriteriaComparator = "more than"
+	ParamsPropertyLogThreshold1CriteriaComparatorMoreThanOrEquals   ParamsPropertyLogThreshold1CriteriaComparator = "more than or equals"
+)
+
+// Defines values for ParamsPropertyLogThreshold1LogViewType.
+const (
+	ParamsPropertyLogThreshold1LogViewTypeLogViewReference ParamsPropertyLogThreshold1LogViewType = "log-view-reference"
+)
+
+// Defines values for ParamsPropertyLogThreshold1TimeUnit.
+const (
+	ParamsPropertyLogThreshold1TimeUnitD ParamsPropertyLogThreshold1TimeUnit = "d"
+	ParamsPropertyLogThreshold1TimeUnitH ParamsPropertyLogThreshold1TimeUnit = "h"
+	ParamsPropertyLogThreshold1TimeUnitM ParamsPropertyLogThreshold1TimeUnit = "m"
+	ParamsPropertyLogThreshold1TimeUnitS ParamsPropertyLogThreshold1TimeUnit = "s"
+)
+
 // Defines values for PercentileOperationOperation.
 const (
 	PercentileOperationOperationPercentile PercentileOperationOperation = "percentile"
@@ -4050,7 +4433,7 @@ const (
 
 // Defines values for SumMetricOperationOperation.
 const (
-	Sum SumMetricOperationOperation = "sum"
+	SumMetricOperationOperationSum SumMetricOperationOperation = "sum"
 )
 
 // Defines values for SwimlaneConfigConnectorType.
@@ -4165,6 +4548,24 @@ const (
 // Defines values for TermsOperationSchemaRankBy4Type.
 const (
 	TermsOperationSchemaRankBy4TypeCustom TermsOperationSchemaRankBy4Type = "custom"
+)
+
+// Defines values for Thresholdcomparator.
+const (
+	ThresholdcomparatorBetween          Thresholdcomparator = "between"
+	ThresholdcomparatorGreaterThan      Thresholdcomparator = ">"
+	ThresholdcomparatorGreaterThanEqual Thresholdcomparator = ">="
+	ThresholdcomparatorLessThan         Thresholdcomparator = "<"
+	ThresholdcomparatorLessThanEqual    Thresholdcomparator = "<="
+	ThresholdcomparatorNotBetween       Thresholdcomparator = "notBetween"
+)
+
+// Defines values for Timewindowunit.
+const (
+	D Timewindowunit = "d"
+	H Timewindowunit = "h"
+	M Timewindowunit = "m"
+	S Timewindowunit = "s"
 )
 
 // Defines values for UniqueCountMetricOperationOperation.
@@ -4592,30 +4993,30 @@ const (
 
 // Defines values for XyLegendOutsideStatistics.
 const (
-	XyLegendOutsideStatisticsAvg                  XyLegendOutsideStatistics = "avg"
-	XyLegendOutsideStatisticsCount                XyLegendOutsideStatistics = "count"
-	XyLegendOutsideStatisticsCurrentAndLastValue  XyLegendOutsideStatistics = "current_and_last_value"
-	XyLegendOutsideStatisticsDifference           XyLegendOutsideStatistics = "difference"
-	XyLegendOutsideStatisticsDifferencePercentage XyLegendOutsideStatistics = "difference_percentage"
-	XyLegendOutsideStatisticsDistinctCount        XyLegendOutsideStatistics = "distinct_count"
-	XyLegendOutsideStatisticsFirstNonNullValue    XyLegendOutsideStatistics = "first_non_null_value"
-	XyLegendOutsideStatisticsFirstValue           XyLegendOutsideStatistics = "first_value"
-	XyLegendOutsideStatisticsLastNonNullValue     XyLegendOutsideStatistics = "last_non_null_value"
-	XyLegendOutsideStatisticsLastValue            XyLegendOutsideStatistics = "last_value"
-	XyLegendOutsideStatisticsMax                  XyLegendOutsideStatistics = "max"
-	XyLegendOutsideStatisticsMedian               XyLegendOutsideStatistics = "median"
-	XyLegendOutsideStatisticsMin                  XyLegendOutsideStatistics = "min"
-	XyLegendOutsideStatisticsRange                XyLegendOutsideStatistics = "range"
-	XyLegendOutsideStatisticsStandardDeviation    XyLegendOutsideStatistics = "standard_deviation"
-	XyLegendOutsideStatisticsTotal                XyLegendOutsideStatistics = "total"
-	XyLegendOutsideStatisticsVariance             XyLegendOutsideStatistics = "variance"
+	Avg                  XyLegendOutsideStatistics = "avg"
+	Count                XyLegendOutsideStatistics = "count"
+	CurrentAndLastValue  XyLegendOutsideStatistics = "current_and_last_value"
+	Difference           XyLegendOutsideStatistics = "difference"
+	DifferencePercentage XyLegendOutsideStatistics = "difference_percentage"
+	DistinctCount        XyLegendOutsideStatistics = "distinct_count"
+	FirstNonNullValue    XyLegendOutsideStatistics = "first_non_null_value"
+	FirstValue           XyLegendOutsideStatistics = "first_value"
+	LastNonNullValue     XyLegendOutsideStatistics = "last_non_null_value"
+	LastValue            XyLegendOutsideStatistics = "last_value"
+	Max                  XyLegendOutsideStatistics = "max"
+	Median               XyLegendOutsideStatistics = "median"
+	Min                  XyLegendOutsideStatistics = "min"
+	Range                XyLegendOutsideStatistics = "range"
+	StandardDeviation    XyLegendOutsideStatistics = "standard_deviation"
+	Total                XyLegendOutsideStatistics = "total"
+	Variance             XyLegendOutsideStatistics = "variance"
 )
 
 // Defines values for XyReferenceLineLayerESQLThresholdsAxis.
 const (
-	Bottom XyReferenceLineLayerESQLThresholdsAxis = "bottom"
-	Left   XyReferenceLineLayerESQLThresholdsAxis = "left"
-	Right  XyReferenceLineLayerESQLThresholdsAxis = "right"
+	XyReferenceLineLayerESQLThresholdsAxisBottom XyReferenceLineLayerESQLThresholdsAxis = "bottom"
+	XyReferenceLineLayerESQLThresholdsAxisLeft   XyReferenceLineLayerESQLThresholdsAxis = "left"
+	XyReferenceLineLayerESQLThresholdsAxisRight  XyReferenceLineLayerESQLThresholdsAxis = "right"
 )
 
 // Defines values for XyReferenceLineLayerESQLThresholdsFill.
@@ -4626,27 +5027,27 @@ const (
 
 // Defines values for XyReferenceLineLayerESQLThresholdsIcon.
 const (
-	Alert         XyReferenceLineLayerESQLThresholdsIcon = "alert"
-	Asterisk      XyReferenceLineLayerESQLThresholdsIcon = "asterisk"
-	Bell          XyReferenceLineLayerESQLThresholdsIcon = "bell"
-	Bolt          XyReferenceLineLayerESQLThresholdsIcon = "bolt"
-	Bug           XyReferenceLineLayerESQLThresholdsIcon = "bug"
-	Circle        XyReferenceLineLayerESQLThresholdsIcon = "circle"
-	EditorComment XyReferenceLineLayerESQLThresholdsIcon = "editorComment"
-	Empty         XyReferenceLineLayerESQLThresholdsIcon = "empty"
-	Flag          XyReferenceLineLayerESQLThresholdsIcon = "flag"
-	Heart         XyReferenceLineLayerESQLThresholdsIcon = "heart"
-	MapMarker     XyReferenceLineLayerESQLThresholdsIcon = "mapMarker"
-	PinFilled     XyReferenceLineLayerESQLThresholdsIcon = "pinFilled"
-	StarEmpty     XyReferenceLineLayerESQLThresholdsIcon = "starEmpty"
-	StarFilled    XyReferenceLineLayerESQLThresholdsIcon = "starFilled"
-	Tag           XyReferenceLineLayerESQLThresholdsIcon = "tag"
-	Triangle      XyReferenceLineLayerESQLThresholdsIcon = "triangle"
+	XyReferenceLineLayerESQLThresholdsIconAlert         XyReferenceLineLayerESQLThresholdsIcon = "alert"
+	XyReferenceLineLayerESQLThresholdsIconAsterisk      XyReferenceLineLayerESQLThresholdsIcon = "asterisk"
+	XyReferenceLineLayerESQLThresholdsIconBell          XyReferenceLineLayerESQLThresholdsIcon = "bell"
+	XyReferenceLineLayerESQLThresholdsIconBolt          XyReferenceLineLayerESQLThresholdsIcon = "bolt"
+	XyReferenceLineLayerESQLThresholdsIconBug           XyReferenceLineLayerESQLThresholdsIcon = "bug"
+	XyReferenceLineLayerESQLThresholdsIconCircle        XyReferenceLineLayerESQLThresholdsIcon = "circle"
+	XyReferenceLineLayerESQLThresholdsIconEditorComment XyReferenceLineLayerESQLThresholdsIcon = "editorComment"
+	XyReferenceLineLayerESQLThresholdsIconEmpty         XyReferenceLineLayerESQLThresholdsIcon = "empty"
+	XyReferenceLineLayerESQLThresholdsIconFlag          XyReferenceLineLayerESQLThresholdsIcon = "flag"
+	XyReferenceLineLayerESQLThresholdsIconHeart         XyReferenceLineLayerESQLThresholdsIcon = "heart"
+	XyReferenceLineLayerESQLThresholdsIconMapMarker     XyReferenceLineLayerESQLThresholdsIcon = "mapMarker"
+	XyReferenceLineLayerESQLThresholdsIconPinFilled     XyReferenceLineLayerESQLThresholdsIcon = "pinFilled"
+	XyReferenceLineLayerESQLThresholdsIconStarEmpty     XyReferenceLineLayerESQLThresholdsIcon = "starEmpty"
+	XyReferenceLineLayerESQLThresholdsIconStarFilled    XyReferenceLineLayerESQLThresholdsIcon = "starFilled"
+	XyReferenceLineLayerESQLThresholdsIconTag           XyReferenceLineLayerESQLThresholdsIcon = "tag"
+	XyReferenceLineLayerESQLThresholdsIconTriangle      XyReferenceLineLayerESQLThresholdsIcon = "triangle"
 )
 
 // Defines values for XyReferenceLineLayerESQLThresholdsOperation.
 const (
-	Value XyReferenceLineLayerESQLThresholdsOperation = "value"
+	XyReferenceLineLayerESQLThresholdsOperationValue XyReferenceLineLayerESQLThresholdsOperation = "value"
 )
 
 // Defines values for XyReferenceLineLayerESQLThresholdsStrokeDash.
@@ -4756,13 +5157,13 @@ const (
 
 // Defines values for PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays.
 const (
-	PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDaysN1 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 1
-	PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDaysN2 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 2
-	PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDaysN3 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 3
-	PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDaysN4 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 4
-	PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDaysN5 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 5
-	PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDaysN6 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 6
-	PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDaysN7 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 7
+	N1 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 1
+	N2 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 2
+	N3 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 3
+	N4 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 4
+	N5 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 5
+	N6 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 6
+	N7 PutAlertingRuleIdJSONBodyActionsAlertsFilterTimeframeDays = 7
 )
 
 // Defines values for PutAlertingRuleIdJSONBodyActionsFrequencyNotifyWhen.
@@ -5205,7 +5606,7 @@ const (
 
 // Defines values for RulePreviewJSONBody3Type.
 const (
-	Threshold RulePreviewJSONBody3Type = "threshold"
+	RulePreviewJSONBody3TypeThreshold RulePreviewJSONBody3Type = "threshold"
 )
 
 // Defines values for RulePreviewJSONBody4Type.
@@ -5354,10 +5755,10 @@ const (
 
 // Defines values for PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel.
 const (
-	Debug   PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "debug"
-	Error   PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "error"
-	Info    PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "info"
-	Warning PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "warning"
+	PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevelDebug   PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "debug"
+	PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevelError   PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "error"
+	PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevelInfo    PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "info"
+	PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevelWarning PostFleetAgentsAgentidActionsJSONBodyAction1DataLogLevel = "warning"
 )
 
 // Defines values for PostFleetAgentsAgentidActionsJSONBodyAction1Type.
@@ -6162,10 +6563,10 @@ const (
 
 // Defines values for FindSlosOpParamsSortBy.
 const (
-	ErrorBudgetConsumed  FindSlosOpParamsSortBy = "error_budget_consumed"
-	ErrorBudgetRemaining FindSlosOpParamsSortBy = "error_budget_remaining"
-	SliValue             FindSlosOpParamsSortBy = "sli_value"
-	Status               FindSlosOpParamsSortBy = "status"
+	FindSlosOpParamsSortByErrorBudgetConsumed  FindSlosOpParamsSortBy = "error_budget_consumed"
+	FindSlosOpParamsSortByErrorBudgetRemaining FindSlosOpParamsSortBy = "error_budget_remaining"
+	FindSlosOpParamsSortBySliValue             FindSlosOpParamsSortBy = "sli_value"
+	FindSlosOpParamsSortByStatus               FindSlosOpParamsSortBy = "status"
 )
 
 // Defines values for FindSlosOpParamsSortDirection.
@@ -26777,6 +27178,12 @@ type AgentPolicyGlobalDataTagsItem_Value struct {
 	union json.RawMessage
 }
 
+// Aggfield The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
+type Aggfield = string
+
+// Aggtype The type of aggregation to perform.
+type Aggtype string
+
 // AuthType The type of authentication to use: basic, SSL, or none.
 type AuthType string
 
@@ -27358,10 +27765,10 @@ type DashboardPanelItem struct {
 
 // DashboardPanelItemConfig0 Markdown embeddable schema
 type DashboardPanelItemConfig0 struct {
-	Content     string  `json:"content"`
-	Description *string `json:"description,omitempty"`
-	HideTitle   *bool   `json:"hide_title,omitempty"`
-	Title       *string `json:"title,omitempty"`
+	Content         string  `json:"content"`
+	Description     *string `json:"description,omitempty"`
+	HidePanelTitles *bool   `json:"hidePanelTitles,omitempty"`
+	Title           *string `json:"title,omitempty"`
 }
 
 // DashboardPanelItemConfig1 defines model for .
@@ -27383,7 +27790,6 @@ type DashboardPanelItemConfig10Attributes0 struct {
 // DashboardPanelItemConfig10Attributes1 defines model for .
 type DashboardPanelItemConfig10Attributes1 struct {
 	Description       *string                                       `json:"description,omitempty"`
-	Id                *string                                       `json:"id,omitempty"`
 	References        []KbnContentManagementUtilsReferenceSchema    `json:"references"`
 	State             interface{}                                   `json:"state"`
 	Title             string                                        `json:"title"`
@@ -27427,13 +27833,98 @@ type DashboardPanelSection struct {
 	} `json:"grid"`
 
 	// Panels The panels that belong to the section.
-	Panels *[]DashboardPanelItem `json:"panels,omitempty"`
+	Panels *[]struct {
+		Config DashboardPanelSection_Panels_Config `json:"config"`
+		Grid   struct {
+			// H The height of the panel in grid units
+			H *float32 `json:"h,omitempty"`
+
+			// W The width of the panel in grid units
+			W *float32 `json:"w,omitempty"`
+
+			// X The x coordinate of the panel in grid units
+			X float32 `json:"x"`
+
+			// Y The y coordinate of the panel in grid units
+			Y float32 `json:"y"`
+		} `json:"grid"`
+
+		// Type The embeddable type
+		Type string `json:"type"`
+
+		// Uid The unique ID of the panel.
+		Uid *string `json:"uid,omitempty"`
+
+		// Version The version was used to store Kibana version information from versions 7.3.0 -> 8.11.0. As of version 8.11.0, the versioning information is now per-embeddable-type and is stored on the embeddable's input. (config in this type).
+		// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+		Version *string `json:"version,omitempty"`
+	} `json:"panels,omitempty"`
 
 	// Title The title of the section.
 	Title string `json:"title"`
 
 	// Uid The unique ID of the section.
 	Uid *string `json:"uid,omitempty"`
+}
+
+// DashboardPanelSectionPanelsConfig0 Markdown embeddable schema
+type DashboardPanelSectionPanelsConfig0 struct {
+	Content         string  `json:"content"`
+	Description     *string `json:"description,omitempty"`
+	HidePanelTitles *bool   `json:"hidePanelTitles,omitempty"`
+	Title           *string `json:"title,omitempty"`
+}
+
+// DashboardPanelSectionPanelsConfig1 defines model for .
+type DashboardPanelSectionPanelsConfig1 struct {
+	union json.RawMessage
+}
+
+// DashboardPanelSectionPanelsConfig10 defines model for .
+type DashboardPanelSectionPanelsConfig10 struct {
+	Attributes           DashboardPanelSection_Panels_Config_1_0_Attributes `json:"attributes"`
+	AdditionalProperties map[string]interface{}                             `json:"-"`
+}
+
+// DashboardPanelSectionPanelsConfig10Attributes0 defines model for .
+type DashboardPanelSectionPanelsConfig10Attributes0 struct {
+	union json.RawMessage
+}
+
+// DashboardPanelSectionPanelsConfig10Attributes1 defines model for .
+type DashboardPanelSectionPanelsConfig10Attributes1 struct {
+	Description       *string                                                `json:"description,omitempty"`
+	References        []KbnContentManagementUtilsReferenceSchema             `json:"references"`
+	State             interface{}                                            `json:"state"`
+	Title             string                                                 `json:"title"`
+	Type              *DashboardPanelSectionPanelsConfig10Attributes1Type    `json:"type,omitempty"`
+	Version           *DashboardPanelSectionPanelsConfig10Attributes1Version `json:"version,omitempty"`
+	VisualizationType string                                                 `json:"visualizationType"`
+}
+
+// DashboardPanelSectionPanelsConfig10Attributes1Type defines model for DashboardPanelSection.Panels.Config.1.0.Attributes.1.Type.
+type DashboardPanelSectionPanelsConfig10Attributes1Type string
+
+// DashboardPanelSectionPanelsConfig10Attributes1Version defines model for DashboardPanelSection.Panels.Config.1.0.Attributes.1.Version.
+type DashboardPanelSectionPanelsConfig10Attributes1Version int
+
+// DashboardPanelSection_Panels_Config_1_0_Attributes defines model for DashboardPanelSection.Panels.Config.1.0.Attributes.
+type DashboardPanelSection_Panels_Config_1_0_Attributes struct {
+	union json.RawMessage
+}
+
+// DashboardPanelSectionPanelsConfig11 defines model for .
+type DashboardPanelSectionPanelsConfig11 struct {
+	SavedObjectId        string                 `json:"savedObjectId"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// DashboardPanelSectionPanelsConfig2 defines model for .
+type DashboardPanelSectionPanelsConfig2 map[string]interface{}
+
+// DashboardPanelSection_Panels_Config defines model for DashboardPanelSection.Panels.Config.
+type DashboardPanelSection_Panels_Config struct {
+	union json.RawMessage
 }
 
 // DashboardPanels defines model for dashboard_panels.
@@ -27569,7 +28060,7 @@ type DatatableESQL struct {
 	// Sampling Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1.
 	Sampling *float32 `json:"sampling,omitempty"`
 
-	// SortBy Sorting configuration. Only one column can be sorted at a time. Use "column_type" to specify the column type."
+	// SortBy Sorting configuration. Only one column can be sorted at a time. Use "column_type" to specify the column type.
 	SortBy *DatatableESQL_SortBy `json:"sort_by,omitempty"`
 
 	// SplitMetricsBy Array of operations to split the metric columns by
@@ -27644,7 +28135,7 @@ type DatatableESQLSortBy1ColumnType string
 // DatatableESQLSortBy1Direction Sort direction
 type DatatableESQLSortBy1Direction string
 
-// DatatableESQL_SortBy Sorting configuration. Only one column can be sorted at a time. Use "column_type" to specify the column type."
+// DatatableESQL_SortBy Sorting configuration. Only one column can be sorted at a time. Use "column_type" to specify the column type.
 type DatatableESQL_SortBy struct {
 	union json.RawMessage
 }
@@ -27732,7 +28223,7 @@ type DatatableNoESQL struct {
 	// Sampling Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1.
 	Sampling *float32 `json:"sampling,omitempty"`
 
-	// SortBy Sorting configuration. Only one column can be sorted at a time. Use "column_type" to specify the column type."
+	// SortBy Sorting configuration. Only one column can be sorted at a time. Use "column_type" to specify the column type.
 	SortBy *DatatableNoESQL_SortBy `json:"sort_by,omitempty"`
 
 	// SplitMetricsBy Array of operations to split the metric columns by
@@ -27847,7 +28338,7 @@ type DatatableNoESQLSortBy1ColumnType string
 // DatatableNoESQLSortBy1Direction Sort direction
 type DatatableNoESQLSortBy1Direction string
 
-// DatatableNoESQL_SortBy Sorting configuration. Only one column can be sorted at a time. Use "column_type" to specify the column type."
+// DatatableNoESQL_SortBy Sorting configuration. Only one column can be sorted at a time. Use "column_type" to specify the column type.
 type DatatableNoESQL_SortBy struct {
 	union json.RawMessage
 }
@@ -28072,9 +28563,32 @@ type EsqlDatasetTypeSchema struct {
 // EsqlDatasetTypeSchemaType defines model for EsqlDatasetTypeSchema.Type.
 type EsqlDatasetTypeSchemaType string
 
+// Excludehitsfrompreviousrun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
+type Excludehitsfrompreviousrun = bool
+
 // FieldMetricOperations defines model for fieldMetricOperations.
 type FieldMetricOperations struct {
 	union json.RawMessage
+}
+
+// Filter A filter written in Elasticsearch Query Domain Specific Language (DSL) as defined in the `kbn-es-query` package.
+type Filter struct {
+	State *map[string]interface{} `json:"$state,omitempty"`
+	Meta  *struct {
+		Alias        *string                 `json:"alias,omitempty"`
+		ControlledBy *string                 `json:"controlledBy,omitempty"`
+		Disabled     *bool                   `json:"disabled,omitempty"`
+		Field        *string                 `json:"field,omitempty"`
+		Group        *string                 `json:"group,omitempty"`
+		Index        *string                 `json:"index,omitempty"`
+		IsMultiIndex *bool                   `json:"isMultiIndex,omitempty"`
+		Key          *string                 `json:"key,omitempty"`
+		Negate       *bool                   `json:"negate,omitempty"`
+		Params       *map[string]interface{} `json:"params,omitempty"`
+		Type         *string                 `json:"type,omitempty"`
+		Value        *string                 `json:"value,omitempty"`
+	} `json:"meta,omitempty"`
+	Query *map[string]interface{} `json:"query,omitempty"`
 }
 
 // FilterQueryTypeSchema defines model for filterQueryTypeSchema.
@@ -28480,6 +28994,9 @@ type GradientColorMapping_Mapping_Values_Item struct {
 
 // GradientColorMappingMode defines model for GradientColorMapping.Mode.
 type GradientColorMappingMode string
+
+// Groupby Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
+type Groupby string
 
 // HasAuth If true, a username and password for login type authentication must be provided.
 type HasAuth = bool
@@ -29018,229 +29535,26 @@ type LegacyMetricNoESQLType string
 // LegendSize Legend size: auto, small, medium, large, or xlarge
 type LegendSize string
 
-// MetricChartSchema defines model for metricChartSchema.
-type MetricChartSchema struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema0 defines model for .
-type MetricChartSchema0 struct {
-	BreakdownBy *MetricChartSchema_0_BreakdownBy `json:"breakdown_by,omitempty"`
-	Dataset     MetricChartSchema_0_Dataset      `json:"dataset"`
-
-	// Description The description of the chart. Optional. Any string value or undefined.
-	Description *string               `json:"description,omitempty"`
-	Filters     *[]SearchFilterSchema `json:"filters,omitempty"`
-
-	// IgnoreGlobalFilters If true, ignore global filters when fetching data for this layer. Default is false.
-	IgnoreGlobalFilters *bool                              `json:"ignore_global_filters,omitempty"`
-	Metrics             []MetricChartSchema_0_Metrics_Item `json:"metrics"`
-	Query               FilterSimpleSchema                 `json:"query"`
-
-	// Sampling Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1.
-	Sampling *float32 `json:"sampling,omitempty"`
-
-	// Title The title of the chart displayed in the panel. Optional. Any string value or undefined.
-	Title *string                `json:"title,omitempty"`
-	Type  MetricChartSchema0Type `json:"type"`
-}
-
-// MetricChartSchema0BreakdownBy3 defines model for .
-type MetricChartSchema0BreakdownBy3 struct {
+// MetricBreakdownByEsql defines model for metricBreakdownByEsql.
+type MetricBreakdownByEsql struct {
 	// CollapseBy Collapse by function description
 	CollapseBy CollapseBy `json:"collapse_by"`
-
-	// Columns Number of columns
-	Columns *float32 `json:"columns,omitempty"`
-
-	// Field Field to be used for the range
-	Field  string           `json:"field"`
-	Format FormatTypeSchema `json:"format"`
-
-	// Label Label for the operation
-	Label     *string                                 `json:"label,omitempty"`
-	Operation MetricChartSchema0BreakdownBy3Operation `json:"operation"`
-	Ranges    RangesOperationSchema                   `json:"ranges"`
-}
-
-// MetricChartSchema0BreakdownBy3Operation defines model for MetricChartSchema.0.BreakdownBy.3.Operation.
-type MetricChartSchema0BreakdownBy3Operation string
-
-// MetricChartSchema_0_BreakdownBy defines model for MetricChartSchema.0.BreakdownBy.
-type MetricChartSchema_0_BreakdownBy struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema_0_Dataset defines model for MetricChartSchema.0.Dataset.
-type MetricChartSchema_0_Dataset struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema0Metrics0 defines model for .
-type MetricChartSchema0Metrics0 struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema0Metrics00 defines model for .
-type MetricChartSchema0Metrics00 struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema0Metrics01 defines model for .
-type MetricChartSchema0Metrics01 struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema0Metrics1 defines model for .
-type MetricChartSchema0Metrics1 struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema0Metrics10 defines model for .
-type MetricChartSchema0Metrics10 struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema0Metrics11 defines model for .
-type MetricChartSchema0Metrics11 struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema_0_Metrics_Item defines model for MetricChartSchema.0.Metrics.Item.
-type MetricChartSchema_0_Metrics_Item struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema0Type defines model for MetricChartSchema.0.Type.
-type MetricChartSchema0Type string
-
-// MetricChartSchema1 defines model for .
-type MetricChartSchema1 struct {
-	BreakdownBy *struct {
-		// CollapseBy Collapse by function description
-		CollapseBy CollapseBy `json:"collapse_by"`
-
-		// Column Column to use
-		Column string `json:"column"`
-
-		// Columns Number of columns
-		Columns   *float32                               `json:"columns,omitempty"`
-		Operation MetricChartSchema1BreakdownByOperation `json:"operation"`
-	} `json:"breakdown_by,omitempty"`
-	Dataset MetricChartSchema_1_Dataset `json:"dataset"`
-
-	// Description The description of the chart. Optional. Any string value or undefined.
-	Description *string               `json:"description,omitempty"`
-	Filters     *[]SearchFilterSchema `json:"filters,omitempty"`
-
-	// IgnoreGlobalFilters If true, ignore global filters when fetching data for this layer. Default is false.
-	IgnoreGlobalFilters *bool                              `json:"ignore_global_filters,omitempty"`
-	Metrics             []MetricChartSchema_1_Metrics_Item `json:"metrics"`
-
-	// Sampling Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1.
-	Sampling *float32 `json:"sampling,omitempty"`
-
-	// Title The title of the chart displayed in the panel. Optional. Any string value or undefined.
-	Title *string                `json:"title,omitempty"`
-	Type  MetricChartSchema1Type `json:"type"`
-}
-
-// MetricChartSchema1BreakdownByOperation defines model for MetricChartSchema.1.BreakdownBy.Operation.
-type MetricChartSchema1BreakdownByOperation string
-
-// MetricChartSchema_1_Dataset defines model for MetricChartSchema.1.Dataset.
-type MetricChartSchema_1_Dataset struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema1Metrics0 defines model for .
-type MetricChartSchema1Metrics0 struct {
-	Alignments MetricPrimaryMetricAlignments `json:"alignments"`
-
-	// ApplyColorTo Where to apply the color
-	ApplyColorTo    *MetricChartSchema1Metrics0ApplyColorTo        `json:"apply_color_to,omitempty"`
-	BackgroundChart *MetricChartSchema_1_Metrics_0_BackgroundChart `json:"background_chart,omitempty"`
-	Color           *MetricChartSchema_1_Metrics_0_Color           `json:"color,omitempty"`
 
 	// Column Column to use
 	Column string `json:"column"`
 
-	// Fit Whether to fit the value
-	Fit    *bool            `json:"fit,omitempty"`
-	Format FormatTypeSchema `json:"format"`
-
-	// Icon Icon configuration for primary metric
-	Icon MetricIconConfig `json:"icon"`
-
-	// Label Label for the operation
-	Label     *string                             `json:"label,omitempty"`
-	Operation MetricChartSchema1Metrics0Operation `json:"operation"`
-
-	// SubLabel Sub label
-	SubLabel *string                        `json:"sub_label,omitempty"`
-	Type     MetricChartSchema1Metrics0Type `json:"type"`
+	// Columns Number of columns
+	Columns   *float32                       `json:"columns,omitempty"`
+	Operation MetricBreakdownByEsqlOperation `json:"operation"`
 }
 
-// MetricChartSchema1Metrics0ApplyColorTo Where to apply the color
-type MetricChartSchema1Metrics0ApplyColorTo string
+// MetricBreakdownByEsqlOperation defines model for MetricBreakdownByEsql.Operation.
+type MetricBreakdownByEsqlOperation string
 
-// MetricChartSchema_1_Metrics_0_BackgroundChart defines model for MetricChartSchema.1.Metrics.0.BackgroundChart.
-type MetricChartSchema_1_Metrics_0_BackgroundChart struct {
+// MetricChartSchema defines model for metricChartSchema.
+type MetricChartSchema struct {
 	union json.RawMessage
 }
-
-// MetricChartSchema_1_Metrics_0_Color defines model for MetricChartSchema.1.Metrics.0.Color.
-type MetricChartSchema_1_Metrics_0_Color struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema1Metrics0Operation defines model for MetricChartSchema.1.Metrics.0.Operation.
-type MetricChartSchema1Metrics0Operation string
-
-// MetricChartSchema1Metrics0Type defines model for MetricChartSchema.1.Metrics.0.Type.
-type MetricChartSchema1Metrics0Type string
-
-// MetricChartSchema1Metrics1 defines model for .
-type MetricChartSchema1Metrics1 struct {
-	Color *MetricChartSchema_1_Metrics_1_Color `json:"color,omitempty"`
-
-	// Column Column to use
-	Column  string                                 `json:"column"`
-	Compare *MetricChartSchema_1_Metrics_1_Compare `json:"compare,omitempty"`
-	Format  FormatTypeSchema                       `json:"format"`
-
-	// Label Label for the operation
-	Label     *string                             `json:"label,omitempty"`
-	Operation MetricChartSchema1Metrics1Operation `json:"operation"`
-
-	// Prefix Prefix
-	Prefix *string                        `json:"prefix,omitempty"`
-	Type   MetricChartSchema1Metrics1Type `json:"type"`
-}
-
-// MetricChartSchema_1_Metrics_1_Color defines model for MetricChartSchema.1.Metrics.1.Color.
-type MetricChartSchema_1_Metrics_1_Color struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema_1_Metrics_1_Compare defines model for MetricChartSchema.1.Metrics.1.Compare.
-type MetricChartSchema_1_Metrics_1_Compare struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema1Metrics1Operation defines model for MetricChartSchema.1.Metrics.1.Operation.
-type MetricChartSchema1Metrics1Operation string
-
-// MetricChartSchema1Metrics1Type defines model for MetricChartSchema.1.Metrics.1.Type.
-type MetricChartSchema1Metrics1Type string
-
-// MetricChartSchema_1_Metrics_Item defines model for MetricChartSchema.1.Metrics.Item.
-type MetricChartSchema_1_Metrics_Item struct {
-	union json.RawMessage
-}
-
-// MetricChartSchema1Type defines model for MetricChartSchema.1.Type.
-type MetricChartSchema1Type string
 
 // MetricCompareToBaseline defines model for metricCompareToBaseline.
 type MetricCompareToBaseline struct {
@@ -29280,19 +29594,17 @@ type MetricCompareToPrimaryTo string
 // MetricComplementaryBar defines model for metricComplementaryBar.
 type MetricComplementaryBar struct {
 	Direction *MetricComplementaryBarDirection `json:"direction,omitempty"`
-	GoalValue struct {
-		// Column Column to use
-		Column    string                                   `json:"column"`
-		Operation MetricComplementaryBarGoalValueOperation `json:"operation"`
-	} `json:"goal_value"`
-	Type MetricComplementaryBarType `json:"type"`
+	GoalValue MetricComplementaryBar_GoalValue `json:"goal_value"`
+	Type      MetricComplementaryBarType       `json:"type"`
 }
 
 // MetricComplementaryBarDirection defines model for MetricComplementaryBar.Direction.
 type MetricComplementaryBarDirection string
 
-// MetricComplementaryBarGoalValueOperation defines model for MetricComplementaryBar.GoalValue.Operation.
-type MetricComplementaryBarGoalValueOperation string
+// MetricComplementaryBar_GoalValue defines model for MetricComplementaryBar.GoalValue.
+type MetricComplementaryBar_GoalValue struct {
+	union json.RawMessage
+}
 
 // MetricComplementaryBarType defines model for MetricComplementaryBar.Type.
 type MetricComplementaryBarType string
@@ -29305,6 +29617,103 @@ type MetricComplementaryTrend struct {
 // MetricComplementaryTrendType defines model for MetricComplementaryTrend.Type.
 type MetricComplementaryTrendType string
 
+// MetricESQL defines model for metricESQL.
+type MetricESQL struct {
+	BreakdownBy MetricBreakdownByEsql `json:"breakdown_by"`
+	Dataset     MetricESQL_Dataset    `json:"dataset"`
+
+	// Description The description of the chart. Optional. Any string value or undefined.
+	Description *string               `json:"description,omitempty"`
+	Filters     *[]SearchFilterSchema `json:"filters,omitempty"`
+
+	// IgnoreGlobalFilters If true, ignore global filters when fetching data for this layer. Default is false.
+	IgnoreGlobalFilters *bool `json:"ignore_global_filters,omitempty"`
+	Metric              struct {
+		Alignments MetricPrimaryMetricAlignments `json:"alignments"`
+
+		// ApplyColorTo Where to apply the color
+		ApplyColorTo    *MetricESQLMetricApplyColorTo      `json:"apply_color_to,omitempty"`
+		BackgroundChart *MetricESQL_Metric_BackgroundChart `json:"background_chart,omitempty"`
+		Color           *MetricESQL_Metric_Color           `json:"color,omitempty"`
+
+		// Column Column to use
+		Column string `json:"column"`
+
+		// Fit Whether to fit the value
+		Fit    *bool            `json:"fit,omitempty"`
+		Format FormatTypeSchema `json:"format"`
+
+		// Icon Icon configuration for primary metric
+		Icon MetricIconConfig `json:"icon"`
+
+		// Label Label for the operation
+		Label     *string                   `json:"label,omitempty"`
+		Operation MetricESQLMetricOperation `json:"operation"`
+
+		// SubLabel Sub label
+		SubLabel *string `json:"sub_label,omitempty"`
+	} `json:"metric"`
+
+	// Sampling Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1.
+	Sampling        *float32 `json:"sampling,omitempty"`
+	SecondaryMetric *struct {
+		Color *MetricESQL_SecondaryMetric_Color `json:"color,omitempty"`
+
+		// Column Column to use
+		Column  string                              `json:"column"`
+		Compare *MetricESQL_SecondaryMetric_Compare `json:"compare,omitempty"`
+		Format  FormatTypeSchema                    `json:"format"`
+
+		// Label Label for the operation
+		Label     *string                            `json:"label,omitempty"`
+		Operation MetricESQLSecondaryMetricOperation `json:"operation"`
+
+		// Prefix Prefix
+		Prefix *string `json:"prefix,omitempty"`
+	} `json:"secondary_metric,omitempty"`
+
+	// Title The title of the chart displayed in the panel. Optional. Any string value or undefined.
+	Title *string        `json:"title,omitempty"`
+	Type  MetricESQLType `json:"type"`
+}
+
+// MetricESQL_Dataset defines model for MetricESQL.Dataset.
+type MetricESQL_Dataset struct {
+	union json.RawMessage
+}
+
+// MetricESQLMetricApplyColorTo Where to apply the color
+type MetricESQLMetricApplyColorTo string
+
+// MetricESQL_Metric_BackgroundChart defines model for MetricESQL.Metric.BackgroundChart.
+type MetricESQL_Metric_BackgroundChart struct {
+	union json.RawMessage
+}
+
+// MetricESQL_Metric_Color defines model for MetricESQL.Metric.Color.
+type MetricESQL_Metric_Color struct {
+	union json.RawMessage
+}
+
+// MetricESQLMetricOperation defines model for MetricESQL.Metric.Operation.
+type MetricESQLMetricOperation string
+
+// MetricESQL_SecondaryMetric_Color defines model for MetricESQL.SecondaryMetric.Color.
+type MetricESQL_SecondaryMetric_Color struct {
+	union json.RawMessage
+}
+
+// MetricESQL_SecondaryMetric_Compare defines model for MetricESQL.SecondaryMetric.Compare.
+type MetricESQL_SecondaryMetric_Compare struct {
+	union json.RawMessage
+}
+
+// MetricESQLSecondaryMetricOperation defines model for MetricESQL.SecondaryMetric.Operation.
+type MetricESQLSecondaryMetricOperation string
+
+// MetricESQLType defines model for MetricESQL.Type.
+type MetricESQLType string
+
 // MetricIconConfig Icon configuration for primary metric
 type MetricIconConfig struct {
 	// Align Icon alignment
@@ -29316,6 +29725,93 @@ type MetricIconConfig struct {
 
 // MetricIconConfigAlign Icon alignment
 type MetricIconConfigAlign string
+
+// MetricNoESQL defines model for metricNoESQL.
+type MetricNoESQL struct {
+	BreakdownBy *MetricNoESQL_BreakdownBy `json:"breakdown_by,omitempty"`
+	Dataset     MetricNoESQL_Dataset      `json:"dataset"`
+
+	// Description The description of the chart. Optional. Any string value or undefined.
+	Description *string               `json:"description,omitempty"`
+	Filters     *[]SearchFilterSchema `json:"filters,omitempty"`
+
+	// IgnoreGlobalFilters If true, ignore global filters when fetching data for this layer. Default is false.
+	IgnoreGlobalFilters *bool               `json:"ignore_global_filters,omitempty"`
+	Metric              MetricNoESQL_Metric `json:"metric"`
+	Query               FilterSimpleSchema  `json:"query"`
+
+	// Sampling Sampling factor between 0 (no sampling) and 1 (full sampling). Default is 1.
+	Sampling        *float32                      `json:"sampling,omitempty"`
+	SecondaryMetric *MetricNoESQL_SecondaryMetric `json:"secondary_metric,omitempty"`
+
+	// Title The title of the chart displayed in the panel. Optional. Any string value or undefined.
+	Title *string          `json:"title,omitempty"`
+	Type  MetricNoESQLType `json:"type"`
+}
+
+// MetricNoESQLBreakdownBy3 defines model for .
+type MetricNoESQLBreakdownBy3 struct {
+	// CollapseBy Collapse by function description
+	CollapseBy CollapseBy `json:"collapse_by"`
+
+	// Columns Number of columns
+	Columns *float32 `json:"columns,omitempty"`
+
+	// Field Field to be used for the range
+	Field  string           `json:"field"`
+	Format FormatTypeSchema `json:"format"`
+
+	// Label Label for the operation
+	Label     *string                           `json:"label,omitempty"`
+	Operation MetricNoESQLBreakdownBy3Operation `json:"operation"`
+	Ranges    RangesOperationSchema             `json:"ranges"`
+}
+
+// MetricNoESQLBreakdownBy3Operation defines model for MetricNoESQL.BreakdownBy.3.Operation.
+type MetricNoESQLBreakdownBy3Operation string
+
+// MetricNoESQL_BreakdownBy defines model for MetricNoESQL.BreakdownBy.
+type MetricNoESQL_BreakdownBy struct {
+	union json.RawMessage
+}
+
+// MetricNoESQL_Dataset defines model for MetricNoESQL.Dataset.
+type MetricNoESQL_Dataset struct {
+	union json.RawMessage
+}
+
+// MetricNoESQLMetric0 defines model for .
+type MetricNoESQLMetric0 struct {
+	union json.RawMessage
+}
+
+// MetricNoESQLMetric1 defines model for .
+type MetricNoESQLMetric1 struct {
+	union json.RawMessage
+}
+
+// MetricNoESQL_Metric defines model for MetricNoESQL.Metric.
+type MetricNoESQL_Metric struct {
+	union json.RawMessage
+}
+
+// MetricNoESQLSecondaryMetric0 defines model for .
+type MetricNoESQLSecondaryMetric0 struct {
+	union json.RawMessage
+}
+
+// MetricNoESQLSecondaryMetric1 defines model for .
+type MetricNoESQLSecondaryMetric1 struct {
+	union json.RawMessage
+}
+
+// MetricNoESQL_SecondaryMetric defines model for MetricNoESQL.SecondaryMetric.
+type MetricNoESQL_SecondaryMetric struct {
+	union json.RawMessage
+}
+
+// MetricNoESQLType defines model for MetricNoESQL.Type.
+type MetricNoESQLType string
 
 // MetricPrimaryMetricAlignments defines model for metricPrimaryMetricAlignments.
 type MetricPrimaryMetricAlignments struct {
@@ -30865,6 +31361,719 @@ type PagerdutySecrets struct {
 	RoutingKey string `json:"routingKey"`
 }
 
+// ParamsEsQueryDslRule An Elasticsearch query rule can run a query defined in Elasticsearch Query DSL and compare the number of matches to a configured threshold. These parameters are appropriate when `rule_type_id` is `.es-query`.
+type ParamsEsQueryDslRule struct {
+	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
+	AggField *Aggfield `json:"aggField,omitempty"`
+
+	// AggType The type of aggregation to perform.
+	AggType *Aggtype `json:"aggType,omitempty"`
+
+	// EsQuery The query definition, which uses Elasticsearch Query DSL.
+	EsQuery string `json:"esQuery"`
+
+	// ExcludeHitsFromPreviousRun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
+	ExcludeHitsFromPreviousRun *Excludehitsfrompreviousrun `json:"excludeHitsFromPreviousRun,omitempty"`
+
+	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
+	GroupBy *Groupby `json:"groupBy,omitempty"`
+
+	// Index The indices to query.
+	Index ParamsEsQueryDslRule_Index `json:"index"`
+
+	// SearchType The type of query, in this case a query that uses Elasticsearch Query DSL.
+	SearchType *ParamsEsQueryDslRuleSearchType `json:"searchType,omitempty"`
+
+	// Size The number of documents to pass to the configured actions when the threshold condition is met.
+	Size *Size `json:"size,omitempty"`
+
+	// TermField The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
+	TermField *Termfield `json:"termField,omitempty"`
+
+	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
+	TermSize *Termsize `json:"termSize,omitempty"`
+
+	// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
+	Threshold Threshold `json:"threshold"`
+
+	// ThresholdComparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
+	ThresholdComparator Thresholdcomparator `json:"thresholdComparator"`
+
+	// TimeField The field that is used to calculate the time window.
+	TimeField Timefield `json:"timeField"`
+
+	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
+
+	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
+	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
+}
+
+// ParamsEsQueryDslRuleIndex0 defines model for .
+type ParamsEsQueryDslRuleIndex0 = []string
+
+// ParamsEsQueryDslRuleIndex1 defines model for .
+type ParamsEsQueryDslRuleIndex1 = string
+
+// ParamsEsQueryDslRule_Index The indices to query.
+type ParamsEsQueryDslRule_Index struct {
+	union json.RawMessage
+}
+
+// ParamsEsQueryDslRuleSearchType The type of query, in this case a query that uses Elasticsearch Query DSL.
+type ParamsEsQueryDslRuleSearchType string
+
+// ParamsEsQueryEsqlRule An Elasticsearch query rule can run an ES|QL query and compare the number of matches to a configured threshold. These parameters are appropriate when `rule_type_id` is `.es-query`.
+type ParamsEsQueryEsqlRule struct {
+	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
+	AggField *Aggfield `json:"aggField,omitempty"`
+
+	// AggType The type of aggregation to perform.
+	AggType   *Aggtype `json:"aggType,omitempty"`
+	EsqlQuery struct {
+		// Esql The query definition, which uses Elasticsearch Query Language.
+		Esql string `json:"esql"`
+	} `json:"esqlQuery"`
+
+	// ExcludeHitsFromPreviousRun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
+	ExcludeHitsFromPreviousRun *Excludehitsfrompreviousrun `json:"excludeHitsFromPreviousRun,omitempty"`
+
+	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
+	GroupBy *Groupby `json:"groupBy,omitempty"`
+
+	// SearchType The type of query, in this case a query that uses Elasticsearch Query Language (ES|QL).
+	SearchType ParamsEsQueryEsqlRuleSearchType `json:"searchType"`
+
+	// Size When `searchType` is `esqlQuery`, this property is required but it does not affect the rule behavior.
+	Size int `json:"size"`
+
+	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
+	TermSize *Termsize `json:"termSize,omitempty"`
+
+	// Threshold The threshold value that is used with the `thresholdComparator`. When `searchType` is `esqlQuery`, this property is required and must be set to zero.
+	Threshold []int `json:"threshold"`
+
+	// ThresholdComparator The comparison function for the threshold. When `searchType` is `esqlQuery`, this property is required and must be set to ">". Since the `threshold` value must be `0`, the result is that an alert occurs whenever the query returns results.
+	ThresholdComparator ParamsEsQueryEsqlRuleThresholdComparator `json:"thresholdComparator"`
+
+	// TimeField The field that is used to calculate the time window.
+	TimeField *Timefield `json:"timeField,omitempty"`
+
+	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
+
+	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
+	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
+}
+
+// ParamsEsQueryEsqlRuleSearchType The type of query, in this case a query that uses Elasticsearch Query Language (ES|QL).
+type ParamsEsQueryEsqlRuleSearchType string
+
+// ParamsEsQueryEsqlRuleThresholdComparator The comparison function for the threshold. When `searchType` is `esqlQuery`, this property is required and must be set to ">". Since the `threshold` value must be `0`, the result is that an alert occurs whenever the query returns results.
+type ParamsEsQueryEsqlRuleThresholdComparator string
+
+// ParamsEsQueryKqlRule An Elasticsearch query rule can run a query defined in KQL or Lucene and compare the number of matches to a configured threshold. These parameters are appropriate when `rule_type_id` is `.es-query`.
+type ParamsEsQueryKqlRule struct {
+	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
+	AggField *Aggfield `json:"aggField,omitempty"`
+
+	// AggType The type of aggregation to perform.
+	AggType *Aggtype `json:"aggType,omitempty"`
+
+	// ExcludeHitsFromPreviousRun Indicates whether to exclude matches from previous runs. If `true`, you can avoid alert duplication by excluding documents that have already been detected by the previous rule run. This option is not available when a grouping field is specified.
+	ExcludeHitsFromPreviousRun *Excludehitsfrompreviousrun `json:"excludeHitsFromPreviousRun,omitempty"`
+
+	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
+	GroupBy *Groupby `json:"groupBy,omitempty"`
+
+	// SearchConfiguration The query definition, which uses KQL or Lucene to fetch the documents from Elasticsearch.
+	SearchConfiguration *struct {
+		Filter *[]Filter `json:"filter,omitempty"`
+
+		// Index The indices to query.
+		Index *ParamsEsQueryKqlRule_SearchConfiguration_Index `json:"index,omitempty"`
+		Query *struct {
+			Language *string `json:"language,omitempty"`
+			Query    *string `json:"query,omitempty"`
+		} `json:"query,omitempty"`
+	} `json:"searchConfiguration,omitempty"`
+
+	// SearchType The type of query, in this case a text-based query that uses KQL or Lucene.
+	SearchType ParamsEsQueryKqlRuleSearchType `json:"searchType"`
+
+	// Size The number of documents to pass to the configured actions when the threshold condition is met.
+	Size Size `json:"size"`
+
+	// TermField The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
+	TermField *Termfield `json:"termField,omitempty"`
+
+	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
+	TermSize *Termsize `json:"termSize,omitempty"`
+
+	// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
+	Threshold Threshold `json:"threshold"`
+
+	// ThresholdComparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
+	ThresholdComparator Thresholdcomparator `json:"thresholdComparator"`
+
+	// TimeField The field that is used to calculate the time window.
+	TimeField *Timefield `json:"timeField,omitempty"`
+
+	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
+
+	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
+	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
+}
+
+// ParamsEsQueryKqlRuleSearchConfigurationIndex0 defines model for .
+type ParamsEsQueryKqlRuleSearchConfigurationIndex0 = string
+
+// ParamsEsQueryKqlRuleSearchConfigurationIndex1 defines model for .
+type ParamsEsQueryKqlRuleSearchConfigurationIndex1 = []string
+
+// ParamsEsQueryKqlRule_SearchConfiguration_Index The indices to query.
+type ParamsEsQueryKqlRule_SearchConfiguration_Index struct {
+	union json.RawMessage
+}
+
+// ParamsEsQueryKqlRuleSearchType The type of query, in this case a text-based query that uses KQL or Lucene.
+type ParamsEsQueryKqlRuleSearchType string
+
+// ParamsIndexThresholdRule An index threshold rule runs an Elasticsearch query, aggregates field values from documents, compares them to threshold values, and schedules actions to run when the thresholds are met. These parameters are appropriate when `rule_type_id` is `.index-threshold`.
+type ParamsIndexThresholdRule struct {
+	// AggField The name of the numeric field that is used in the aggregation. This property is required when `aggType` is `avg`, `max`, `min` or `sum`.
+	AggField *Aggfield `json:"aggField,omitempty"`
+
+	// AggType The type of aggregation to perform.
+	AggType *Aggtype `json:"aggType,omitempty"`
+
+	// FilterKuery A KQL expression thats limits the scope of alerts.
+	FilterKuery *string `json:"filterKuery,omitempty"`
+
+	// GroupBy Indicates whether the aggregation is applied over all documents (`all`) or split into groups (`top`) using a grouping field (`termField`). If grouping is used, an alert will be created for each group when it exceeds the threshold; only the top groups (up to `termSize` number of groups) are checked.
+	GroupBy *Groupby `json:"groupBy,omitempty"`
+
+	// Index The indices to query.
+	Index []string `json:"index"`
+
+	// TermField The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
+	TermField *Termfield `json:"termField,omitempty"`
+
+	// TermSize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
+	TermSize *Termsize `json:"termSize,omitempty"`
+
+	// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
+	Threshold Threshold `json:"threshold"`
+
+	// ThresholdComparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
+	ThresholdComparator Thresholdcomparator `json:"thresholdComparator"`
+
+	// TimeField The field that is used to calculate the time window.
+	TimeField Timefield `json:"timeField"`
+
+	// TimeWindowSize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+	TimeWindowSize Timewindowsize `json:"timeWindowSize"`
+
+	// TimeWindowUnit The type of units for the time window: seconds, minutes, hours, or days.
+	TimeWindowUnit Timewindowunit `json:"timeWindowUnit"`
+}
+
+// ParamsPropertyApmAnomaly The parameters for the APM anomaly rule. These parameters are appropriate when `rule_type_id` is `apm.rules.anomaly`.
+type ParamsPropertyApmAnomaly struct {
+	// AnomalySeverityType The severity of anomalies that will generate alerts: critical, major, minor, or warning.
+	AnomalySeverityType ParamsPropertyApmAnomalyAnomalySeverityType `json:"anomalySeverityType"`
+
+	// Environment Filter the rule to apply to a specific environment.
+	Environment string `json:"environment"`
+
+	// ServiceName Filter the rule to apply to a specific service name.
+	ServiceName *string `json:"serviceName,omitempty"`
+
+	// TransactionType Filter the rule to apply to a specific transaction type.
+	TransactionType *string `json:"transactionType,omitempty"`
+
+	// WindowSize The size of the time window (in `windowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+	WindowSize float32 `json:"windowSize"`
+
+	// WindowUnit The type of units for the time window. For example: minutes, hours, or days.
+	WindowUnit ParamsPropertyApmAnomalyWindowUnit `json:"windowUnit"`
+}
+
+// ParamsPropertyApmAnomalyAnomalySeverityType The severity of anomalies that will generate alerts: critical, major, minor, or warning.
+type ParamsPropertyApmAnomalyAnomalySeverityType string
+
+// ParamsPropertyApmAnomalyWindowUnit The type of units for the time window. For example: minutes, hours, or days.
+type ParamsPropertyApmAnomalyWindowUnit string
+
+// ParamsPropertyApmErrorCount The parameters for the APM error count rule. These parameters are appropriate when `rule_type_id` is `apm.error_rate`.
+type ParamsPropertyApmErrorCount struct {
+	// Environment Filter the errors coming from your application to apply the rule to a specific environment.
+	Environment string `json:"environment"`
+
+	// ErrorGroupingKey Filter the errors coming from your application to apply the rule to a specific error grouping key, which is a hash of the stack trace and other properties.
+	ErrorGroupingKey *string `json:"errorGroupingKey,omitempty"`
+
+	// GroupBy Perform a composite aggregation against the selected fields. When any of these groups match the selected rule conditions, an alert is triggered per group.
+	GroupBy *[]ParamsPropertyApmErrorCountGroupBy `json:"groupBy,omitempty"`
+
+	// ServiceName Filter the errors coming from your application to apply the rule to a specific service.
+	ServiceName *string `json:"serviceName,omitempty"`
+
+	// Threshold The error count threshold.
+	Threshold float32 `json:"threshold"`
+
+	// WindowSize The time frame in which the errors must occur (in `windowUnit` units). Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+	WindowSize float32 `json:"windowSize"`
+
+	// WindowUnit The type of units for the time window: minutes, hours, or days.
+	WindowUnit ParamsPropertyApmErrorCountWindowUnit `json:"windowUnit"`
+}
+
+// ParamsPropertyApmErrorCountGroupBy defines model for ParamsPropertyApmErrorCount.GroupBy.
+type ParamsPropertyApmErrorCountGroupBy string
+
+// ParamsPropertyApmErrorCountWindowUnit The type of units for the time window: minutes, hours, or days.
+type ParamsPropertyApmErrorCountWindowUnit string
+
+// ParamsPropertyApmTransactionDuration The parameters for the APM transaction duration rule. These parameters are appropriate when `rule_type_id` is `apm.transaction_duration`.
+type ParamsPropertyApmTransactionDuration struct {
+	// AggregationType The type of aggregation to perform.
+	AggregationType ParamsPropertyApmTransactionDurationAggregationType `json:"aggregationType"`
+
+	// Environment Filter the rule to apply to a specific environment.
+	Environment string `json:"environment"`
+
+	// GroupBy Perform a composite aggregation against the selected fields. When any of these groups match the selected rule conditions, an alert is triggered per group.
+	GroupBy *[]ParamsPropertyApmTransactionDurationGroupBy `json:"groupBy,omitempty"`
+
+	// ServiceName Filter the rule to apply to a specific service.
+	ServiceName *string `json:"serviceName,omitempty"`
+
+	// Threshold The latency threshold value.
+	Threshold float32 `json:"threshold"`
+
+	// TransactionName Filter the rule to apply to a specific transaction name.
+	TransactionName *string `json:"transactionName,omitempty"`
+
+	// TransactionType Filter the rule to apply to a specific transaction type.
+	TransactionType *string `json:"transactionType,omitempty"`
+
+	// WindowSize The size of the time window (in `windowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+	WindowSize float32 `json:"windowSize"`
+
+	// WindowUnit The type of units for the time window. For example: minutes, hours, or days.
+	WindowUnit ParamsPropertyApmTransactionDurationWindowUnit `json:"windowUnit"`
+}
+
+// ParamsPropertyApmTransactionDurationAggregationType The type of aggregation to perform.
+type ParamsPropertyApmTransactionDurationAggregationType string
+
+// ParamsPropertyApmTransactionDurationGroupBy defines model for ParamsPropertyApmTransactionDuration.GroupBy.
+type ParamsPropertyApmTransactionDurationGroupBy string
+
+// ParamsPropertyApmTransactionDurationWindowUnit The type of units for the time window. For example: minutes, hours, or days.
+type ParamsPropertyApmTransactionDurationWindowUnit string
+
+// ParamsPropertyApmTransactionErrorRate The parameters for the APM transaction error rate rule. These parameters are appropriate when `rule_type_id` is `apm.transaction_error_rate`.
+type ParamsPropertyApmTransactionErrorRate struct {
+	// Environment The environment from APM
+	Environment string                                          `json:"environment"`
+	GroupBy     *[]ParamsPropertyApmTransactionErrorRateGroupBy `json:"groupBy,omitempty"`
+
+	// ServiceName The service name from APM
+	ServiceName *string `json:"serviceName,omitempty"`
+
+	// Threshold The error rate threshold value
+	Threshold float32 `json:"threshold"`
+
+	// TransactionName The transaction name from APM
+	TransactionName *string `json:"transactionName,omitempty"`
+
+	// TransactionType The transaction type from APM
+	TransactionType *string `json:"transactionType,omitempty"`
+
+	// WindowSize The window size
+	WindowSize float32 `json:"windowSize"`
+
+	// WindowUnit The window size unit
+	WindowUnit ParamsPropertyApmTransactionErrorRateWindowUnit `json:"windowUnit"`
+}
+
+// ParamsPropertyApmTransactionErrorRateGroupBy defines model for ParamsPropertyApmTransactionErrorRate.GroupBy.
+type ParamsPropertyApmTransactionErrorRateGroupBy string
+
+// ParamsPropertyApmTransactionErrorRateWindowUnit The window size unit
+type ParamsPropertyApmTransactionErrorRateWindowUnit string
+
+// ParamsPropertyInfraInventory The parameters for the infrastructure inventory rule. These parameters are appropriate when `rule_type_id` is `metrics.alert.inventory.threshold`.
+type ParamsPropertyInfraInventory struct {
+	AlertOnNoData *bool `json:"alertOnNoData,omitempty"`
+	Criteria      *[]struct {
+		Comparator   *ParamsPropertyInfraInventoryCriteriaComparator `json:"comparator,omitempty"`
+		CustomMetric *struct {
+			Aggregation *ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation `json:"aggregation,omitempty"`
+			Field       *string                                                      `json:"field,omitempty"`
+			Id          *string                                                      `json:"id,omitempty"`
+			Label       *string                                                      `json:"label,omitempty"`
+			Type        *ParamsPropertyInfraInventoryCriteriaCustomMetricType        `json:"type,omitempty"`
+		} `json:"customMetric,omitempty"`
+		Metric            *ParamsPropertyInfraInventoryCriteriaMetric            `json:"metric,omitempty"`
+		SourceId          *string                                                `json:"sourceId,omitempty"`
+		Threshold         *[]float32                                             `json:"threshold,omitempty"`
+		TimeSize          *float32                                               `json:"timeSize,omitempty"`
+		TimeUnit          *ParamsPropertyInfraInventoryCriteriaTimeUnit          `json:"timeUnit,omitempty"`
+		WarningComparator *ParamsPropertyInfraInventoryCriteriaWarningComparator `json:"warningComparator,omitempty"`
+		WarningThreshold  *[]float32                                             `json:"warningThreshold,omitempty"`
+	} `json:"criteria,omitempty"`
+	FilterQuery     *string                               `json:"filterQuery,omitempty"`
+	FilterQueryText *string                               `json:"filterQueryText,omitempty"`
+	NodeType        *ParamsPropertyInfraInventoryNodeType `json:"nodeType,omitempty"`
+	SourceId        *string                               `json:"sourceId,omitempty"`
+}
+
+// ParamsPropertyInfraInventoryCriteriaComparator defines model for ParamsPropertyInfraInventory.Criteria.Comparator.
+type ParamsPropertyInfraInventoryCriteriaComparator string
+
+// ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation defines model for ParamsPropertyInfraInventory.Criteria.CustomMetric.Aggregation.
+type ParamsPropertyInfraInventoryCriteriaCustomMetricAggregation string
+
+// ParamsPropertyInfraInventoryCriteriaCustomMetricType defines model for ParamsPropertyInfraInventory.Criteria.CustomMetric.Type.
+type ParamsPropertyInfraInventoryCriteriaCustomMetricType string
+
+// ParamsPropertyInfraInventoryCriteriaMetric defines model for ParamsPropertyInfraInventory.Criteria.Metric.
+type ParamsPropertyInfraInventoryCriteriaMetric string
+
+// ParamsPropertyInfraInventoryCriteriaTimeUnit defines model for ParamsPropertyInfraInventory.Criteria.TimeUnit.
+type ParamsPropertyInfraInventoryCriteriaTimeUnit string
+
+// ParamsPropertyInfraInventoryCriteriaWarningComparator defines model for ParamsPropertyInfraInventory.Criteria.WarningComparator.
+type ParamsPropertyInfraInventoryCriteriaWarningComparator string
+
+// ParamsPropertyInfraInventoryNodeType defines model for ParamsPropertyInfraInventory.NodeType.
+type ParamsPropertyInfraInventoryNodeType string
+
+// ParamsPropertyInfraMetricThreshold The parameters for the metric threshold rule. These parameters are appropriate when `rule_type_id` is `metrics.alert.threshold`.
+type ParamsPropertyInfraMetricThreshold struct {
+	// AlertOnGroupDisappear If true, an alert occurs if a group that previously reported metrics does not report them again over the expected time period. This check is not recommended for dynamically scaling infrastructures that might rapidly start and stop nodes automatically.
+	AlertOnGroupDisappear *bool `json:"alertOnGroupDisappear,omitempty"`
+
+	// AlertOnNoData If true, an alert occurs if the metrics do not report any data over the expected period or if the query fails.
+	AlertOnNoData *bool                                               `json:"alertOnNoData,omitempty"`
+	Criteria      *[]ParamsPropertyInfraMetricThreshold_Criteria_Item `json:"criteria,omitempty"`
+
+	// FilterQuery A query that limits the scope of the rule. The rule evaluates only metric data that matches the query.
+	FilterQuery *string `json:"filterQuery,omitempty"`
+
+	// GroupBy Create an alert for every unique value of the specified fields. For example, you can create a rule per host or every mount point of each host.
+	// IMPORTANT: If you include the same field in both the `filterQuery` and `groupBy`, you might receive fewer results than you expect. For example, if you filter by `cloud.region: us-east`, grouping by `cloud.region` will have no effect because the filter query can match only one region.
+	GroupBy  *ParamsPropertyInfraMetricThreshold_GroupBy `json:"groupBy,omitempty"`
+	SourceId *string                                     `json:"sourceId,omitempty"`
+}
+
+// ParamsPropertyInfraMetricThresholdCriteria0 defines model for .
+type ParamsPropertyInfraMetricThresholdCriteria0 struct {
+	AggType *ParamsPropertyInfraMetricThresholdCriteria0AggType `json:"aggType,omitempty"`
+
+	// Comparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "outside".
+	Comparator *ParamsPropertyInfraMetricThresholdCriteria0Comparator `json:"comparator,omitempty"`
+	Metric     *string                                                `json:"metric,omitempty"`
+
+	// Threshold The threshold value that is used with the `comparator`. If the `comparator` is `between`, you must specify the boundary values.
+	Threshold *[]float32 `json:"threshold,omitempty"`
+
+	// TimeSize The size of the time window (in `timeUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+	TimeSize *float32 `json:"timeSize,omitempty"`
+
+	// TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
+	TimeUnit          *ParamsPropertyInfraMetricThresholdCriteria0TimeUnit          `json:"timeUnit,omitempty"`
+	WarningComparator *ParamsPropertyInfraMetricThresholdCriteria0WarningComparator `json:"warningComparator,omitempty"`
+
+	// WarningThreshold The threshold value that is used with the `warningComparator`. If the `warningComparator` is `between`, you must specify the boundary values.
+	WarningThreshold *[]float32 `json:"warningThreshold,omitempty"`
+}
+
+// ParamsPropertyInfraMetricThresholdCriteria0AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.0.AggType.
+type ParamsPropertyInfraMetricThresholdCriteria0AggType string
+
+// ParamsPropertyInfraMetricThresholdCriteria0Comparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "outside".
+type ParamsPropertyInfraMetricThresholdCriteria0Comparator string
+
+// ParamsPropertyInfraMetricThresholdCriteria0TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
+type ParamsPropertyInfraMetricThresholdCriteria0TimeUnit string
+
+// ParamsPropertyInfraMetricThresholdCriteria0WarningComparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.0.WarningComparator.
+type ParamsPropertyInfraMetricThresholdCriteria0WarningComparator string
+
+// ParamsPropertyInfraMetricThresholdCriteria1 defines model for .
+type ParamsPropertyInfraMetricThresholdCriteria1 struct {
+	AggType    *ParamsPropertyInfraMetricThresholdCriteria1AggType    `json:"aggType,omitempty"`
+	Comparator *ParamsPropertyInfraMetricThresholdCriteria1Comparator `json:"comparator,omitempty"`
+	Threshold  *[]float32                                             `json:"threshold,omitempty"`
+
+	// TimeSize The size of the time window (in `timeUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+	TimeSize *float32 `json:"timeSize,omitempty"`
+
+	// TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
+	TimeUnit          *ParamsPropertyInfraMetricThresholdCriteria1TimeUnit          `json:"timeUnit,omitempty"`
+	WarningComparator *ParamsPropertyInfraMetricThresholdCriteria1WarningComparator `json:"warningComparator,omitempty"`
+	WarningThreshold  *[]float32                                                    `json:"warningThreshold,omitempty"`
+}
+
+// ParamsPropertyInfraMetricThresholdCriteria1AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.1.AggType.
+type ParamsPropertyInfraMetricThresholdCriteria1AggType string
+
+// ParamsPropertyInfraMetricThresholdCriteria1Comparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.1.Comparator.
+type ParamsPropertyInfraMetricThresholdCriteria1Comparator string
+
+// ParamsPropertyInfraMetricThresholdCriteria1TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
+type ParamsPropertyInfraMetricThresholdCriteria1TimeUnit string
+
+// ParamsPropertyInfraMetricThresholdCriteria1WarningComparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.1.WarningComparator.
+type ParamsPropertyInfraMetricThresholdCriteria1WarningComparator string
+
+// ParamsPropertyInfraMetricThresholdCriteria2 defines model for .
+type ParamsPropertyInfraMetricThresholdCriteria2 struct {
+	AggType      *ParamsPropertyInfraMetricThresholdCriteria2AggType                `json:"aggType,omitempty"`
+	Comparator   *ParamsPropertyInfraMetricThresholdCriteria2Comparator             `json:"comparator,omitempty"`
+	CustomMetric *[]ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item `json:"customMetric,omitempty"`
+	Equation     *string                                                            `json:"equation,omitempty"`
+	Label        *string                                                            `json:"label,omitempty"`
+	Threshold    *[]float32                                                         `json:"threshold,omitempty"`
+
+	// TimeSize The size of the time window (in `timeUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+	TimeSize *float32 `json:"timeSize,omitempty"`
+
+	// TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
+	TimeUnit          *ParamsPropertyInfraMetricThresholdCriteria2TimeUnit          `json:"timeUnit,omitempty"`
+	WarningComparator *ParamsPropertyInfraMetricThresholdCriteria2WarningComparator `json:"warningComparator,omitempty"`
+	WarningThreshold  *[]float32                                                    `json:"warningThreshold,omitempty"`
+}
+
+// ParamsPropertyInfraMetricThresholdCriteria2AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.AggType.
+type ParamsPropertyInfraMetricThresholdCriteria2AggType string
+
+// ParamsPropertyInfraMetricThresholdCriteria2Comparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.Comparator.
+type ParamsPropertyInfraMetricThresholdCriteria2Comparator string
+
+// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 defines model for .
+type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 struct {
+	// AggType An aggregation to gather data for the rule. For example, find the average, highest or lowest value of a numeric field. Or use a cardinality aggregation to find the approximate number of unique values in a field.
+	AggType *ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType `json:"aggType,omitempty"`
+	Field   *string                                                          `json:"field,omitempty"`
+	Name    *string                                                          `json:"name,omitempty"`
+}
+
+// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType An aggregation to gather data for the rule. For example, find the average, highest or lowest value of a numeric field. Or use a cardinality aggregation to find the approximate number of unique values in a field.
+type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0AggType string
+
+// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 defines model for .
+type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 struct {
+	AggType *ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType `json:"aggType,omitempty"`
+	Filter  *string                                                          `json:"filter,omitempty"`
+	Name    *string                                                          `json:"name,omitempty"`
+}
+
+// ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.CustomMetric.1.AggType.
+type ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1AggType string
+
+// ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.customMetric.Item.
+type ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item struct {
+	union json.RawMessage
+}
+
+// ParamsPropertyInfraMetricThresholdCriteria2TimeUnit The type of units for the time window: seconds, minutes, hours, or days.
+type ParamsPropertyInfraMetricThresholdCriteria2TimeUnit string
+
+// ParamsPropertyInfraMetricThresholdCriteria2WarningComparator defines model for ParamsPropertyInfraMetricThreshold.Criteria.2.WarningComparator.
+type ParamsPropertyInfraMetricThresholdCriteria2WarningComparator string
+
+// ParamsPropertyInfraMetricThreshold_Criteria_Item defines model for params_property_infra_metric_threshold.criteria.Item.
+type ParamsPropertyInfraMetricThreshold_Criteria_Item struct {
+	union json.RawMessage
+}
+
+// ParamsPropertyInfraMetricThresholdGroupBy0 defines model for .
+type ParamsPropertyInfraMetricThresholdGroupBy0 = string
+
+// ParamsPropertyInfraMetricThresholdGroupBy1 defines model for .
+type ParamsPropertyInfraMetricThresholdGroupBy1 = []string
+
+// ParamsPropertyInfraMetricThreshold_GroupBy Create an alert for every unique value of the specified fields. For example, you can create a rule per host or every mount point of each host.
+// IMPORTANT: If you include the same field in both the `filterQuery` and `groupBy`, you might receive fewer results than you expect. For example, if you filter by `cloud.region: us-east`, grouping by `cloud.region` will have no effect because the filter query can match only one region.
+type ParamsPropertyInfraMetricThreshold_GroupBy struct {
+	union json.RawMessage
+}
+
+// ParamsPropertyLogThreshold defines model for params_property_log_threshold.
+type ParamsPropertyLogThreshold struct {
+	union json.RawMessage
+}
+
+// ParamsPropertyLogThreshold0 The parameters for a log threshold rule that counts the number of log entries that match the criteria. These parameters are appropriate when `rule_type_id` is `logs.alert.document.count`.
+type ParamsPropertyLogThreshold0 struct {
+	Count struct {
+		Comparator *ParamsPropertyLogThreshold0CountComparator `json:"comparator,omitempty"`
+		Value      *float32                                    `json:"value,omitempty"`
+	} `json:"count"`
+	Criteria *[]struct {
+		Comparator *ParamsPropertyLogThreshold0CriteriaComparator `json:"comparator,omitempty"`
+		Field      *string                                        `json:"field,omitempty"`
+		Value      *ParamsPropertyLogThreshold_0_Criteria_Value   `json:"value,omitempty"`
+	} `json:"criteria,omitempty"`
+	GroupBy *[]string `json:"groupBy,omitempty"`
+	LogView struct {
+		LogViewId *string                                 `json:"logViewId,omitempty"`
+		Type      *ParamsPropertyLogThreshold0LogViewType `json:"type,omitempty"`
+	} `json:"logView"`
+	TimeSize float32                             `json:"timeSize"`
+	TimeUnit ParamsPropertyLogThreshold0TimeUnit `json:"timeUnit"`
+}
+
+// ParamsPropertyLogThreshold0CountComparator defines model for ParamsPropertyLogThreshold.0.Count.Comparator.
+type ParamsPropertyLogThreshold0CountComparator string
+
+// ParamsPropertyLogThreshold0CriteriaComparator defines model for ParamsPropertyLogThreshold.0.Criteria.Comparator.
+type ParamsPropertyLogThreshold0CriteriaComparator string
+
+// ParamsPropertyLogThreshold0CriteriaValue0 defines model for .
+type ParamsPropertyLogThreshold0CriteriaValue0 = float32
+
+// ParamsPropertyLogThreshold0CriteriaValue1 defines model for .
+type ParamsPropertyLogThreshold0CriteriaValue1 = string
+
+// ParamsPropertyLogThreshold_0_Criteria_Value defines model for ParamsPropertyLogThreshold.0.Criteria.Value.
+type ParamsPropertyLogThreshold_0_Criteria_Value struct {
+	union json.RawMessage
+}
+
+// ParamsPropertyLogThreshold0LogViewType defines model for ParamsPropertyLogThreshold.0.LogView.Type.
+type ParamsPropertyLogThreshold0LogViewType string
+
+// ParamsPropertyLogThreshold0TimeUnit defines model for ParamsPropertyLogThreshold.0.TimeUnit.
+type ParamsPropertyLogThreshold0TimeUnit string
+
+// ParamsPropertyLogThreshold1 The parameters for a log threshold rule that calculates the ratio of log entries that match the criteria. These parameters are appropriate when `rule_type_id` is `logs.alert.document.count`.
+type ParamsPropertyLogThreshold1 struct {
+	Count struct {
+		Comparator *ParamsPropertyLogThreshold1CountComparator `json:"comparator,omitempty"`
+		Value      *float32                                    `json:"value,omitempty"`
+	} `json:"count"`
+	Criteria *[][]struct {
+		Comparator *ParamsPropertyLogThreshold1CriteriaComparator `json:"comparator,omitempty"`
+		Field      *string                                        `json:"field,omitempty"`
+		Value      *ParamsPropertyLogThreshold_1_Criteria_Value   `json:"value,omitempty"`
+	} `json:"criteria,omitempty"`
+	GroupBy *[]string `json:"groupBy,omitempty"`
+	LogView struct {
+		LogViewId *string                                 `json:"logViewId,omitempty"`
+		Type      *ParamsPropertyLogThreshold1LogViewType `json:"type,omitempty"`
+	} `json:"logView"`
+	TimeSize float32                             `json:"timeSize"`
+	TimeUnit ParamsPropertyLogThreshold1TimeUnit `json:"timeUnit"`
+}
+
+// ParamsPropertyLogThreshold1CountComparator defines model for ParamsPropertyLogThreshold.1.Count.Comparator.
+type ParamsPropertyLogThreshold1CountComparator string
+
+// ParamsPropertyLogThreshold1CriteriaComparator defines model for ParamsPropertyLogThreshold.1.Criteria.Comparator.
+type ParamsPropertyLogThreshold1CriteriaComparator string
+
+// ParamsPropertyLogThreshold1CriteriaValue0 defines model for .
+type ParamsPropertyLogThreshold1CriteriaValue0 = float32
+
+// ParamsPropertyLogThreshold1CriteriaValue1 defines model for .
+type ParamsPropertyLogThreshold1CriteriaValue1 = string
+
+// ParamsPropertyLogThreshold_1_Criteria_Value defines model for ParamsPropertyLogThreshold.1.Criteria.Value.
+type ParamsPropertyLogThreshold_1_Criteria_Value struct {
+	union json.RawMessage
+}
+
+// ParamsPropertyLogThreshold1LogViewType defines model for ParamsPropertyLogThreshold.1.LogView.Type.
+type ParamsPropertyLogThreshold1LogViewType string
+
+// ParamsPropertyLogThreshold1TimeUnit defines model for ParamsPropertyLogThreshold.1.TimeUnit.
+type ParamsPropertyLogThreshold1TimeUnit string
+
+// ParamsPropertySloBurnRate The parameters for the SLO burn rate rule. These parameters are appropriate when `rule_type_id` is `slo.rules.burnRate`.
+type ParamsPropertySloBurnRate struct {
+	// BurnRateThreshold The burn rate threshold used to trigger the alert
+	BurnRateThreshold *float32 `json:"burnRateThreshold,omitempty"`
+
+	// LongWindow The duration of the long window used to compute the burn rate
+	LongWindow *struct {
+		// Unit The duration unit
+		Unit *string `json:"unit,omitempty"`
+
+		// Value The duration value
+		Value *float32 `json:"value,omitempty"`
+	} `json:"longWindow,omitempty"`
+
+	// MaxBurnRateThreshold The maximum burn rate threshold value defined by the SLO error budget
+	MaxBurnRateThreshold *float32 `json:"maxBurnRateThreshold,omitempty"`
+
+	// ShortWindow The duration of the short window used to compute the burn rate
+	ShortWindow *struct {
+		// Unit The duration unit
+		Unit *string `json:"unit,omitempty"`
+
+		// Value The duration value
+		Value *float32 `json:"value,omitempty"`
+	} `json:"shortWindow,omitempty"`
+
+	// SloId The SLO identifier used by the rule
+	SloId *string `json:"sloId,omitempty"`
+}
+
+// ParamsPropertySyntheticsMonitorStatus The parameters for the Synthetics monitor status rule. These parameters are appropriate when `rule_type_id` is `xpack.uptime.alerts.monitorStatus`.
+type ParamsPropertySyntheticsMonitorStatus struct {
+	Availability *struct {
+		Range     *float32 `json:"range,omitempty"`
+		RangeUnit *string  `json:"rangeUnit,omitempty"`
+		Threshold *string  `json:"threshold,omitempty"`
+	} `json:"availability,omitempty"`
+	Filters         *ParamsPropertySyntheticsMonitorStatus_Filters `json:"filters,omitempty"`
+	IsAutoGenerated *bool                                          `json:"isAutoGenerated,omitempty"`
+	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	Locations               *[]string `json:"locations,omitempty"`
+	NumTimes                float32   `json:"numTimes"`
+	Search                  *string   `json:"search,omitempty"`
+	ShouldCheckAvailability bool      `json:"shouldCheckAvailability"`
+	ShouldCheckStatus       bool      `json:"shouldCheckStatus"`
+	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
+	Timerange *struct {
+		From *string `json:"from,omitempty"`
+		To   *string `json:"to,omitempty"`
+	} `json:"timerange,omitempty"`
+	TimerangeCount *float32 `json:"timerangeCount,omitempty"`
+	TimerangeUnit  *string  `json:"timerangeUnit,omitempty"`
+	Version        *float32 `json:"version,omitempty"`
+}
+
+// ParamsPropertySyntheticsMonitorStatusFilters0 defines model for .
+type ParamsPropertySyntheticsMonitorStatusFilters0 = string
+
+// ParamsPropertySyntheticsMonitorStatusFilters1 defines model for .
+type ParamsPropertySyntheticsMonitorStatusFilters1 struct {
+	MonitorType     *[]string `json:"monitor.type,omitempty"`
+	ObserverGeoName *[]string `json:"observer.geo.name,omitempty"`
+	Tags            *[]string `json:"tags,omitempty"`
+	UrlPort         *[]string `json:"url.port,omitempty"`
+}
+
+// ParamsPropertySyntheticsMonitorStatus_Filters defines model for ParamsPropertySyntheticsMonitorStatus.Filters.
+type ParamsPropertySyntheticsMonitorStatus_Filters struct {
+	union json.RawMessage
+}
+
+// ParamsPropertySyntheticsUptimeTls The parameters for the synthetics TLS certificate rule. These parameters are appropriate when `rule_type_id` is `xpack.uptime.alerts.tls`.
+type ParamsPropertySyntheticsUptimeTls struct {
+	CertAgeThreshold        *float32 `json:"certAgeThreshold,omitempty"`
+	CertExpirationThreshold *float32 `json:"certExpirationThreshold,omitempty"`
+	Search                  *string  `json:"search,omitempty"`
+}
+
 // PercentileOperation defines model for percentileOperation.
 type PercentileOperation struct {
 	// Field Field to be used for the metric
@@ -31882,6 +33091,9 @@ type ServicenowSecrets struct {
 	Username *string `json:"username,omitempty"`
 }
 
+// Size The number of documents to pass to the configured actions when the threshold condition is met.
+type Size = int
+
 // SlackApiConfig Defines properties for connectors when type is `.slack_api`.
 type SlackApiConfig struct {
 	// AllowedChannels A list of valid Slack channels.
@@ -32250,6 +33462,17 @@ type TeamsSecrets struct {
 	WebhookUrl string `json:"webhookUrl"`
 }
 
+// Termfield The names of up to four fields that are used for grouping the aggregation. This property is required when `groupBy` is `top`.
+type Termfield struct {
+	union json.RawMessage
+}
+
+// Termfield0 defines model for .
+type Termfield0 = string
+
+// Termfield1 defines model for .
+type Termfield1 = []string
+
 // TermsOperationSchema defines model for termsOperationSchema.
 type TermsOperationSchema struct {
 	Excludes *struct {
@@ -32318,7 +33541,7 @@ type TermsOperationSchemaRankBy2Type string
 type TermsOperationSchemaRankBy3 struct {
 	Direction TermsOperationSchemaRankBy3Direction `json:"direction"`
 
-	// Metric Metric to be used for the column by index number (0 based)
+	// Metric Metric to be used for the column
 	Metric float32                         `json:"metric"`
 	Type   TermsOperationSchemaRankBy3Type `json:"type"`
 }
@@ -32353,6 +33576,9 @@ type TermsOperationSchema_RankBy struct {
 	union json.RawMessage
 }
 
+// Termsize This property is required when `groupBy` is `top`. It specifies the number of groups to check against the threshold and therefore limits the number of alerts on high cardinality fields.
+type Termsize = int
+
 // ThehiveConfig Defines configuration properties for connectors when type is `.thehive`.
 type ThehiveConfig struct {
 	// Organisation The organisation in TheHive that will contain the alerts or cases. By default, the connector uses the default organisation of the user account that created the API key.
@@ -32367,6 +33593,21 @@ type ThehiveSecrets struct {
 	// ApiKey The API key for authentication in TheHive.
 	ApiKey string `json:"apiKey"`
 }
+
+// Threshold The threshold value that is used with the `thresholdComparator`. If the `thresholdComparator` is `between` or `notBetween`, you must specify the boundary values.
+type Threshold = []int
+
+// Thresholdcomparator The comparison function for the threshold. For example, "is above", "is above or equals", "is below", "is below or equals", "is between", and "is not between".
+type Thresholdcomparator string
+
+// Timefield The field that is used to calculate the time window.
+type Timefield = string
+
+// Timewindowsize The size of the time window (in `timeWindowUnit` units), which determines how far back to search for documents. Generally it should be a value higher than the rule check interval to avoid gaps in detection.
+type Timewindowsize = int
+
+// Timewindowunit The type of units for the time window: seconds, minutes, hours, or days.
+type Timewindowunit string
 
 // TinesConfig Defines properties for connectors when type is `.tines`.
 type TinesConfig struct {
@@ -34070,7 +35311,9 @@ type PostAlertingRuleIdJSONBody struct {
 
 	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
 	NotifyWhen *PostAlertingRuleIdJSONBodyNotifyWhen `json:"notify_when,omitempty"`
-	Params     *map[string]interface{}               `json:"params,omitempty"`
+
+	// Params The parameters for the rule.
+	Params *PostAlertingRuleIdJSONBody_Params `json:"params,omitempty"`
 
 	// RuleTypeId The rule type identifier.
 	RuleTypeId string `json:"rule_type_id"`
@@ -34099,6 +35342,12 @@ type PostAlertingRuleIdJSONBodyActionsFrequencyNotifyWhen string
 
 // PostAlertingRuleIdJSONBodyNotifyWhen defines parameters for PostAlertingRuleId.
 type PostAlertingRuleIdJSONBodyNotifyWhen string
+
+// PostAlertingRuleIdJSONBody_Params defines parameters for PostAlertingRuleId.
+type PostAlertingRuleIdJSONBody_Params struct {
+	AdditionalProperties map[string]interface{} `json:"-"`
+	union                json.RawMessage
+}
 
 // PutAlertingRuleIdJSONBody defines parameters for PutAlertingRuleId.
 type PutAlertingRuleIdJSONBody struct {
@@ -34198,8 +35447,10 @@ type PutAlertingRuleIdJSONBody struct {
 
 	// NotifyWhen Indicates how often alerts generate actions. Valid values include: `onActionGroupChange`: Actions run when the alert status changes; `onActiveAlert`: Actions run when the alert becomes active and at each check interval while the rule conditions are met; `onThrottleInterval`: Actions run when the alert becomes active and at the interval specified in the throttle property while the rule conditions are met. NOTE: You cannot specify `notify_when` at both the rule and action level. The recommended method is to set it for each action. If you set it at the rule level then update the rule in Kibana, it is automatically changed to use action-specific values.
 	NotifyWhen *PutAlertingRuleIdJSONBodyNotifyWhen `json:"notify_when,omitempty"`
-	Params     *map[string]interface{}              `json:"params,omitempty"`
-	Schedule   struct {
+
+	// Params The parameters for the rule.
+	Params   *map[string]interface{} `json:"params,omitempty"`
+	Schedule struct {
 		// Interval The interval is specified in seconds, minutes, hours, or days.
 		Interval string `json:"interval"`
 	} `json:"schedule"`
@@ -67590,6 +68841,23 @@ func (a *PostActionsConnectorIdExecuteJSONBody_Params) Set(fieldName string, val
 	a.AdditionalProperties[fieldName] = value
 }
 
+// Getter for additional properties for PostAlertingRuleIdJSONBody_Params. Returns the specified
+// element and whether it was found
+func (a PostAlertingRuleIdJSONBody_Params) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for PostAlertingRuleIdJSONBody_Params
+func (a *PostAlertingRuleIdJSONBody_Params) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
 // Getter for additional properties for PostDashboardsJSONBodyDataPinnedPanels0. Returns the specified
 // element and whether it was found
 func (a PostDashboardsJSONBodyDataPinnedPanels0) Get(fieldName string) (value interface{}, found bool) {
@@ -72220,6 +73488,138 @@ func (a *DashboardPanelItemConfig11) UnmarshalJSON(b []byte) error {
 
 // Override default JSON handling for DashboardPanelItemConfig11 to handle AdditionalProperties
 func (a DashboardPanelItemConfig11) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	object["savedObjectId"], err = json.Marshal(a.SavedObjectId)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'savedObjectId': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for DashboardPanelSectionPanelsConfig10. Returns the specified
+// element and whether it was found
+func (a DashboardPanelSectionPanelsConfig10) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for DashboardPanelSectionPanelsConfig10
+func (a *DashboardPanelSectionPanelsConfig10) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for DashboardPanelSectionPanelsConfig10 to handle AdditionalProperties
+func (a *DashboardPanelSectionPanelsConfig10) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["attributes"]; found {
+		err = json.Unmarshal(raw, &a.Attributes)
+		if err != nil {
+			return fmt.Errorf("error reading 'attributes': %w", err)
+		}
+		delete(object, "attributes")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for DashboardPanelSectionPanelsConfig10 to handle AdditionalProperties
+func (a DashboardPanelSectionPanelsConfig10) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	object["attributes"], err = json.Marshal(a.Attributes)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'attributes': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for DashboardPanelSectionPanelsConfig11. Returns the specified
+// element and whether it was found
+func (a DashboardPanelSectionPanelsConfig11) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for DashboardPanelSectionPanelsConfig11
+func (a *DashboardPanelSectionPanelsConfig11) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for DashboardPanelSectionPanelsConfig11 to handle AdditionalProperties
+func (a *DashboardPanelSectionPanelsConfig11) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["savedObjectId"]; found {
+		err = json.Unmarshal(raw, &a.SavedObjectId)
+		if err != nil {
+			return fmt.Errorf("error reading 'savedObjectId': %w", err)
+		}
+		delete(object, "savedObjectId")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for DashboardPanelSectionPanelsConfig11 to handle AdditionalProperties
+func (a DashboardPanelSectionPanelsConfig11) MarshalJSON() ([]byte, error) {
 	var err error
 	object := make(map[string]json.RawMessage)
 
@@ -96125,6 +97525,436 @@ func (t *DashboardPanelItem_Config) UnmarshalJSON(b []byte) error {
 	return err
 }
 
+// AsDashboardPanelSectionPanelsConfig10 returns the union data inside the DashboardPanelSectionPanelsConfig1 as a DashboardPanelSectionPanelsConfig10
+func (t DashboardPanelSectionPanelsConfig1) AsDashboardPanelSectionPanelsConfig10() (DashboardPanelSectionPanelsConfig10, error) {
+	var body DashboardPanelSectionPanelsConfig10
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDashboardPanelSectionPanelsConfig10 overwrites any union data inside the DashboardPanelSectionPanelsConfig1 as the provided DashboardPanelSectionPanelsConfig10
+func (t *DashboardPanelSectionPanelsConfig1) FromDashboardPanelSectionPanelsConfig10(v DashboardPanelSectionPanelsConfig10) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDashboardPanelSectionPanelsConfig10 performs a merge with any union data inside the DashboardPanelSectionPanelsConfig1, using the provided DashboardPanelSectionPanelsConfig10
+func (t *DashboardPanelSectionPanelsConfig1) MergeDashboardPanelSectionPanelsConfig10(v DashboardPanelSectionPanelsConfig10) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsDashboardPanelSectionPanelsConfig11 returns the union data inside the DashboardPanelSectionPanelsConfig1 as a DashboardPanelSectionPanelsConfig11
+func (t DashboardPanelSectionPanelsConfig1) AsDashboardPanelSectionPanelsConfig11() (DashboardPanelSectionPanelsConfig11, error) {
+	var body DashboardPanelSectionPanelsConfig11
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDashboardPanelSectionPanelsConfig11 overwrites any union data inside the DashboardPanelSectionPanelsConfig1 as the provided DashboardPanelSectionPanelsConfig11
+func (t *DashboardPanelSectionPanelsConfig1) FromDashboardPanelSectionPanelsConfig11(v DashboardPanelSectionPanelsConfig11) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDashboardPanelSectionPanelsConfig11 performs a merge with any union data inside the DashboardPanelSectionPanelsConfig1, using the provided DashboardPanelSectionPanelsConfig11
+func (t *DashboardPanelSectionPanelsConfig1) MergeDashboardPanelSectionPanelsConfig11(v DashboardPanelSectionPanelsConfig11) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t DashboardPanelSectionPanelsConfig1) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *DashboardPanelSectionPanelsConfig1) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsMetricChartSchema returns the union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as a MetricChartSchema
+func (t DashboardPanelSectionPanelsConfig10Attributes0) AsMetricChartSchema() (MetricChartSchema, error) {
+	var body MetricChartSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMetricChartSchema overwrites any union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as the provided MetricChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) FromMetricChartSchema(v MetricChartSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMetricChartSchema performs a merge with any union data inside the DashboardPanelSectionPanelsConfig10Attributes0, using the provided MetricChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) MergeMetricChartSchema(v MetricChartSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsLegacyMetricChartSchema returns the union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as a LegacyMetricChartSchema
+func (t DashboardPanelSectionPanelsConfig10Attributes0) AsLegacyMetricChartSchema() (LegacyMetricChartSchema, error) {
+	var body LegacyMetricChartSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromLegacyMetricChartSchema overwrites any union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as the provided LegacyMetricChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) FromLegacyMetricChartSchema(v LegacyMetricChartSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeLegacyMetricChartSchema performs a merge with any union data inside the DashboardPanelSectionPanelsConfig10Attributes0, using the provided LegacyMetricChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) MergeLegacyMetricChartSchema(v LegacyMetricChartSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsXyChartSchema returns the union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as a XyChartSchema
+func (t DashboardPanelSectionPanelsConfig10Attributes0) AsXyChartSchema() (XyChartSchema, error) {
+	var body XyChartSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromXyChartSchema overwrites any union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as the provided XyChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) FromXyChartSchema(v XyChartSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeXyChartSchema performs a merge with any union data inside the DashboardPanelSectionPanelsConfig10Attributes0, using the provided XyChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) MergeXyChartSchema(v XyChartSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsGaugeChartSchema returns the union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as a GaugeChartSchema
+func (t DashboardPanelSectionPanelsConfig10Attributes0) AsGaugeChartSchema() (GaugeChartSchema, error) {
+	var body GaugeChartSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGaugeChartSchema overwrites any union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as the provided GaugeChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) FromGaugeChartSchema(v GaugeChartSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGaugeChartSchema performs a merge with any union data inside the DashboardPanelSectionPanelsConfig10Attributes0, using the provided GaugeChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) MergeGaugeChartSchema(v GaugeChartSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsHeatmapChartSchema returns the union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as a HeatmapChartSchema
+func (t DashboardPanelSectionPanelsConfig10Attributes0) AsHeatmapChartSchema() (HeatmapChartSchema, error) {
+	var body HeatmapChartSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromHeatmapChartSchema overwrites any union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as the provided HeatmapChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) FromHeatmapChartSchema(v HeatmapChartSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeHeatmapChartSchema performs a merge with any union data inside the DashboardPanelSectionPanelsConfig10Attributes0, using the provided HeatmapChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) MergeHeatmapChartSchema(v HeatmapChartSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsTagcloudChartSchema returns the union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as a TagcloudChartSchema
+func (t DashboardPanelSectionPanelsConfig10Attributes0) AsTagcloudChartSchema() (TagcloudChartSchema, error) {
+	var body TagcloudChartSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromTagcloudChartSchema overwrites any union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as the provided TagcloudChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) FromTagcloudChartSchema(v TagcloudChartSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeTagcloudChartSchema performs a merge with any union data inside the DashboardPanelSectionPanelsConfig10Attributes0, using the provided TagcloudChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) MergeTagcloudChartSchema(v TagcloudChartSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsRegionMapChartSchema returns the union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as a RegionMapChartSchema
+func (t DashboardPanelSectionPanelsConfig10Attributes0) AsRegionMapChartSchema() (RegionMapChartSchema, error) {
+	var body RegionMapChartSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromRegionMapChartSchema overwrites any union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as the provided RegionMapChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) FromRegionMapChartSchema(v RegionMapChartSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeRegionMapChartSchema performs a merge with any union data inside the DashboardPanelSectionPanelsConfig10Attributes0, using the provided RegionMapChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) MergeRegionMapChartSchema(v RegionMapChartSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsDatatableChartSchema returns the union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as a DatatableChartSchema
+func (t DashboardPanelSectionPanelsConfig10Attributes0) AsDatatableChartSchema() (DatatableChartSchema, error) {
+	var body DatatableChartSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDatatableChartSchema overwrites any union data inside the DashboardPanelSectionPanelsConfig10Attributes0 as the provided DatatableChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) FromDatatableChartSchema(v DatatableChartSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDatatableChartSchema performs a merge with any union data inside the DashboardPanelSectionPanelsConfig10Attributes0, using the provided DatatableChartSchema
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) MergeDatatableChartSchema(v DatatableChartSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t DashboardPanelSectionPanelsConfig10Attributes0) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *DashboardPanelSectionPanelsConfig10Attributes0) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsDashboardPanelSectionPanelsConfig10Attributes0 returns the union data inside the DashboardPanelSection_Panels_Config_1_0_Attributes as a DashboardPanelSectionPanelsConfig10Attributes0
+func (t DashboardPanelSection_Panels_Config_1_0_Attributes) AsDashboardPanelSectionPanelsConfig10Attributes0() (DashboardPanelSectionPanelsConfig10Attributes0, error) {
+	var body DashboardPanelSectionPanelsConfig10Attributes0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDashboardPanelSectionPanelsConfig10Attributes0 overwrites any union data inside the DashboardPanelSection_Panels_Config_1_0_Attributes as the provided DashboardPanelSectionPanelsConfig10Attributes0
+func (t *DashboardPanelSection_Panels_Config_1_0_Attributes) FromDashboardPanelSectionPanelsConfig10Attributes0(v DashboardPanelSectionPanelsConfig10Attributes0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDashboardPanelSectionPanelsConfig10Attributes0 performs a merge with any union data inside the DashboardPanelSection_Panels_Config_1_0_Attributes, using the provided DashboardPanelSectionPanelsConfig10Attributes0
+func (t *DashboardPanelSection_Panels_Config_1_0_Attributes) MergeDashboardPanelSectionPanelsConfig10Attributes0(v DashboardPanelSectionPanelsConfig10Attributes0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsDashboardPanelSectionPanelsConfig10Attributes1 returns the union data inside the DashboardPanelSection_Panels_Config_1_0_Attributes as a DashboardPanelSectionPanelsConfig10Attributes1
+func (t DashboardPanelSection_Panels_Config_1_0_Attributes) AsDashboardPanelSectionPanelsConfig10Attributes1() (DashboardPanelSectionPanelsConfig10Attributes1, error) {
+	var body DashboardPanelSectionPanelsConfig10Attributes1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDashboardPanelSectionPanelsConfig10Attributes1 overwrites any union data inside the DashboardPanelSection_Panels_Config_1_0_Attributes as the provided DashboardPanelSectionPanelsConfig10Attributes1
+func (t *DashboardPanelSection_Panels_Config_1_0_Attributes) FromDashboardPanelSectionPanelsConfig10Attributes1(v DashboardPanelSectionPanelsConfig10Attributes1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDashboardPanelSectionPanelsConfig10Attributes1 performs a merge with any union data inside the DashboardPanelSection_Panels_Config_1_0_Attributes, using the provided DashboardPanelSectionPanelsConfig10Attributes1
+func (t *DashboardPanelSection_Panels_Config_1_0_Attributes) MergeDashboardPanelSectionPanelsConfig10Attributes1(v DashboardPanelSectionPanelsConfig10Attributes1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t DashboardPanelSection_Panels_Config_1_0_Attributes) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *DashboardPanelSection_Panels_Config_1_0_Attributes) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsDashboardPanelSectionPanelsConfig0 returns the union data inside the DashboardPanelSection_Panels_Config as a DashboardPanelSectionPanelsConfig0
+func (t DashboardPanelSection_Panels_Config) AsDashboardPanelSectionPanelsConfig0() (DashboardPanelSectionPanelsConfig0, error) {
+	var body DashboardPanelSectionPanelsConfig0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDashboardPanelSectionPanelsConfig0 overwrites any union data inside the DashboardPanelSection_Panels_Config as the provided DashboardPanelSectionPanelsConfig0
+func (t *DashboardPanelSection_Panels_Config) FromDashboardPanelSectionPanelsConfig0(v DashboardPanelSectionPanelsConfig0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDashboardPanelSectionPanelsConfig0 performs a merge with any union data inside the DashboardPanelSection_Panels_Config, using the provided DashboardPanelSectionPanelsConfig0
+func (t *DashboardPanelSection_Panels_Config) MergeDashboardPanelSectionPanelsConfig0(v DashboardPanelSectionPanelsConfig0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsDashboardPanelSectionPanelsConfig1 returns the union data inside the DashboardPanelSection_Panels_Config as a DashboardPanelSectionPanelsConfig1
+func (t DashboardPanelSection_Panels_Config) AsDashboardPanelSectionPanelsConfig1() (DashboardPanelSectionPanelsConfig1, error) {
+	var body DashboardPanelSectionPanelsConfig1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDashboardPanelSectionPanelsConfig1 overwrites any union data inside the DashboardPanelSection_Panels_Config as the provided DashboardPanelSectionPanelsConfig1
+func (t *DashboardPanelSection_Panels_Config) FromDashboardPanelSectionPanelsConfig1(v DashboardPanelSectionPanelsConfig1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDashboardPanelSectionPanelsConfig1 performs a merge with any union data inside the DashboardPanelSection_Panels_Config, using the provided DashboardPanelSectionPanelsConfig1
+func (t *DashboardPanelSection_Panels_Config) MergeDashboardPanelSectionPanelsConfig1(v DashboardPanelSectionPanelsConfig1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsDashboardPanelSectionPanelsConfig2 returns the union data inside the DashboardPanelSection_Panels_Config as a DashboardPanelSectionPanelsConfig2
+func (t DashboardPanelSection_Panels_Config) AsDashboardPanelSectionPanelsConfig2() (DashboardPanelSectionPanelsConfig2, error) {
+	var body DashboardPanelSectionPanelsConfig2
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDashboardPanelSectionPanelsConfig2 overwrites any union data inside the DashboardPanelSection_Panels_Config as the provided DashboardPanelSectionPanelsConfig2
+func (t *DashboardPanelSection_Panels_Config) FromDashboardPanelSectionPanelsConfig2(v DashboardPanelSectionPanelsConfig2) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDashboardPanelSectionPanelsConfig2 performs a merge with any union data inside the DashboardPanelSection_Panels_Config, using the provided DashboardPanelSectionPanelsConfig2
+func (t *DashboardPanelSection_Panels_Config) MergeDashboardPanelSectionPanelsConfig2(v DashboardPanelSectionPanelsConfig2) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t DashboardPanelSection_Panels_Config) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *DashboardPanelSection_Panels_Config) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
 // AsDashboardPanelItem returns the union data inside the DashboardPanels_Item as a DashboardPanelItem
 func (t DashboardPanels_Item) AsDashboardPanelItem() (DashboardPanelItem, error) {
 	var body DashboardPanelItem
@@ -100013,22 +101843,22 @@ func (t *LegacyMetricNoESQL_Metric) UnmarshalJSON(b []byte) error {
 	return err
 }
 
-// AsMetricChartSchema0 returns the union data inside the MetricChartSchema as a MetricChartSchema0
-func (t MetricChartSchema) AsMetricChartSchema0() (MetricChartSchema0, error) {
-	var body MetricChartSchema0
+// AsMetricNoESQL returns the union data inside the MetricChartSchema as a MetricNoESQL
+func (t MetricChartSchema) AsMetricNoESQL() (MetricNoESQL, error) {
+	var body MetricNoESQL
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMetricChartSchema0 overwrites any union data inside the MetricChartSchema as the provided MetricChartSchema0
-func (t *MetricChartSchema) FromMetricChartSchema0(v MetricChartSchema0) error {
+// FromMetricNoESQL overwrites any union data inside the MetricChartSchema as the provided MetricNoESQL
+func (t *MetricChartSchema) FromMetricNoESQL(v MetricNoESQL) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMetricChartSchema0 performs a merge with any union data inside the MetricChartSchema, using the provided MetricChartSchema0
-func (t *MetricChartSchema) MergeMetricChartSchema0(v MetricChartSchema0) error {
+// MergeMetricNoESQL performs a merge with any union data inside the MetricChartSchema, using the provided MetricNoESQL
+func (t *MetricChartSchema) MergeMetricNoESQL(v MetricNoESQL) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100039,22 +101869,22 @@ func (t *MetricChartSchema) MergeMetricChartSchema0(v MetricChartSchema0) error 
 	return err
 }
 
-// AsMetricChartSchema1 returns the union data inside the MetricChartSchema as a MetricChartSchema1
-func (t MetricChartSchema) AsMetricChartSchema1() (MetricChartSchema1, error) {
-	var body MetricChartSchema1
+// AsMetricESQL returns the union data inside the MetricChartSchema as a MetricESQL
+func (t MetricChartSchema) AsMetricESQL() (MetricESQL, error) {
+	var body MetricESQL
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMetricChartSchema1 overwrites any union data inside the MetricChartSchema as the provided MetricChartSchema1
-func (t *MetricChartSchema) FromMetricChartSchema1(v MetricChartSchema1) error {
+// FromMetricESQL overwrites any union data inside the MetricChartSchema as the provided MetricESQL
+func (t *MetricChartSchema) FromMetricESQL(v MetricESQL) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMetricChartSchema1 performs a merge with any union data inside the MetricChartSchema, using the provided MetricChartSchema1
-func (t *MetricChartSchema) MergeMetricChartSchema1(v MetricChartSchema1) error {
+// MergeMetricESQL performs a merge with any union data inside the MetricChartSchema, using the provided MetricESQL
+func (t *MetricChartSchema) MergeMetricESQL(v MetricESQL) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100075,276 +101905,22 @@ func (t *MetricChartSchema) UnmarshalJSON(b []byte) error {
 	return err
 }
 
-// AsDateHistogramOperationSchema returns the union data inside the MetricChartSchema_0_BreakdownBy as a DateHistogramOperationSchema
-func (t MetricChartSchema_0_BreakdownBy) AsDateHistogramOperationSchema() (DateHistogramOperationSchema, error) {
-	var body DateHistogramOperationSchema
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromDateHistogramOperationSchema overwrites any union data inside the MetricChartSchema_0_BreakdownBy as the provided DateHistogramOperationSchema
-func (t *MetricChartSchema_0_BreakdownBy) FromDateHistogramOperationSchema(v DateHistogramOperationSchema) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeDateHistogramOperationSchema performs a merge with any union data inside the MetricChartSchema_0_BreakdownBy, using the provided DateHistogramOperationSchema
-func (t *MetricChartSchema_0_BreakdownBy) MergeDateHistogramOperationSchema(v DateHistogramOperationSchema) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsTermsOperationSchema returns the union data inside the MetricChartSchema_0_BreakdownBy as a TermsOperationSchema
-func (t MetricChartSchema_0_BreakdownBy) AsTermsOperationSchema() (TermsOperationSchema, error) {
-	var body TermsOperationSchema
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromTermsOperationSchema overwrites any union data inside the MetricChartSchema_0_BreakdownBy as the provided TermsOperationSchema
-func (t *MetricChartSchema_0_BreakdownBy) FromTermsOperationSchema(v TermsOperationSchema) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeTermsOperationSchema performs a merge with any union data inside the MetricChartSchema_0_BreakdownBy, using the provided TermsOperationSchema
-func (t *MetricChartSchema_0_BreakdownBy) MergeTermsOperationSchema(v TermsOperationSchema) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsHistogramOperationSchema returns the union data inside the MetricChartSchema_0_BreakdownBy as a HistogramOperationSchema
-func (t MetricChartSchema_0_BreakdownBy) AsHistogramOperationSchema() (HistogramOperationSchema, error) {
-	var body HistogramOperationSchema
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromHistogramOperationSchema overwrites any union data inside the MetricChartSchema_0_BreakdownBy as the provided HistogramOperationSchema
-func (t *MetricChartSchema_0_BreakdownBy) FromHistogramOperationSchema(v HistogramOperationSchema) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeHistogramOperationSchema performs a merge with any union data inside the MetricChartSchema_0_BreakdownBy, using the provided HistogramOperationSchema
-func (t *MetricChartSchema_0_BreakdownBy) MergeHistogramOperationSchema(v HistogramOperationSchema) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMetricChartSchema0BreakdownBy3 returns the union data inside the MetricChartSchema_0_BreakdownBy as a MetricChartSchema0BreakdownBy3
-func (t MetricChartSchema_0_BreakdownBy) AsMetricChartSchema0BreakdownBy3() (MetricChartSchema0BreakdownBy3, error) {
-	var body MetricChartSchema0BreakdownBy3
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMetricChartSchema0BreakdownBy3 overwrites any union data inside the MetricChartSchema_0_BreakdownBy as the provided MetricChartSchema0BreakdownBy3
-func (t *MetricChartSchema_0_BreakdownBy) FromMetricChartSchema0BreakdownBy3(v MetricChartSchema0BreakdownBy3) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMetricChartSchema0BreakdownBy3 performs a merge with any union data inside the MetricChartSchema_0_BreakdownBy, using the provided MetricChartSchema0BreakdownBy3
-func (t *MetricChartSchema_0_BreakdownBy) MergeMetricChartSchema0BreakdownBy3(v MetricChartSchema0BreakdownBy3) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsFiltersOperationSchema returns the union data inside the MetricChartSchema_0_BreakdownBy as a FiltersOperationSchema
-func (t MetricChartSchema_0_BreakdownBy) AsFiltersOperationSchema() (FiltersOperationSchema, error) {
-	var body FiltersOperationSchema
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromFiltersOperationSchema overwrites any union data inside the MetricChartSchema_0_BreakdownBy as the provided FiltersOperationSchema
-func (t *MetricChartSchema_0_BreakdownBy) FromFiltersOperationSchema(v FiltersOperationSchema) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeFiltersOperationSchema performs a merge with any union data inside the MetricChartSchema_0_BreakdownBy, using the provided FiltersOperationSchema
-func (t *MetricChartSchema_0_BreakdownBy) MergeFiltersOperationSchema(v FiltersOperationSchema) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MetricChartSchema_0_BreakdownBy) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MetricChartSchema_0_BreakdownBy) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsDataViewDatasetTypeSchema returns the union data inside the MetricChartSchema_0_Dataset as a DataViewDatasetTypeSchema
-func (t MetricChartSchema_0_Dataset) AsDataViewDatasetTypeSchema() (DataViewDatasetTypeSchema, error) {
-	var body DataViewDatasetTypeSchema
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromDataViewDatasetTypeSchema overwrites any union data inside the MetricChartSchema_0_Dataset as the provided DataViewDatasetTypeSchema
-func (t *MetricChartSchema_0_Dataset) FromDataViewDatasetTypeSchema(v DataViewDatasetTypeSchema) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeDataViewDatasetTypeSchema performs a merge with any union data inside the MetricChartSchema_0_Dataset, using the provided DataViewDatasetTypeSchema
-func (t *MetricChartSchema_0_Dataset) MergeDataViewDatasetTypeSchema(v DataViewDatasetTypeSchema) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsIndexDatasetTypeSchema returns the union data inside the MetricChartSchema_0_Dataset as a IndexDatasetTypeSchema
-func (t MetricChartSchema_0_Dataset) AsIndexDatasetTypeSchema() (IndexDatasetTypeSchema, error) {
-	var body IndexDatasetTypeSchema
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromIndexDatasetTypeSchema overwrites any union data inside the MetricChartSchema_0_Dataset as the provided IndexDatasetTypeSchema
-func (t *MetricChartSchema_0_Dataset) FromIndexDatasetTypeSchema(v IndexDatasetTypeSchema) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeIndexDatasetTypeSchema performs a merge with any union data inside the MetricChartSchema_0_Dataset, using the provided IndexDatasetTypeSchema
-func (t *MetricChartSchema_0_Dataset) MergeIndexDatasetTypeSchema(v IndexDatasetTypeSchema) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MetricChartSchema_0_Dataset) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MetricChartSchema_0_Dataset) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMetricChartSchema0Metrics00 returns the union data inside the MetricChartSchema0Metrics0 as a MetricChartSchema0Metrics00
-func (t MetricChartSchema0Metrics0) AsMetricChartSchema0Metrics00() (MetricChartSchema0Metrics00, error) {
-	var body MetricChartSchema0Metrics00
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMetricChartSchema0Metrics00 overwrites any union data inside the MetricChartSchema0Metrics0 as the provided MetricChartSchema0Metrics00
-func (t *MetricChartSchema0Metrics0) FromMetricChartSchema0Metrics00(v MetricChartSchema0Metrics00) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMetricChartSchema0Metrics00 performs a merge with any union data inside the MetricChartSchema0Metrics0, using the provided MetricChartSchema0Metrics00
-func (t *MetricChartSchema0Metrics0) MergeMetricChartSchema0Metrics00(v MetricChartSchema0Metrics00) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMetricChartSchema0Metrics01 returns the union data inside the MetricChartSchema0Metrics0 as a MetricChartSchema0Metrics01
-func (t MetricChartSchema0Metrics0) AsMetricChartSchema0Metrics01() (MetricChartSchema0Metrics01, error) {
-	var body MetricChartSchema0Metrics01
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMetricChartSchema0Metrics01 overwrites any union data inside the MetricChartSchema0Metrics0 as the provided MetricChartSchema0Metrics01
-func (t *MetricChartSchema0Metrics0) FromMetricChartSchema0Metrics01(v MetricChartSchema0Metrics01) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMetricChartSchema0Metrics01 performs a merge with any union data inside the MetricChartSchema0Metrics0, using the provided MetricChartSchema0Metrics01
-func (t *MetricChartSchema0Metrics0) MergeMetricChartSchema0Metrics01(v MetricChartSchema0Metrics01) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsFormulaOperation returns the union data inside the MetricChartSchema0Metrics0 as a FormulaOperation
-func (t MetricChartSchema0Metrics0) AsFormulaOperation() (FormulaOperation, error) {
+// AsFormulaOperation returns the union data inside the MetricComplementaryBar_GoalValue as a FormulaOperation
+func (t MetricComplementaryBar_GoalValue) AsFormulaOperation() (FormulaOperation, error) {
 	var body FormulaOperation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromFormulaOperation overwrites any union data inside the MetricChartSchema0Metrics0 as the provided FormulaOperation
-func (t *MetricChartSchema0Metrics0) FromFormulaOperation(v FormulaOperation) error {
+// FromFormulaOperation overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided FormulaOperation
+func (t *MetricComplementaryBar_GoalValue) FromFormulaOperation(v FormulaOperation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeFormulaOperation performs a merge with any union data inside the MetricChartSchema0Metrics0, using the provided FormulaOperation
-func (t *MetricChartSchema0Metrics0) MergeFormulaOperation(v FormulaOperation) error {
+// MergeFormulaOperation performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided FormulaOperation
+func (t *MetricComplementaryBar_GoalValue) MergeFormulaOperation(v FormulaOperation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100355,32 +101931,22 @@ func (t *MetricChartSchema0Metrics0) MergeFormulaOperation(v FormulaOperation) e
 	return err
 }
 
-func (t MetricChartSchema0Metrics0) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MetricChartSchema0Metrics0) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsCountMetricOperation returns the union data inside the MetricChartSchema0Metrics00 as a CountMetricOperation
-func (t MetricChartSchema0Metrics00) AsCountMetricOperation() (CountMetricOperation, error) {
-	var body CountMetricOperation
+// AsStaticOperationDefinition returns the union data inside the MetricComplementaryBar_GoalValue as a StaticOperationDefinition
+func (t MetricComplementaryBar_GoalValue) AsStaticOperationDefinition() (StaticOperationDefinition, error) {
+	var body StaticOperationDefinition
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromCountMetricOperation overwrites any union data inside the MetricChartSchema0Metrics00 as the provided CountMetricOperation
-func (t *MetricChartSchema0Metrics00) FromCountMetricOperation(v CountMetricOperation) error {
+// FromStaticOperationDefinition overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided StaticOperationDefinition
+func (t *MetricComplementaryBar_GoalValue) FromStaticOperationDefinition(v StaticOperationDefinition) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeCountMetricOperation performs a merge with any union data inside the MetricChartSchema0Metrics00, using the provided CountMetricOperation
-func (t *MetricChartSchema0Metrics00) MergeCountMetricOperation(v CountMetricOperation) error {
+// MergeStaticOperationDefinition performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided StaticOperationDefinition
+func (t *MetricComplementaryBar_GoalValue) MergeStaticOperationDefinition(v StaticOperationDefinition) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100391,22 +101957,22 @@ func (t *MetricChartSchema0Metrics00) MergeCountMetricOperation(v CountMetricOpe
 	return err
 }
 
-// AsUniqueCountMetricOperation returns the union data inside the MetricChartSchema0Metrics00 as a UniqueCountMetricOperation
-func (t MetricChartSchema0Metrics00) AsUniqueCountMetricOperation() (UniqueCountMetricOperation, error) {
-	var body UniqueCountMetricOperation
+// AsFieldMetricOperations returns the union data inside the MetricComplementaryBar_GoalValue as a FieldMetricOperations
+func (t MetricComplementaryBar_GoalValue) AsFieldMetricOperations() (FieldMetricOperations, error) {
+	var body FieldMetricOperations
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromUniqueCountMetricOperation overwrites any union data inside the MetricChartSchema0Metrics00 as the provided UniqueCountMetricOperation
-func (t *MetricChartSchema0Metrics00) FromUniqueCountMetricOperation(v UniqueCountMetricOperation) error {
+// FromFieldMetricOperations overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided FieldMetricOperations
+func (t *MetricComplementaryBar_GoalValue) FromFieldMetricOperations(v FieldMetricOperations) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeUniqueCountMetricOperation performs a merge with any union data inside the MetricChartSchema0Metrics00, using the provided UniqueCountMetricOperation
-func (t *MetricChartSchema0Metrics00) MergeUniqueCountMetricOperation(v UniqueCountMetricOperation) error {
+// MergeFieldMetricOperations performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided FieldMetricOperations
+func (t *MetricComplementaryBar_GoalValue) MergeFieldMetricOperations(v FieldMetricOperations) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100417,162 +101983,22 @@ func (t *MetricChartSchema0Metrics00) MergeUniqueCountMetricOperation(v UniqueCo
 	return err
 }
 
-// AsMinMaxAvgMedianStdDevMetricOperation returns the union data inside the MetricChartSchema0Metrics00 as a MinMaxAvgMedianStdDevMetricOperation
-func (t MetricChartSchema0Metrics00) AsMinMaxAvgMedianStdDevMetricOperation() (MinMaxAvgMedianStdDevMetricOperation, error) {
-	var body MinMaxAvgMedianStdDevMetricOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMinMaxAvgMedianStdDevMetricOperation overwrites any union data inside the MetricChartSchema0Metrics00 as the provided MinMaxAvgMedianStdDevMetricOperation
-func (t *MetricChartSchema0Metrics00) FromMinMaxAvgMedianStdDevMetricOperation(v MinMaxAvgMedianStdDevMetricOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMinMaxAvgMedianStdDevMetricOperation performs a merge with any union data inside the MetricChartSchema0Metrics00, using the provided MinMaxAvgMedianStdDevMetricOperation
-func (t *MetricChartSchema0Metrics00) MergeMinMaxAvgMedianStdDevMetricOperation(v MinMaxAvgMedianStdDevMetricOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsSumMetricOperation returns the union data inside the MetricChartSchema0Metrics00 as a SumMetricOperation
-func (t MetricChartSchema0Metrics00) AsSumMetricOperation() (SumMetricOperation, error) {
-	var body SumMetricOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSumMetricOperation overwrites any union data inside the MetricChartSchema0Metrics00 as the provided SumMetricOperation
-func (t *MetricChartSchema0Metrics00) FromSumMetricOperation(v SumMetricOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSumMetricOperation performs a merge with any union data inside the MetricChartSchema0Metrics00, using the provided SumMetricOperation
-func (t *MetricChartSchema0Metrics00) MergeSumMetricOperation(v SumMetricOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsLastValueOperation returns the union data inside the MetricChartSchema0Metrics00 as a LastValueOperation
-func (t MetricChartSchema0Metrics00) AsLastValueOperation() (LastValueOperation, error) {
-	var body LastValueOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromLastValueOperation overwrites any union data inside the MetricChartSchema0Metrics00 as the provided LastValueOperation
-func (t *MetricChartSchema0Metrics00) FromLastValueOperation(v LastValueOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeLastValueOperation performs a merge with any union data inside the MetricChartSchema0Metrics00, using the provided LastValueOperation
-func (t *MetricChartSchema0Metrics00) MergeLastValueOperation(v LastValueOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsPercentileOperation returns the union data inside the MetricChartSchema0Metrics00 as a PercentileOperation
-func (t MetricChartSchema0Metrics00) AsPercentileOperation() (PercentileOperation, error) {
-	var body PercentileOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromPercentileOperation overwrites any union data inside the MetricChartSchema0Metrics00 as the provided PercentileOperation
-func (t *MetricChartSchema0Metrics00) FromPercentileOperation(v PercentileOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergePercentileOperation performs a merge with any union data inside the MetricChartSchema0Metrics00, using the provided PercentileOperation
-func (t *MetricChartSchema0Metrics00) MergePercentileOperation(v PercentileOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsPercentileRanksOperation returns the union data inside the MetricChartSchema0Metrics00 as a PercentileRanksOperation
-func (t MetricChartSchema0Metrics00) AsPercentileRanksOperation() (PercentileRanksOperation, error) {
-	var body PercentileRanksOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromPercentileRanksOperation overwrites any union data inside the MetricChartSchema0Metrics00 as the provided PercentileRanksOperation
-func (t *MetricChartSchema0Metrics00) FromPercentileRanksOperation(v PercentileRanksOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergePercentileRanksOperation performs a merge with any union data inside the MetricChartSchema0Metrics00, using the provided PercentileRanksOperation
-func (t *MetricChartSchema0Metrics00) MergePercentileRanksOperation(v PercentileRanksOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MetricChartSchema0Metrics00) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MetricChartSchema0Metrics00) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsDifferencesOperation returns the union data inside the MetricChartSchema0Metrics01 as a DifferencesOperation
-func (t MetricChartSchema0Metrics01) AsDifferencesOperation() (DifferencesOperation, error) {
+// AsDifferencesOperation returns the union data inside the MetricComplementaryBar_GoalValue as a DifferencesOperation
+func (t MetricComplementaryBar_GoalValue) AsDifferencesOperation() (DifferencesOperation, error) {
 	var body DifferencesOperation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromDifferencesOperation overwrites any union data inside the MetricChartSchema0Metrics01 as the provided DifferencesOperation
-func (t *MetricChartSchema0Metrics01) FromDifferencesOperation(v DifferencesOperation) error {
+// FromDifferencesOperation overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided DifferencesOperation
+func (t *MetricComplementaryBar_GoalValue) FromDifferencesOperation(v DifferencesOperation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeDifferencesOperation performs a merge with any union data inside the MetricChartSchema0Metrics01, using the provided DifferencesOperation
-func (t *MetricChartSchema0Metrics01) MergeDifferencesOperation(v DifferencesOperation) error {
+// MergeDifferencesOperation performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided DifferencesOperation
+func (t *MetricComplementaryBar_GoalValue) MergeDifferencesOperation(v DifferencesOperation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100583,22 +102009,22 @@ func (t *MetricChartSchema0Metrics01) MergeDifferencesOperation(v DifferencesOpe
 	return err
 }
 
-// AsMovingAverageOperation returns the union data inside the MetricChartSchema0Metrics01 as a MovingAverageOperation
-func (t MetricChartSchema0Metrics01) AsMovingAverageOperation() (MovingAverageOperation, error) {
+// AsMovingAverageOperation returns the union data inside the MetricComplementaryBar_GoalValue as a MovingAverageOperation
+func (t MetricComplementaryBar_GoalValue) AsMovingAverageOperation() (MovingAverageOperation, error) {
 	var body MovingAverageOperation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMovingAverageOperation overwrites any union data inside the MetricChartSchema0Metrics01 as the provided MovingAverageOperation
-func (t *MetricChartSchema0Metrics01) FromMovingAverageOperation(v MovingAverageOperation) error {
+// FromMovingAverageOperation overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided MovingAverageOperation
+func (t *MetricComplementaryBar_GoalValue) FromMovingAverageOperation(v MovingAverageOperation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMovingAverageOperation performs a merge with any union data inside the MetricChartSchema0Metrics01, using the provided MovingAverageOperation
-func (t *MetricChartSchema0Metrics01) MergeMovingAverageOperation(v MovingAverageOperation) error {
+// MergeMovingAverageOperation performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided MovingAverageOperation
+func (t *MetricComplementaryBar_GoalValue) MergeMovingAverageOperation(v MovingAverageOperation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100609,22 +102035,22 @@ func (t *MetricChartSchema0Metrics01) MergeMovingAverageOperation(v MovingAverag
 	return err
 }
 
-// AsCumulativeSumOperation returns the union data inside the MetricChartSchema0Metrics01 as a CumulativeSumOperation
-func (t MetricChartSchema0Metrics01) AsCumulativeSumOperation() (CumulativeSumOperation, error) {
+// AsCumulativeSumOperation returns the union data inside the MetricComplementaryBar_GoalValue as a CumulativeSumOperation
+func (t MetricComplementaryBar_GoalValue) AsCumulativeSumOperation() (CumulativeSumOperation, error) {
 	var body CumulativeSumOperation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromCumulativeSumOperation overwrites any union data inside the MetricChartSchema0Metrics01 as the provided CumulativeSumOperation
-func (t *MetricChartSchema0Metrics01) FromCumulativeSumOperation(v CumulativeSumOperation) error {
+// FromCumulativeSumOperation overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided CumulativeSumOperation
+func (t *MetricComplementaryBar_GoalValue) FromCumulativeSumOperation(v CumulativeSumOperation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeCumulativeSumOperation performs a merge with any union data inside the MetricChartSchema0Metrics01, using the provided CumulativeSumOperation
-func (t *MetricChartSchema0Metrics01) MergeCumulativeSumOperation(v CumulativeSumOperation) error {
+// MergeCumulativeSumOperation performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided CumulativeSumOperation
+func (t *MetricComplementaryBar_GoalValue) MergeCumulativeSumOperation(v CumulativeSumOperation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100635,22 +102061,22 @@ func (t *MetricChartSchema0Metrics01) MergeCumulativeSumOperation(v CumulativeSu
 	return err
 }
 
-// AsCounterRateOperation returns the union data inside the MetricChartSchema0Metrics01 as a CounterRateOperation
-func (t MetricChartSchema0Metrics01) AsCounterRateOperation() (CounterRateOperation, error) {
+// AsCounterRateOperation returns the union data inside the MetricComplementaryBar_GoalValue as a CounterRateOperation
+func (t MetricComplementaryBar_GoalValue) AsCounterRateOperation() (CounterRateOperation, error) {
 	var body CounterRateOperation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromCounterRateOperation overwrites any union data inside the MetricChartSchema0Metrics01 as the provided CounterRateOperation
-func (t *MetricChartSchema0Metrics01) FromCounterRateOperation(v CounterRateOperation) error {
+// FromCounterRateOperation overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided CounterRateOperation
+func (t *MetricComplementaryBar_GoalValue) FromCounterRateOperation(v CounterRateOperation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeCounterRateOperation performs a merge with any union data inside the MetricChartSchema0Metrics01, using the provided CounterRateOperation
-func (t *MetricChartSchema0Metrics01) MergeCounterRateOperation(v CounterRateOperation) error {
+// MergeCounterRateOperation performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided CounterRateOperation
+func (t *MetricComplementaryBar_GoalValue) MergeCounterRateOperation(v CounterRateOperation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100661,120 +102087,22 @@ func (t *MetricChartSchema0Metrics01) MergeCounterRateOperation(v CounterRateOpe
 	return err
 }
 
-func (t MetricChartSchema0Metrics01) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MetricChartSchema0Metrics01) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMetricChartSchema0Metrics10 returns the union data inside the MetricChartSchema0Metrics1 as a MetricChartSchema0Metrics10
-func (t MetricChartSchema0Metrics1) AsMetricChartSchema0Metrics10() (MetricChartSchema0Metrics10, error) {
-	var body MetricChartSchema0Metrics10
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMetricChartSchema0Metrics10 overwrites any union data inside the MetricChartSchema0Metrics1 as the provided MetricChartSchema0Metrics10
-func (t *MetricChartSchema0Metrics1) FromMetricChartSchema0Metrics10(v MetricChartSchema0Metrics10) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMetricChartSchema0Metrics10 performs a merge with any union data inside the MetricChartSchema0Metrics1, using the provided MetricChartSchema0Metrics10
-func (t *MetricChartSchema0Metrics1) MergeMetricChartSchema0Metrics10(v MetricChartSchema0Metrics10) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMetricChartSchema0Metrics11 returns the union data inside the MetricChartSchema0Metrics1 as a MetricChartSchema0Metrics11
-func (t MetricChartSchema0Metrics1) AsMetricChartSchema0Metrics11() (MetricChartSchema0Metrics11, error) {
-	var body MetricChartSchema0Metrics11
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMetricChartSchema0Metrics11 overwrites any union data inside the MetricChartSchema0Metrics1 as the provided MetricChartSchema0Metrics11
-func (t *MetricChartSchema0Metrics1) FromMetricChartSchema0Metrics11(v MetricChartSchema0Metrics11) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMetricChartSchema0Metrics11 performs a merge with any union data inside the MetricChartSchema0Metrics1, using the provided MetricChartSchema0Metrics11
-func (t *MetricChartSchema0Metrics1) MergeMetricChartSchema0Metrics11(v MetricChartSchema0Metrics11) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsFormulaOperation returns the union data inside the MetricChartSchema0Metrics1 as a FormulaOperation
-func (t MetricChartSchema0Metrics1) AsFormulaOperation() (FormulaOperation, error) {
-	var body FormulaOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromFormulaOperation overwrites any union data inside the MetricChartSchema0Metrics1 as the provided FormulaOperation
-func (t *MetricChartSchema0Metrics1) FromFormulaOperation(v FormulaOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeFormulaOperation performs a merge with any union data inside the MetricChartSchema0Metrics1, using the provided FormulaOperation
-func (t *MetricChartSchema0Metrics1) MergeFormulaOperation(v FormulaOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MetricChartSchema0Metrics1) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MetricChartSchema0Metrics1) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsCountMetricOperation returns the union data inside the MetricChartSchema0Metrics10 as a CountMetricOperation
-func (t MetricChartSchema0Metrics10) AsCountMetricOperation() (CountMetricOperation, error) {
+// AsCountMetricOperation returns the union data inside the MetricComplementaryBar_GoalValue as a CountMetricOperation
+func (t MetricComplementaryBar_GoalValue) AsCountMetricOperation() (CountMetricOperation, error) {
 	var body CountMetricOperation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromCountMetricOperation overwrites any union data inside the MetricChartSchema0Metrics10 as the provided CountMetricOperation
-func (t *MetricChartSchema0Metrics10) FromCountMetricOperation(v CountMetricOperation) error {
+// FromCountMetricOperation overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided CountMetricOperation
+func (t *MetricComplementaryBar_GoalValue) FromCountMetricOperation(v CountMetricOperation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeCountMetricOperation performs a merge with any union data inside the MetricChartSchema0Metrics10, using the provided CountMetricOperation
-func (t *MetricChartSchema0Metrics10) MergeCountMetricOperation(v CountMetricOperation) error {
+// MergeCountMetricOperation performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided CountMetricOperation
+func (t *MetricComplementaryBar_GoalValue) MergeCountMetricOperation(v CountMetricOperation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100785,22 +102113,22 @@ func (t *MetricChartSchema0Metrics10) MergeCountMetricOperation(v CountMetricOpe
 	return err
 }
 
-// AsUniqueCountMetricOperation returns the union data inside the MetricChartSchema0Metrics10 as a UniqueCountMetricOperation
-func (t MetricChartSchema0Metrics10) AsUniqueCountMetricOperation() (UniqueCountMetricOperation, error) {
+// AsUniqueCountMetricOperation returns the union data inside the MetricComplementaryBar_GoalValue as a UniqueCountMetricOperation
+func (t MetricComplementaryBar_GoalValue) AsUniqueCountMetricOperation() (UniqueCountMetricOperation, error) {
 	var body UniqueCountMetricOperation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromUniqueCountMetricOperation overwrites any union data inside the MetricChartSchema0Metrics10 as the provided UniqueCountMetricOperation
-func (t *MetricChartSchema0Metrics10) FromUniqueCountMetricOperation(v UniqueCountMetricOperation) error {
+// FromUniqueCountMetricOperation overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided UniqueCountMetricOperation
+func (t *MetricComplementaryBar_GoalValue) FromUniqueCountMetricOperation(v UniqueCountMetricOperation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeUniqueCountMetricOperation performs a merge with any union data inside the MetricChartSchema0Metrics10, using the provided UniqueCountMetricOperation
-func (t *MetricChartSchema0Metrics10) MergeUniqueCountMetricOperation(v UniqueCountMetricOperation) error {
+// MergeUniqueCountMetricOperation performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided UniqueCountMetricOperation
+func (t *MetricComplementaryBar_GoalValue) MergeUniqueCountMetricOperation(v UniqueCountMetricOperation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100811,74 +102139,22 @@ func (t *MetricChartSchema0Metrics10) MergeUniqueCountMetricOperation(v UniqueCo
 	return err
 }
 
-// AsMinMaxAvgMedianStdDevMetricOperation returns the union data inside the MetricChartSchema0Metrics10 as a MinMaxAvgMedianStdDevMetricOperation
-func (t MetricChartSchema0Metrics10) AsMinMaxAvgMedianStdDevMetricOperation() (MinMaxAvgMedianStdDevMetricOperation, error) {
-	var body MinMaxAvgMedianStdDevMetricOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMinMaxAvgMedianStdDevMetricOperation overwrites any union data inside the MetricChartSchema0Metrics10 as the provided MinMaxAvgMedianStdDevMetricOperation
-func (t *MetricChartSchema0Metrics10) FromMinMaxAvgMedianStdDevMetricOperation(v MinMaxAvgMedianStdDevMetricOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMinMaxAvgMedianStdDevMetricOperation performs a merge with any union data inside the MetricChartSchema0Metrics10, using the provided MinMaxAvgMedianStdDevMetricOperation
-func (t *MetricChartSchema0Metrics10) MergeMinMaxAvgMedianStdDevMetricOperation(v MinMaxAvgMedianStdDevMetricOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsSumMetricOperation returns the union data inside the MetricChartSchema0Metrics10 as a SumMetricOperation
-func (t MetricChartSchema0Metrics10) AsSumMetricOperation() (SumMetricOperation, error) {
-	var body SumMetricOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromSumMetricOperation overwrites any union data inside the MetricChartSchema0Metrics10 as the provided SumMetricOperation
-func (t *MetricChartSchema0Metrics10) FromSumMetricOperation(v SumMetricOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeSumMetricOperation performs a merge with any union data inside the MetricChartSchema0Metrics10, using the provided SumMetricOperation
-func (t *MetricChartSchema0Metrics10) MergeSumMetricOperation(v SumMetricOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsLastValueOperation returns the union data inside the MetricChartSchema0Metrics10 as a LastValueOperation
-func (t MetricChartSchema0Metrics10) AsLastValueOperation() (LastValueOperation, error) {
+// AsLastValueOperation returns the union data inside the MetricComplementaryBar_GoalValue as a LastValueOperation
+func (t MetricComplementaryBar_GoalValue) AsLastValueOperation() (LastValueOperation, error) {
 	var body LastValueOperation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromLastValueOperation overwrites any union data inside the MetricChartSchema0Metrics10 as the provided LastValueOperation
-func (t *MetricChartSchema0Metrics10) FromLastValueOperation(v LastValueOperation) error {
+// FromLastValueOperation overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided LastValueOperation
+func (t *MetricComplementaryBar_GoalValue) FromLastValueOperation(v LastValueOperation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeLastValueOperation performs a merge with any union data inside the MetricChartSchema0Metrics10, using the provided LastValueOperation
-func (t *MetricChartSchema0Metrics10) MergeLastValueOperation(v LastValueOperation) error {
+// MergeLastValueOperation performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided LastValueOperation
+func (t *MetricComplementaryBar_GoalValue) MergeLastValueOperation(v LastValueOperation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100889,22 +102165,22 @@ func (t *MetricChartSchema0Metrics10) MergeLastValueOperation(v LastValueOperati
 	return err
 }
 
-// AsPercentileOperation returns the union data inside the MetricChartSchema0Metrics10 as a PercentileOperation
-func (t MetricChartSchema0Metrics10) AsPercentileOperation() (PercentileOperation, error) {
+// AsPercentileOperation returns the union data inside the MetricComplementaryBar_GoalValue as a PercentileOperation
+func (t MetricComplementaryBar_GoalValue) AsPercentileOperation() (PercentileOperation, error) {
 	var body PercentileOperation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromPercentileOperation overwrites any union data inside the MetricChartSchema0Metrics10 as the provided PercentileOperation
-func (t *MetricChartSchema0Metrics10) FromPercentileOperation(v PercentileOperation) error {
+// FromPercentileOperation overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided PercentileOperation
+func (t *MetricComplementaryBar_GoalValue) FromPercentileOperation(v PercentileOperation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergePercentileOperation performs a merge with any union data inside the MetricChartSchema0Metrics10, using the provided PercentileOperation
-func (t *MetricChartSchema0Metrics10) MergePercentileOperation(v PercentileOperation) error {
+// MergePercentileOperation performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided PercentileOperation
+func (t *MetricComplementaryBar_GoalValue) MergePercentileOperation(v PercentileOperation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100915,22 +102191,22 @@ func (t *MetricChartSchema0Metrics10) MergePercentileOperation(v PercentileOpera
 	return err
 }
 
-// AsPercentileRanksOperation returns the union data inside the MetricChartSchema0Metrics10 as a PercentileRanksOperation
-func (t MetricChartSchema0Metrics10) AsPercentileRanksOperation() (PercentileRanksOperation, error) {
+// AsPercentileRanksOperation returns the union data inside the MetricComplementaryBar_GoalValue as a PercentileRanksOperation
+func (t MetricComplementaryBar_GoalValue) AsPercentileRanksOperation() (PercentileRanksOperation, error) {
 	var body PercentileRanksOperation
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromPercentileRanksOperation overwrites any union data inside the MetricChartSchema0Metrics10 as the provided PercentileRanksOperation
-func (t *MetricChartSchema0Metrics10) FromPercentileRanksOperation(v PercentileRanksOperation) error {
+// FromPercentileRanksOperation overwrites any union data inside the MetricComplementaryBar_GoalValue as the provided PercentileRanksOperation
+func (t *MetricComplementaryBar_GoalValue) FromPercentileRanksOperation(v PercentileRanksOperation) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergePercentileRanksOperation performs a merge with any union data inside the MetricChartSchema0Metrics10, using the provided PercentileRanksOperation
-func (t *MetricChartSchema0Metrics10) MergePercentileRanksOperation(v PercentileRanksOperation) error {
+// MergePercentileRanksOperation performs a merge with any union data inside the MetricComplementaryBar_GoalValue, using the provided PercentileRanksOperation
+func (t *MetricComplementaryBar_GoalValue) MergePercentileRanksOperation(v PercentileRanksOperation) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -100941,208 +102217,32 @@ func (t *MetricChartSchema0Metrics10) MergePercentileRanksOperation(v Percentile
 	return err
 }
 
-func (t MetricChartSchema0Metrics10) MarshalJSON() ([]byte, error) {
+func (t MetricComplementaryBar_GoalValue) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *MetricChartSchema0Metrics10) UnmarshalJSON(b []byte) error {
+func (t *MetricComplementaryBar_GoalValue) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
 
-// AsDifferencesOperation returns the union data inside the MetricChartSchema0Metrics11 as a DifferencesOperation
-func (t MetricChartSchema0Metrics11) AsDifferencesOperation() (DifferencesOperation, error) {
-	var body DifferencesOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromDifferencesOperation overwrites any union data inside the MetricChartSchema0Metrics11 as the provided DifferencesOperation
-func (t *MetricChartSchema0Metrics11) FromDifferencesOperation(v DifferencesOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeDifferencesOperation performs a merge with any union data inside the MetricChartSchema0Metrics11, using the provided DifferencesOperation
-func (t *MetricChartSchema0Metrics11) MergeDifferencesOperation(v DifferencesOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMovingAverageOperation returns the union data inside the MetricChartSchema0Metrics11 as a MovingAverageOperation
-func (t MetricChartSchema0Metrics11) AsMovingAverageOperation() (MovingAverageOperation, error) {
-	var body MovingAverageOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMovingAverageOperation overwrites any union data inside the MetricChartSchema0Metrics11 as the provided MovingAverageOperation
-func (t *MetricChartSchema0Metrics11) FromMovingAverageOperation(v MovingAverageOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMovingAverageOperation performs a merge with any union data inside the MetricChartSchema0Metrics11, using the provided MovingAverageOperation
-func (t *MetricChartSchema0Metrics11) MergeMovingAverageOperation(v MovingAverageOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCumulativeSumOperation returns the union data inside the MetricChartSchema0Metrics11 as a CumulativeSumOperation
-func (t MetricChartSchema0Metrics11) AsCumulativeSumOperation() (CumulativeSumOperation, error) {
-	var body CumulativeSumOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCumulativeSumOperation overwrites any union data inside the MetricChartSchema0Metrics11 as the provided CumulativeSumOperation
-func (t *MetricChartSchema0Metrics11) FromCumulativeSumOperation(v CumulativeSumOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCumulativeSumOperation performs a merge with any union data inside the MetricChartSchema0Metrics11, using the provided CumulativeSumOperation
-func (t *MetricChartSchema0Metrics11) MergeCumulativeSumOperation(v CumulativeSumOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsCounterRateOperation returns the union data inside the MetricChartSchema0Metrics11 as a CounterRateOperation
-func (t MetricChartSchema0Metrics11) AsCounterRateOperation() (CounterRateOperation, error) {
-	var body CounterRateOperation
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCounterRateOperation overwrites any union data inside the MetricChartSchema0Metrics11 as the provided CounterRateOperation
-func (t *MetricChartSchema0Metrics11) FromCounterRateOperation(v CounterRateOperation) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCounterRateOperation performs a merge with any union data inside the MetricChartSchema0Metrics11, using the provided CounterRateOperation
-func (t *MetricChartSchema0Metrics11) MergeCounterRateOperation(v CounterRateOperation) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MetricChartSchema0Metrics11) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MetricChartSchema0Metrics11) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsMetricChartSchema0Metrics0 returns the union data inside the MetricChartSchema_0_Metrics_Item as a MetricChartSchema0Metrics0
-func (t MetricChartSchema_0_Metrics_Item) AsMetricChartSchema0Metrics0() (MetricChartSchema0Metrics0, error) {
-	var body MetricChartSchema0Metrics0
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMetricChartSchema0Metrics0 overwrites any union data inside the MetricChartSchema_0_Metrics_Item as the provided MetricChartSchema0Metrics0
-func (t *MetricChartSchema_0_Metrics_Item) FromMetricChartSchema0Metrics0(v MetricChartSchema0Metrics0) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMetricChartSchema0Metrics0 performs a merge with any union data inside the MetricChartSchema_0_Metrics_Item, using the provided MetricChartSchema0Metrics0
-func (t *MetricChartSchema_0_Metrics_Item) MergeMetricChartSchema0Metrics0(v MetricChartSchema0Metrics0) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsMetricChartSchema0Metrics1 returns the union data inside the MetricChartSchema_0_Metrics_Item as a MetricChartSchema0Metrics1
-func (t MetricChartSchema_0_Metrics_Item) AsMetricChartSchema0Metrics1() (MetricChartSchema0Metrics1, error) {
-	var body MetricChartSchema0Metrics1
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromMetricChartSchema0Metrics1 overwrites any union data inside the MetricChartSchema_0_Metrics_Item as the provided MetricChartSchema0Metrics1
-func (t *MetricChartSchema_0_Metrics_Item) FromMetricChartSchema0Metrics1(v MetricChartSchema0Metrics1) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeMetricChartSchema0Metrics1 performs a merge with any union data inside the MetricChartSchema_0_Metrics_Item, using the provided MetricChartSchema0Metrics1
-func (t *MetricChartSchema_0_Metrics_Item) MergeMetricChartSchema0Metrics1(v MetricChartSchema0Metrics1) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t MetricChartSchema_0_Metrics_Item) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *MetricChartSchema_0_Metrics_Item) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsEsqlDatasetTypeSchema returns the union data inside the MetricChartSchema_1_Dataset as a EsqlDatasetTypeSchema
-func (t MetricChartSchema_1_Dataset) AsEsqlDatasetTypeSchema() (EsqlDatasetTypeSchema, error) {
+// AsEsqlDatasetTypeSchema returns the union data inside the MetricESQL_Dataset as a EsqlDatasetTypeSchema
+func (t MetricESQL_Dataset) AsEsqlDatasetTypeSchema() (EsqlDatasetTypeSchema, error) {
 	var body EsqlDatasetTypeSchema
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromEsqlDatasetTypeSchema overwrites any union data inside the MetricChartSchema_1_Dataset as the provided EsqlDatasetTypeSchema
-func (t *MetricChartSchema_1_Dataset) FromEsqlDatasetTypeSchema(v EsqlDatasetTypeSchema) error {
+// FromEsqlDatasetTypeSchema overwrites any union data inside the MetricESQL_Dataset as the provided EsqlDatasetTypeSchema
+func (t *MetricESQL_Dataset) FromEsqlDatasetTypeSchema(v EsqlDatasetTypeSchema) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeEsqlDatasetTypeSchema performs a merge with any union data inside the MetricChartSchema_1_Dataset, using the provided EsqlDatasetTypeSchema
-func (t *MetricChartSchema_1_Dataset) MergeEsqlDatasetTypeSchema(v EsqlDatasetTypeSchema) error {
+// MergeEsqlDatasetTypeSchema performs a merge with any union data inside the MetricESQL_Dataset, using the provided EsqlDatasetTypeSchema
+func (t *MetricESQL_Dataset) MergeEsqlDatasetTypeSchema(v EsqlDatasetTypeSchema) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101153,22 +102253,22 @@ func (t *MetricChartSchema_1_Dataset) MergeEsqlDatasetTypeSchema(v EsqlDatasetTy
 	return err
 }
 
-// AsTableESQLDatasetTypeSchema returns the union data inside the MetricChartSchema_1_Dataset as a TableESQLDatasetTypeSchema
-func (t MetricChartSchema_1_Dataset) AsTableESQLDatasetTypeSchema() (TableESQLDatasetTypeSchema, error) {
+// AsTableESQLDatasetTypeSchema returns the union data inside the MetricESQL_Dataset as a TableESQLDatasetTypeSchema
+func (t MetricESQL_Dataset) AsTableESQLDatasetTypeSchema() (TableESQLDatasetTypeSchema, error) {
 	var body TableESQLDatasetTypeSchema
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromTableESQLDatasetTypeSchema overwrites any union data inside the MetricChartSchema_1_Dataset as the provided TableESQLDatasetTypeSchema
-func (t *MetricChartSchema_1_Dataset) FromTableESQLDatasetTypeSchema(v TableESQLDatasetTypeSchema) error {
+// FromTableESQLDatasetTypeSchema overwrites any union data inside the MetricESQL_Dataset as the provided TableESQLDatasetTypeSchema
+func (t *MetricESQL_Dataset) FromTableESQLDatasetTypeSchema(v TableESQLDatasetTypeSchema) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeTableESQLDatasetTypeSchema performs a merge with any union data inside the MetricChartSchema_1_Dataset, using the provided TableESQLDatasetTypeSchema
-func (t *MetricChartSchema_1_Dataset) MergeTableESQLDatasetTypeSchema(v TableESQLDatasetTypeSchema) error {
+// MergeTableESQLDatasetTypeSchema performs a merge with any union data inside the MetricESQL_Dataset, using the provided TableESQLDatasetTypeSchema
+func (t *MetricESQL_Dataset) MergeTableESQLDatasetTypeSchema(v TableESQLDatasetTypeSchema) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101179,32 +102279,32 @@ func (t *MetricChartSchema_1_Dataset) MergeTableESQLDatasetTypeSchema(v TableESQ
 	return err
 }
 
-func (t MetricChartSchema_1_Dataset) MarshalJSON() ([]byte, error) {
+func (t MetricESQL_Dataset) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *MetricChartSchema_1_Dataset) UnmarshalJSON(b []byte) error {
+func (t *MetricESQL_Dataset) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
 
-// AsMetricComplementaryBar returns the union data inside the MetricChartSchema_1_Metrics_0_BackgroundChart as a MetricComplementaryBar
-func (t MetricChartSchema_1_Metrics_0_BackgroundChart) AsMetricComplementaryBar() (MetricComplementaryBar, error) {
+// AsMetricComplementaryBar returns the union data inside the MetricESQL_Metric_BackgroundChart as a MetricComplementaryBar
+func (t MetricESQL_Metric_BackgroundChart) AsMetricComplementaryBar() (MetricComplementaryBar, error) {
 	var body MetricComplementaryBar
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMetricComplementaryBar overwrites any union data inside the MetricChartSchema_1_Metrics_0_BackgroundChart as the provided MetricComplementaryBar
-func (t *MetricChartSchema_1_Metrics_0_BackgroundChart) FromMetricComplementaryBar(v MetricComplementaryBar) error {
+// FromMetricComplementaryBar overwrites any union data inside the MetricESQL_Metric_BackgroundChart as the provided MetricComplementaryBar
+func (t *MetricESQL_Metric_BackgroundChart) FromMetricComplementaryBar(v MetricComplementaryBar) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMetricComplementaryBar performs a merge with any union data inside the MetricChartSchema_1_Metrics_0_BackgroundChart, using the provided MetricComplementaryBar
-func (t *MetricChartSchema_1_Metrics_0_BackgroundChart) MergeMetricComplementaryBar(v MetricComplementaryBar) error {
+// MergeMetricComplementaryBar performs a merge with any union data inside the MetricESQL_Metric_BackgroundChart, using the provided MetricComplementaryBar
+func (t *MetricESQL_Metric_BackgroundChart) MergeMetricComplementaryBar(v MetricComplementaryBar) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101215,22 +102315,22 @@ func (t *MetricChartSchema_1_Metrics_0_BackgroundChart) MergeMetricComplementary
 	return err
 }
 
-// AsMetricComplementaryTrend returns the union data inside the MetricChartSchema_1_Metrics_0_BackgroundChart as a MetricComplementaryTrend
-func (t MetricChartSchema_1_Metrics_0_BackgroundChart) AsMetricComplementaryTrend() (MetricComplementaryTrend, error) {
+// AsMetricComplementaryTrend returns the union data inside the MetricESQL_Metric_BackgroundChart as a MetricComplementaryTrend
+func (t MetricESQL_Metric_BackgroundChart) AsMetricComplementaryTrend() (MetricComplementaryTrend, error) {
 	var body MetricComplementaryTrend
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMetricComplementaryTrend overwrites any union data inside the MetricChartSchema_1_Metrics_0_BackgroundChart as the provided MetricComplementaryTrend
-func (t *MetricChartSchema_1_Metrics_0_BackgroundChart) FromMetricComplementaryTrend(v MetricComplementaryTrend) error {
+// FromMetricComplementaryTrend overwrites any union data inside the MetricESQL_Metric_BackgroundChart as the provided MetricComplementaryTrend
+func (t *MetricESQL_Metric_BackgroundChart) FromMetricComplementaryTrend(v MetricComplementaryTrend) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMetricComplementaryTrend performs a merge with any union data inside the MetricChartSchema_1_Metrics_0_BackgroundChart, using the provided MetricComplementaryTrend
-func (t *MetricChartSchema_1_Metrics_0_BackgroundChart) MergeMetricComplementaryTrend(v MetricComplementaryTrend) error {
+// MergeMetricComplementaryTrend performs a merge with any union data inside the MetricESQL_Metric_BackgroundChart, using the provided MetricComplementaryTrend
+func (t *MetricESQL_Metric_BackgroundChart) MergeMetricComplementaryTrend(v MetricComplementaryTrend) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101241,32 +102341,32 @@ func (t *MetricChartSchema_1_Metrics_0_BackgroundChart) MergeMetricComplementary
 	return err
 }
 
-func (t MetricChartSchema_1_Metrics_0_BackgroundChart) MarshalJSON() ([]byte, error) {
+func (t MetricESQL_Metric_BackgroundChart) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *MetricChartSchema_1_Metrics_0_BackgroundChart) UnmarshalJSON(b []byte) error {
+func (t *MetricESQL_Metric_BackgroundChart) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
 
-// AsColorByValueAbsolute returns the union data inside the MetricChartSchema_1_Metrics_0_Color as a ColorByValueAbsolute
-func (t MetricChartSchema_1_Metrics_0_Color) AsColorByValueAbsolute() (ColorByValueAbsolute, error) {
+// AsColorByValueAbsolute returns the union data inside the MetricESQL_Metric_Color as a ColorByValueAbsolute
+func (t MetricESQL_Metric_Color) AsColorByValueAbsolute() (ColorByValueAbsolute, error) {
 	var body ColorByValueAbsolute
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromColorByValueAbsolute overwrites any union data inside the MetricChartSchema_1_Metrics_0_Color as the provided ColorByValueAbsolute
-func (t *MetricChartSchema_1_Metrics_0_Color) FromColorByValueAbsolute(v ColorByValueAbsolute) error {
+// FromColorByValueAbsolute overwrites any union data inside the MetricESQL_Metric_Color as the provided ColorByValueAbsolute
+func (t *MetricESQL_Metric_Color) FromColorByValueAbsolute(v ColorByValueAbsolute) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeColorByValueAbsolute performs a merge with any union data inside the MetricChartSchema_1_Metrics_0_Color, using the provided ColorByValueAbsolute
-func (t *MetricChartSchema_1_Metrics_0_Color) MergeColorByValueAbsolute(v ColorByValueAbsolute) error {
+// MergeColorByValueAbsolute performs a merge with any union data inside the MetricESQL_Metric_Color, using the provided ColorByValueAbsolute
+func (t *MetricESQL_Metric_Color) MergeColorByValueAbsolute(v ColorByValueAbsolute) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101277,22 +102377,22 @@ func (t *MetricChartSchema_1_Metrics_0_Color) MergeColorByValueAbsolute(v ColorB
 	return err
 }
 
-// AsStaticColor returns the union data inside the MetricChartSchema_1_Metrics_0_Color as a StaticColor
-func (t MetricChartSchema_1_Metrics_0_Color) AsStaticColor() (StaticColor, error) {
+// AsStaticColor returns the union data inside the MetricESQL_Metric_Color as a StaticColor
+func (t MetricESQL_Metric_Color) AsStaticColor() (StaticColor, error) {
 	var body StaticColor
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromStaticColor overwrites any union data inside the MetricChartSchema_1_Metrics_0_Color as the provided StaticColor
-func (t *MetricChartSchema_1_Metrics_0_Color) FromStaticColor(v StaticColor) error {
+// FromStaticColor overwrites any union data inside the MetricESQL_Metric_Color as the provided StaticColor
+func (t *MetricESQL_Metric_Color) FromStaticColor(v StaticColor) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeStaticColor performs a merge with any union data inside the MetricChartSchema_1_Metrics_0_Color, using the provided StaticColor
-func (t *MetricChartSchema_1_Metrics_0_Color) MergeStaticColor(v StaticColor) error {
+// MergeStaticColor performs a merge with any union data inside the MetricESQL_Metric_Color, using the provided StaticColor
+func (t *MetricESQL_Metric_Color) MergeStaticColor(v StaticColor) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101303,32 +102403,32 @@ func (t *MetricChartSchema_1_Metrics_0_Color) MergeStaticColor(v StaticColor) er
 	return err
 }
 
-func (t MetricChartSchema_1_Metrics_0_Color) MarshalJSON() ([]byte, error) {
+func (t MetricESQL_Metric_Color) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *MetricChartSchema_1_Metrics_0_Color) UnmarshalJSON(b []byte) error {
+func (t *MetricESQL_Metric_Color) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
 
-// AsColorByValueAbsolute returns the union data inside the MetricChartSchema_1_Metrics_1_Color as a ColorByValueAbsolute
-func (t MetricChartSchema_1_Metrics_1_Color) AsColorByValueAbsolute() (ColorByValueAbsolute, error) {
+// AsColorByValueAbsolute returns the union data inside the MetricESQL_SecondaryMetric_Color as a ColorByValueAbsolute
+func (t MetricESQL_SecondaryMetric_Color) AsColorByValueAbsolute() (ColorByValueAbsolute, error) {
 	var body ColorByValueAbsolute
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromColorByValueAbsolute overwrites any union data inside the MetricChartSchema_1_Metrics_1_Color as the provided ColorByValueAbsolute
-func (t *MetricChartSchema_1_Metrics_1_Color) FromColorByValueAbsolute(v ColorByValueAbsolute) error {
+// FromColorByValueAbsolute overwrites any union data inside the MetricESQL_SecondaryMetric_Color as the provided ColorByValueAbsolute
+func (t *MetricESQL_SecondaryMetric_Color) FromColorByValueAbsolute(v ColorByValueAbsolute) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeColorByValueAbsolute performs a merge with any union data inside the MetricChartSchema_1_Metrics_1_Color, using the provided ColorByValueAbsolute
-func (t *MetricChartSchema_1_Metrics_1_Color) MergeColorByValueAbsolute(v ColorByValueAbsolute) error {
+// MergeColorByValueAbsolute performs a merge with any union data inside the MetricESQL_SecondaryMetric_Color, using the provided ColorByValueAbsolute
+func (t *MetricESQL_SecondaryMetric_Color) MergeColorByValueAbsolute(v ColorByValueAbsolute) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101339,22 +102439,22 @@ func (t *MetricChartSchema_1_Metrics_1_Color) MergeColorByValueAbsolute(v ColorB
 	return err
 }
 
-// AsStaticColor returns the union data inside the MetricChartSchema_1_Metrics_1_Color as a StaticColor
-func (t MetricChartSchema_1_Metrics_1_Color) AsStaticColor() (StaticColor, error) {
+// AsStaticColor returns the union data inside the MetricESQL_SecondaryMetric_Color as a StaticColor
+func (t MetricESQL_SecondaryMetric_Color) AsStaticColor() (StaticColor, error) {
 	var body StaticColor
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromStaticColor overwrites any union data inside the MetricChartSchema_1_Metrics_1_Color as the provided StaticColor
-func (t *MetricChartSchema_1_Metrics_1_Color) FromStaticColor(v StaticColor) error {
+// FromStaticColor overwrites any union data inside the MetricESQL_SecondaryMetric_Color as the provided StaticColor
+func (t *MetricESQL_SecondaryMetric_Color) FromStaticColor(v StaticColor) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeStaticColor performs a merge with any union data inside the MetricChartSchema_1_Metrics_1_Color, using the provided StaticColor
-func (t *MetricChartSchema_1_Metrics_1_Color) MergeStaticColor(v StaticColor) error {
+// MergeStaticColor performs a merge with any union data inside the MetricESQL_SecondaryMetric_Color, using the provided StaticColor
+func (t *MetricESQL_SecondaryMetric_Color) MergeStaticColor(v StaticColor) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101365,32 +102465,32 @@ func (t *MetricChartSchema_1_Metrics_1_Color) MergeStaticColor(v StaticColor) er
 	return err
 }
 
-func (t MetricChartSchema_1_Metrics_1_Color) MarshalJSON() ([]byte, error) {
+func (t MetricESQL_SecondaryMetric_Color) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *MetricChartSchema_1_Metrics_1_Color) UnmarshalJSON(b []byte) error {
+func (t *MetricESQL_SecondaryMetric_Color) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
 
-// AsMetricCompareToBaseline returns the union data inside the MetricChartSchema_1_Metrics_1_Compare as a MetricCompareToBaseline
-func (t MetricChartSchema_1_Metrics_1_Compare) AsMetricCompareToBaseline() (MetricCompareToBaseline, error) {
+// AsMetricCompareToBaseline returns the union data inside the MetricESQL_SecondaryMetric_Compare as a MetricCompareToBaseline
+func (t MetricESQL_SecondaryMetric_Compare) AsMetricCompareToBaseline() (MetricCompareToBaseline, error) {
 	var body MetricCompareToBaseline
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMetricCompareToBaseline overwrites any union data inside the MetricChartSchema_1_Metrics_1_Compare as the provided MetricCompareToBaseline
-func (t *MetricChartSchema_1_Metrics_1_Compare) FromMetricCompareToBaseline(v MetricCompareToBaseline) error {
+// FromMetricCompareToBaseline overwrites any union data inside the MetricESQL_SecondaryMetric_Compare as the provided MetricCompareToBaseline
+func (t *MetricESQL_SecondaryMetric_Compare) FromMetricCompareToBaseline(v MetricCompareToBaseline) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMetricCompareToBaseline performs a merge with any union data inside the MetricChartSchema_1_Metrics_1_Compare, using the provided MetricCompareToBaseline
-func (t *MetricChartSchema_1_Metrics_1_Compare) MergeMetricCompareToBaseline(v MetricCompareToBaseline) error {
+// MergeMetricCompareToBaseline performs a merge with any union data inside the MetricESQL_SecondaryMetric_Compare, using the provided MetricCompareToBaseline
+func (t *MetricESQL_SecondaryMetric_Compare) MergeMetricCompareToBaseline(v MetricCompareToBaseline) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101401,22 +102501,22 @@ func (t *MetricChartSchema_1_Metrics_1_Compare) MergeMetricCompareToBaseline(v M
 	return err
 }
 
-// AsMetricCompareToPrimary returns the union data inside the MetricChartSchema_1_Metrics_1_Compare as a MetricCompareToPrimary
-func (t MetricChartSchema_1_Metrics_1_Compare) AsMetricCompareToPrimary() (MetricCompareToPrimary, error) {
+// AsMetricCompareToPrimary returns the union data inside the MetricESQL_SecondaryMetric_Compare as a MetricCompareToPrimary
+func (t MetricESQL_SecondaryMetric_Compare) AsMetricCompareToPrimary() (MetricCompareToPrimary, error) {
 	var body MetricCompareToPrimary
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMetricCompareToPrimary overwrites any union data inside the MetricChartSchema_1_Metrics_1_Compare as the provided MetricCompareToPrimary
-func (t *MetricChartSchema_1_Metrics_1_Compare) FromMetricCompareToPrimary(v MetricCompareToPrimary) error {
+// FromMetricCompareToPrimary overwrites any union data inside the MetricESQL_SecondaryMetric_Compare as the provided MetricCompareToPrimary
+func (t *MetricESQL_SecondaryMetric_Compare) FromMetricCompareToPrimary(v MetricCompareToPrimary) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMetricCompareToPrimary performs a merge with any union data inside the MetricChartSchema_1_Metrics_1_Compare, using the provided MetricCompareToPrimary
-func (t *MetricChartSchema_1_Metrics_1_Compare) MergeMetricCompareToPrimary(v MetricCompareToPrimary) error {
+// MergeMetricCompareToPrimary performs a merge with any union data inside the MetricESQL_SecondaryMetric_Compare, using the provided MetricCompareToPrimary
+func (t *MetricESQL_SecondaryMetric_Compare) MergeMetricCompareToPrimary(v MetricCompareToPrimary) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101427,32 +102527,32 @@ func (t *MetricChartSchema_1_Metrics_1_Compare) MergeMetricCompareToPrimary(v Me
 	return err
 }
 
-func (t MetricChartSchema_1_Metrics_1_Compare) MarshalJSON() ([]byte, error) {
+func (t MetricESQL_SecondaryMetric_Compare) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *MetricChartSchema_1_Metrics_1_Compare) UnmarshalJSON(b []byte) error {
+func (t *MetricESQL_SecondaryMetric_Compare) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
 
-// AsMetricChartSchema1Metrics0 returns the union data inside the MetricChartSchema_1_Metrics_Item as a MetricChartSchema1Metrics0
-func (t MetricChartSchema_1_Metrics_Item) AsMetricChartSchema1Metrics0() (MetricChartSchema1Metrics0, error) {
-	var body MetricChartSchema1Metrics0
+// AsDateHistogramOperationSchema returns the union data inside the MetricNoESQL_BreakdownBy as a DateHistogramOperationSchema
+func (t MetricNoESQL_BreakdownBy) AsDateHistogramOperationSchema() (DateHistogramOperationSchema, error) {
+	var body DateHistogramOperationSchema
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMetricChartSchema1Metrics0 overwrites any union data inside the MetricChartSchema_1_Metrics_Item as the provided MetricChartSchema1Metrics0
-func (t *MetricChartSchema_1_Metrics_Item) FromMetricChartSchema1Metrics0(v MetricChartSchema1Metrics0) error {
+// FromDateHistogramOperationSchema overwrites any union data inside the MetricNoESQL_BreakdownBy as the provided DateHistogramOperationSchema
+func (t *MetricNoESQL_BreakdownBy) FromDateHistogramOperationSchema(v DateHistogramOperationSchema) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMetricChartSchema1Metrics0 performs a merge with any union data inside the MetricChartSchema_1_Metrics_Item, using the provided MetricChartSchema1Metrics0
-func (t *MetricChartSchema_1_Metrics_Item) MergeMetricChartSchema1Metrics0(v MetricChartSchema1Metrics0) error {
+// MergeDateHistogramOperationSchema performs a merge with any union data inside the MetricNoESQL_BreakdownBy, using the provided DateHistogramOperationSchema
+func (t *MetricNoESQL_BreakdownBy) MergeDateHistogramOperationSchema(v DateHistogramOperationSchema) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101463,22 +102563,22 @@ func (t *MetricChartSchema_1_Metrics_Item) MergeMetricChartSchema1Metrics0(v Met
 	return err
 }
 
-// AsMetricChartSchema1Metrics1 returns the union data inside the MetricChartSchema_1_Metrics_Item as a MetricChartSchema1Metrics1
-func (t MetricChartSchema_1_Metrics_Item) AsMetricChartSchema1Metrics1() (MetricChartSchema1Metrics1, error) {
-	var body MetricChartSchema1Metrics1
+// AsTermsOperationSchema returns the union data inside the MetricNoESQL_BreakdownBy as a TermsOperationSchema
+func (t MetricNoESQL_BreakdownBy) AsTermsOperationSchema() (TermsOperationSchema, error) {
+	var body TermsOperationSchema
 	err := json.Unmarshal(t.union, &body)
 	return body, err
 }
 
-// FromMetricChartSchema1Metrics1 overwrites any union data inside the MetricChartSchema_1_Metrics_Item as the provided MetricChartSchema1Metrics1
-func (t *MetricChartSchema_1_Metrics_Item) FromMetricChartSchema1Metrics1(v MetricChartSchema1Metrics1) error {
+// FromTermsOperationSchema overwrites any union data inside the MetricNoESQL_BreakdownBy as the provided TermsOperationSchema
+func (t *MetricNoESQL_BreakdownBy) FromTermsOperationSchema(v TermsOperationSchema) error {
 	b, err := json.Marshal(v)
 	t.union = b
 	return err
 }
 
-// MergeMetricChartSchema1Metrics1 performs a merge with any union data inside the MetricChartSchema_1_Metrics_Item, using the provided MetricChartSchema1Metrics1
-func (t *MetricChartSchema_1_Metrics_Item) MergeMetricChartSchema1Metrics1(v MetricChartSchema1Metrics1) error {
+// MergeTermsOperationSchema performs a merge with any union data inside the MetricNoESQL_BreakdownBy, using the provided TermsOperationSchema
+func (t *MetricNoESQL_BreakdownBy) MergeTermsOperationSchema(v TermsOperationSchema) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -101489,12 +102589,940 @@ func (t *MetricChartSchema_1_Metrics_Item) MergeMetricChartSchema1Metrics1(v Met
 	return err
 }
 
-func (t MetricChartSchema_1_Metrics_Item) MarshalJSON() ([]byte, error) {
+// AsHistogramOperationSchema returns the union data inside the MetricNoESQL_BreakdownBy as a HistogramOperationSchema
+func (t MetricNoESQL_BreakdownBy) AsHistogramOperationSchema() (HistogramOperationSchema, error) {
+	var body HistogramOperationSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromHistogramOperationSchema overwrites any union data inside the MetricNoESQL_BreakdownBy as the provided HistogramOperationSchema
+func (t *MetricNoESQL_BreakdownBy) FromHistogramOperationSchema(v HistogramOperationSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeHistogramOperationSchema performs a merge with any union data inside the MetricNoESQL_BreakdownBy, using the provided HistogramOperationSchema
+func (t *MetricNoESQL_BreakdownBy) MergeHistogramOperationSchema(v HistogramOperationSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsMetricNoESQLBreakdownBy3 returns the union data inside the MetricNoESQL_BreakdownBy as a MetricNoESQLBreakdownBy3
+func (t MetricNoESQL_BreakdownBy) AsMetricNoESQLBreakdownBy3() (MetricNoESQLBreakdownBy3, error) {
+	var body MetricNoESQLBreakdownBy3
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMetricNoESQLBreakdownBy3 overwrites any union data inside the MetricNoESQL_BreakdownBy as the provided MetricNoESQLBreakdownBy3
+func (t *MetricNoESQL_BreakdownBy) FromMetricNoESQLBreakdownBy3(v MetricNoESQLBreakdownBy3) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMetricNoESQLBreakdownBy3 performs a merge with any union data inside the MetricNoESQL_BreakdownBy, using the provided MetricNoESQLBreakdownBy3
+func (t *MetricNoESQL_BreakdownBy) MergeMetricNoESQLBreakdownBy3(v MetricNoESQLBreakdownBy3) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsFiltersOperationSchema returns the union data inside the MetricNoESQL_BreakdownBy as a FiltersOperationSchema
+func (t MetricNoESQL_BreakdownBy) AsFiltersOperationSchema() (FiltersOperationSchema, error) {
+	var body FiltersOperationSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromFiltersOperationSchema overwrites any union data inside the MetricNoESQL_BreakdownBy as the provided FiltersOperationSchema
+func (t *MetricNoESQL_BreakdownBy) FromFiltersOperationSchema(v FiltersOperationSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeFiltersOperationSchema performs a merge with any union data inside the MetricNoESQL_BreakdownBy, using the provided FiltersOperationSchema
+func (t *MetricNoESQL_BreakdownBy) MergeFiltersOperationSchema(v FiltersOperationSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t MetricNoESQL_BreakdownBy) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
 }
 
-func (t *MetricChartSchema_1_Metrics_Item) UnmarshalJSON(b []byte) error {
+func (t *MetricNoESQL_BreakdownBy) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsDataViewDatasetTypeSchema returns the union data inside the MetricNoESQL_Dataset as a DataViewDatasetTypeSchema
+func (t MetricNoESQL_Dataset) AsDataViewDatasetTypeSchema() (DataViewDatasetTypeSchema, error) {
+	var body DataViewDatasetTypeSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDataViewDatasetTypeSchema overwrites any union data inside the MetricNoESQL_Dataset as the provided DataViewDatasetTypeSchema
+func (t *MetricNoESQL_Dataset) FromDataViewDatasetTypeSchema(v DataViewDatasetTypeSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDataViewDatasetTypeSchema performs a merge with any union data inside the MetricNoESQL_Dataset, using the provided DataViewDatasetTypeSchema
+func (t *MetricNoESQL_Dataset) MergeDataViewDatasetTypeSchema(v DataViewDatasetTypeSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsIndexDatasetTypeSchema returns the union data inside the MetricNoESQL_Dataset as a IndexDatasetTypeSchema
+func (t MetricNoESQL_Dataset) AsIndexDatasetTypeSchema() (IndexDatasetTypeSchema, error) {
+	var body IndexDatasetTypeSchema
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromIndexDatasetTypeSchema overwrites any union data inside the MetricNoESQL_Dataset as the provided IndexDatasetTypeSchema
+func (t *MetricNoESQL_Dataset) FromIndexDatasetTypeSchema(v IndexDatasetTypeSchema) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeIndexDatasetTypeSchema performs a merge with any union data inside the MetricNoESQL_Dataset, using the provided IndexDatasetTypeSchema
+func (t *MetricNoESQL_Dataset) MergeIndexDatasetTypeSchema(v IndexDatasetTypeSchema) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t MetricNoESQL_Dataset) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *MetricNoESQL_Dataset) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsCountMetricOperation returns the union data inside the MetricNoESQLMetric0 as a CountMetricOperation
+func (t MetricNoESQLMetric0) AsCountMetricOperation() (CountMetricOperation, error) {
+	var body CountMetricOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromCountMetricOperation overwrites any union data inside the MetricNoESQLMetric0 as the provided CountMetricOperation
+func (t *MetricNoESQLMetric0) FromCountMetricOperation(v CountMetricOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeCountMetricOperation performs a merge with any union data inside the MetricNoESQLMetric0, using the provided CountMetricOperation
+func (t *MetricNoESQLMetric0) MergeCountMetricOperation(v CountMetricOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsUniqueCountMetricOperation returns the union data inside the MetricNoESQLMetric0 as a UniqueCountMetricOperation
+func (t MetricNoESQLMetric0) AsUniqueCountMetricOperation() (UniqueCountMetricOperation, error) {
+	var body UniqueCountMetricOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUniqueCountMetricOperation overwrites any union data inside the MetricNoESQLMetric0 as the provided UniqueCountMetricOperation
+func (t *MetricNoESQLMetric0) FromUniqueCountMetricOperation(v UniqueCountMetricOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUniqueCountMetricOperation performs a merge with any union data inside the MetricNoESQLMetric0, using the provided UniqueCountMetricOperation
+func (t *MetricNoESQLMetric0) MergeUniqueCountMetricOperation(v UniqueCountMetricOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsMinMaxAvgMedianStdDevMetricOperation returns the union data inside the MetricNoESQLMetric0 as a MinMaxAvgMedianStdDevMetricOperation
+func (t MetricNoESQLMetric0) AsMinMaxAvgMedianStdDevMetricOperation() (MinMaxAvgMedianStdDevMetricOperation, error) {
+	var body MinMaxAvgMedianStdDevMetricOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMinMaxAvgMedianStdDevMetricOperation overwrites any union data inside the MetricNoESQLMetric0 as the provided MinMaxAvgMedianStdDevMetricOperation
+func (t *MetricNoESQLMetric0) FromMinMaxAvgMedianStdDevMetricOperation(v MinMaxAvgMedianStdDevMetricOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMinMaxAvgMedianStdDevMetricOperation performs a merge with any union data inside the MetricNoESQLMetric0, using the provided MinMaxAvgMedianStdDevMetricOperation
+func (t *MetricNoESQLMetric0) MergeMinMaxAvgMedianStdDevMetricOperation(v MinMaxAvgMedianStdDevMetricOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsSumMetricOperation returns the union data inside the MetricNoESQLMetric0 as a SumMetricOperation
+func (t MetricNoESQLMetric0) AsSumMetricOperation() (SumMetricOperation, error) {
+	var body SumMetricOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromSumMetricOperation overwrites any union data inside the MetricNoESQLMetric0 as the provided SumMetricOperation
+func (t *MetricNoESQLMetric0) FromSumMetricOperation(v SumMetricOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeSumMetricOperation performs a merge with any union data inside the MetricNoESQLMetric0, using the provided SumMetricOperation
+func (t *MetricNoESQLMetric0) MergeSumMetricOperation(v SumMetricOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsLastValueOperation returns the union data inside the MetricNoESQLMetric0 as a LastValueOperation
+func (t MetricNoESQLMetric0) AsLastValueOperation() (LastValueOperation, error) {
+	var body LastValueOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromLastValueOperation overwrites any union data inside the MetricNoESQLMetric0 as the provided LastValueOperation
+func (t *MetricNoESQLMetric0) FromLastValueOperation(v LastValueOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeLastValueOperation performs a merge with any union data inside the MetricNoESQLMetric0, using the provided LastValueOperation
+func (t *MetricNoESQLMetric0) MergeLastValueOperation(v LastValueOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsPercentileOperation returns the union data inside the MetricNoESQLMetric0 as a PercentileOperation
+func (t MetricNoESQLMetric0) AsPercentileOperation() (PercentileOperation, error) {
+	var body PercentileOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromPercentileOperation overwrites any union data inside the MetricNoESQLMetric0 as the provided PercentileOperation
+func (t *MetricNoESQLMetric0) FromPercentileOperation(v PercentileOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergePercentileOperation performs a merge with any union data inside the MetricNoESQLMetric0, using the provided PercentileOperation
+func (t *MetricNoESQLMetric0) MergePercentileOperation(v PercentileOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsPercentileRanksOperation returns the union data inside the MetricNoESQLMetric0 as a PercentileRanksOperation
+func (t MetricNoESQLMetric0) AsPercentileRanksOperation() (PercentileRanksOperation, error) {
+	var body PercentileRanksOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromPercentileRanksOperation overwrites any union data inside the MetricNoESQLMetric0 as the provided PercentileRanksOperation
+func (t *MetricNoESQLMetric0) FromPercentileRanksOperation(v PercentileRanksOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergePercentileRanksOperation performs a merge with any union data inside the MetricNoESQLMetric0, using the provided PercentileRanksOperation
+func (t *MetricNoESQLMetric0) MergePercentileRanksOperation(v PercentileRanksOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t MetricNoESQLMetric0) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *MetricNoESQLMetric0) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsDifferencesOperation returns the union data inside the MetricNoESQLMetric1 as a DifferencesOperation
+func (t MetricNoESQLMetric1) AsDifferencesOperation() (DifferencesOperation, error) {
+	var body DifferencesOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDifferencesOperation overwrites any union data inside the MetricNoESQLMetric1 as the provided DifferencesOperation
+func (t *MetricNoESQLMetric1) FromDifferencesOperation(v DifferencesOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDifferencesOperation performs a merge with any union data inside the MetricNoESQLMetric1, using the provided DifferencesOperation
+func (t *MetricNoESQLMetric1) MergeDifferencesOperation(v DifferencesOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsMovingAverageOperation returns the union data inside the MetricNoESQLMetric1 as a MovingAverageOperation
+func (t MetricNoESQLMetric1) AsMovingAverageOperation() (MovingAverageOperation, error) {
+	var body MovingAverageOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMovingAverageOperation overwrites any union data inside the MetricNoESQLMetric1 as the provided MovingAverageOperation
+func (t *MetricNoESQLMetric1) FromMovingAverageOperation(v MovingAverageOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMovingAverageOperation performs a merge with any union data inside the MetricNoESQLMetric1, using the provided MovingAverageOperation
+func (t *MetricNoESQLMetric1) MergeMovingAverageOperation(v MovingAverageOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsCumulativeSumOperation returns the union data inside the MetricNoESQLMetric1 as a CumulativeSumOperation
+func (t MetricNoESQLMetric1) AsCumulativeSumOperation() (CumulativeSumOperation, error) {
+	var body CumulativeSumOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromCumulativeSumOperation overwrites any union data inside the MetricNoESQLMetric1 as the provided CumulativeSumOperation
+func (t *MetricNoESQLMetric1) FromCumulativeSumOperation(v CumulativeSumOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeCumulativeSumOperation performs a merge with any union data inside the MetricNoESQLMetric1, using the provided CumulativeSumOperation
+func (t *MetricNoESQLMetric1) MergeCumulativeSumOperation(v CumulativeSumOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsCounterRateOperation returns the union data inside the MetricNoESQLMetric1 as a CounterRateOperation
+func (t MetricNoESQLMetric1) AsCounterRateOperation() (CounterRateOperation, error) {
+	var body CounterRateOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromCounterRateOperation overwrites any union data inside the MetricNoESQLMetric1 as the provided CounterRateOperation
+func (t *MetricNoESQLMetric1) FromCounterRateOperation(v CounterRateOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeCounterRateOperation performs a merge with any union data inside the MetricNoESQLMetric1, using the provided CounterRateOperation
+func (t *MetricNoESQLMetric1) MergeCounterRateOperation(v CounterRateOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t MetricNoESQLMetric1) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *MetricNoESQLMetric1) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsMetricNoESQLMetric0 returns the union data inside the MetricNoESQL_Metric as a MetricNoESQLMetric0
+func (t MetricNoESQL_Metric) AsMetricNoESQLMetric0() (MetricNoESQLMetric0, error) {
+	var body MetricNoESQLMetric0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMetricNoESQLMetric0 overwrites any union data inside the MetricNoESQL_Metric as the provided MetricNoESQLMetric0
+func (t *MetricNoESQL_Metric) FromMetricNoESQLMetric0(v MetricNoESQLMetric0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMetricNoESQLMetric0 performs a merge with any union data inside the MetricNoESQL_Metric, using the provided MetricNoESQLMetric0
+func (t *MetricNoESQL_Metric) MergeMetricNoESQLMetric0(v MetricNoESQLMetric0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsMetricNoESQLMetric1 returns the union data inside the MetricNoESQL_Metric as a MetricNoESQLMetric1
+func (t MetricNoESQL_Metric) AsMetricNoESQLMetric1() (MetricNoESQLMetric1, error) {
+	var body MetricNoESQLMetric1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMetricNoESQLMetric1 overwrites any union data inside the MetricNoESQL_Metric as the provided MetricNoESQLMetric1
+func (t *MetricNoESQL_Metric) FromMetricNoESQLMetric1(v MetricNoESQLMetric1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMetricNoESQLMetric1 performs a merge with any union data inside the MetricNoESQL_Metric, using the provided MetricNoESQLMetric1
+func (t *MetricNoESQL_Metric) MergeMetricNoESQLMetric1(v MetricNoESQLMetric1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsFormulaOperation returns the union data inside the MetricNoESQL_Metric as a FormulaOperation
+func (t MetricNoESQL_Metric) AsFormulaOperation() (FormulaOperation, error) {
+	var body FormulaOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromFormulaOperation overwrites any union data inside the MetricNoESQL_Metric as the provided FormulaOperation
+func (t *MetricNoESQL_Metric) FromFormulaOperation(v FormulaOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeFormulaOperation performs a merge with any union data inside the MetricNoESQL_Metric, using the provided FormulaOperation
+func (t *MetricNoESQL_Metric) MergeFormulaOperation(v FormulaOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t MetricNoESQL_Metric) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *MetricNoESQL_Metric) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsCountMetricOperation returns the union data inside the MetricNoESQLSecondaryMetric0 as a CountMetricOperation
+func (t MetricNoESQLSecondaryMetric0) AsCountMetricOperation() (CountMetricOperation, error) {
+	var body CountMetricOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromCountMetricOperation overwrites any union data inside the MetricNoESQLSecondaryMetric0 as the provided CountMetricOperation
+func (t *MetricNoESQLSecondaryMetric0) FromCountMetricOperation(v CountMetricOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeCountMetricOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric0, using the provided CountMetricOperation
+func (t *MetricNoESQLSecondaryMetric0) MergeCountMetricOperation(v CountMetricOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsUniqueCountMetricOperation returns the union data inside the MetricNoESQLSecondaryMetric0 as a UniqueCountMetricOperation
+func (t MetricNoESQLSecondaryMetric0) AsUniqueCountMetricOperation() (UniqueCountMetricOperation, error) {
+	var body UniqueCountMetricOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromUniqueCountMetricOperation overwrites any union data inside the MetricNoESQLSecondaryMetric0 as the provided UniqueCountMetricOperation
+func (t *MetricNoESQLSecondaryMetric0) FromUniqueCountMetricOperation(v UniqueCountMetricOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeUniqueCountMetricOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric0, using the provided UniqueCountMetricOperation
+func (t *MetricNoESQLSecondaryMetric0) MergeUniqueCountMetricOperation(v UniqueCountMetricOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsMinMaxAvgMedianStdDevMetricOperation returns the union data inside the MetricNoESQLSecondaryMetric0 as a MinMaxAvgMedianStdDevMetricOperation
+func (t MetricNoESQLSecondaryMetric0) AsMinMaxAvgMedianStdDevMetricOperation() (MinMaxAvgMedianStdDevMetricOperation, error) {
+	var body MinMaxAvgMedianStdDevMetricOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMinMaxAvgMedianStdDevMetricOperation overwrites any union data inside the MetricNoESQLSecondaryMetric0 as the provided MinMaxAvgMedianStdDevMetricOperation
+func (t *MetricNoESQLSecondaryMetric0) FromMinMaxAvgMedianStdDevMetricOperation(v MinMaxAvgMedianStdDevMetricOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMinMaxAvgMedianStdDevMetricOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric0, using the provided MinMaxAvgMedianStdDevMetricOperation
+func (t *MetricNoESQLSecondaryMetric0) MergeMinMaxAvgMedianStdDevMetricOperation(v MinMaxAvgMedianStdDevMetricOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsSumMetricOperation returns the union data inside the MetricNoESQLSecondaryMetric0 as a SumMetricOperation
+func (t MetricNoESQLSecondaryMetric0) AsSumMetricOperation() (SumMetricOperation, error) {
+	var body SumMetricOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromSumMetricOperation overwrites any union data inside the MetricNoESQLSecondaryMetric0 as the provided SumMetricOperation
+func (t *MetricNoESQLSecondaryMetric0) FromSumMetricOperation(v SumMetricOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeSumMetricOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric0, using the provided SumMetricOperation
+func (t *MetricNoESQLSecondaryMetric0) MergeSumMetricOperation(v SumMetricOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsLastValueOperation returns the union data inside the MetricNoESQLSecondaryMetric0 as a LastValueOperation
+func (t MetricNoESQLSecondaryMetric0) AsLastValueOperation() (LastValueOperation, error) {
+	var body LastValueOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromLastValueOperation overwrites any union data inside the MetricNoESQLSecondaryMetric0 as the provided LastValueOperation
+func (t *MetricNoESQLSecondaryMetric0) FromLastValueOperation(v LastValueOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeLastValueOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric0, using the provided LastValueOperation
+func (t *MetricNoESQLSecondaryMetric0) MergeLastValueOperation(v LastValueOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsPercentileOperation returns the union data inside the MetricNoESQLSecondaryMetric0 as a PercentileOperation
+func (t MetricNoESQLSecondaryMetric0) AsPercentileOperation() (PercentileOperation, error) {
+	var body PercentileOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromPercentileOperation overwrites any union data inside the MetricNoESQLSecondaryMetric0 as the provided PercentileOperation
+func (t *MetricNoESQLSecondaryMetric0) FromPercentileOperation(v PercentileOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergePercentileOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric0, using the provided PercentileOperation
+func (t *MetricNoESQLSecondaryMetric0) MergePercentileOperation(v PercentileOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsPercentileRanksOperation returns the union data inside the MetricNoESQLSecondaryMetric0 as a PercentileRanksOperation
+func (t MetricNoESQLSecondaryMetric0) AsPercentileRanksOperation() (PercentileRanksOperation, error) {
+	var body PercentileRanksOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromPercentileRanksOperation overwrites any union data inside the MetricNoESQLSecondaryMetric0 as the provided PercentileRanksOperation
+func (t *MetricNoESQLSecondaryMetric0) FromPercentileRanksOperation(v PercentileRanksOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergePercentileRanksOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric0, using the provided PercentileRanksOperation
+func (t *MetricNoESQLSecondaryMetric0) MergePercentileRanksOperation(v PercentileRanksOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t MetricNoESQLSecondaryMetric0) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *MetricNoESQLSecondaryMetric0) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsDifferencesOperation returns the union data inside the MetricNoESQLSecondaryMetric1 as a DifferencesOperation
+func (t MetricNoESQLSecondaryMetric1) AsDifferencesOperation() (DifferencesOperation, error) {
+	var body DifferencesOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromDifferencesOperation overwrites any union data inside the MetricNoESQLSecondaryMetric1 as the provided DifferencesOperation
+func (t *MetricNoESQLSecondaryMetric1) FromDifferencesOperation(v DifferencesOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeDifferencesOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric1, using the provided DifferencesOperation
+func (t *MetricNoESQLSecondaryMetric1) MergeDifferencesOperation(v DifferencesOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsMovingAverageOperation returns the union data inside the MetricNoESQLSecondaryMetric1 as a MovingAverageOperation
+func (t MetricNoESQLSecondaryMetric1) AsMovingAverageOperation() (MovingAverageOperation, error) {
+	var body MovingAverageOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMovingAverageOperation overwrites any union data inside the MetricNoESQLSecondaryMetric1 as the provided MovingAverageOperation
+func (t *MetricNoESQLSecondaryMetric1) FromMovingAverageOperation(v MovingAverageOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMovingAverageOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric1, using the provided MovingAverageOperation
+func (t *MetricNoESQLSecondaryMetric1) MergeMovingAverageOperation(v MovingAverageOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsCumulativeSumOperation returns the union data inside the MetricNoESQLSecondaryMetric1 as a CumulativeSumOperation
+func (t MetricNoESQLSecondaryMetric1) AsCumulativeSumOperation() (CumulativeSumOperation, error) {
+	var body CumulativeSumOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromCumulativeSumOperation overwrites any union data inside the MetricNoESQLSecondaryMetric1 as the provided CumulativeSumOperation
+func (t *MetricNoESQLSecondaryMetric1) FromCumulativeSumOperation(v CumulativeSumOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeCumulativeSumOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric1, using the provided CumulativeSumOperation
+func (t *MetricNoESQLSecondaryMetric1) MergeCumulativeSumOperation(v CumulativeSumOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsCounterRateOperation returns the union data inside the MetricNoESQLSecondaryMetric1 as a CounterRateOperation
+func (t MetricNoESQLSecondaryMetric1) AsCounterRateOperation() (CounterRateOperation, error) {
+	var body CounterRateOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromCounterRateOperation overwrites any union data inside the MetricNoESQLSecondaryMetric1 as the provided CounterRateOperation
+func (t *MetricNoESQLSecondaryMetric1) FromCounterRateOperation(v CounterRateOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeCounterRateOperation performs a merge with any union data inside the MetricNoESQLSecondaryMetric1, using the provided CounterRateOperation
+func (t *MetricNoESQLSecondaryMetric1) MergeCounterRateOperation(v CounterRateOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t MetricNoESQLSecondaryMetric1) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *MetricNoESQLSecondaryMetric1) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsMetricNoESQLSecondaryMetric0 returns the union data inside the MetricNoESQL_SecondaryMetric as a MetricNoESQLSecondaryMetric0
+func (t MetricNoESQL_SecondaryMetric) AsMetricNoESQLSecondaryMetric0() (MetricNoESQLSecondaryMetric0, error) {
+	var body MetricNoESQLSecondaryMetric0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMetricNoESQLSecondaryMetric0 overwrites any union data inside the MetricNoESQL_SecondaryMetric as the provided MetricNoESQLSecondaryMetric0
+func (t *MetricNoESQL_SecondaryMetric) FromMetricNoESQLSecondaryMetric0(v MetricNoESQLSecondaryMetric0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMetricNoESQLSecondaryMetric0 performs a merge with any union data inside the MetricNoESQL_SecondaryMetric, using the provided MetricNoESQLSecondaryMetric0
+func (t *MetricNoESQL_SecondaryMetric) MergeMetricNoESQLSecondaryMetric0(v MetricNoESQLSecondaryMetric0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsMetricNoESQLSecondaryMetric1 returns the union data inside the MetricNoESQL_SecondaryMetric as a MetricNoESQLSecondaryMetric1
+func (t MetricNoESQL_SecondaryMetric) AsMetricNoESQLSecondaryMetric1() (MetricNoESQLSecondaryMetric1, error) {
+	var body MetricNoESQLSecondaryMetric1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromMetricNoESQLSecondaryMetric1 overwrites any union data inside the MetricNoESQL_SecondaryMetric as the provided MetricNoESQLSecondaryMetric1
+func (t *MetricNoESQL_SecondaryMetric) FromMetricNoESQLSecondaryMetric1(v MetricNoESQLSecondaryMetric1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeMetricNoESQLSecondaryMetric1 performs a merge with any union data inside the MetricNoESQL_SecondaryMetric, using the provided MetricNoESQLSecondaryMetric1
+func (t *MetricNoESQL_SecondaryMetric) MergeMetricNoESQLSecondaryMetric1(v MetricNoESQLSecondaryMetric1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsFormulaOperation returns the union data inside the MetricNoESQL_SecondaryMetric as a FormulaOperation
+func (t MetricNoESQL_SecondaryMetric) AsFormulaOperation() (FormulaOperation, error) {
+	var body FormulaOperation
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromFormulaOperation overwrites any union data inside the MetricNoESQL_SecondaryMetric as the provided FormulaOperation
+func (t *MetricNoESQL_SecondaryMetric) FromFormulaOperation(v FormulaOperation) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeFormulaOperation performs a merge with any union data inside the MetricNoESQL_SecondaryMetric, using the provided FormulaOperation
+func (t *MetricNoESQL_SecondaryMetric) MergeFormulaOperation(v FormulaOperation) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t MetricNoESQL_SecondaryMetric) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *MetricNoESQL_SecondaryMetric) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -103040,6 +105068,590 @@ func (t PackageListItem_Type) MarshalJSON() ([]byte, error) {
 }
 
 func (t *PackageListItem_Type) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsParamsEsQueryDslRuleIndex0 returns the union data inside the ParamsEsQueryDslRule_Index as a ParamsEsQueryDslRuleIndex0
+func (t ParamsEsQueryDslRule_Index) AsParamsEsQueryDslRuleIndex0() (ParamsEsQueryDslRuleIndex0, error) {
+	var body ParamsEsQueryDslRuleIndex0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsEsQueryDslRuleIndex0 overwrites any union data inside the ParamsEsQueryDslRule_Index as the provided ParamsEsQueryDslRuleIndex0
+func (t *ParamsEsQueryDslRule_Index) FromParamsEsQueryDslRuleIndex0(v ParamsEsQueryDslRuleIndex0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsEsQueryDslRuleIndex0 performs a merge with any union data inside the ParamsEsQueryDslRule_Index, using the provided ParamsEsQueryDslRuleIndex0
+func (t *ParamsEsQueryDslRule_Index) MergeParamsEsQueryDslRuleIndex0(v ParamsEsQueryDslRuleIndex0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsParamsEsQueryDslRuleIndex1 returns the union data inside the ParamsEsQueryDslRule_Index as a ParamsEsQueryDslRuleIndex1
+func (t ParamsEsQueryDslRule_Index) AsParamsEsQueryDslRuleIndex1() (ParamsEsQueryDslRuleIndex1, error) {
+	var body ParamsEsQueryDslRuleIndex1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsEsQueryDslRuleIndex1 overwrites any union data inside the ParamsEsQueryDslRule_Index as the provided ParamsEsQueryDslRuleIndex1
+func (t *ParamsEsQueryDslRule_Index) FromParamsEsQueryDslRuleIndex1(v ParamsEsQueryDslRuleIndex1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsEsQueryDslRuleIndex1 performs a merge with any union data inside the ParamsEsQueryDslRule_Index, using the provided ParamsEsQueryDslRuleIndex1
+func (t *ParamsEsQueryDslRule_Index) MergeParamsEsQueryDslRuleIndex1(v ParamsEsQueryDslRuleIndex1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ParamsEsQueryDslRule_Index) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ParamsEsQueryDslRule_Index) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsParamsEsQueryKqlRuleSearchConfigurationIndex0 returns the union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index as a ParamsEsQueryKqlRuleSearchConfigurationIndex0
+func (t ParamsEsQueryKqlRule_SearchConfiguration_Index) AsParamsEsQueryKqlRuleSearchConfigurationIndex0() (ParamsEsQueryKqlRuleSearchConfigurationIndex0, error) {
+	var body ParamsEsQueryKqlRuleSearchConfigurationIndex0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsEsQueryKqlRuleSearchConfigurationIndex0 overwrites any union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index as the provided ParamsEsQueryKqlRuleSearchConfigurationIndex0
+func (t *ParamsEsQueryKqlRule_SearchConfiguration_Index) FromParamsEsQueryKqlRuleSearchConfigurationIndex0(v ParamsEsQueryKqlRuleSearchConfigurationIndex0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsEsQueryKqlRuleSearchConfigurationIndex0 performs a merge with any union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index, using the provided ParamsEsQueryKqlRuleSearchConfigurationIndex0
+func (t *ParamsEsQueryKqlRule_SearchConfiguration_Index) MergeParamsEsQueryKqlRuleSearchConfigurationIndex0(v ParamsEsQueryKqlRuleSearchConfigurationIndex0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsParamsEsQueryKqlRuleSearchConfigurationIndex1 returns the union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index as a ParamsEsQueryKqlRuleSearchConfigurationIndex1
+func (t ParamsEsQueryKqlRule_SearchConfiguration_Index) AsParamsEsQueryKqlRuleSearchConfigurationIndex1() (ParamsEsQueryKqlRuleSearchConfigurationIndex1, error) {
+	var body ParamsEsQueryKqlRuleSearchConfigurationIndex1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsEsQueryKqlRuleSearchConfigurationIndex1 overwrites any union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index as the provided ParamsEsQueryKqlRuleSearchConfigurationIndex1
+func (t *ParamsEsQueryKqlRule_SearchConfiguration_Index) FromParamsEsQueryKqlRuleSearchConfigurationIndex1(v ParamsEsQueryKqlRuleSearchConfigurationIndex1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsEsQueryKqlRuleSearchConfigurationIndex1 performs a merge with any union data inside the ParamsEsQueryKqlRule_SearchConfiguration_Index, using the provided ParamsEsQueryKqlRuleSearchConfigurationIndex1
+func (t *ParamsEsQueryKqlRule_SearchConfiguration_Index) MergeParamsEsQueryKqlRuleSearchConfigurationIndex1(v ParamsEsQueryKqlRuleSearchConfigurationIndex1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ParamsEsQueryKqlRule_SearchConfiguration_Index) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ParamsEsQueryKqlRule_SearchConfiguration_Index) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as a ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
+func (t ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric0() (ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0, error) {
+	var body ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric0(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric0 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric0(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as a ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
+func (t ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) AsParamsPropertyInfraMetricThresholdCriteria2CustomMetric1() (ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1, error) {
+	var body ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item as the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) FromParamsPropertyInfraMetricThresholdCriteria2CustomMetric1(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric1 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) MergeParamsPropertyInfraMetricThresholdCriteria2CustomMetric1(v ParamsPropertyInfraMetricThresholdCriteria2CustomMetric1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_2_CustomMetric_Item) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsParamsPropertyInfraMetricThresholdCriteria0 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as a ParamsPropertyInfraMetricThresholdCriteria0
+func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) AsParamsPropertyInfraMetricThresholdCriteria0() (ParamsPropertyInfraMetricThresholdCriteria0, error) {
+	var body ParamsPropertyInfraMetricThresholdCriteria0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyInfraMetricThresholdCriteria0 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as the provided ParamsPropertyInfraMetricThresholdCriteria0
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) FromParamsPropertyInfraMetricThresholdCriteria0(v ParamsPropertyInfraMetricThresholdCriteria0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyInfraMetricThresholdCriteria0 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria0
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) MergeParamsPropertyInfraMetricThresholdCriteria0(v ParamsPropertyInfraMetricThresholdCriteria0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsParamsPropertyInfraMetricThresholdCriteria1 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as a ParamsPropertyInfraMetricThresholdCriteria1
+func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) AsParamsPropertyInfraMetricThresholdCriteria1() (ParamsPropertyInfraMetricThresholdCriteria1, error) {
+	var body ParamsPropertyInfraMetricThresholdCriteria1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyInfraMetricThresholdCriteria1 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as the provided ParamsPropertyInfraMetricThresholdCriteria1
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) FromParamsPropertyInfraMetricThresholdCriteria1(v ParamsPropertyInfraMetricThresholdCriteria1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyInfraMetricThresholdCriteria1 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria1
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) MergeParamsPropertyInfraMetricThresholdCriteria1(v ParamsPropertyInfraMetricThresholdCriteria1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsParamsPropertyInfraMetricThresholdCriteria2 returns the union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as a ParamsPropertyInfraMetricThresholdCriteria2
+func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) AsParamsPropertyInfraMetricThresholdCriteria2() (ParamsPropertyInfraMetricThresholdCriteria2, error) {
+	var body ParamsPropertyInfraMetricThresholdCriteria2
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyInfraMetricThresholdCriteria2 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item as the provided ParamsPropertyInfraMetricThresholdCriteria2
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) FromParamsPropertyInfraMetricThresholdCriteria2(v ParamsPropertyInfraMetricThresholdCriteria2) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyInfraMetricThresholdCriteria2 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_Criteria_Item, using the provided ParamsPropertyInfraMetricThresholdCriteria2
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) MergeParamsPropertyInfraMetricThresholdCriteria2(v ParamsPropertyInfraMetricThresholdCriteria2) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ParamsPropertyInfraMetricThreshold_Criteria_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ParamsPropertyInfraMetricThreshold_Criteria_Item) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsParamsPropertyInfraMetricThresholdGroupBy0 returns the union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as a ParamsPropertyInfraMetricThresholdGroupBy0
+func (t ParamsPropertyInfraMetricThreshold_GroupBy) AsParamsPropertyInfraMetricThresholdGroupBy0() (ParamsPropertyInfraMetricThresholdGroupBy0, error) {
+	var body ParamsPropertyInfraMetricThresholdGroupBy0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyInfraMetricThresholdGroupBy0 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as the provided ParamsPropertyInfraMetricThresholdGroupBy0
+func (t *ParamsPropertyInfraMetricThreshold_GroupBy) FromParamsPropertyInfraMetricThresholdGroupBy0(v ParamsPropertyInfraMetricThresholdGroupBy0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyInfraMetricThresholdGroupBy0 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy, using the provided ParamsPropertyInfraMetricThresholdGroupBy0
+func (t *ParamsPropertyInfraMetricThreshold_GroupBy) MergeParamsPropertyInfraMetricThresholdGroupBy0(v ParamsPropertyInfraMetricThresholdGroupBy0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsParamsPropertyInfraMetricThresholdGroupBy1 returns the union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as a ParamsPropertyInfraMetricThresholdGroupBy1
+func (t ParamsPropertyInfraMetricThreshold_GroupBy) AsParamsPropertyInfraMetricThresholdGroupBy1() (ParamsPropertyInfraMetricThresholdGroupBy1, error) {
+	var body ParamsPropertyInfraMetricThresholdGroupBy1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyInfraMetricThresholdGroupBy1 overwrites any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy as the provided ParamsPropertyInfraMetricThresholdGroupBy1
+func (t *ParamsPropertyInfraMetricThreshold_GroupBy) FromParamsPropertyInfraMetricThresholdGroupBy1(v ParamsPropertyInfraMetricThresholdGroupBy1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyInfraMetricThresholdGroupBy1 performs a merge with any union data inside the ParamsPropertyInfraMetricThreshold_GroupBy, using the provided ParamsPropertyInfraMetricThresholdGroupBy1
+func (t *ParamsPropertyInfraMetricThreshold_GroupBy) MergeParamsPropertyInfraMetricThresholdGroupBy1(v ParamsPropertyInfraMetricThresholdGroupBy1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ParamsPropertyInfraMetricThreshold_GroupBy) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ParamsPropertyInfraMetricThreshold_GroupBy) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsParamsPropertyLogThreshold0 returns the union data inside the ParamsPropertyLogThreshold as a ParamsPropertyLogThreshold0
+func (t ParamsPropertyLogThreshold) AsParamsPropertyLogThreshold0() (ParamsPropertyLogThreshold0, error) {
+	var body ParamsPropertyLogThreshold0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyLogThreshold0 overwrites any union data inside the ParamsPropertyLogThreshold as the provided ParamsPropertyLogThreshold0
+func (t *ParamsPropertyLogThreshold) FromParamsPropertyLogThreshold0(v ParamsPropertyLogThreshold0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyLogThreshold0 performs a merge with any union data inside the ParamsPropertyLogThreshold, using the provided ParamsPropertyLogThreshold0
+func (t *ParamsPropertyLogThreshold) MergeParamsPropertyLogThreshold0(v ParamsPropertyLogThreshold0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsParamsPropertyLogThreshold1 returns the union data inside the ParamsPropertyLogThreshold as a ParamsPropertyLogThreshold1
+func (t ParamsPropertyLogThreshold) AsParamsPropertyLogThreshold1() (ParamsPropertyLogThreshold1, error) {
+	var body ParamsPropertyLogThreshold1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyLogThreshold1 overwrites any union data inside the ParamsPropertyLogThreshold as the provided ParamsPropertyLogThreshold1
+func (t *ParamsPropertyLogThreshold) FromParamsPropertyLogThreshold1(v ParamsPropertyLogThreshold1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyLogThreshold1 performs a merge with any union data inside the ParamsPropertyLogThreshold, using the provided ParamsPropertyLogThreshold1
+func (t *ParamsPropertyLogThreshold) MergeParamsPropertyLogThreshold1(v ParamsPropertyLogThreshold1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ParamsPropertyLogThreshold) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ParamsPropertyLogThreshold) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsParamsPropertyLogThreshold0CriteriaValue0 returns the union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as a ParamsPropertyLogThreshold0CriteriaValue0
+func (t ParamsPropertyLogThreshold_0_Criteria_Value) AsParamsPropertyLogThreshold0CriteriaValue0() (ParamsPropertyLogThreshold0CriteriaValue0, error) {
+	var body ParamsPropertyLogThreshold0CriteriaValue0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyLogThreshold0CriteriaValue0 overwrites any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as the provided ParamsPropertyLogThreshold0CriteriaValue0
+func (t *ParamsPropertyLogThreshold_0_Criteria_Value) FromParamsPropertyLogThreshold0CriteriaValue0(v ParamsPropertyLogThreshold0CriteriaValue0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyLogThreshold0CriteriaValue0 performs a merge with any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value, using the provided ParamsPropertyLogThreshold0CriteriaValue0
+func (t *ParamsPropertyLogThreshold_0_Criteria_Value) MergeParamsPropertyLogThreshold0CriteriaValue0(v ParamsPropertyLogThreshold0CriteriaValue0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsParamsPropertyLogThreshold0CriteriaValue1 returns the union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as a ParamsPropertyLogThreshold0CriteriaValue1
+func (t ParamsPropertyLogThreshold_0_Criteria_Value) AsParamsPropertyLogThreshold0CriteriaValue1() (ParamsPropertyLogThreshold0CriteriaValue1, error) {
+	var body ParamsPropertyLogThreshold0CriteriaValue1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyLogThreshold0CriteriaValue1 overwrites any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value as the provided ParamsPropertyLogThreshold0CriteriaValue1
+func (t *ParamsPropertyLogThreshold_0_Criteria_Value) FromParamsPropertyLogThreshold0CriteriaValue1(v ParamsPropertyLogThreshold0CriteriaValue1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyLogThreshold0CriteriaValue1 performs a merge with any union data inside the ParamsPropertyLogThreshold_0_Criteria_Value, using the provided ParamsPropertyLogThreshold0CriteriaValue1
+func (t *ParamsPropertyLogThreshold_0_Criteria_Value) MergeParamsPropertyLogThreshold0CriteriaValue1(v ParamsPropertyLogThreshold0CriteriaValue1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ParamsPropertyLogThreshold_0_Criteria_Value) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ParamsPropertyLogThreshold_0_Criteria_Value) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsParamsPropertyLogThreshold1CriteriaValue0 returns the union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as a ParamsPropertyLogThreshold1CriteriaValue0
+func (t ParamsPropertyLogThreshold_1_Criteria_Value) AsParamsPropertyLogThreshold1CriteriaValue0() (ParamsPropertyLogThreshold1CriteriaValue0, error) {
+	var body ParamsPropertyLogThreshold1CriteriaValue0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyLogThreshold1CriteriaValue0 overwrites any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as the provided ParamsPropertyLogThreshold1CriteriaValue0
+func (t *ParamsPropertyLogThreshold_1_Criteria_Value) FromParamsPropertyLogThreshold1CriteriaValue0(v ParamsPropertyLogThreshold1CriteriaValue0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyLogThreshold1CriteriaValue0 performs a merge with any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value, using the provided ParamsPropertyLogThreshold1CriteriaValue0
+func (t *ParamsPropertyLogThreshold_1_Criteria_Value) MergeParamsPropertyLogThreshold1CriteriaValue0(v ParamsPropertyLogThreshold1CriteriaValue0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsParamsPropertyLogThreshold1CriteriaValue1 returns the union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as a ParamsPropertyLogThreshold1CriteriaValue1
+func (t ParamsPropertyLogThreshold_1_Criteria_Value) AsParamsPropertyLogThreshold1CriteriaValue1() (ParamsPropertyLogThreshold1CriteriaValue1, error) {
+	var body ParamsPropertyLogThreshold1CriteriaValue1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertyLogThreshold1CriteriaValue1 overwrites any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value as the provided ParamsPropertyLogThreshold1CriteriaValue1
+func (t *ParamsPropertyLogThreshold_1_Criteria_Value) FromParamsPropertyLogThreshold1CriteriaValue1(v ParamsPropertyLogThreshold1CriteriaValue1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertyLogThreshold1CriteriaValue1 performs a merge with any union data inside the ParamsPropertyLogThreshold_1_Criteria_Value, using the provided ParamsPropertyLogThreshold1CriteriaValue1
+func (t *ParamsPropertyLogThreshold_1_Criteria_Value) MergeParamsPropertyLogThreshold1CriteriaValue1(v ParamsPropertyLogThreshold1CriteriaValue1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ParamsPropertyLogThreshold_1_Criteria_Value) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ParamsPropertyLogThreshold_1_Criteria_Value) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsParamsPropertySyntheticsMonitorStatusFilters0 returns the union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as a ParamsPropertySyntheticsMonitorStatusFilters0
+func (t ParamsPropertySyntheticsMonitorStatus_Filters) AsParamsPropertySyntheticsMonitorStatusFilters0() (ParamsPropertySyntheticsMonitorStatusFilters0, error) {
+	var body ParamsPropertySyntheticsMonitorStatusFilters0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertySyntheticsMonitorStatusFilters0 overwrites any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as the provided ParamsPropertySyntheticsMonitorStatusFilters0
+func (t *ParamsPropertySyntheticsMonitorStatus_Filters) FromParamsPropertySyntheticsMonitorStatusFilters0(v ParamsPropertySyntheticsMonitorStatusFilters0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertySyntheticsMonitorStatusFilters0 performs a merge with any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters, using the provided ParamsPropertySyntheticsMonitorStatusFilters0
+func (t *ParamsPropertySyntheticsMonitorStatus_Filters) MergeParamsPropertySyntheticsMonitorStatusFilters0(v ParamsPropertySyntheticsMonitorStatusFilters0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsParamsPropertySyntheticsMonitorStatusFilters1 returns the union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as a ParamsPropertySyntheticsMonitorStatusFilters1
+func (t ParamsPropertySyntheticsMonitorStatus_Filters) AsParamsPropertySyntheticsMonitorStatusFilters1() (ParamsPropertySyntheticsMonitorStatusFilters1, error) {
+	var body ParamsPropertySyntheticsMonitorStatusFilters1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromParamsPropertySyntheticsMonitorStatusFilters1 overwrites any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters as the provided ParamsPropertySyntheticsMonitorStatusFilters1
+func (t *ParamsPropertySyntheticsMonitorStatus_Filters) FromParamsPropertySyntheticsMonitorStatusFilters1(v ParamsPropertySyntheticsMonitorStatusFilters1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeParamsPropertySyntheticsMonitorStatusFilters1 performs a merge with any union data inside the ParamsPropertySyntheticsMonitorStatus_Filters, using the provided ParamsPropertySyntheticsMonitorStatusFilters1
+func (t *ParamsPropertySyntheticsMonitorStatus_Filters) MergeParamsPropertySyntheticsMonitorStatusFilters1(v ParamsPropertySyntheticsMonitorStatusFilters1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t ParamsPropertySyntheticsMonitorStatus_Filters) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *ParamsPropertySyntheticsMonitorStatus_Filters) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -105002,6 +107614,68 @@ func (t TagcloudNoESQL_TagBy) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TagcloudNoESQL_TagBy) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsTermfield0 returns the union data inside the Termfield as a Termfield0
+func (t Termfield) AsTermfield0() (Termfield0, error) {
+	var body Termfield0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromTermfield0 overwrites any union data inside the Termfield as the provided Termfield0
+func (t *Termfield) FromTermfield0(v Termfield0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeTermfield0 performs a merge with any union data inside the Termfield, using the provided Termfield0
+func (t *Termfield) MergeTermfield0(v Termfield0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsTermfield1 returns the union data inside the Termfield as a Termfield1
+func (t Termfield) AsTermfield1() (Termfield1, error) {
+	var body Termfield1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromTermfield1 overwrites any union data inside the Termfield as the provided Termfield1
+func (t *Termfield) FromTermfield1(v Termfield1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeTermfield1 performs a merge with any union data inside the Termfield, using the provided Termfield1
+func (t *Termfield) MergeTermfield1(v Termfield1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t Termfield) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *Termfield) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -156247,10 +158921,10 @@ type PostDashboards200DataPanels0 struct {
 	Version *string `json:"version,omitempty"`
 }
 type PostDashboards200DataPanels0Config0 struct {
-	Content     string  `json:"content"`
-	Description *string `json:"description,omitempty"`
-	HideTitle   *bool   `json:"hide_title,omitempty"`
-	Title       *string `json:"title,omitempty"`
+	Content         string  `json:"content"`
+	Description     *string `json:"description,omitempty"`
+	HidePanelTitles *bool   `json:"hidePanelTitles,omitempty"`
+	Title           *string `json:"title,omitempty"`
 }
 type PostDashboards200DataPanels0Config1 struct {
 	union json.RawMessage
@@ -156264,7 +158938,6 @@ type PostDashboards200DataPanels0Config10Attributes0 struct {
 }
 type PostDashboards200DataPanels0Config10Attributes1 struct {
 	Description       *string                                                 `json:"description,omitempty"`
-	Id                *string                                                 `json:"id,omitempty"`
 	References        []KbnContentManagementUtilsReferenceSchema              `json:"references"`
 	State             interface{}                                             `json:"state"`
 	Title             string                                                  `json:"title"`
@@ -156328,10 +159001,10 @@ type PostDashboards200DataPanels1 struct {
 	Uid *string `json:"uid,omitempty"`
 }
 type PostDashboards200DataPanels1PanelsConfig0 struct {
-	Content     string  `json:"content"`
-	Description *string `json:"description,omitempty"`
-	HideTitle   *bool   `json:"hide_title,omitempty"`
-	Title       *string `json:"title,omitempty"`
+	Content         string  `json:"content"`
+	Description     *string `json:"description,omitempty"`
+	HidePanelTitles *bool   `json:"hidePanelTitles,omitempty"`
+	Title           *string `json:"title,omitempty"`
 }
 type PostDashboards200DataPanels1PanelsConfig1 struct {
 	union json.RawMessage
@@ -156345,7 +159018,6 @@ type PostDashboards200DataPanels1PanelsConfig10Attributes0 struct {
 }
 type PostDashboards200DataPanels1PanelsConfig10Attributes1 struct {
 	Description       *string                                                       `json:"description,omitempty"`
-	Id                *string                                                       `json:"id,omitempty"`
 	References        []KbnContentManagementUtilsReferenceSchema                    `json:"references"`
 	State             interface{}                                                   `json:"state"`
 	Title             string                                                        `json:"title"`
@@ -156978,10 +159650,10 @@ type PutDashboardsId200DataPanels0 struct {
 	Version *string `json:"version,omitempty"`
 }
 type PutDashboardsId200DataPanels0Config0 struct {
-	Content     string  `json:"content"`
-	Description *string `json:"description,omitempty"`
-	HideTitle   *bool   `json:"hide_title,omitempty"`
-	Title       *string `json:"title,omitempty"`
+	Content         string  `json:"content"`
+	Description     *string `json:"description,omitempty"`
+	HidePanelTitles *bool   `json:"hidePanelTitles,omitempty"`
+	Title           *string `json:"title,omitempty"`
 }
 type PutDashboardsId200DataPanels0Config1 struct {
 	union json.RawMessage
@@ -156995,7 +159667,6 @@ type PutDashboardsId200DataPanels0Config10Attributes0 struct {
 }
 type PutDashboardsId200DataPanels0Config10Attributes1 struct {
 	Description       *string                                                  `json:"description,omitempty"`
-	Id                *string                                                  `json:"id,omitempty"`
 	References        []KbnContentManagementUtilsReferenceSchema               `json:"references"`
 	State             interface{}                                              `json:"state"`
 	Title             string                                                   `json:"title"`
@@ -157059,10 +159730,10 @@ type PutDashboardsId200DataPanels1 struct {
 	Uid *string `json:"uid,omitempty"`
 }
 type PutDashboardsId200DataPanels1PanelsConfig0 struct {
-	Content     string  `json:"content"`
-	Description *string `json:"description,omitempty"`
-	HideTitle   *bool   `json:"hide_title,omitempty"`
-	Title       *string `json:"title,omitempty"`
+	Content         string  `json:"content"`
+	Description     *string `json:"description,omitempty"`
+	HidePanelTitles *bool   `json:"hidePanelTitles,omitempty"`
+	Title           *string `json:"title,omitempty"`
 }
 type PutDashboardsId200DataPanels1PanelsConfig1 struct {
 	union json.RawMessage
@@ -157076,7 +159747,6 @@ type PutDashboardsId200DataPanels1PanelsConfig10Attributes0 struct {
 }
 type PutDashboardsId200DataPanels1PanelsConfig10Attributes1 struct {
 	Description       *string                                                        `json:"description,omitempty"`
-	Id                *string                                                        `json:"id,omitempty"`
 	References        []KbnContentManagementUtilsReferenceSchema                     `json:"references"`
 	State             interface{}                                                    `json:"state"`
 	Title             string                                                         `json:"title"`
